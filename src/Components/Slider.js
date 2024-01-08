@@ -2,26 +2,7 @@ import React, { useEffect, useState } from "react";
 import rectbig from "../assets/rect1.png";
 import rect3 from "../assets/rect3.png";
 const Slider = () => {
-  const items = [
-    {
-      image: `${rectbig}`,
-    },
-    {
-      image: `${rectbig}`,
-    },
-    {
-      image: `${rectbig}`,
-    },
-    {
-      image: `${rectbig}`,
-    },
-    {
-      image: `${rectbig}`,
-    },
-    {
-      image: `${rectbig}`,
-    },
-  ];
+  
 
   useEffect(() => {
     const handleNextClick = () => {
@@ -48,7 +29,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className=" flex mx-auto items-center  justify-evenly container1 w-[98.9vw] transform translate-x-[0.002%] translate-y-[-40%] h-[85vh] mt-36 ">
+    <div className=" flex mx-auto items-center  justify-evenly container1 w-[98.9vw] transform translate-x-[0.002%] translate-y-[-40%] h-[90vh] mt-32 -mb-24 ">
       <div id="slide">
         {/* Your item components go here */}
         <div className="item" style={{ backgroundImage: `url(${rectbig})` }}>
