@@ -6,6 +6,7 @@ import icon2 from '../assets/up-trend-svgrepo-com 1.png';
 import icon3 from '../assets/users-group-svgrepo-com 1.png';
 import section3 from '../assets/Rectangle 55210.png';
 import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 function Joinpartner() {
     return (
         <div>
@@ -20,9 +21,10 @@ function Joinpartner() {
                     <div className='font-normal text-sm text-[#020617] w-[510px] font-opensans -tracking-2'>
                         At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.
                     </div>
-                    <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
+                    <Link to='/joinpartnerform'><button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
                         Get Started
                     </button>
+                    </Link>
                 </div>
                 <div className='absolute -bottom-4 -right-2'>
                     <img src={ellipse422} className='w-[53vw] h-[88vh]' loading="lazy"></img>
@@ -79,14 +81,15 @@ function Joinpartner() {
                     </div>
                     <div className='w-[415px] -tracking-2 text-[#ffffff] text-4xl font-roboto font-semibold'>What to upscale your business? Register as partner</div>
                     <div className='w-[515px] h-[75px] text-sm -tracking-2 text-[#ffffff] font-normal'>Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.</div>
-                    <button className='w-[137px] h-[42px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
+                    <Link to='/joinpartnerform'><button className='w-[137px] h-[42px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
                         Get Started
                     </button>
+                    </Link>
                 </div>
             </div>
             {/* fourth section / footer */}
             <div>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     )
