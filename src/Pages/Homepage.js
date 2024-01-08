@@ -12,8 +12,8 @@ import rectsm2 from "../assets/rect-sm2.png";
 import rect3 from "../assets/rect3.png";
 import star from "../assets/star.png";
 import Slider from "../Components/Slider";
-
-
+import bg5 from "../assets/bg-5.png";
+import app from "../assets/appstore.png";
 
 
 
@@ -39,7 +39,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="w-[39.5rem] h-[14rem]  flex flex-col z-40">
-                <div className="w-[39.5rem] h-[12rem] font-roboto font-semibold text-5xl leading-none text-slate-950 -tracking-[2%]">
+                <div className="w-[41rem]  font-roboto font-semibold text-[50px] leading-[60px] text-slate-950 -tracking-[2%]">
                   Discover, Review, Earn Coupons, and Connect with our vibrant
                   food community.
                 </div>
@@ -128,25 +128,25 @@ const Homepage = () => {
         <div class="w-[94vw] bg-white flex relative mt-36">
           <div class="flex flex-col lg:flex-row justify-between  w-11/12">
             {/* .---left part---- */}
-            <div className="w-[515px] h-[326px]  my-auto  mx-auto ">
-              <button className="w-[8vw] h-[6vh] rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
-                <p className="w-[63px] h-[36px] font-roboto  font-semibold text-base leading-10">
+            <div className="w-[515px] my-auto  mx-auto ">
+              <button className="w-[8vw] flex justify-center items-center rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
+                <p className="w-[63px] font-roboto  font-semibold text-base leading-10">
                   Discover
                 </p>
               </button>
-              <div className="w-[33vw] h-[30vh] flex flex-col gap-5">
-                <div className="w-[33vw] h-[60vh] font-semibold  text-[42px] leading-[56px] ">
+              <div className="w-[33vw]  flex flex-col gap-5">
+                <div className="w-[33vw] font-semibold  text-[42px] leading-[56px] ">
                   Find,Book, and Save on Delicious Eats
                 </div>
 
-                <p className="w-[33vw] h-[40vh] font-opensans font-normal text-sm leading-6 ">
+                <p className="w-[33vw] font-opensans font-normal text-sm leading-6  mb-3">
                   Review, pay, book, and invite friends to earn coupons with
                   every interaction on Snackbae. Discover new restaurants,
                   reserve a table, and enjoy exclusive discounts and offers.
                 </p>
               </div>
-              <button className="  py-1 px-1 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 mt-3 bg-[#EAB308]">
-                <p className="font-Roboto font-medium w-[9rem] h-[0.75rem] text-white text-base leading-4 ">
+              <button className="  py-1 px-1 w-[10rem]  h-[2.8rem] border rounded-lg  bg-[#EAB308]">
+                <p className="font-Roboto font-medium w-[9rem]  text-white text-base leading-4 ">
                   Get Started
                 </p>
               </button>
@@ -218,8 +218,8 @@ const Homepage = () => {
         {/* --------------------------------------------SECOND PART ENDED--------------------------------------------------
         ------------------------------------------THIRD PART STARTED------------------------------------------------------------- */}
 
-        <div class="w-[94vw] bg-white flex relative mt-36">
-          <div class="flex flex-col lg:flex-row  mx-auto  justify-between  w-11/12">
+        <div class="w-[100vw] bg-white flex relative mt-36">
+          <div class="flex flex-col lg:flex-row justify-between  w-11/12">
             {/* ---left part----- */}
             <div className="ml-[10vw]">
               <img
@@ -253,26 +253,26 @@ const Homepage = () => {
             </div>
 
             {/* ----right part----- */}
-            <div className="w-[515px] h-[382px] mx-auto my-auto ">
-              <button className="w-[8vw] h-[6vh] rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
-                <p className="w-[63px] h-[36px] font-roboto  font-semibold text-base leading-10">
+            <div className="w-[515px] mx-auto my-auto ">
+              <button className="w-[8vw]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
+                <p className="w-[63px]  font-roboto  font-semibold text-base leading-10">
                   Coupons
                 </p>
               </button>
-              <div className="w-[35vw] h-[40vh] flex flex-col gap-[24px]">
-                <div className="w-[562px] h-[168px] font-semibold  text-[42px] leading-[56px] ">
+              <div className="w  flex flex-col gap-[24px]">
+                <div className="w-[562px] font-semibold  text-[42px] leading-[56px] ">
                   Review, Pay, Book, and Invite Friends - Earn Coupons with
                   Every Interaction!
                 </div>
 
-                <p className="w-[33vw] h-[40vh] font-opensans font-normal text-sm leading-6 ">
+                <p className="w-[33vw]  font-opensans font-normal text-sm leading-6 mb-3">
                   Review, pay, book, and invite friends to earn coupons with
                   every interaction on Snackbae. Discover new restaurants,
                   reserve a table, and enjoy exclusive discounts and offers.
                 </p>
               </div>
-              <button className="  py-1 px-1 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 mt-3 bg-[#EAB308]">
-                <p className="font-Roboto font-medium w-[9rem] h-[0.75rem] text-white text-base leading-4 ">
+              <button className="  py-1 px-1 w-[10rem] flex items-center justify-center h-[2.8rem] border rounded-lg bg-[#EAB308]">
+                <p className="font-Roboto font-medium w-[9rem] text-white text-base leading-4 ">
                   Explore Coupons
                 </p>
               </button>
@@ -287,6 +287,28 @@ const Homepage = () => {
         </div>
 
         {/* ------------------------------------FOURTH PART ENDED--------------------------------------------------------- */}
+
+        {/* ---------------------------FIFTH PART STARTED----------------- */}
+        <div className="relative w-[100vw] h-[100vh]">
+          <img src={bg5} className="w-full h-full absolute z-10"></img>
+          <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
+          <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
+            <button className="w-[8vw]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500 ">
+              <p className=" font-roboto  font-semibold text-base leading-10">
+                Coupons
+              </p>
+            </button>
+
+            <div className="w-[600px] h-[112px] font-roboto font-semibold text-[42px] text-center leading-[56px] text-white">
+              Download th app Lorem ipsum dolor sit amet dolor sit
+            </div>
+            <p className="w-[515px] font-normal text[14px] leading-[25px] font-sans text-center text-white opacity-70">
+              Download for android and iOS lorem ipsum dolor sit amet
+            </p>
+
+            <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
+          </div>
+        </div>
       </div>
     </div>
   );
