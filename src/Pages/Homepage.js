@@ -122,15 +122,28 @@ import rectsm from "../assets/rect-sm.png";
 import rectsm2 from "../assets/rect-sm2.png";
 import rect3 from "../assets/rect3.png";
 import star from "../assets/star.png";
+import Slider from "../Components/Slider";
+
+
+
+
+
+
+
 
 const Homepage = () => {
+
+
+
+
+
   return (
-    <div className="bg-white-A700 flex flex-col items-center justify-end mx-auto pt-2 w-full">
+    <div className="bg-white-A700 flex flex-col items-center justify-end mx-auto pt-2 w-full overflow-x-hidden overflow-y-hidden">
       <div className="flex flex-col justify-start w-full">
-        <div className="relative w-full h-[49.5vw] overflow-x-hidden overflow-y-hidden  bg-slate-50 ">
-          <div className="flex  items-center">
+        <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 ">
+          <div className="flex flex-row items-center justify-between ">
             {/* /left part */}
-            <div className="flex flex-col absolute w-[53rem] h-[35rem] top-[12vw] left-[4.5vw] gap-9">
+            <div className="flex flex-col absolute w-[53rem] h-[35rem] -bottom-8 left-[4.5vw] gap-4">
               <div className="w-[14rem] h-[3rem] border rounded-md py-[0.25rem] px-[1rem] gap-2.5 bg-amber-50">
                 <div className="w-[12rem] h-[2.3rem] font-roboto text-lg leading-9 font-semibold items-center text-[#EAB308] z-50">
                   Welcome to SnackBae
@@ -201,28 +214,32 @@ const Homepage = () => {
               </div>
             </div>
             {/* right part */}
-            <div className=" flex  justify-around my-auto mx-auto ">
+            <div className="absolute -bottom-4 -right-2">
               <img
-                className=" absolute w-[60vw] h-[110vh] top-[7vw]  right-[-3vw] "
                 src={ellipse}
-                alt="Logo"
+                className="w-[53vw] h-[88vh]"
                 loading="lazy"
               ></img>
+              {/* width={756} height={696}  */}
+            </div>
+            <div className="absolute -bottom-4 right-0">
               <img
-                className="absolute w-[70vw] h-[99vh] top-[6.4vw] right-[-9vw] object-scale-down z-20 place-content-around"
                 src={ellipse2}
-                alt="Logo"
+                className="w-[50vw] h-[84vh]"
+                height={626}
+                width={716}
                 loading="lazy"
               ></img>
+              {/* height={626} width={716} */}
             </div>
           </div>
         </div>
         {/* // ------------------------------------------------FIRST PART ENDED----------------------------------------------------------------
       // ------------------------------------------------SECOND PART STARTED----------------------------------------------------------------- */}
         <div class="w-[94vw] bg-white flex relative mt-36">
-          <div class="flex flex-col lg:flex-row   justify-between  w-11/12">
+          <div class="flex flex-col lg:flex-row justify-between  w-11/12">
             {/* .---left part---- */}
-            <div className="w-[515px] h-[326px]  mt-44  mx-auto ">
+            <div className="w-[515px] h-[326px]  my-auto  mx-auto ">
               <button className="w-[8vw] h-[6vh] rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
                 <p className="w-[63px] h-[36px] font-roboto  font-semibold text-base leading-10">
                   Discover
@@ -239,7 +256,7 @@ const Homepage = () => {
                   reserve a table, and enjoy exclusive discounts and offers.
                 </p>
               </div>
-              <button className=" flex py-3 px-3 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 items-start justify-start my-6 bg-[#EAB308]">
+              <button className="  py-1 px-1 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 mt-3 bg-[#EAB308]">
                 <p className="font-Roboto font-medium w-[9rem] h-[0.75rem] text-white text-base leading-4 ">
                   Get Started
                 </p>
@@ -313,7 +330,7 @@ const Homepage = () => {
         ------------------------------------------THIRD PART STARTED------------------------------------------------------------- */}
 
         <div class="w-[94vw] bg-white flex relative mt-36">
-          <div class="flex flex-col lg:flex-row   justify-between  w-11/12">
+          <div class="flex flex-col lg:flex-row  mx-auto  justify-between  w-11/12">
             {/* ---left part----- */}
             <div className="ml-[10vw]">
               <img
@@ -347,32 +364,40 @@ const Homepage = () => {
             </div>
 
             {/* ----right part----- */}
-            <div className="w-[33vw] h-[50vh]  my-auto  mx-auto gap-6 ">
+            <div className="w-[515px] h-[382px] mx-auto my-auto ">
               <button className="w-[8vw] h-[6vh] rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
                 <p className="w-[63px] h-[36px] font-roboto  font-semibold text-base leading-10">
                   Coupons
                 </p>
               </button>
-              <div className="w-[33vw] h-[38vh] flex flex-col gap-5">
-                <div className="w-[39vw] h-[40vh] font-semibold  text-[42px] leading-[56px] ">
+              <div className="w-[35vw] h-[40vh] flex flex-col gap-[24px]">
+                <div className="w-[562px] h-[168px] font-semibold  text-[42px] leading-[56px] ">
                   Review, Pay, Book, and Invite Friends - Earn Coupons with
                   Every Interaction!
                 </div>
 
                 <p className="w-[33vw] h-[40vh] font-opensans font-normal text-sm leading-6 ">
-                  Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-                  commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-                  Tincidunt scelerisque commodo proin faucibus.
+                  Review, pay, book, and invite friends to earn coupons with
+                  every interaction on Snackbae. Discover new restaurants,
+                  reserve a table, and enjoy exclusive discounts and offers.
                 </p>
               </div>
-              <button className=" flex py-3 px-3 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 items-start justify-start my-6 bg-[#EAB308]">
+              <button className="  py-1 px-1 w-[10rem]  h-[2.8rem] border rounded-lg space-x-2 mt-3 bg-[#EAB308]">
                 <p className="font-Roboto font-medium w-[9rem] h-[0.75rem] text-white text-base leading-4 ">
-                  Explore coupons
+                  Explore Coupons
                 </p>
               </button>
             </div>
           </div>
         </div>
+
+        {/* ------------------------------------THIRD PART ENDED------------------------------------------------- */}
+        {/*-------------------------------------- FOURTH PART STARTED------------------------------------------------ */}
+        <div className="mt-60">
+          <Slider />
+        </div>
+
+        {/* ------------------------------------FOURTH PART ENDED--------------------------------------------------------- */}
       </div>
     </div>
   );
