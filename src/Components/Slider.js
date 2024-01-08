@@ -15,16 +15,19 @@ const Slider = () => {
       document.getElementById("slide").prepend(lists[lists.length - 1]);
     };
 
-    document.getElementById("next").addEventListener("click", handleNextClick);
-    document.getElementById("prev").addEventListener("click", handlePrevClick);
+    const nextButton = document.getElementById("next");
+    const prevButton = document.getElementById("prev");
+
+    if (nextButton && prevButton) {
+      nextButton.addEventListener("click", handleNextClick);
+      prevButton.addEventListener("click", handlePrevClick);
+    }
 
     return () => {
-      document
-        .getElementById("next")
-        .removeEventListener("click", handleNextClick);
-      document
-        .getElementById("prev")
-        .removeEventListener("click", handlePrevClick);
+      if (nextButton && prevButton) {
+        nextButton.removeEventListener("click", handleNextClick);
+        prevButton.removeEventListener("click", handlePrevClick);
+      }
     };
   }, []);
 
