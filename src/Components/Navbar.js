@@ -21,13 +21,13 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/">Join as partner</Link>
+            <Link to="/joinpartner">Join as partner</Link>
           </li>
           <li className=" hover:text-deepgreen hover:underline">
             <Link to="/">Blogs</Link>
           </li>
           <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/">About us</Link>
+            <Link to="/aboutUs">About Us</Link>
           </li>
           <button className=" w-[137px] h-[42px] border rounded-xl  px-[18px] text-white  bg-[#EAB308]">
             Partner Login
