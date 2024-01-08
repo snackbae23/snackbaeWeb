@@ -7,7 +7,6 @@ import rect from "../assets/Rectangle 55207.png"
 import ellipseB from "../assets/Ellipse 424.png"
 import rect1 from "../assets/Rectangle 3463490.png"
 import TeamSlider from "../Components/TeamSlider";
-import rect2 from "../assets/Rectangle 55220.png"
 
 const AboutUs = () => {
     return (
