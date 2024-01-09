@@ -29,9 +29,9 @@ const Navbar = () => {
           <li className=" hover:text-deepgreen hover:underline">
             <Link to="/aboutUs">About Us</Link>
           </li>
-          <button className=" w-[137px] h-[42px] border rounded-xl  px-[18px] text-white  bg-[#EAB308]">
-            <Link to="/login">Partner Login</Link>
-          </button>
+          <Link to="/login"><button className=" w-[137px] h-[42px] border rounded-xl  px-[18px] text-white  bg-[#EAB308]">
+            Partner Login
+          </button></Link>
         </ul>
       </div>
     </div>
