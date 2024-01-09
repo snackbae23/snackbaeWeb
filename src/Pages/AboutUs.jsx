@@ -27,7 +27,7 @@ const AboutUs = () => {
                     <div className='font-opensans font-bold text-[#020617] -tracking-[2%]'>
                         Elevate Dining Experience with SnackBae
                     </div>
-                    <div className='font-normal text-sm text-[#020617] w-[31.875rem] font-sans -tracking-[2%]'>
+                    <div className='font-normal text-sm text-[#020617] w-[31.875rem] font-opensans -tracking-[2%]'>
                         At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower
                         restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention.
                         Join us on this culinary journey and let SnackBae be your partner in success.
