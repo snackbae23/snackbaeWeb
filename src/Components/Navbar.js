@@ -30,7 +30,7 @@ const Navbar = () => {
             <Link to="/aboutUs">About Us</Link>
           </li>
           <button className=" w-[137px] h-[42px] border rounded-xl  px-[18px] text-white  bg-[#EAB308]">
-            Partner Login
+            <Link to="/login">Partner Login</Link>
           </button>
         </ul>
       </div>
