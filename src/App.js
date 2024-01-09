@@ -8,6 +8,8 @@ import Joinpartnerform from './Pages/Joinpartnerform';
 import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
 import Blogs from './Pages/Blog';
+import Blogdetail from './Pages/Blogdetail';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path = '/blog' element ={<Blogs/>}></Route>
+        <Route path = '/blogdetail' element ={<Blogdetail/>}></Route>
       </Routes>
     </div>
   );
