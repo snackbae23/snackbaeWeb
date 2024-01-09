@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 function Joinpartnerform() {
+     const toast = useToast();
     const [formData, setFormData] = useState({ rname: "", email: "", outlet: "", phone: "", loc: "" });
     function changeHandler(event) {
         const { name, value } = event.target;
@@ -15,11 +18,43 @@ function Joinpartnerform() {
     {
         setFormData({ rname: "", email: "", outlet: "", phone: "", loc: "" });
     }
-    function submitHandler(e)
+    const submitHandler = async(e) =>
     {
         e.preventDefault();
-        console.log(formData);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:4000/api/saveBecomePartnerData",
+        { formData },
+        config
+      );
         resetForm();
+      toast({
+        title: "Message Sent",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+     
+    }
+        
+        
     }
     return (
         <div className='w-full h-[100vh] bg-slate-50 flex justify-center items-center'>
