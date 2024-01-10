@@ -1,114 +1,3 @@
-// import React from "react";
-// import arrow from "../assets/arrow.png";
-// import ellipse from "../assets/Ellipse 422.png";
-// import ellipse2 from "../assets/ellipse1.png";
-// import ellipse_sm from "../assets/ellip-sm.png";
-// import ellipse_sm1 from "../assets/ellipse-sm2.png";
-// import ellipse_sm2 from "../assets/ellipse-sm3.png";
-// import ellipse_sm3 from "../assets/ellipse-sm4.png";
-// import Footer from "../Components/Footer";
-
-// const Homepage = () => {
-//   return (
-//     <div>
-//     <div className="relative w-full h-[49.5vw] overflow-x-hidden overflow-y-hidden  bg-slate-50">
-//       <div className="flex  items-center">
-//         {/* /left part */}
-//         <div className="flex flex-col absolute w-[53rem] h-[35rem] top-[12vw] left-[4.5vw] gap-9">
-//           <div className="w-[14rem] h-[3rem] border rounded-md py-[0.25rem] px-[1rem] gap-2.5 bg-amber-50">
-//             <div className="w-[12rem] h-[2.3rem] font-roboto text-lg leading-9 font-semibold items-center text-[#EAB308] z-50">
-//               Welcome to SnackBae
-//             </div>
-//           </div>
-//           <div className="w-[39.5rem] h-[14rem]  flex flex-col z-40">
-//             <div className="w-[39.5rem] h-[12rem] font-roboto font-semibold text-5xl leading-none text-slate-950 -tracking-[2%]">
-//               Discover, Review, Earn Coupons, and Connect with our vibrant food
-//               community.
-//             </div>
-//             <div className="w-[35rem] h-[4rem] font-opensans font-normal text-base leading-6 -tracking-[2%] text-slate-950 mt-5 mb-4">
-//               Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum
-//               dolordolor sit ametamet, consecteturconsectetur adipiscing erem
-//               ipsum dolor sit a...
-//             </div>
-//             <div className=" flex flex-row  w-[22rem] h-[3.5rem] space-x-6  items-center mb-3">
-//               <button className=" flex py-3 px-3 w-[10rem] relative  h-[2.8rem] border rounded-lg space-x-2 items-start justify-start bg-[#EAB308]">
-//                 <img
-//                   className="absolute w-[1.2rem] h-[1.2rem]"
-//                   src={arrow}
-//                   alt="Logo"
-//                   loading="lazy"
-//                 ></img>
-//                 <p className="font-Roboto font-medium w-[9rem] h-[0.75rem] text-white text-base leading-4 ">
-//                   Download App
-//                 </p>
-//               </button>
-//               <button className="w-[158px] h-[42px] border rounded-lg gap-1 text-slate-950">
-//                 <p className="font-Roboto font-medium text-base leading-5 items-center -tracking-tight justify-center">
-//                   More Details
-//                 </p>
-//               </button>
-//             </div>
-//             <div className="flex flex-row font-opensans w-[21rem] gap-3 items-center justify-center ">
-//               <div className="flex relative w-[10rem]">
-//                 <div className="flex my-auto w-[79%]">
-//                   <div className="flex my-auto w-[74%]">
-//                     <img
-//                       src={ellipse_sm}
-//                       className="rounded-[50%] my-auto w-14 h-14 border-2 border-[#ffffff]"
-//                     ></img>
-//                     <img
-//                       src={ellipse_sm1}
-//                       className=" w-14 h-14 ml-[-25%] my-auto rounded-[50%] z-[1] border-2 border-[#ffffff]"
-//                     ></img>
-//                   </div>
-//                   <img
-//                     src={ellipse_sm2}
-//                     className=" w-14 h-14 ml-[-23%] my-auto rounded-[50%] z-[1]  border-2 border-[#ffffff]"
-//                   ></img>
-//                 </div>
-//                 <img
-//                   src={ellipse_sm3}
-//                   className=" w-14 h-14 ml-[-18%] rounded-[50%] my-auto z-[1] border-2 border-[#ffffff]"
-//                 ></img>
-//               </div>
-//               <div className="flex flex-col items-start justify-start w-auto">
-//                 <p className="text-left sm:text-3xl md:text[2rem] text-[3rem] text-black-900 w-auto font-bold font-opensans">
-//                   1000+
-//                 </p>
-//                 <div className="flex flex-col items-start justify-start w-auto">
-//                   <p className="text-left  text-base text-black-900 w-auto font-bold font-opensans">
-//                     Downloads on Appstore
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         {/* right part */}
-//         <div className=" flex  justify-around my-auto mx-auto ">
-//           <img
-//             className=" absolute w-[60vw] h-[110vh] top-[7vw]  right-[-3vw] "
-//             src={ellipse}
-//             alt="Logo"
-//             loading="lazy"
-//           ></img>
-//           <img
-//             className="absolute w-[70vw] h-[99vh] top-[6.4vw] right-[-9vw] object-scale-down z-20 place-content-around"
-//             src={ellipse2}
-//             alt="Logo"
-//             loading="lazy"
-//           ></img>
-//         </div>
-//       </div>
-//     </div>
-//     {/* <Footer/> */}
-//     </div>
-//   );
-// };
-
-// export default Homepage;
-
-
 import React from "react";
 import arrow from "../assets/arrow.png";
 import ellipse from "../assets/Ellipse 422.png";
@@ -117,14 +6,19 @@ import ellipse_sm from "../assets/ellip-sm.png";
 import ellipse_sm1 from "../assets/ellipse-sm2.png";
 import ellipse_sm2 from "../assets/ellipse-sm3.png";
 import ellipse_sm3 from "../assets/ellipse-sm4.png";
-import rectbig from "../assets/rect1.png"
+import rectbig from "../assets/rect1.png";
 import rectsm from "../assets/rect-sm.png";
 import rectsm2 from "../assets/rect-sm2.png";
 import rect3 from "../assets/rect3.png";
 import star from "../assets/star.png";
 import Slider from "../Components/Slider";
+import Faq from "../Components/Faq";
 import bg5 from "../assets/bg-5.png";
 import app from "../assets/appstore.png";
+import still from "../assets/still.png";
+import still1 from "../assets/still1.png";
+import Footer from "../Components/Footer";
+
 
 
 
@@ -132,11 +26,6 @@ import app from "../assets/appstore.png";
 
 
 const Homepage = () => {
-
-
-
-
-
   return (
     <div className="bg-white-A700 flex flex-col items-center justify-end mx-auto pt-2 w-full overflow-x-hidden overflow-y-hidden">
       <div className="flex flex-col justify-start w-full">
@@ -149,8 +38,8 @@ const Homepage = () => {
                   Welcome to SnackBae
                 </div>
               </div>
-              <div className="w-[39.5rem] h-[14rem]  flex flex-col z-40">
-                <div className="w-[41rem]  font-roboto font-semibold text-[50px] leading-[60px] text-slate-950 -tracking-[2%]">
+              <div className="w-[40rem] h-[14rem]  flex flex-col z-40">
+                <div className="w-[41rem]  font-roboto font-semibold text-[48px] leading-[60px] text-slate-950 -tracking-[2%]">
                   Discover, Review, Earn Coupons, and Connect with our vibrant
                   food community.
                 </div>
@@ -241,7 +130,7 @@ const Homepage = () => {
             {/* .---left part---- */}
             <div className="w-[515px] my-auto  mx-auto ">
               <button className="w-[8vw] flex justify-center items-center rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
-                <p className="w-[63px] font-roboto  font-semibold text-base leading-10">
+                <p className=" font-roboto  font-semibold text-base leading-10">
                   Discover
                 </p>
               </button>
@@ -366,11 +255,11 @@ const Homepage = () => {
             {/* ----right part----- */}
             <div className="w-[515px] mx-auto my-auto ">
               <button className="w-[8vw]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
-                <p className="w-[63px]  font-roboto  font-semibold text-base leading-10">
+                <p className="  font-roboto  font-semibold text-base leading-10">
                   Coupons
                 </p>
               </button>
-              <div className="w  flex flex-col gap-[24px]">
+              <div className=" flex flex-col gap-[24px]">
                 <div className="w-[562px] font-semibold  text-[42px] leading-[56px] ">
                   Review, Pay, Book, and Invite Friends - Earn Coupons with
                   Every Interaction!
@@ -400,7 +289,7 @@ const Homepage = () => {
         {/* ------------------------------------FOURTH PART ENDED--------------------------------------------------------- */}
 
         {/* ---------------------------FIFTH PART STARTED----------------- */}
-        <div className="relative w-[100vw] h-[100vh]">
+        <div className="relative w-[100vw] h-[100vh] mb-8">
           <img src={bg5} className="w-full h-full absolute z-10"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
           <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
@@ -419,6 +308,29 @@ const Homepage = () => {
 
             <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
           </div>
+        </div>
+        {/* ----------------------------FIFTH PART ENDED-------------------- */}
+        {/* ------------------------SIXTH PART STARTED----------------------- */}
+        <div>
+          <Faq />
+        </div>
+        {/* ------------------------SIXTH PART ENDED--------------------------------- */}
+        {/* ----------------------------------SEVENTH PART STARTED--------------------- */}
+        <div className="w-full realtive mt-10 h-[185px] flex items-center place-content-center">
+          <img src={still} className="absolute w-full object-cover"></img>
+          <div className="bg-[#000000] w-full h-[195px] absolute z-20 opacity-50"></div>
+          <div className="absolute flex justify-between w-11/12 right- z-30">
+            <img src={still1} className=" h-full"></img>
+            <button className="  py-1 px-1 w-[8.6rem] flex items-center justify-center h-[2.8rem] border rounded-lg bg-[#EAB308]">
+              <p className="font-Roboto font-medium w-[9rem] text-white text-base leading-4 ">
+                Contact us
+              </p>
+            </button>
+          </div>
+        </div>
+        {/* ---------------------footer---------------- */}
+        <div>
+          <Footer/>
         </div>
       </div>
     </div>
