@@ -37,7 +37,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="  flex my-auto items-center  justify-evenly   transform translate-x-[0.002%] translate-y-[-40%] transition-all h-[90vh] mt-32 -mb-24 ">
+    <div className="  flex my-auto items-center  justify-evenly   transform translate-x-[0.002%] translate-y-[-40%] transition-all h-[90vh] mt-32 -mb-40 ">
       <div id="slide">
         {/* Your item components go here */}
         <div className="item" style={{ backgroundImage: `url(${slide1})` }}>

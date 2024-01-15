@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ellipse422 from "../assets/Ellipse 422.png";
 import ellipse425 from '../assets/Ellipse 425.png';
 import icon1 from '../assets/table-svgrepo-com 1.png';
@@ -6,12 +6,138 @@ import icon2 from '../assets/up-trend-svgrepo-com 1.png';
 import icon3 from '../assets/users-group-svgrepo-com 1.png';
 import section3 from '../assets/Rectangle 55210.png';
 import Footer from '../Components/Footer';
-import { Link } from 'react-router-dom';
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
+import { ImCross } from 'react-icons/im';
 function Joinpartner() {
+    // let popup = document.getElementById('popup');
+    
+    function openPopup() {
+        document.getElementById('popup').style.display = "block";
+        document.getElementById('background').style.filter = "blur(6Px)";
+        document.getElementById('filter').style.opacity = "1";
+        document.documentElement.scrollTop = 0;
+    }
+    function closePopup() {
+        document.getElementById('popup').style.display = "none";
+        document.getElementById('background').style.filter = "blur(0px)";
+        document.getElementById('filter').style.opacity = "0";
+    }
+
+    // document.addEventListener('click',(div)=>{
+    //     if(document.getElementById('popup').style.display == "block")
+    //     {
+    //         if(div.target.id !== 'popup')
+    //         {
+    //             closePopup();
+    //         }
+    //     }
+    // })
+
+    const toast = useToast();
+    const [formData, setFormData] = useState({ rname: "", email: "", outlet: "", phone: "", loc: "" });
+    function changeHandler(event) {
+        const { name, value } = event.target;
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                [name]: value
+            }
+        })
+    }
+    function resetForm() {
+        setFormData({ rname: "", email: "", outlet: "", phone: "", loc: "" });
+    }
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+
+            const { data } = await axios.post(
+                "http://localhost:4000/api/saveBecomePartnerData",
+                { formData },
+                config
+            );
+            resetForm();
+            toast({
+                title: "Message Sent",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: "bottom",
+            });
+
+        } catch (error) {
+            toast({
+                title: "Error Occured!",
+                description: error.response.data.message,
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: "bottom",
+            });
+
+        }
+    }
     return (
-        <div>
+        <div className='relative '>
+            {/* popup */}
+            <div className='absolute top-28 left-[15%] z-[100] shadow-inner hidden' id='popup'>
+                <div className='w-[70vw] h-[80vh] bg-[rgba(248,250,252,0.82)] rounded-md flex justify-center items-center'>
+                    <div className='w-[90vw] h-[80vh] flex flex-col gap-10'>
+                        <div className='flex justify-between'>
+                            <div></div>
+                            <div className='text-4xl text-center font-semibold font-roboto pt-2'>Become a partner</div>
+                            <button onClick={closePopup} className='text-right p-2'><ImCross /></button>
+                        </div>
+                        <div className='w-[80%] mx-auto bg-[#ffffff] rounded-md p-4 h-fit'>
+                            <form onSubmit={submitHandler}>
+                                <div className='flex flex-col gap-10'>
+                                    <div className='flex justify-between'>
+                                        <div className='w-[49%] flex flex-col gap-3'>
+                                            <label className='text-xs font-semibold font-roboto'>Restaurant name</label>
+                                            <input required type='text' name='rname' onChange={changeHandler} value={formData.rname} className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'></input>
+                                        </div>
+                                        <div className='w-[49%] flex flex-col gap-3'>
+                                            <label className='text-xs font-semibold font-roboto'>Email address</label>
+                                            <input required type='email' name='email' onChange={changeHandler} value={formData.email} className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'></input>
+                                        </div>
+                                    </div>
+                                    <div className='flex justify-between'>
+                                        <div className='w-[49%] flex flex-col gap-3'>
+                                            <label className='text-xs font-semibold font-roboto'>Number of Outlets</label>
+                                            <input required type='text' name='outlet' onChange={changeHandler} value={formData.outlet} className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'></input>
+                                        </div>
+                                        <div className='w-[49%] flex flex-col gap-3'>
+                                            <label className='text-xs font-semibold font-roboto'>Point of Contact</label>
+                                            <input required type='text' name='phone' onChange={changeHandler} value={formData.phone} className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'></input>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className='w-full flex flex-col gap-3'>
+                                            <label className='text-xs font-semibold font-roboto'>Location</label>
+                                            <input required type='text' name='loc' onChange={changeHandler} value={formData.loc} className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'></input>
+                                        </div>
+                                    </div>
+                                    <div className='w-full flex justify-center'>
+                                        <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter'>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             {/* first section */}
-            <div className='h-[100vh] w-[100vw] overflow-hidden bg-slate-50 relative'>
+            <div className='h-[100vh] w-[100vw] overflow-hidden bg-slate-50 relative blur-none' id='background'>
+                <div className='w-full h-full bg-[#000000df] opacity-0' id='filter'></div>
                 <div className='w-[636px] h-[352px] flex gap-[24px] flex-col absolute top-[28vh] left-[7vw]'>
                     <div className='w-[217px] h-[46px] bg-[#FFFBEB] py-[4px] px-[24px] border rounded-full'>
                         <div className='text-[#EAB308] font-roboto leading-9 font-semibold h-[2.5rem] w-[10rem] text-center'>Do business with us</div>
@@ -21,10 +147,11 @@ function Joinpartner() {
                     <div className='font-normal text-sm text-[#020617] w-[510px] font-opensans -tracking-2'>
                         At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.
                     </div>
-                    <Link to='/joinpartnerform'><button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
-                        Get Started
-                    </button>
-                    </Link>
+                    <div>
+                        <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter' onClick={openPopup}>
+                            Get Started
+                        </button>
+                    </div>
                 </div>
                 <div className='absolute -bottom-4 -right-2'>
                     <img src={ellipse422} className='w-[53vw] h-[88vh]' loading="lazy"></img>
@@ -81,10 +208,9 @@ function Joinpartner() {
                     </div>
                     <div className='w-[415px] -tracking-2 text-[#ffffff] text-4xl font-roboto font-semibold'>What to upscale your business? Register as partner</div>
                     <div className='w-[515px] h-[75px] text-sm -tracking-2 text-[#ffffff] font-normal'>Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.</div>
-                    <Link to='/joinpartnerform'><button className='w-[137px] h-[42px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
+                    <button onClick={openPopup} className='w-[137px] h-[42px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
                         Get Started
                     </button>
-                    </Link>
                 </div>
             </div>
             {/* fourth section / footer */}
