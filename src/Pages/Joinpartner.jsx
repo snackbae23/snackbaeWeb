@@ -59,7 +59,7 @@ function Joinpartner() {
 
             const { data } = await axios.post(
                 "http://localhost:4000/api/saveBecomePartnerData",
-                { formData },
+                 formData ,
                 config
             );
             resetForm();
