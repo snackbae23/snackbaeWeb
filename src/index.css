@@ -1,3 +1,7 @@
+*{
+    scroll-behavior: smooth;  
+}
+
 #slide {
     width: max-content;
     margin-top: 50px;
