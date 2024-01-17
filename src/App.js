@@ -9,6 +9,7 @@ import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
 import Blogs from './Pages/Blog';
 import Blogdetail from './Pages/Blogdetail';
+import Form from './Pages/Form';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path = '/blog' element ={<Blogs/>}></Route>
         <Route path = '/blogdetail' element ={<Blogdetail/>}></Route>
+        <Route path = '/form' element ={<Form/>}></Route>
       </Routes>
     </div>
   );
