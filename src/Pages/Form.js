@@ -54,6 +54,7 @@ const Form = () => {
     setFormData({
       ...formData,
       [name]: value,
+      
     });
   };
 
@@ -61,16 +62,19 @@ const Form = () => {
     e.preventDefault();
     // You can perform further actions with the form data here
     console.log('Form Data:', formData);
+ 
+
+    resetForm();
   };
 
   return (
     <div>
 
-      <div className=" bg-zinc-100 w-full h-screen overflow-hidden text-center text-xl text-white font-inter relative">
-        <div className="flex  absolute top-[145px] left-[680px] text-[42px] tracking-[-0.02em] leading-[56px] font-semibold font-roboto text-slate-950 ">
+      <div className=" bg-zinc-100 w-full h-screen overflow-hidden text-center text-base text-white font-inter relative">
+        <div className="flex  absolute top-[110px] left-[540px] text-[42px] tracking-[-0.02em]  font-semibold font-roboto text-slate-950 ">
           Become a partner
         </div>
-        <div className="absolute top-[231px] left-[calc(50%_-_416px)] flex flex-row items-center justify-center gap-[14px]">
+        <div className="absolute top-[180px] left-[calc(50%_-_416px)] flex flex-row items-center justify-center gap-[14px]">
           <div className="flex flex-row items-center justify-start gap-[12px]">
             <div className="relative w-10 h-10">
               <div className="absolute top-[0px] left-[0px] rounded-[50%] bg-slate-950 w-10 h-10" />
@@ -123,13 +127,13 @@ const Form = () => {
             </div>
           </div>
         </div>
-        <div className="absolute w-full bg-white top-[320px] bottom-16 rounded-3xl  ml-14 mr-14">
+        <div className="absolute w-[calc(100%_-_254px)] bg-white top-[250px]  rounded-3xl ml-40 ">
           <div className="ml-20 mr-20 mt-4">
             <form onSubmit={handleSubmit}>
-              <div className='grid grid-rows-3 grid-cols-2  gap-9 text-slate-950 h-[420px] '>
+              <div className='grid grid-rows-3 grid-cols-2  gap-9 text-slate-950 '>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="restaurantName">Restaurant Name:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 mt-2" htmlFor="restaurantName">Restaurant Name:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="restaurantName"
                     name="restaurantName"
@@ -139,8 +143,8 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="cuisineType">Type of Cuisine:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 " htmlFor="cuisineType">Type of Cuisine:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="cuisineType"
                     name="cuisineType"
@@ -150,8 +154,8 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="location">Location:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 " htmlFor="location">Location:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="location"
                     name="location"
@@ -161,8 +165,8 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="pocContact">POC Contact:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 " htmlFor="pocContact">POC Contact:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="pocContact"
                     name="pocContact"
@@ -172,8 +176,8 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="customerContact">Customer Contact:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 " htmlFor="customerContact">Customer Contact:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="customerContact"
                     name="customerContact"
@@ -183,8 +187,8 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 mt-4" htmlFor="contactPerson">Contact Person:</label>
-                  <input className="rounded-xl shadow-md ml-4"
+                  <label className="flex ml-4 " htmlFor="contactPerson">Contact Person:</label>
+                  <input className="rounded-xl shadow-md ml-4 px-4"
                     type="text"
                     id="contactPerson"
                     name="contactPerson"
@@ -194,9 +198,8 @@ const Form = () => {
                   />
                 </div>
               </div>
-
               <Link to="top" smooth={true} duration={200}>
-                <button className=" bg-yellow-500 hover:bg-yellow-700 mt-4 text-white font-bold py-2 px-8 rounded "
+                <button className=" bg-yellow-500 hover:bg-yellow-700 mt-7 mb-12 text-white font-bold py-2 px-8 rounded "
                 >Next</button>
               </Link>
             </form>
@@ -208,8 +211,8 @@ const Form = () => {
 
       {/* second form */}
 
-      <div id='top' className="relative bg-zinc-100 w-full h-screen overflow-hidden text-center text-[1.25rem] text-white font-inter ">
-        <div className="absolute top-[14.44rem] left-[calc(50%_-_408.5px)] flex flex-row items-center justify-center gap-[0.63rem]">
+      <div id='top' className="relative bg-zinc-100 w-full h-screen overflow-hidden text-center text-base text-white font-inter ">
+        <div className="absolute top-[180px] left-[calc(50%_-_408.5px)] flex flex-row items-center justify-center gap-[0.63rem]">
           <div className="flex flex-row items-center justify-start gap-[0.75rem] text-left text-[0.88rem] text-goldenrod font-roboto">
             <img
               className="relative w-[2.5rem] h-[2.5rem]"
@@ -257,17 +260,17 @@ const Form = () => {
             </div>
           </div>
         </div>
-        <div className="absolute w-[calc(100%_-_804px)] top-[9.06rem] left-[25.13rem] text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold font-roboto text-slate-950 inline-block">
+        <div className="absolute flex justify-center w-full top-[90px]  text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold font-roboto text-slate-950 ">
           Become a partner
         </div>
-        <div className="absolute w-[calc(100%_-_254px)] top-[calc(50%_-_163px)] right-[7.94rem] left-[7.94rem] rounded-xl bg-white h-[30.75rem]" >
-          <div className="text-black bg-white h-full rounded-lg">
-            <form className="grid grid-rows-3 gap- mt-5"
-              onSubmit={handleSubmit}>
-              <div className='grid grid-rows-2 '>
+        <div className="absolute w-[calc(100%_-_254px)] bg-white top-[250px]  rounded-3xl ml-40 " >
+          <div className="ml-20 mr-20 mt-4">
+            <form onSubmit={handleSubmit}>
+            <div className='grid grid-rows-3 grid-cols-1  gap-2 text-slate-950 '>
+            <div className='grid grid-rows-2 '>
                 <label className="flex ml-4 mt-4" htmlFor="openingHour">Opening Hour:</label>
                 <div className='flex '>
-                  <input className="rounded-xl shadow-md ml-4 w-1/2"
+                  <input className="rounded-xl shadow-md ml-4 w-1/2 px-4"
                     type="time"
                     id="openingHour"
                     name="openingHour"
@@ -276,7 +279,7 @@ const Form = () => {
                     onChange={handleChange}
                   />
                   <h2 className="items-center mt-3 ml-2">TO</h2>
-                  <input className="rounded-xl shadow-md ml-4 w-1/2"
+                  <input className="rounded-xl shadow-md ml-4 w-1/2 px-4"
                     type="time"
                     id="closeingHour"
                     name="closeingHour"
@@ -289,7 +292,7 @@ const Form = () => {
               </div>
               <div className='grid grid-rows-2 '>
                 <label className="flex ml-4 mt-4" htmlFor="reservationPolicy">Reservation Policy:</label>
-                <input className="rounded-xl shadow-md ml-4"
+                <input className="rounded-xl shadow-md ml-4 px-4"
                   type="text"
                   id="reservationPolicy"
                   name="reservationPolicy"
@@ -300,7 +303,7 @@ const Form = () => {
               </div>
               <div className='grid grid-rows-2 '>
                 <label className="flex ml-4 mt-4" htmlFor="ambienceDescription">Ambience Description:</label>
-                <textarea className="rounded-xl shadow-md ml-4"
+                <textarea className="rounded-xl shadow-md ml-4 px-4"
                   id="ambienceDescription"
                   name="ambienceDescription"
                   placeholder='   important'
@@ -308,8 +311,10 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </div>
+            </div>  
+             
               <Link to="top1" smooth={true} duration={200}>
-              <button className=" bg-yellow-500 hover:bg-yellow-700 mt-9 text-white font-bold py-2 ml-[650px] mr-[650px] rounded px-4 ">Next</button></Link>
+              <button className=" bg-yellow-500 hover:bg-yellow-700 mt-7 mb-10 text-white font-bold py-2 px-8 rounded ">Next</button></Link>
             </form>
           </div>
 
@@ -318,19 +323,18 @@ const Form = () => {
       </div>
 
       {/* 3 form */}
-      <div id='top1'
-      className="relative bg-zinc-100 w-full h-[59.25rem] overflow-hidden text-left text-[1rem] text-white font-roboto">
-        <div className="absolute w-[calc(100%_-_804px)] top-[9.06rem] left-[25.13rem] text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold text-slate-950 text-center inline-block">
+      <div id='top1' className="relative bg-zinc-100 w-full h-screen overflow-hidden text-center text-base text-white font-inter">
+        <div className="absolute flex justify-center w-full top-[90px]  text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold font-roboto text-slate-950 ">
           Become a partner
         </div>
-        <div className="absolute w-[calc(100%_-_621px)] top-[14.44rem] right-[19.41rem] left-[19.41rem] flex flex-row items-center justify-center gap-[0.63rem] text-[0.88rem] text-yellow-500">
+        <div className="absolute top-[180px] left-[calc(50%_-_408.5px)] flex flex-row items-center justify-center gap-[0.63rem]">
           <div className="flex flex-row items-center justify-start gap-[0.75rem]">
             <img
               className="relative w-[2.5rem] h-[2.5rem]"
               alt=""
               src="/Group 1171277063.png"
             />
-            <div className="relative tracking-[-0.02em] font-semibold">
+            <div className="relative tracking-[-0.02em] font-semibold text-yellow-400">
               Contact Details
             </div>
           </div>
@@ -341,7 +345,7 @@ const Form = () => {
               alt=""
               src="/Group 1171277063.png"
             />
-            <div className="relative tracking-[-0.02em] font-semibold">
+            <div className="relative tracking-[-0.02em] font-semibold text-yellow-400">
               Operational Details
             </div>
           </div>
@@ -370,13 +374,13 @@ const Form = () => {
             </div>
           </div>
         </div>
-        <div className="absolute w-[calc(100%_-_254px)] top-[calc(50%_-_163px)] right-[7.94rem] left-[7.94rem] rounded-xl bg-firebrick h-[29.81rem] bg-white" >
+        <div className="absolute w-[calc(100%_-_254px)] bg-white top-[250px]  rounded-3xl ml-40 " >
           <div className="ml-20 mr-20 mt-2">
-            <form className="grid grid-rows-2 grid-cols-2 text-black font-roboto text-xlh-[400px] "
+            <form className="grid grid-rows-2 grid-cols-2 text-black font-roboto  "
               onSubmit={handleSubmit}>
               <div className='grid grid-rows-2'>
                 <label className="flex ml-4 mt-9" htmlFor="capacity">Capacity (Number of seats):</label>
-                <input className="rounded-xl shadow-md ml-4 mb-4 "
+                <input className="rounded-xl shadow-md ml-4 mb-4 px-4"
                   type="number"
                   id="capacity"
                   name="capacity"
@@ -387,7 +391,7 @@ const Form = () => {
               </div>
               <div className='grid grid-rows-2'>
                 <label className="flex ml-4 mt-9" htmlFor="numberOfTables">Number of Tables:</label>
-                <input className="rounded-xl shadow-md ml-4 mb-4"
+                <input className="rounded-xl shadow-md ml-4 mb-4 px-4"
                   type="number"
                   id="numberOfTables"
                   name="numberOfTables"
@@ -398,7 +402,7 @@ const Form = () => {
               </div>
               <div className='grid grid-rows-2'>
                 <label className="flex ml-4 mt-9" htmlFor="specialties">Specialties/Signature Dishes:</label>
-                <input className="rounded-xl shadow-md ml-4 mb-4"
+                <input className="rounded-xl shadow-md ml-4 mb-4 px-4"
                   type="text"
                   id="specialties"
                   name="specialties"
@@ -409,7 +413,7 @@ const Form = () => {
               </div>
               <div className='grid grid-rows-2'>
                 <label className="flex ml-4 mt-9" htmlFor="currentPromotions">Current Promotions/Deals:</label>
-                <textarea className="rounded-xl shadow-md ml-4 mb-4"
+                <textarea className="rounded-xl shadow-md ml-4 mb-4 px-4"
                   id="currentPromotions"
                   name="currentPromotions"
                   value={formData.currentPromotions}
@@ -419,23 +423,25 @@ const Form = () => {
 
             </form>
             <Link to="top2" smooth={true} duration={200}>
-            <button className=' bg-yellow-500 hover:bg-yellow-700 ml-[670px] px-6 py-4 rounded-md' >Next</button></Link>
+            <button className=" bg-yellow-500 hover:bg-yellow-700 mt-7 mb-10 text-white font-bold py-2 px-8 rounded " >Next</button></Link>
           </div>
         </div>
       </div>
 
       {/* 4 frame */}
-      <div id='top2'>
-        <div className="relative bg-zinc-100 w-full h-[59.25rem] overflow-hidden text-left text-[0.88rem] text-yellow-500 font-roboto">
+      
+      
+      
+        <div id='top2' className="relative bg-zinc-100 w-full h-screen overflow-hidden text-center text-base text-white font-inter">
 
-          <div className="absolute w-[calc(100%_-_619px)] top-[14.44rem] right-[19.34rem] left-[19.34rem] flex flex-row items-center justify-center gap-[0.63rem]">
+          <div className="absolute top-[180px] left-[calc(50%_-_408.5px)] flex flex-row items-center justify-center gap-[0.63rem]">
             <div className="flex flex-row items-center justify-start gap-[0.75rem]">
               <img
                 className="relative w-[2.5rem] h-[2.5rem]"
                 alt=""
                 src="/Group 1171277063.png"
               />
-              <div className="relative tracking-[-0.02em] font-semibold">
+              <div className="relative tracking-[-0.02em] font-semibold text-yellow-400">
                 Contact Details
               </div>
             </div>
@@ -446,7 +452,7 @@ const Form = () => {
                 alt=""
                 src="/Group 1171277063.png"
               />
-              <div className="relative tracking-[-0.02em] font-semibold">
+              <div className="relative tracking-[-0.02em] font-semibold text-yellow-400">
                 Operational Details
               </div>
             </div>
@@ -457,7 +463,7 @@ const Form = () => {
                 alt=""
                 src="/Group 1171277063.png"
               />
-              <div className="relative tracking-[-0.02em] font-semibold">
+              <div className="relative tracking-[-0.02em] font-semibold text-yellow-400">
                 Menu and Specialties
               </div>
               <div className="relative rounded-11xl bg-slate-300 w-[1.56rem] h-[0.25rem]" />
@@ -474,16 +480,16 @@ const Form = () => {
               </div>
             </div>
           </div>
-          <div className="absolute w-[calc(100%_-_804px)] top-[9.06rem] left-[25.13rem] text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold text-slate-950 text-center inline-block">
+          <div className="absolute flex justify-center w-full top-[90px]  text-[2.63rem] tracking-[-0.02em] leading-[3.5rem] font-semibold font-roboto text-slate-950 ">
             Become a partner
           </div>
-          <div className="absolute w-[calc(100%_-_264px)] top-[calc(50%_-_162.7px)] right-[8.56rem] left-[7.94rem] rounded-xl bg-white h-[31.94rem] text-black " >
-            <form className=' text-black font-roboto text-xl h-[400px] flex flex-col justify-center' onSubmit={handleSubmit}>
-              <div className='grid grid-rows-2 grid-cols-2 mt-2 gap-6 '>
+          <div className="absolute w-[calc(100%_-_254px)] bg-white top-[250px]  rounded-3xl ml-40 px-12 " >
+            <form className=' text-black font-roboto text- h-[400px] flex flex-col justify-center' onSubmit={handleSubmit}>
+              <div className='grid grid-rows-2 grid-cols-2 mt-2 gap-9 '>
                   <div className='grid grid-rows-2 '>
-                    <label className="flex ml-4 mt-4 " htmlFor="dietaryRestrictions">Any Dietary Restrictions or Special Accommodations</label>
+                    <label className="flex ml-4 mt-2 " htmlFor="dietaryRestrictions">Any Dietary Restrictions or Special Accommodations</label>
                     <input
-                      className="rounded-xl shadow-md ml-4"
+                      className="rounded-xl shadow-md ml-4 px-4 "
                       type="text"
                       id="dietaryRestrictions"
                       name="dietaryRestrictions"
@@ -492,16 +498,16 @@ const Form = () => {
                     />
                   </div>
                   <div className='grid grid-rows-2 '>
-                    <label htmlFor="preferredPaymentMethod">Preferred Payment Method:</label>
-                    <div className='flex  items-center space-x-4 '>
+                    <label className='flex' htmlFor="preferredPaymentMethod">Preferred Payment Method:</label>
+                    <div className='flex  items-center space-x-4 mb-4 '>
                     <input
                       type='radio'
                       name='preferredPaymentMethod'
                       id='preferredPaymentMethod'
-                      value='online'
+                      value='Credit'
                       onChange={handleChange}
                     ></input>
-                    <label htmlFor="preferredPaymentMethod">Online:</label>
+                    <label htmlFor="preferredPaymentMethod">Credit Card:</label>
                     <input
                       type='radio'
                       name='preferredPaymentMethod'
@@ -514,18 +520,18 @@ const Form = () => {
                       type='radio'
                       name='preferredPaymentMethod'
                       id='preferredPaymentMethod'
-                      value='offline'
+                      value='wallets'
                       onChange={handleChange}
                     ></input>
-                    <label htmlFor="preferredPaymentMethod">offline</label>
+                    <label htmlFor="preferredPaymentMethod">Digital Wallets</label>
                     </div>
                     
                     
                   </div>
                   <div className='grid grid-rows-2 '>
-                    <label className="flex ml-4 mt-4" htmlFor="specialties1">Specialties/Signature Dishes:</label>
+                    <label className="flex ml-4 mt-2" htmlFor="specialties1">Specialties/Signature Dishes:</label>
                     <input
-                      className="rounded-xl shadow-md ml-4"
+                      className="rounded-xl shadow-md ml-4 px-4 "
                       type="text"
                       id="specialties1"
                       name="specialties1"
@@ -534,9 +540,9 @@ const Form = () => {
                     />
                   </div>
                   <div className='grid grid-rows-2 '>
-                <label className="flex ml-4 mt-4" htmlFor="currentPromotion">Current Promotions/Deals:</label>
+                <label className="flex ml-4 mt-2" htmlFor="currentPromotion">Current Promotions/Deals:</label>
                 <input
-                  className="rounded-xl shadow-md ml-4"
+                  className="rounded-xl shadow-md ml-4 px-4 "
                   type="text"
                   id="currentPromotion"
                   name="currentPromotion"
@@ -546,9 +552,10 @@ const Form = () => {
               </div>
               </div>
               
-              <div className='flex items-center justify-center flex-col mt-16 gap'>
+              <div className='flex items-center justify-center flex-col mt-9'>
                 <label>
-                <input
+                <input 
+                   className=" mr-4"
                     type="radio"
                     name="agree"
                     required
@@ -558,16 +565,16 @@ const Form = () => {
                   I agree terms and conditions
                   
                 </label>
-                <button className=' bg-yellow-500 hover:bg-yellow-700 px-6 py-4 rounded-md mt-4' type="submit" onClick={resetForm}>Submit</button>
-               
+                <button className=" bg-yellow-500 hover:bg-yellow-700 mt-7 mb-10 text-white font-bold py-2 px-8 rounded " onClick={handleSubmit}>Submit</button>
               </div>
               
               
             </form>
           </div>
         </div>
-      </div>
+      
 
+      
     </div>
   )
 }
