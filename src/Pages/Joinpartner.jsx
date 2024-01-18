@@ -9,6 +9,7 @@ import Footer from '../Components/Footer';
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { ImCross } from 'react-icons/im';
+import Navbar from '../Components/Navbar';
 function Joinpartner() {
     // let popup = document.getElementById('popup');
     
@@ -23,16 +24,6 @@ function Joinpartner() {
         document.getElementById('background').style.filter = "blur(0px)";
         document.getElementById('filter').style.opacity = "0";
     }
-
-    // document.addEventListener('click',(div)=>{
-    //     if(document.getElementById('popup').style.display == "block")
-    //     {
-    //         if(div.target.id !== 'popup')
-    //         {
-    //             closePopup();
-    //         }
-    //     }
-    // })
 
     const toast = useToast();
     const [formData, setFormData] = useState({ rname: "", email: "", outlet: "", phone: "", loc: "" });
@@ -56,19 +47,20 @@ function Joinpartner() {
                     "Content-Type": "application/json",
                 },
             };
-
+            
             const { data } = await axios.post(
                 "http://localhost:4000/api/saveBecomePartnerData",
                  formData ,
                 config
             );
             resetForm();
+            closePopup();
             toast({
                 title: "Message Sent",
                 status: "success",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top-right",
             });
 
         } catch (error) {
@@ -78,13 +70,14 @@ function Joinpartner() {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top-right",
             });
-
         }
     }
+    
     return (
         <div className='relative '>
+            <Navbar/>
             {/* popup */}
             <div className='absolute top-28 left-[15%] z-[100] shadow-inner hidden' id='popup'>
                 <div className='w-[70vw] h-[80vh] bg-[rgba(248,250,252,0.82)] rounded-md flex justify-center items-center'>
