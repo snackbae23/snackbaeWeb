@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import vector4 from "../assets/vector4.svg"
 import vector3 from "../assets/vector3.svg"
 import rect2 from "../assets/group11.png"
 import logo from "../assets/logo.png"
 import Navbar from "../Components/Navbar";
-
-const Login = () => {
-
+import { useToast } from "@chakra-ui/react";
+import AdminDashboard from "./AdminDashboard";
+import { Link, useNavigate } from "react-router-dom";
+function AdminLogin() 
+{
+    const toast = useToast();
+    const navigate = useNavigate();
+    // const [isLoggedIn,setIsLoggedIn] = useState(false);
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
+    const [user,setUser] = useState(formData);
 
+    function resetForm()
+    {
+        setFormData({email:"",password:""});
+    }
     function changeHandler(event) {
         setFormData((prev) => {
             return {
@@ -20,12 +30,46 @@ const Login = () => {
             }
         })
     }
+    useEffect(()=>{
+        const user = JSON.parse(localStorage.getItem("adminData"));
+        if(user)
+        {
+            navigate("/admindashboard");
+        }
+    },[navigate]);
+    function submitHandler(e) {
+        e.preventDefault();
+        if (formData.email === 'admin@gmail.com' && formData.password === 'Admin123') {
+            // alert("Logged in successfully!");
+            toast({
+                title: "Logged in successfully!",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: "top-right",
+            });   
+            setUser(formData);
+            localStorage.setItem("adminData",JSON.stringify(formData));
+            navigate("/admindashboard");
+        }
+        else {
+            // alert("Invalid username or password");
+            toast({
+                title: "Error Occured!",
+                description: "Invalid email or password",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: "top-right",
+            });
+            resetForm();
+        }
+    }
 
     const [rememberMe, setRememberMe] = useState(false);
-
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="w-[100vw] h-[100vh] overflow-hidden flex ">
                 {/* Left Part */}
                 <div>
@@ -47,10 +91,7 @@ const Login = () => {
                     <div className='font-roboto text-3xl leading-10 font-semibold text-[#020617] -tracking-[2%]'>
                         Account Login
                     </div>
-                    <div className='font-normal text-base text-[#020617] font-opensans w-[25rem] -tracking-[2%]'>
-                        If you are already a Partner you can login with your email address and password.
-                    </div>
-                    <div className='flex flex-col mt-8'>
+                    <div className='flex flex-col mt-14'>
                         <label
                             className=''
                             htmlFor='email'>
@@ -101,16 +142,12 @@ const Login = () => {
                             Remember Me
                         </label>
                     </div>
-                    <button className='w-[85%] h-14 mt-6 bg-[#EAB308] border rounded-lg px-5 py-3 flex justify-center items-center text-[#ffffff] font-roboto text-base font-semibold tracking-tighter '>
+                    <button onClick={submitHandler} className='w-[85%] h-14 mt-6 bg-[#EAB308] border rounded-lg px-5 py-3 flex justify-center items-center text-[#ffffff] font-roboto text-base font-semibold tracking-tighter '>
                         Login
                     </button>
-                    <div className="font-roboto text-slate-950 mt-6">
-                        Dont have an account ? <span className="font-bold">Register</span>
-                    </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }
-
-export default Login
+export default AdminLogin
