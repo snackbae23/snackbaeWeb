@@ -25,7 +25,7 @@ function AdminNav() {
                 <div>
                     <div className="flex gap-16">
                         <Link to="/adminDashboard"><div>Restaurant Details</div></Link>
-                        <div>Restaurant Form</div>
+                        <Link to="/form"><div>Restaurant Form</div></Link>
                     </div>
                 </div>
                 <div>
