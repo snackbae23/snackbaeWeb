@@ -30,7 +30,7 @@ import Navbar from '../Components/Navbar';
 const Homepage = () => {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="bg-white-A700 flex flex-col items-center justify-end mx-auto pt-2 w-full overflow-x-hidden overflow-y-hidden">
         <div className="flex flex-col justify-start w-full">
           <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 ">

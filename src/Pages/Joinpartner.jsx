@@ -77,7 +77,7 @@ function Joinpartner() {
     
     return (
         <div className='relative '>
-            <Navbar/>
+            {/* <Navbar/> */}
             {/* popup */}
             <div className='absolute top-28 left-[15%] z-[100] shadow-inner hidden' id='popup'>
                 <div className='w-[70vw] h-[80vh] bg-[rgba(248,250,252,0.82)] rounded-md flex justify-center items-center'>

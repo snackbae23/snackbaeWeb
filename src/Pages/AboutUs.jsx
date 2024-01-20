@@ -11,7 +11,7 @@ import Navbar from "../Components/Navbar";
 const AboutUs = () => {
     return (
         <div>
-            <Navbar/>
+            {/* <Navbar/> */}
             <div>
                 {/* First Part */}
                 <div className='h-[100vh] w-[100vw] overflow-hidden bg-slate-50 relative'>

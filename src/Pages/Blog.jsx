@@ -9,7 +9,7 @@ import Navbar from '../Components/Navbar';
 const Blogs = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="relative bg-white w-full h-[146.44rem] text-left text-[0.75rem] text-white font-sf-pro-display">
         <div className="absolute w-[92.33%] top-[19.81rem] right-[3.61%] left-[4.05%] h-[48.25rem]">
           <div className="absolute w-[99.77%] top-[2.5rem] right-[0.21%] left-[0.02%] h-[22.24rem]">

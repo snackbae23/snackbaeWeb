@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar';
 const Blogdetail = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="relative bg-white w-full h-[81.75rem] overflow-hidden text-left text-[0.88rem] text-slate-950 font-web-heading-4">
         <div className="absolute top-[10.5rem] left-[calc(50%_-_676.4px)] w-[84.54rem] h-[65.63rem]">
           <div className="absolute top-[0rem] left-[calc(50%_-_676.35px)] w-[43.03rem] h-[65.63rem]">

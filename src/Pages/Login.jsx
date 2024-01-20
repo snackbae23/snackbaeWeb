@@ -25,7 +25,7 @@ const Login = () => {
 
     return (
         <div>
-            <Navbar/>
+            {/* <Navbar/> */}
             <div className="w-[100vw] h-[100vh] overflow-hidden flex ">
                 {/* Left Part */}
                 <div>
