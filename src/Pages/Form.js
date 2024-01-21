@@ -2,7 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 import AdminNav from '../Components/AdminNav';
+import axios from 'axios';
+import { useToast } from "@chakra-ui/react";
+
 const Form = () => {
+  const toast = useToast();
 
   const [formData, setFormData] = useState({
     restaurantName: '',
@@ -58,12 +62,45 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can perform further actions with the form data here
+    try {
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:4000/api/postFormDetails',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: formData
+      };
 
-    console.log('Form Data:', formData);
-    resetForm();
+      axios.request(config)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log('Form Data:', formData);
+      resetForm();
+      toast({
+        title: "Registration successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
   };
 
   return (
