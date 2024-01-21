@@ -9,10 +9,10 @@ const Form = () => {
     cuisineType: '',
     location: '',
     pocContact: '',
-    customerContact: '',
+    email: '',
     contactPerson: '',
     openingHour: '',
-    closeingHour: '',
+    closingHour: '',
     reservationPolicy: '',
     ambienceDescription: '',
     capacity: '',
@@ -32,10 +32,10 @@ const Form = () => {
       cuisineType: '',
       location: '',
       pocContact: '',
-      customerContact: '',
+      email: '',
       contactPerson: '',
       openingHour: '',
-      closeingHour: '',
+      closingHour: '',
       reservationPolicy: '',
       ambienceDescription: '',
       capacity: '',
@@ -55,16 +55,14 @@ const Form = () => {
     setFormData({
       ...formData,
       [name]: value,
-
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // You can perform further actions with the form data here
+
     console.log('Form Data:', formData);
-
-
     resetForm();
   };
 
@@ -177,13 +175,13 @@ const Form = () => {
                   />
                 </div>
                 <div className='grid grid-rows-2 '>
-                  <label className="flex ml-4 " htmlFor="customerContact">Customer Contact:</label>
+                  <label className="flex ml-4 " htmlFor="email">Email Address:</label>
                   <input className="rounded-xl shadow-md ml-4 px-4"
-                    type="text"
-                    id="customerContact"
-                    name="customerContact"
+                    type="email"
+                    id="email"
+                    name="email"
                     placeholder='   important'
-                    value={formData.customerContact}
+                    value={formData.email}
                     onChange={handleChange}
                   />
                 </div>
@@ -282,10 +280,10 @@ const Form = () => {
                     <h2 className="items-center mt-3 ml-2">TO</h2>
                     <input className="rounded-xl shadow-md ml-4 w-1/2 px-4"
                       type="time"
-                      id="closeingHour"
-                      name="closeingHour"
+                      id="closingHour"
+                      name="closingHour"
                       placeholder='   important'
-                      value={formData.closeingHour}
+                      value={formData.closingHour}
                       onChange={handleChange}
                     />
                   </div>
@@ -564,7 +562,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
                 I agree terms and conditions
-
               </label>
               <button className=" bg-yellow-500 hover:bg-yellow-700 mt-7 mb-10 text-white font-bold py-2 px-8 rounded " onClick={handleSubmit}>Submit</button>
             </div>

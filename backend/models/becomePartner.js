@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const mailSender = require('../util/mailSender');
-const { becomePartnerEmail } = require('../mail/template/becomePartnerEmail')
+const { becomePartnerEmail } = require('../mail/template/becomePartnerEmail');
 const dataSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -35,7 +35,6 @@ dataSchema.post('save', async function (doc) {
     console.error(error)
   }
 })
-
 
 const BecomePartnerModel = mongoose.model("BecomePartnerModel", dataSchema);
 
