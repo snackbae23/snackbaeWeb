@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import vector4 from "../assets/vector4.svg"
 import vector3 from "../assets/vector3.svg"
 import rect2 from "../assets/group11.png"
-import logo from "../assets/logo.png"
-import Navbar from "../Components/Navbar";
+import logo from "../assets/logo.png";
+const axios = require('axios');
+// import Navbar from "../Components/Navbar";
 
 const Login = () => {
 
@@ -19,6 +20,38 @@ const Login = () => {
                 [event.target.name]: event.target.value
             }
         })
+    }
+
+    const submitHandler = async () => {
+        try {
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:4000/api/partnerLogin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZhbmlndXB0YWEyMDAzQGdtYWlsLmNvbSIsImlkIjoiNjVhZWNlOGI5ZTc0NDM0MDI5ODQ1ZGNkIiwiaWF0IjoxNzA1OTU1MTExLCJleHAiOjE3MDYwNDE1MTF9.zaPO-ljfSnMFuJ0lAsl7VovhwqVo2XhjHdf7HK49LW8'
+                },
+                data: formData
+            };
+            axios.request(config)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        }
+        catch (err) {
+
+        } axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     const [rememberMe, setRememberMe] = useState(false);
@@ -101,7 +134,7 @@ const Login = () => {
                             Remember Me
                         </label>
                     </div>
-                    <button className='w-[85%] h-14 mt-6 bg-[#EAB308] border rounded-lg px-5 py-3 flex justify-center items-center text-[#ffffff] font-roboto text-base font-semibold tracking-tighter '>
+                    <button onClick={submitHandler} className='w-[85%] h-14 mt-6 bg-[#EAB308] border rounded-lg px-5 py-3 flex justify-center items-center text-[#ffffff] font-roboto text-base font-semibold tracking-tighter '>
                         Login
                     </button>
                     <div className="font-roboto text-slate-950 mt-6">

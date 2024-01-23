@@ -15,7 +15,7 @@ import AdminDashboard from './Pages/AdminDashboard';
 
 import Form from './Pages/Form';
 
-const excludedPaths = ['/dashboard','/admindashboard','/form'];
+const excludedPaths = ['/dashboard','/adminDashboard','/form'];
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
         <Route path='/blog' element ={<Blogs/>}></Route>
         <Route path='/blogdetail' element ={<Blogdetail/>}></Route>
         <Route path='/adminlogin' element={<AdminLogin/>}></Route>
-        <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
+        <Route path='/adminDashboard' element={<AdminDashboard/>}></Route>
 
         <Route path = '/blog' element ={<Blogs/>}></Route>
         <Route path = '/blogdetail' element ={<Blogdetail/>}></Route>
