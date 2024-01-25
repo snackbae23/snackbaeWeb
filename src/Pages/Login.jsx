@@ -45,13 +45,7 @@ const Login = () => {
         }
         catch (err) {
 
-        } axios.request(config)
-            .then((response) => {
-                console.log(JSON.stringify(response.data));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        } 
     }
 
     const [rememberMe, setRememberMe] = useState(false);
@@ -60,22 +54,23 @@ const Login = () => {
         <div>
             {/* <Navbar/> */}
             <div className="w-[100vw] h-[100vh] overflow-hidden flex ">
-                {/* Left Part */}
-                <div>
-                    <div className="w-[47rem] h-[52rem] -left-3 -top-3 relative bg-gradient-to-r from-[#0f0f28] to-[#04034d] rounded-2xl">
+                {/* Left Part  52rem 47rem*/}
+                <div className="hidden lg:flex lg:w-[47rem]">
+                    <div className="w-full h-[100vh] -left-3 -top-3 relative bg-gradient-to-r from-[#0f0f28] to-[#04034d] rounded-2xl">
                         <div className="absolute">
                             <img src={vector4} alt="Vector" className="" style={{ transform: 'rotate(160.86deg)' }} />
                         </div>
                         <div className="absolute">
                             <img src={vector3} alt="Vector" className="" style={{ transform: 'rotate(80.21deg)' }} />
                         </div>
-                        <div className="ml-[5.8rem] w-[44rem] h-[37rem]">
+                        {/* 44rem 37rem*/}
+                        <div className="ml-[5.8rem] w-[44rem] h-[90vh]">
                             <img src={rect2} alt="Img" className="my-14" loading="lazy" />
                         </div>
                     </div>
                 </div>
                 {/* Right Part */}
-                <div className="ml-16 w-full mt-6">
+                <div className="ml-16 w-full mt-10">
                     <img src={logo} alt="logo" className="mt-14 w-32 " />
                     <div className='font-roboto text-3xl leading-10 font-semibold text-[#020617] -tracking-[2%]'>
                         Account Login
