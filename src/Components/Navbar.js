@@ -1,41 +1,86 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
+
+   function showSidebar() {
+     const sidebar = document.querySelector('.sidebar');
+     sidebar.style.display = 'flex';
+  }
+  
+function hideSidebar() {
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.style.display = "none";
+}
+
   return (
-    <div className="w-[100vw] h-[60px] md:flex flex-row hidden justify-around  mx-auto items-center bg-[#ffffff]  fixed z-50 ">
-      <div>
-        <Link to="/">
-          <img
-            className="   "
-            src={logo}
-            alt="Logo"
-            loading="lazy"
-          ></img>
-        </Link>
-      </div>
-      <div className="   ">
-        <ul className=" flex space-x-10  items-center">
-          <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/">Home</Link>
-          </li>
-          <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/joinpartner">Join as partner</Link>
-          </li>
-          <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/blog">Blogs</Link>
-          </li>
-          <li className=" hover:text-deepgreen hover:underline">
-            <Link to="/aboutUs">About Us</Link>
-          </li>
-          <Link to="/login"><button className=" w-[137px] h-[42px] border rounded-xl  px-[18px] text-white  bg-[#EAB308]">
-            Partner Login
-          </button></Link>
-        </ul>
-      </div>
+    <div className="relative w-full">
+      <nav className="bg-[#ffffff]">
+        <div className="fixed w-full h-[60px] flex flex-row bg-[#ffffff] justify-between lg:px-20 items-center z-[100] ">
+          <div>
+            <Link to="/">
+              <img src={logo} alt="Logo" loading="lazy"></img>
+            </Link>
+          </div>
+          <div className=" ">
+            <ul className="sidebar flex space-x-6">
+              <li className="relative">
+                <div className="flex justify-between">
+                  <Link className="hidden" to="/">
+                    <img src={logo} alt="Logo" loading="lazy"></img>
+                  </Link>
+                  <RxCross2
+                    onClick={hideSidebar}
+                    className=" absolute right-0 top-6 w-[80px] h-[30px]"
+                  />
+                </div>
+              </li>
+              <li className="h-[50px] mt-10 px-[30px]  hover:text-amber-600">
+                <Link to="/">Home</Link>
+              </li>
+              <li className=" h-[50px] px-[30px]  hover:text-amber-600">
+                <Link to="/joinpartner">Join as partner</Link>
+              </li>
+              <li className="h-[50px] px-[30px]   hover:text-amber-600">
+                <Link to="/blog">Blogs</Link>
+              </li>
+              <li className="h-[50px] px-[30px] hover:text-amber-600">
+                <Link to="/aboutUs">About Us</Link>
+              </li>
+            </ul>
+            <ul className=" flex space-x-10 items-center">
+              <li className=" lg:block hidden hover:text-amber-600">
+                <Link to="/">Home</Link>
+              </li>
+              <li className=" lg:block hidden hover:text-amber-600">
+                <Link to="/joinpartner">Join as partner</Link>
+              </li>
+              <li className="lg:block hidden hover:text-amber-600">
+                <Link to="/blog">Blogs</Link>
+              </li>
+              <li className="lg:block hidden hover:text-amber-600">
+                <Link to="/aboutUs">About Us</Link>
+              </li>
+              <Link to="/login">
+                <button className=" border  h-[34px] w-[140px] px-5 text-white text-sm font-bold text-center rounded-md bg-[#EAB308]">
+                  Partner Login
+                </button>
+              </Link>
+              <li className="lg:hidden ">
+                <GiHamburgerMenu
+                  onClick={showSidebar}
+                  className="  w-[80px] h-[30px]"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 };
 
-export default Navbar;
+export default Navbar;
