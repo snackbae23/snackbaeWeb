@@ -129,9 +129,9 @@ function Joinpartner() {
                 </div>
             </div>
             {/* first section  top-[15vh]*/}
-            <div className='h-[55vh] my-auto lg:h-[800px] w-[100vw] overflow-hidden bg-slate-50 relative blur-none' id='background'>
+            <div className='h-[100vh] sm:min-h-[70vh] md:min-h-[55vh] my-auto lg:h-[800px] w-[100vw] overflow-hidden bg-slate-50 relative blur-none' id='background'>
                 <div className='w-full h-full bg-[#000000df] opacity-0' id='filter'></div>
-                <div className='w-full  mx-auto  lg:w-[636px] lg:h-[352px] flex gap-[24px] flex-col absolute top-[50%] -translate-y-1/2 lg:left-[7vw] text-center lg:text-left px-8 lg:px-0'>
+                <div className='w-full mx-auto lg:w-[636px] lg:h-[352px] flex gap-[24px] flex-col absolute top-[50%] -translate-y-1/2 lg:left-[7vw] text-center lg:text-left px-8 lg:px-0 pt-16 lg:pt-0'>
                     <div className='w-[217px] h-[46px] bg-[#FFFBEB] py-[4px] px-[24px] border rounded-full hidden lg:flex'>
                         <div className='text-[#EAB308] font-roboto leading-9 font-semibold h-[2.5rem] w-[10rem] text-center'>Do business with us</div>
                     </div>
@@ -191,16 +191,16 @@ function Joinpartner() {
                     </div>
                 </div>
             </div>
-            {/* third section */}
-            <div className='relative w-full  h-[300px] lg:h-[680px] xl:h-[800px] my-auto'>
+            {/* third section What to upscale your business? Register as partner.*/}
+            <div className='relative w-full  h-[350px] md:h-[300px] lg:h-[680px] xl:h-[800px] my-auto'>
                 <img src={section3} className='w-full h-full absolute top-0 z-20'></img>
                 <div className='bg-[#000000] w-full h-full absolute top-0 z-30 opacity-50'></div>
                 <div className='lg:w-[515px] lg:h-[382px] absolute lg:top-[24%] lg:left-[10%] p-7 lg:p-0 flex flex-col gap-6 z-40'>
                     <div className='w-[115px] h-[35px] bg-[#FFFBEB] rounded-full hidden lg:flex justify-center items-center'>
                         <div className='text-[#EAB308] font-roboto leading-8 font-semibold text-sm text-center'>Join us!</div>
                     </div>
-                    <div className='w-full lg:w-[415px] -tracking-2 text-[#ffffff] text-2xl lg:text-4xl font-roboto font-semibold'>What to upscale your business? Register as partner</div>
-                    <div className='w-full lg:w-[515px] lg:h-[75px] text-sm -tracking-2 text-[#ffffff] font-normal text-left opacity-70 lg:opacity-100'>Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque commodo proin faucibus.</div>
+                    <div className='w-full lg:w-[490px] -tracking-2 text-[#ffffff] text-2xl lg:text-4xl font-roboto font-semibold'>Discover new possibilities with SnackBae – where your success is our priority!</div>
+                    <div className='w-full lg:w-[515px] lg:h-[75px] text-sm -tracking-2 text-[#ffffff] font-normal text-left opacity-70 lg:opacity-100'>At SnackBae, we understand the unique needs of merchants like you. Join our platform to not only streamline your operations but also to create meaningful connections with your customers.</div>
                     <button onClick={openPopup} className='mx-auto lg:mx-0 mt-3 lg:mt-0 w-[137px] h-[42px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter '>
                         Get Started
                     </button>

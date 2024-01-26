@@ -38,7 +38,7 @@ function Footer()
                     <div className='w-full lg:flex flex-col hidden lg:flex-row lg:justify-between pt-9 gap-8'>
                         <div className='flex flex-col gap-2'>
                             <img src={logo} width={200}></img>
-                            <div className='lg:w-64 text-white opacity-80'>Discover and connect with our vibrant food community</div>
+                            <div className='lg:w-64 text-white opacity-80'>MEET - EAT -  CELEBRATE</div>
                         </div>
                         <div className='text-white lg:flex flex-col gap-2 hidden '>
                             <div >

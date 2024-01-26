@@ -135,3 +135,31 @@ transition: 1.2s;
 .padd {
     margin: 390px;
 }
+
+
+.sidebar{
+    position:fixed;
+    top:0;
+    right:0;
+    height:30%;
+    width:250px;
+    z-index:99;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display:none;
+    flex-direction: column;
+    
+    justify-content: flex-start;
+}
+.sidebar li{
+    width: 100%;
+    
+}
+.sidebar li:hover
+{
+    color:white;
+}
+.sidebar link{
+    width:100%;
+}
