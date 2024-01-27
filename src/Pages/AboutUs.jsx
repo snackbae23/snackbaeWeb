@@ -28,7 +28,7 @@ const AboutUs = () => {
             <div className="lg:hidden mx-auto text-5xl font-roboto font-semibold">
               About Us
             </div>
-            <div className="text-[#020617] text-2xl lg:text-7xl font-roboto font-semibold">
+            <div className="text-[#020617] text-2xl lg:text-5xl  font-roboto font-semibold">
               Vision
             </div>
             <div className="font-opensans font-bold text-[#020617] -tracking-[2%] xl:text:lg">
