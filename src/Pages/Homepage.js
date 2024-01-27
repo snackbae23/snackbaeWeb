@@ -46,7 +46,7 @@ const Homepage = () => {
         <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 ">
           <div className=" ">
             {/* /left part */}
-            <div className="flex flex-col mx-auto absolute h-[35rem] left-[50%] -translate-x-1/2 top-[50%] -translate-y-1/2 lg:left-[1px] lg:translate-x-[15%] pt-16 gap-4">
+            <div className="flex flex-col mx-auto absolute h-[35rem] left-[50%] -translate-x-1/2 top-[50%] -translate-y-1/2 lg:left-[1px] lg:translate-x-[15%] pt-16 lg:pt-32 gap-4">
               <div className=" hidden lg:block w-[14rem] h-[3rem] border rounded-md py-[0.25rem] px-[1rem] gap-2.5 bg-amber-50">
                 <div className="w-[12rem] h-[2.3rem] font-roboto text-lg leading-9 font-semibold items-center text-[#EAB308] z-50">
                   Welcome to SnackBae
@@ -54,13 +54,10 @@ const Homepage = () => {
               </div>
               <div className="w-[23rem] mx-auto lg:mx-0 md:w-[40rem] md:h-[14rem]  flex flex-col lg:text-left z-40">
                 <div className="w-[362px] md:w-[41rem]  font-roboto font-semibold text-[28px] md:text-[48px] md:leading-[60px] lg:text-left text-center  text-slate-950 lg:-tracking-[2%]">
-                  Discover, Review, Earn Coupons, and Connect with our vibrant
-                  food community.
+                Tap the Table !!
                 </div>
                 <div className=" w-[362px] h-[75px] text-center lg:text-left md:w-[35rem] lg:h-[4rem] font-opensans font-normal text-[12px] lg:text-base leading-6 -tracking-[2%] text-slate-950 mt-5 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem
-                  ipsum dolordolor sit ametamet, consecteturconsectetur
-                  adipiscing erem ipsum dolor sit a...
+                Instantly book a personalized reservation in a restaurant of your choice for a stress-free dining experience.
                 </div>
                 <div className=" flex flex-row mx-auto lg:mx-0 w-[22rem] h-[3.5rem] space-x-6  items-center mb-3">
                   <button className=" flex py-3 px-3 w-[10rem] relative  h-[2.8rem] border rounded-lg space-x-2 items-start justify-start bg-[#EAB308]">
@@ -156,13 +153,11 @@ const Homepage = () => {
                 </button>
                 <div className="w-[90vw] md:w-[80vw] lg:w-[33vw] flex flex-col gap-2 lg:gap-5 mt-7 lg:mt-0 justify-center items-center pr-6 lg:pr-0">
                   <div className="w-full text-center lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
-                    Find,Book, and Save on Delicious Eats
+                  Scratch Your Itch to Save
                   </div>
 
                   <p className="w-full text-center lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
-                    Review, pay, book, and invite friends to earn coupons with
-                    every interaction on Snackbae. Discover new restaurants,
-                    reserve a table, and enjoy exclusive discounts and offers.
+                  Earn Scratch Cards and Coupons availing attractive discounts and rewards by making payments and inviting friends through the app.
                   </p>
                 </div>
                 <button className="py-1 px-1 w-[10rem] h-[2.8rem] border rounded-lg bg-[#EAB308] hidden lg:flex justify-center items-center">
@@ -292,14 +287,11 @@ const Homepage = () => {
                 </button>
                 <div className="w-[90vw] md:w-[80vw] lg:w-[33vw] flex flex-col gap-2 lg:gap-5 mt-7 lg:mt-0 pr-9 lg:pr-0">
                   <div className="w-full text-center lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
-                    Review, Pay, Book, and Invite Friends - Earn Coupons with
-                    Every Interaction!
+                  You Pay, You Earn
                   </div>
 
                   <p className="w-full text-center lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
-                    Review, pay, book, and invite friends to earn coupons with
-                    every interaction on Snackbae. Discover new restaurants,
-                    reserve a table, and enjoy exclusive discounts and offers.
+                  Make secure and convenient payments through the app and earn rewards everytime you pay. Make your dining experience a saving opportunity for yourself.
                   </p>
                 </div>
                 <button className="  py-1 px-1 w-[10rem] lg:flex items-center justify-center h-[2.8rem] border rounded-lg bg-[#EAB308] hidden">
@@ -347,11 +339,9 @@ const Homepage = () => {
             </div>
           </div>
           <div className="w-full mx-auto flex flex-col gap-1">
-            <div className="text-center font-bold text-xl">Personalised Discovery</div>
+            <div className="text-center font-bold text-xl">Community-Driven Recommendations </div>
             <div className="text-md text-center">
-            Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+            Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -369,11 +359,11 @@ const Homepage = () => {
               </p>
             </button>
 
-            <div className=" w-[360px] h-[64px] md:w-[600px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
-              Download th app Lorem ipsum dolor sit amet dolor sit
+            <div className=" w-[360px] h-[64px] md:w-[750px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
+            Flavorful Experiences Await – Download the SnackBae App Today
             </div>
             <p className="sm:h-[25px] w-[360px] md:w-[515px] font-normaltext-[12px] md:text[14px] leading-[25px] font-sans text-center items-center text-white opacity-70">
-              Download for android and iOS lorem ipsum dolor sit amet
+              Download for android and iOS now
             </p>
 
             <img className="w-[340px] h-[47px] z-[100]" src={app}></img>

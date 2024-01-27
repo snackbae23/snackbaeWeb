@@ -164,28 +164,28 @@ function Joinpartner() {
                             <div className='w-[111px] h-[37px] bg-[#FFFBEB] border rounded-full'>
                                 <div className='text-[#EAB308] font-roboto leading-9 font-semibold text-sm text-center'>Features</div>
                             </div>
-                            <div className='text-[#020617] lg:w-[515px] text-3xl lg:text-4xl font-roboto font-semibold'>Features for Partners</div>
-                            <div className='lg:w-[515px] lg:h-[75px] text-xs lg:text-sm'>Review, pay, book, and invite friends to earn coupons with every interaction on Snackbae. Discover new restaurants, reserve a table, and enjoy exclusive discounts and offers.</div>
+                            <div className='text-[#020617] lg:w-[515px] text-3xl lg:text-4xl font-roboto font-semibold'>Our Offerings</div>
+                            <div className='lg:w-[515px] lg:h-[75px] text-xs lg:text-sm'>SnackBae is here to elevate your business to new heights with a suite of innovative offerings designed just for you.</div>
                         </div>
                         {/* second part */}
                         <div className='w-[100%] mx-auto pl-2 lg:pl-0 flex flex-col lg:flex-row lg:justify-between gap-14 lg:gap-0 mt-8 lg:mt-0'>
                             {/* first box */}
                             <div className='flex flex-col  lg:w-[30%]'>
                                 <img src={icon1} className='w-[42px] h-[42px]'></img>
-                                <div className='font-bold leading-10'>Seamless Table Reservations</div>
-                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2'>SnackBae offers a state-of-the-art reservation system, allowing your customers to effortlessly book tables and ensuring a smooth dining experience. Maximize your restaurant's capacity and enhance customer.</div>
+                                <div className='font-bold leading-10'>Marketing Services:</div>
+                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2'>Boost your visibility and attract more customers. SnackBae provides a range of marketing tools, including push notifications, banner ads, social media promotions, and profile boosters, ensuring your business stands out in the crowd.</div>
                             </div>
                             {/* second box */}
                             <div className='flex flex-col lg:w-[30%]'>
                                 <img src={icon2} className='w-[42px] h-[42px]'></img>
-                                <div className='font-bold leading-10'>Increased Visibility</div>
-                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2 '>SnackBae offers a state-of-the-art reservation system, allowing your customers to effortlessly book tables and ensuring a smooth dining experience. Maximize your restaurant's capacity and enhance customer.</div>
+                                <div className='font-bold leading-10'>Commissionless Payments:</div>
+                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2 '>Keep more of what you earn. SnackBae believes in fair partnerships, offering a commission-free payment solution. Enjoy a seamless transaction experience without unnecessary deductions.</div>
                             </div>
                             {/* third box */}
                             <div className='flex flex-col lg:w-[30%]'>
                                 <img src={icon3} className='w-[42px] h-[42px]'></img>
-                                <div className='font-bold leading-10'>Customer Insights for Better Retention</div>
-                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2'>SnackBae offers a state-of-the-art reservation system, allowing your customers to effortlessly book tables and ensuring a smooth dining experience. Maximize your restaurant's capacity and enhance customer.</div>
+                                <div className='font-bold leading-10'>Customer Insights for Better Retention:</div>
+                                <div className='lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2'>Unlock the power of data! Gain valuable insights into customer preferences and behaviors, allowing you to tailor your offerings and services for maximum satisfaction.</div>
                             </div>
                         </div>
                     </div>

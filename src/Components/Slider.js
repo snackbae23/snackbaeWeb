@@ -46,11 +46,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="name">Personalised Discovery</div>
+            <div className="name">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -60,11 +58,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="name">Personalised Discovery</div>
+            <div className="name">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -74,11 +70,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="name">Personalised Discovery</div>
+            <div className="name">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -88,11 +82,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="name">Personalised Discovery</div>
+            <div className="name">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -102,13 +94,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="text-[42px] leading-[56px] font-semibold">
-              Personalised Discovery
-            </div>
+            <div className="text-[42px] leading-[56px] font-semibold">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -118,11 +106,9 @@ const Slider = () => {
               <p className=" font-roboto  font-semibold text-base ">Coupons</p>
             </button>
 
-            <div className="name">Personalised Discovery</div>
+            <div className="name">Community-Driven Recommendations</div>
             <div className="des">
-              Lorem ipsum dolor sit amet consectetur. Tincidunt scelerisque
-              commodo proin faucibus.Lorem ipsum dolor sit amet consectetur.
-              Tincidunt scelerisque commodo proin faucibus.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
