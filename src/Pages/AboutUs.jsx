@@ -32,14 +32,10 @@ const AboutUs = () => {
               Vision
             </div>
             <div className="font-opensans font-bold text-[#020617] -tracking-[2%] xl:text:lg">
-              Elevate Dining Experience with SnackBae
+              Empowering Merchants, Enriching Communities
             </div>
             <div className="font-normal text-sm text-[#020617] w-full font-opensans -tracking-[2%] xl:text-lg text-center lg:text-left mx-auto lg:mx-0">
-              At SnackBae, we believe in the transformative power of exceptional
-              dining experiences. Our mission is to empower restaurants to
-              elevate their offerings, connect with a vibrant community, and
-              enhance customer retention. Join us on this culinary journey and
-              let SnackBae be your partner in success.
+              SnackBae envisions a future where merchants thrive, empowered by innovative solutions, fostering vibrant and connected communities.
             </div>
             <button className="mx-auto lg:mx-0 w-36 h-11 bg-[#EAB308] border rounded-md px-5 py-3 flex justify-center items-center text-[#ffffff] font-roboto text-base font-semibold tracking-tighter ">
               Get Started
@@ -47,7 +43,7 @@ const AboutUs = () => {
           </div>
 
           {/* Right Part */}
-          <div className="absolute -bottom-3 right-2 hidden lg:flex">
+          <div className="absolute -bottom-3 right-1 hidden lg:flex">
             <img
               src={ellipse}
               className="w-[53vw] h-[88vh]"
@@ -55,7 +51,7 @@ const AboutUs = () => {
               alt="Img"
             ></img>
           </div>
-          <div className="absolute -bottom-10 right-0 hidden lg:flex">
+          <div className="absolute -bottom-10 right-1 hidden lg:flex">
             <img
               src={ellipseA}
               className="w-[52vw] h-[88vh]"
@@ -88,15 +84,12 @@ const AboutUs = () => {
                   Discover
                 </div>
               </div>
-              <div className="text-[#020617] text-5xl font-roboto font-semibold my-4">
+              <div className="text-[#020617] text-5xl font-roboto font-semibold mt-4 mb-1">
                 Mission
               </div>
+              <div className="font-roboto text-sm mb-1 font-semibold">Empowering Dining Experiences</div>
               <div className="font-normal text-sm text-[#020617] w-[31.875rem] font-opensans -tracking-[2%]">
-                At SnackBae, we believe in the transformative power of
-                exceptional dining experiences. Our mission is to empower
-                restaurants to elevate their offerings, connect with a vibrant
-                community, and enhance customer retention. Join us on this
-                culinary journey and let SnackBae be your partner in success.
+                SnackBae fosters seamless connections between diners and merchants, redefining the way people experience and enjoy their favorite eateries.
               </div>
             </div>
           </div>
@@ -118,12 +111,9 @@ const AboutUs = () => {
             <div className="text-[#020617] text-5xl font-roboto font-semibold my-4 text-center mx-auto">
               Mission
             </div>
+            <div className="font-roboto text-sm mb-1 font-semibold text-center mx-auto">Empowering Dining Experiences</div>
             <div className="font-normal text-sm text-[#020617]  font-opensans -tracking-[2%] text-center mx-auto ">
-              At SnackBae, we believe in the transformative power of exceptional
-              dining experiences. Our mission is to empower restaurants to
-              elevate their offerings, connect with a vibrant community, and
-              enhance customer retention. Join us on this culinary journey and
-              let SnackBae be your partner in success.
+            SnackBae fosters seamless connections between diners and merchants, redefining the way people experience and enjoy their favorite eateries.
             </div>
           </div>
         </div>
@@ -146,21 +136,21 @@ const AboutUs = () => {
         </div>
 
         {/* Fourth Part */}
-        <div className="relative  w-full h-[400px] md:w-[100vw] md:h-[100vh]  overflow-hidden">
+        <div className="relative h-[400px] w-[100vw] md:h-[100vh] overflow-hidden">
           <img src={bg5} className="w-full h-full absolute z-10"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
-          <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
+          <div className=" absolute top-[7%] md:top-[10%] lg:top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
             <button className="w-[130px] h-[50px]  md:w-[130px]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500 ">
               <p className="w-[7 mx-auto font-roboto  font-semibold text-base leading-10">
                 App Links
               </p>
             </button>
 
-            <div className=" w-[360px] h-[64px] md:w-[600px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
-              Download th app Lorem ipsum dolor sit amet dolor sit
+            <div className=" w-[360px] md:w-[750px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
+              Flavorful Experiences Await – Download the SnackBae App Today
             </div>
             <p className="sm:h-[25px] w-[360px] md:w-[515px] font-normaltext-[12px] md:text[14px] leading-[25px] font-sans text-center items-center text-white opacity-70">
-              Download for android and iOS lorem ipsum dolor sit amet
+              Download for android and iOS now
             </p>
 
             <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
@@ -172,4 +162,4 @@ const AboutUs = () => {
     </div>
   );
 };
-export default AboutUs;
+export default AboutUs;
