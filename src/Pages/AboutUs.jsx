@@ -43,21 +43,21 @@ const AboutUs = () => {
           </div>
 
           {/* Right Part */}
-          <div className="absolute -bottom-3 right-1 hidden lg:flex">
+         <div className="hidden lg:flex absolute -bottom-4 -right-2">
             <img
               src={ellipse}
-              className="w-[53vw] h-[88vh]"
+              className="w-[53vw] min-h-[52vh] h-[62%]"
               loading="lazy"
-              alt="Img"
             ></img>
+            {/* width={756} height={696}  */}
           </div>
-          <div className="absolute -bottom-10 right-1 hidden lg:flex">
+          <div className="hidden lg:flex absolute -bottom-4 right-0">
             <img
               src={ellipseA}
-              className="w-[52vw] h-[88vh]"
+              className="w-[50vw] min-h-[50vh] h-[60%]"
               loading="lazy"
-              alt="Img"
             ></img>
+            {/* height={626} width={716} */}
           </div>
         </div>
 
@@ -136,7 +136,7 @@ const AboutUs = () => {
         </div>
 
         {/* Fourth Part */}
-        <div className="relative h-[400px] w-[100vw] md:h-[100vh] overflow-hidden">
+        <div className="relative h-[400px] w-full md:h-[100vh] overflow-hidden">
           <img src={bg5} className="w-full h-full absolute z-10"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
           <div className=" absolute top-[7%] md:top-[10%] lg:top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
