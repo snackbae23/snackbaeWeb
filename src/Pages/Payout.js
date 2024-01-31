@@ -2,8 +2,9 @@ import React from 'react'
 import { FaHome } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { FaBlog } from "react-icons/fa";
-import { GiBilledCap } from "react-icons/gi";
-import { FaPhoneAlt } from "react-icons/fa";
+import { MdMenuBook } from "react-icons/md";
+import { BiSolidOffer } from "react-icons/bi";
+import { IoStorefrontOutline } from "react-icons/io5";
 import group117 from "../assets/group-117.svg"
 import rect54 from "../assets/rectangle54.png"
 import group752 from "../assets/group-752.svg"
@@ -11,6 +12,58 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 
 const Payout = () => {
+
+    const data=[
+        {
+          "customerName": "Customer name 1",
+          "tableNo": "1",
+          "date": "12/17/2023",
+          "time": "9:30 AM-10:30 AM EST",
+          "status": "Clears in 2ds",
+          "amount": "₹231"
+        },
+        {
+          "customerName": "Amanda Cooper",
+          "tableNo": "23",
+          "date": "12/17/2023",
+          "time": "9:30 AM-10:30 AM EST",
+          "status": "Clears in 2ds",
+          "amount": "₹231"
+        },
+        {
+            "customerName": "Amanda Cooper",
+            "tableNo": "23",
+            "date": "12/17/2023",
+            "time": "9:30 AM-10:30 AM EST",
+            "status": "Clears in 2ds",
+            "amount": "₹231"
+          },
+          {
+            "customerName": "Amanda Cooper",
+            "tableNo": "23",
+            "date": "12/17/2023",
+            "time": "9:30 AM-10:30 AM EST",
+            "status": "Clears in 2ds",
+            "amount": "₹231"
+          },
+          {
+            "customerName": "Amanda Cooper",
+            "tableNo": "23",
+            "date": "12/17/2023",
+            "time": "9:30 AM-10:30 AM EST",
+            "status": "Clears in 2ds",
+            "amount": "₹231"
+          },
+          {
+            "customerName": "Amanda Cooper",
+            "tableNo": "23",
+            "date": "12/17/2023",
+            "time": "9:30 AM-10:30 AM EST",
+            "status": "Clears in 2ds",
+            "amount": "₹231"
+          },
+        
+      ]
     return (
         <div className='w-full h-[100vh] flex flex-col'>
             <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
@@ -59,7 +112,7 @@ const Payout = () => {
             </div>
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
-                <div className='w-[20%]  bg-white  '>
+                <div className='w-[20%]  bg-white flex flex-col '>
                     <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
                         <FaHome /> <p>Dashboard</p>
                     </Link>
@@ -67,19 +120,22 @@ const Payout = () => {
                         <FaBlog /><p>Payout</p>
                     </Link>
                     <Link to='appointment' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <GiBilledCap /><p>Menu</p>
+                    <MdMenuBook /><p>Menu</p>
                     </Link>
                     <Link to='/cLink' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <FaPhoneAlt /><p>Edit store detail</p>
+                    <IoStorefrontOutline /><p>Edit store detail</p>
                     </Link>
-                    <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <Link to='/cLink' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <BiSolidOffer /><p>offers & campaign</p>
+                    </Link>
+                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
                         <IoIosLogOut /> <p>Log out</p>
                     </Link>
                 </div>
                 {/* right */}
-                <div className='w-[75%] bg-slate-300 ml-6 h-full rounded-md p-6' >
+                <div className='w-[75%] bg-slate-300 ml-6 h-fit rounded-md p-6' >
                     <div className='w-full h-[100px] flex items-center '>
-                        <h1 className='text-[1rem] font-bold w-[40%] ml-4 '>Payout</h1>
+                        <h1 className='text-[1.2rem] font-bold w-[40%] ml-4 '>Payout</h1>
                         <div className='w-[60%] flex  gap-4 justify-end'>
                             <button className='bg-black text-white w-[90px] h-10 rounded-md'>weekly</button>
                             <button className='bg-white  w-[90px] h-10 rounded-md'>Monthly</button>
@@ -122,8 +178,34 @@ const Payout = () => {
                         </div>
 
                     </div>
-                    <div>
-
+                    <div className='text-[1.2rem] mt-4 font-bold'>
+                         Payouts history
+                    </div>
+                    <div className='w-full mt-4  '>
+                    <table className="min-w-full bg-white border border-gray-300 rounded-xl">
+                        <thead className="bg-gray-100">
+                            <tr>
+                            <th className="border border-gray-300 px-4 py-2">Customer Name</th>
+                            <th className="border border-gray-300 px-4 py-2">Table No</th>
+                            <th className="border border-gray-300 px-4 py-2">Date</th>
+                            <th className="border border-gray-300 px-4 py-2">Time</th>
+                            <th className="border border-gray-300 px-4 py-2">Status</th>
+                            <th className="border border-gray-300 px-4 py-2">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((reservation, index) => (
+                            <tr key={index}>
+                                <td className="border border-gray-300 px-4 py-2">{reservation.customerName}</td>
+                                <td className="border border-gray-300 px-4 py-2 bg-slate-100">{reservation.tableNo}</td>
+                                <td className="border border-gray-300 px-4 py-2">{reservation.date}</td>
+                                <td className="border border-gray-300 px-4 py-2 bg-slate-100">{reservation.time}</td>
+                                <td className="border border-gray-300 px-4 py-2">{reservation.status}</td>
+                                <td className="border border-gray-300 px-4 py-2 bg-slate-100">{reservation.amount}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
