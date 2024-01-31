@@ -183,14 +183,14 @@ const Payout = () => {
                     </div>
                     <div className='w-full mt-4  '>
                     <table className="min-w-full bg-white border border-gray-300 rounded-xl">
-                        <thead className="bg-gray-100">
+                        <thead className="bg-gray-100 py-4">
                             <tr>
-                            <th className="border border-gray-300 px-4 py-2">Customer Name</th>
-                            <th className="border border-gray-300 px-4 py-2">Table No</th>
-                            <th className="border border-gray-300 px-4 py-2">Date</th>
-                            <th className="border border-gray-300 px-4 py-2">Time</th>
-                            <th className="border border-gray-300 px-4 py-2">Status</th>
-                            <th className="border border-gray-300 px-4 py-2">Amount</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Customer Name</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Table No</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Date</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Time</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Status</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
