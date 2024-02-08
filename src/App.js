@@ -12,10 +12,11 @@ import Blogs from './Pages/Blog';
 import Blogdetail from './Pages/Blogdetail';
 import DashBoard from './Pages/DashBoard';
 import AdminDashboard from './Pages/AdminDashboard';
+import Payout from './Pages/Payout';
 
 import Form from './Pages/Form';
 
-const excludedPaths = ['/dashboard','/adminDashboard','/form'];
+const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout'];
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path = '/blog' element ={<Blogs/>}></Route>
         <Route path = '/blogdetail' element ={<Blogdetail/>}></Route>
         <Route path = '/form' element ={<Form/>}></Route>
+        <Route path = '/payout' element ={<Payout/>}></Route>
       </Routes>
     </div>
   );
