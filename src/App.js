@@ -13,10 +13,11 @@ import Blogdetail from './Pages/Blogdetail';
 import DashBoard from './Pages/DashBoard';
 import AdminDashboard from './Pages/AdminDashboard';
 import Payout from './Pages/Payout';
+import Menu from './Pages/Menu';
 
 import Form from './Pages/Form';
 
-const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout'];
+const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu'];
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path = '/blogdetail' element ={<Blogdetail/>}></Route>
         <Route path = '/form' element ={<Form/>}></Route>
         <Route path = '/payout' element ={<Payout/>}></Route>
+        <Route path = '/menu' element ={<Menu/>}></Route>
       </Routes>
     </div>
   );
