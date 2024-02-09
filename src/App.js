@@ -17,8 +17,9 @@ import Menu from './Pages/Menu';
 
 import Form from './Pages/Form';
 import Review from './Pages/Review';
+import Customer from './Pages/Customer';
 
-const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu','/review'];
+const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu','/review','/customer'];
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
         <Route path = '/payout' element ={<Payout/>}></Route>
         <Route path = '/menu' element ={<Menu/>}></Route>
         <Route path = '/review' element ={<Review/>}></Route>
+        <Route path = '/customer' element ={<Customer/>}></Route>
       </Routes>
     </div>
   );
