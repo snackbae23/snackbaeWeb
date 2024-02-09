@@ -13,6 +13,57 @@ import logo from "../assets/logo.png"
 import { FaPenFancy } from "react-icons/fa";
 
 const Menu = () => {
+
+    const data = [
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+        {
+            "image": "/Rectangle 55187.png",
+            "menu": "Menu item name",
+            "amount": "₹231",
+            "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+        },
+    ]
     return (
         <div className='w-full h-[100vh] flex flex-col'>
             <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
@@ -84,94 +135,27 @@ const Menu = () => {
                 </div>
 
                 {/* right */}
-                <div className='w-[75%] bg-slate-100 ml-6 h-full rounded-md p-6' >
+                <div className='w-[75%] bg-slate-200 ml-6 h-full rounded-md p-6' >
                     <div className='flex justify-between'>
                         <h1 className='text-[1.2rem] font-bold w-[40%] ml-4 '>Menu</h1>
                         <button className='w-[200px] bg-yellow-500 h-10 rounded-md'>Add new Item</button>
                     </div>
 
                     <div className="grid grid-cols-4 gap-4 mt-10">
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
+                        {data.map((item, index) => (
+                            <div className='h-[230px] flex flex-col  bg-white rounded-md relative' key={index}>
+                            <img className='w-full h-1/2' src={item.image} alt='img'></img>
                             <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
                             <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
                             <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
+                                <h1 className='text-[1.2rem] font-semibold'>{item.menu}</h1>
+                                <h1 className='text-[1.2rem] font-semibold mr-2'>{item.amount}</h1>
                             </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
+                            <p className='font-medium ml-4 mt-2 text-slate-400'>{item.para}</p>
                             </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        <div className='h-[230px] flex flex-col  bg-white rounded-md relative'>
-                            <img className='w-full h-1/2' src='/Rectangle 55187.png' alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>Menu item name</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>$231</h1>
-                            </div>
-                            <p className='font-medium ml-4 mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing el...</p>
-                        </div>
-                        
+                        ))}
+                       
+
 
                     </div>
                 </div>
