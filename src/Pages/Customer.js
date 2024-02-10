@@ -70,12 +70,47 @@ const Customer = () => {
             "visit": "220",
             
           },
+          {
+            "customerName": "Customer name ",
+            "customernum": "+91 9660066979",
+            "type": "Regular",
+            "visit": "220",
+            
+          },
+          {
+            "customerName": "Customer name ",
+            "customernum": "+91 9660066979",
+            "type": "Regular",
+            "visit": "220",
+            
+          },{
+            "customerName": "Customer name ",
+            "customernum": "+91 9660066979",
+            "type": "Regular",
+            "visit": "220",
+            
+          },
+          {
+            "customerName": "Customer name ",
+            "customernum": "+91 9660066979",
+            "type": "Regular",
+            "visit": "220",
+            
+          },
+          {
+            "customerName": "Customer name ",
+            "customernum": "+91 9660066979",
+            "type": "Regular",
+            "visit": "220",
+            
+          },
+          
 
        
         
       ]
     return (
-        <div className='w-full h-[100vh] flex flex-col'>
+        <div className='w-full h-fit flex flex-col'>
             <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
                 {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
                 <div className="flex flex-row items-start left-1 py-0 px-6">
@@ -120,8 +155,9 @@ const Customer = () => {
                     </Link>
                 </div>
             </div>
+           
             <div className='flex  w-full mt-20 h-fit'>
-
+             
                 {/* left */}
                 <div className='w-[20%]  bg-white flex flex-col '>
                     <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
@@ -145,7 +181,7 @@ const Customer = () => {
                 </div>
 
                 {/* right */}
-                <div className='w-[75%] h-full bg-slate-200 ml-6   rounded-md p-6' >
+                <div className='w-[75%]  bg-slate-200 ml-6   rounded-md p-6' >
                     <h1 className='text-[1.2rem] font-bold  ml-4 '>Customer</h1>
 
                     <div className='flex justify-between mt-4 relative'>
@@ -159,9 +195,9 @@ const Customer = () => {
                     </div>
 
 
-                    <div className='w-full mt-4  '>
+                    <div className='w-full h-[600px] mt-4 overflow-scroll '>
                     <table className="min-w-full bg-white border border-gray-300 rounded-xl">
-                        <thead className="bg-gray-100 py-4">
+                        <thead className="bg-gray-100 py-4 ">
                             <tr>
                             <th className="border border-gray-300 px-4 py-4 text-[1rem]">Customer Name</th>
                             <th className="border border-gray-300 px-4 py-4 text-[1rem]">Customer Number</th>

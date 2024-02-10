@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import { FaHome } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { FaBlog } from "react-icons/fa";
@@ -11,6 +12,7 @@ import group752 from "../assets/group-752.svg"
 import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { FaPenFancy } from "react-icons/fa";
+import { ImCross } from 'react-icons/im';
 
 const Menu = () => {
 
@@ -64,6 +66,34 @@ const Menu = () => {
             "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
         },
     ]
+
+    function openPopup() {
+        document.getElementById('popup').style.display = "block";
+        document.getElementById('background').style.filter = "blur(2Px)";
+
+    }
+    function closePopup() {
+        document.getElementById('popup').style.display = "none";
+        document.getElementById('background').style.filter = "blur(0px)";
+
+    }
+
+    const [formData, setFormData] = useState({
+        menuItem: '',
+        image: '',
+        type: '',
+        calories: '',
+    });
+
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(formData); // Submit data here (e.g., API call)
+    };
+
     return (
         <div className='w-full h-[100vh] flex flex-col'>
             <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
@@ -110,7 +140,65 @@ const Menu = () => {
                     </Link>
                 </div>
             </div>
-            <div className='flex  w-full mt-20 h-full'>
+            {/* popup */}
+            <div className='absolute top-28 left-[30%]  z-[100] shadow-inner hidden' id='popup'>
+                <div className='w-[40vw]   bg-white pb-8 rounded-md flex  '>
+                    <div className='w-[40vw] mx-aut  h-fit flex flex-col gap-10'>
+                        <div className='flex justify-between'>
+                            <div className='flex flex-col font-roboto pt-2 mt-6 ml-8 justify-start'>
+                                <div className='text-xl font-semibold '>Add Menu Item</div>
+                                <p className='text-slate-500 mt-2'>Create from scratch or select a template to get started</p>
+                            </div>
+
+                            <button onClick={closePopup} className='text-right p-2 mr-4'><ImCross /></button>
+                        </div>
+                        <div className=' bg-white rounded-md p-4 h-fit ml-4'>
+                            <form className='flex flex-col text-lg font-semibold ' onSubmit={handleSubmit}>
+                                <label htmlFor="menuItem">Menu Item name</label>
+                                <input
+                                    className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'
+                                    type="text"
+                                    id="menuItem"
+                                    name="menuItem"
+                                    value={formData.menuItem}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label className='mt-4 mb-2' htmlFor="image">Image</label>
+                                <input
+                                    className='w-full h-[100px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'
+                                    type="file"
+                                   
+                                    id="image"
+                                    name="image"
+                                    value={formData.image}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label className='mt-4 mb-2' htmlFor="type">Type</label>
+                                <select className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md' id="type" name="type" value={formData.type} onChange={handleChange}>
+                                    <option value="">Select Type</option>
+                                    <option value="veg">Veg</option>
+                                    <option value="non-veg">Non-Veg</option>
+                                </select>
+                                <label className='mt-4 mb-2' htmlFor="calories">Cuisines</label>
+                                <input
+                                   className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'
+                                    type="number"
+                                    id="calories"
+                                    name="calories"
+                                    value={formData.calories}
+                                    onChange={handleChange}
+                                />
+                                <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] mx-auto mt-4' type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div className='flex  w-full mt-20 h-full ' id='background'>
 
                 {/* left */}
                 <div className='w-[20%]  bg-white flex flex-col '>
@@ -138,23 +226,23 @@ const Menu = () => {
                 <div className='w-[75%] bg-slate-200 ml-6 h-full rounded-md p-6' >
                     <div className='flex justify-between'>
                         <h1 className='text-[1.2rem] font-bold w-[40%] ml-4 '>Menu</h1>
-                        <button className='w-[200px] bg-yellow-500 h-10 rounded-md'>Add new Item</button>
+                        <button onClick={openPopup} className='w-[200px] bg-yellow-500 h-10 rounded-md'>Add new Item</button>
                     </div>
 
                     <div className="grid grid-cols-4 gap-4 mt-10">
                         {data.map((item, index) => (
                             <div className='h-[236px] flex flex-col  bg-white rounded-md relative' key={index}>
-                            <img className='w-full h-[174px]' src={item.image} alt='img'></img>
-                            <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
-                            <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
-                            <div className='flex justify-between mt-2 ml-4'>
-                                <h1 className='text-[1.2rem] font-semibold'>{item.menu}</h1>
-                                <h1 className='text-[1.2rem] font-semibold mr-2'>{item.amount}</h1>
-                            </div>
-                            
+                                <img className='w-full h-[174px] object-fill' src={item.image} alt='img'></img>
+                                <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
+                                <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
+                                <div className='flex justify-between mt-2 ml-4'>
+                                    <h1 className='text-[1.2rem] font-semibold'>{item.menu}</h1>
+                                    <h1 className='text-[1.2rem] font-semibold mr-2'>{item.amount}</h1>
+                                </div>
+
                             </div>
                         ))}
-                       
+
 
 
                     </div>
