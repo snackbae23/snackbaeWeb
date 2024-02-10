@@ -232,7 +232,7 @@ const Menu = () => {
                     <div className="grid grid-cols-4 gap-4 mt-10">
                         {data.map((item, index) => (
                             <div className='h-[236px] flex flex-col  bg-white rounded-md relative' key={index}>
-                                <img className='w-full h-[174px] object-fill' src={item.image} alt='img'></img>
+                                <img className='w-full h-[174px] object-cover' src={item.image} alt='img'></img>
                                 <button className='absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4'>India</button>
                                 <button className='absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center'><FaPenFancy /></button>
                                 <div className='flex justify-between mt-2 ml-4'>

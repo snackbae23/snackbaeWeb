@@ -18,8 +18,11 @@ import Menu from './Pages/Menu';
 import Form from './Pages/Form';
 import Review from './Pages/Review';
 import Customer from './Pages/Customer';
+import EditStoreDetail from './Pages/EditStoreDetail';
+import Offer from './Pages/Offer';
+import Pricing from './Pages/Pricing';
 
-const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu','/review','/customer'];
+const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu','/review','/customer','/editstore','/offer','/pricing'];
 
 function App() {
 
@@ -49,6 +52,9 @@ function App() {
         <Route path = '/menu' element ={<Menu/>}></Route>
         <Route path = '/review' element ={<Review/>}></Route>
         <Route path = '/customer' element ={<Customer/>}></Route>
+        <Route path = '/editstore' element ={<EditStoreDetail/>}></Route>
+        <Route path = '/offer' element ={<Offer/>}></Route>
+        <Route path = '/pricing' element ={<Pricing/>}></Route>
       </Routes>
     </div>
   );
