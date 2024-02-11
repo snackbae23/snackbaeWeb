@@ -153,7 +153,7 @@ const Menu = () => {
                             <button onClick={closePopup} className='text-right p-2 mr-4'><ImCross /></button>
                         </div>
                         <div className=' bg-white rounded-md p-4 h-fit ml-4'>
-                            <form className='flex flex-col text-lg font-semibold ' onSubmit={handleSubmit}>
+                            <form className='flex flex-col text-lg font-semibold relative  ' onSubmit={handleSubmit}>
                                 <label htmlFor="menuItem">Menu Item name</label>
                                 <input
                                     className='w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'
@@ -165,10 +165,11 @@ const Menu = () => {
                                     required
                                 />
                                 <label className='mt-4 mb-2' htmlFor="image">Image</label>
+                                <img className='absolute w-[130px] h-[95px] left-[37%] top-[27%] object-cover' src='/Group 1171277298.png' alt=''></img>
                                 <input
-                                    className='w-full h-[100px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md'
-                                    type="file"
+                                    className='w-full h-[100px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md '
                                    
+                                    type="file"        
                                     id="image"
                                     name="image"
                                     value={formData.image}
@@ -217,7 +218,10 @@ const Menu = () => {
                     <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                         <BiSolidOffer /><p>offers & campaign</p>
                     </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
+                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <BiSolidOffer /><p>Pricing</p>
+                    </Link>
+                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
                         <IoIosLogOut /> <p>Log out</p>
                     </Link>
                 </div>

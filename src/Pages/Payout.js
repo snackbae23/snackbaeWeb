@@ -128,7 +128,10 @@ const Payout = () => {
                     <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                     <BiSolidOffer /><p>offers & campaign</p>
                     </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
+                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <BiSolidOffer /><p>Pricing</p>
+                    </Link>
+                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
                         <IoIosLogOut /> <p>Log out</p>
                     </Link>
                 </div>
@@ -151,7 +154,7 @@ const Payout = () => {
                     <div className='w-full h-[190px] bg-white rounded-md flex'>
                         <div className='w-[25%] flex flex-col  items-center justify-center '>
                             <p>Available for payout</p>
-                            <p className=' font-bold text-[2.1rem]'>$1,712.00</p>
+                            <p className=' font-bold text-[2.1rem] text-green-600'>$1,712.00</p>
                             <button className='w-[200px] bg-yellow-500 h-10 rounded-md'>Withdraw Request</button>
                              
                         </div>
@@ -190,7 +193,7 @@ const Payout = () => {
                             <th className="border border-gray-300 px-4 py-4 text-[1rem]">Date</th>
                             <th className="border border-gray-300 px-4 py-4 text-[1rem]">Time</th>
                             <th className="border border-gray-300 px-4 py-4 text-[1rem]">Status</th>
-                            <th className="border border-gray-300 px-4 py-4 text-[1rem]">Amount</th>
+                            <th className="border border-gray-300 px-4 py-4 text-[1rem] ">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -201,7 +204,7 @@ const Payout = () => {
                                 <td className="border border-gray-300 px-4 py-2">{reservation.date}</td>
                                 <td className="border border-gray-300 px-4 py-2 bg-slate-100">{reservation.time}</td>
                                 <td className="border border-gray-300 px-4 py-2">{reservation.status}</td>
-                                <td className="border border-gray-300 px-4 py-2 bg-slate-100">{reservation.amount}</td>
+                                <td className="border border-gray-300 px-4 py-2 bg-slate-100 text-green-600">{reservation.amount}</td>
                             </tr>
                             ))}
                         </tbody>

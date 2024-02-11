@@ -78,9 +78,12 @@ const Offer = () => {
             <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                 <BiSolidOffer /><p>offers & campaign</p>
             </Link>
-            <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
-                <IoIosLogOut /> <p>Log out</p>
-            </Link>
+            <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <BiSolidOffer /><p>Pricing</p>
+                    </Link>
+                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
+                        <IoIosLogOut /> <p>Log out</p>
+                    </Link>
         </div>
 
         {/* right */}

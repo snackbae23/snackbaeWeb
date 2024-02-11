@@ -112,7 +112,10 @@ const Payout = () => {
                     <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                     <BiSolidOffer /><p>offers & campaign</p>
                     </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
+                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <BiSolidOffer /><p>Pricing</p>
+                    </Link>
+                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
                         <IoIosLogOut /> <p>Log out</p>
                     </Link>
                 </div>
@@ -122,7 +125,7 @@ const Payout = () => {
                 <h3 className="ml-10 mt-8 text-xl font-bold font-inherit ">
                     Dashboard
                 </h3>
-                <div className='flex justify-evenly'>
+                <div className='flex justify-evenly gap-2'>
                     <div className='bg-white w-60 h-28 mt-2 rounded-2xl flex flex-col justify-evenly'>
                         <div className='flex justify-between p-2'>
                             <p className='text-slate-950 text-base font-medium'>
