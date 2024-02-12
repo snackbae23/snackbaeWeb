@@ -164,7 +164,7 @@ const EditStoreDetail = () => {
                 <div className='flex flex-col w-[80%]  bg-slate-200 h-fit'>
 
                     {/* one */}
-                    <div className='w-[100%]  ml-6   rounded-md p-5  ' id='a'  >
+                    <div className='w-[100%] p-8   rounded-md   ' id='a'  >
                         <h1 className='text-[1.2rem] font-bold   '>Edit Store Details</h1>
                         <div className='flex justify-between text-slate-500 mt-3'>
                             <div className='flex gap-2'>
@@ -245,7 +245,7 @@ const EditStoreDetail = () => {
                     </div>
 
                     {/* two */}
-                    <div className='w-[100%]  bg-slate-200 ml-6   rounded-md p-8 hidden h-[550px] ' id='b' >
+                    <div className='w-[100%]  bg-slate-200    rounded-md p-8 hidden h-[550px] ' id='b' >
                         <h1 className='text-[1.2rem] font-bold   '>Edit Store Details</h1>
                         <div className='flex justify-between text-slate-500 mt-3'>
                             <div className='flex gap-2'>
@@ -363,7 +363,7 @@ const EditStoreDetail = () => {
 
                     {/* three */}
 
-                    <div className='w-[100%]  bg-slate-200 ml-6   rounded-md p-8 hidden  h-[600px]' id='c' >
+                    <div className='w-[100%]  bg-slate-200   rounded-md p-8 hidden  h-[600px]' id='c' >
                         <h1 className='text-[1.2rem] font-bold   '>Edit Store Details</h1>
                         <div className='flex justify-between text-slate-500 mt-3'>
                             <div className='flex gap-2'>
