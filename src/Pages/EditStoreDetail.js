@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { useState } from 'react';
 
+
 const EditStoreDetail = () => {
 
 
@@ -146,10 +147,10 @@ const EditStoreDetail = () => {
                     <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                         <MdMenuBook /><p>Menu</p>
                     </Link>
-                    <Link to='/form' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <Link to='/editstore' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                         <IoStorefrontOutline /><p>Edit store detail</p>
                     </Link>
-                    <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
+                    <Link to='/offer' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
                         <BiSolidOffer /><p>offers & campaign</p>
                     </Link>
                     <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
