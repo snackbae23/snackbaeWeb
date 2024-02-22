@@ -112,7 +112,7 @@ const Payout = () => {
            </div>
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
+                <div className='w-[20%]  bg-white flex flex-col fixed '>
                     <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
                         <FaHome /> <p>Dashboard</p>
                     </Link>
@@ -136,7 +136,7 @@ const Payout = () => {
                     </Link>
                 </div>
                 {/* right */}
-                <div className='w-[75%] bg-slate-300 ml-6 h-fit rounded-md p-6' >
+                <div className='w-[75%] bg-slate-300 ml-6 h-fit rounded-md p-6 ml-[22%]' >
                     <div className='w-full h-[100px] flex items-center '>
                         <h1 className='text-[1.2rem] font-bold w-[40%] ml-4 '>Payout</h1>
                         <div className='w-[60%] flex  gap-4 justify-end'>

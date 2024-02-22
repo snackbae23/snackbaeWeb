@@ -96,7 +96,7 @@ const Payout = () => {
             </div>
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
+                <div className='w-[20%]  bg-white flex flex-col fixed '>
                 <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
                         <FaHome /> <p>Dashboard</p>
                     </Link>
@@ -120,9 +120,9 @@ const Payout = () => {
                     </Link>
                 </div>
                 {/* right */}
-                <div className='w-[75%] bg-slate-300 ml-6 h-full rounded-md p-6 overflow-hidden' >
+                <div className='w-[75%] bg-slate-300  h-full rounded-md p-6 overflow-hidden ml-[22%]' >
                 <div className=' top-16 left-56'>
-                <h3 className="ml-10 mt-8 text-xl font-bold font-inherit ">
+                <h3 className=" mt-5 text-xl font-bold font-inherit mb-3 ">
                     Dashboard
                 </h3>
                 <div className='flex justify-evenly gap-2'>
@@ -145,7 +145,7 @@ const Payout = () => {
                                     alt=''
                                     src={frame33}
                                 />
-                                <p className='font-roboto text-green-700 text-left'>
+                                <p className='font-roboto px-2 text-green-700 text-left'>
                                     0.3pt
                                 </p>
                             </div>
@@ -164,7 +164,7 @@ const Payout = () => {
                             <p className='font-roboto text-2xl font-semibold'>
                                 35
                             </p>
-                            <div className='border-none py-1 pl-px bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
+                            <div className='border-none py-1 pl-px px-2  bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
                                 <img
                                     className='w-4 h-4 overflow-hidden min-h-4'
                                     alt=''
@@ -189,7 +189,7 @@ const Payout = () => {
                             <p className='font-roboto text-2xl font-semibold'>
                                 92.4k
                             </p>
-                            <div className='border-none py-1 pl-px bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
+                            <div className='border-none py-1 pl-px px-2 bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
                                 <img
                                     className='w-4 h-4 overflow-hidden min-h-4'
                                     alt=''
@@ -214,7 +214,7 @@ const Payout = () => {
                             <p className='font-roboto text-2xl font-semibold'>
                                 43
                             </p>
-                            <div className='border-none py-1 pl-px bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
+                            <div className='border-none py-1 pl-px px-2 bg-green-100 rounded-2xl flex flex-row items-end justify-start gap-0.5'>
                                 <img
                                     className='w-4 h-4 overflow-hidden min-h-4'
                                     alt=''

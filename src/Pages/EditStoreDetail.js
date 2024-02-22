@@ -25,7 +25,7 @@ const EditStoreDetail = () => {
         customerContact: '',
         customerContact1: '',
         category: '',
-        Cuisines:'',
+        Cuisines: '',
     });
 
     const handleChange = (e) => {
@@ -90,49 +90,49 @@ const EditStoreDetail = () => {
     return (
         <div className='w-full h-fit flex flex-col'>
             <div className="z-10 bg-white fixed mt-8  w-full h-20 -top-8 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
-               
-               <div className="flex flex-row items-start left-1 py-0 px-6">
-                   <img
-                       className="relative w-28 h-16 object-cover z-20"
-                       loading="lazy"
-                       alt=""
-                       src={logo}
-                   />
-               </div>
-               <div className="flex flex-row items-start justify-start gap-4 max-w-full z-1">
-                   <img
-                       className="relative w-12 h-12 min-h-12"
-                       loading="lazy"
-                       alt=""
-                       src={group117}
-                   />
-                   <Link to="/profilesettings">
-                       <img
-                           className="relative w-12 h-12 min-h-12"
-                           loading="lazy"
-                           alt=""
-                           src={group752}
-                       /></Link>
-                   <Link to="/profile">
-                       <div className="flex flex-row items-center justify-start gap-2">
-                           <img
-                               className="relative rounded-2xl w-12 h-12 object-cover"
-                               loading="lazy"
-                               alt=""
-                               src={rect54}
-                           />
-                           <div className="flex flex-col items-start justify-start gap-0.5">
-                               <div className="relative tracking-[-0.02em] font-semibold whitespace-nowrap">
-                                   Adam Cooper
-                               </div>
-                               <div className="relative text-sm tracking-[-0.02em] whitespace-nowrap">
-                                   adamcooper@gmail.com
-                               </div>
-                           </div>
-                       </div>
-                   </Link>
-               </div>
-           </div>
+
+                <div className="flex flex-row items-start left-1 py-0 px-6">
+                    <img
+                        className="relative w-28 h-16 object-cover z-20"
+                        loading="lazy"
+                        alt=""
+                        src={logo}
+                    />
+                </div>
+                <div className="flex flex-row items-start justify-start gap-4 max-w-full z-1">
+                    <img
+                        className="relative w-12 h-12 min-h-12"
+                        loading="lazy"
+                        alt=""
+                        src={group117}
+                    />
+                    <Link to="/profilesettings">
+                        <img
+                            className="relative w-12 h-12 min-h-12"
+                            loading="lazy"
+                            alt=""
+                            src={group752}
+                        /></Link>
+                    <Link to="/profile">
+                        <div className="flex flex-row items-center justify-start gap-2">
+                            <img
+                                className="relative rounded-2xl w-12 h-12 object-cover"
+                                loading="lazy"
+                                alt=""
+                                src={rect54}
+                            />
+                            <div className="flex flex-col items-start justify-start gap-0.5">
+                                <div className="relative tracking-[-0.02em] font-semibold whitespace-nowrap">
+                                    Adam Cooper
+                                </div>
+                                <div className="relative text-sm tracking-[-0.02em] whitespace-nowrap">
+                                    adamcooper@gmail.com
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            </div>
             <div className='flex  w-full mt-20 h-fit'>
 
                 {/* left */}
@@ -190,7 +190,7 @@ const EditStoreDetail = () => {
                                 <div className='flex w-full justify-between mt-3 mb-2'>
                                     <div className='flex flex-col w-[48%]'>
                                         <label>Business Name:</label>
-                                        <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' type="text" name="businessName" placeholder='Type here'  onChange={handleChange} />
+                                        <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' type="text" name="businessName" placeholder='Type here' onChange={handleChange} />
                                     </div>
                                     <div className='flex flex-col w-[48%]'>
                                         <label>Location:</label>
@@ -219,27 +219,27 @@ const EditStoreDetail = () => {
                                         <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' placeholder='Type here' type="text" name="customerContact1" onChange={handleChange} />
                                     </div>
                                 </div>
-                            <h1 className='text-[1.1rem] font-bold mt-2 mb-3'>Cuisine details</h1>
-                            <div className='flex w-full justify-between mt-3 mb-2'>
-                            <div className='flex flex-col w-[48%]'>
-                                    <label>Category:</label>
-                                    <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="category" onChange={handleChange}>
-                                        <option value="">Select Category</option>
-                                        <option value="upto3">Up to 3</option>
-                                        <option value="upto4">Up to 4</option>
-                                    </select>
+                                <h1 className='text-[1.1rem] font-bold mt-2 mb-3'>Cuisine details</h1>
+                                <div className='flex w-full justify-between mt-3 mb-2'>
+                                    <div className='flex flex-col w-[48%]'>
+                                        <label>Category:</label>
+                                        <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="category" onChange={handleChange}>
+                                            <option value="">Select Category</option>
+                                            <option value="upto3">Up to 3</option>
+                                            <option value="upto4">Up to 4</option>
+                                        </select>
+                                    </div>
+                                    <div className='flex flex-col w-[48%]'>
+                                        <label>Cuisines:</label>
+                                        <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="Cuisines" onChange={handleChange}>
+                                            <option value="">Select upto 3</option>
+                                            <option value="upto3">Up to 3</option>
+                                            <option value="upto4">Up to 4</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className='flex flex-col w-[48%]'>
-                                    <label>Cuisines:</label>
-                                    <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="Cuisines" onChange={handleChange}>
-                                        <option value="">Select upto 3</option>
-                                        <option value="upto3">Up to 3</option>
-                                        <option value="upto4">Up to 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                                
-                                
+
+
                             </form>
                         </div>
                     </div>
@@ -262,102 +262,7 @@ const EditStoreDetail = () => {
                         </div>
 
                         <div>
-                            {/* <form onSubmit={handleSubmit}>
-                                <div>
-                                    <label>Store Image:</label>
-                                    <input
-                                        type="file"
-                                        name="image"
-                                        onChange={handleChange}
-                                        accept="image/*"
-                                    />
-                                </div>
-                                <div>
-                                    <label>Business Name:</label>
-                                    <input
-                                        type="text"
-                                        name="businessName"
-                                        value={formData.businessName}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Location:</label>
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        value={formData.location}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Point of Contact Name:</label>
-                                    <input
-                                        type="text"
-                                        name="pocName"
-                                        value={formData.pocName}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Point of Contact Number:</label>
-                                    <input
-                                        type="text"
-                                        name="pocContact"
-                                        value={formData.pocContact}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Customer Contacts:</label>
-                                    {formData.customerContacts.map((contact, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            value={contact}
-                                            onChange={(e) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    customerContacts: formData.customerContacts.map((item, idx) =>
-                                                        idx === index ? e.target.value : item
-                                                    ),
-                                                })
-                                            }
-                                        />
-                                    ))}
-                                </div>
-                                <div>
-                                    <label>Category:</label>
-                                    <select
-                                        name="category"
-                                        value={formData.category}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="">Select</option>
-                                        <option value="select upto 3">Select upto 3</option>
-                                        <option value="select upto 4">Select upto 4</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Cuisines:</label>
-                                    {formData.cuisines.map((cuisine, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            value={cuisine}
-                                            onChange={(e) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    cuisines: formData.cuisines.map((item, idx) =>
-                                                        idx === index ? e.target.value : item
-                                                    ),
-                                                })
-                                            }
-                                        />
-                                    ))}
-                                </div>
-                                <button type="submit">Submit</button>
-                            </form> */}
+                            
                         </div>
                     </div>
 
