@@ -10,9 +10,11 @@ import { FiUpload } from "react-icons/fi";
 // import { RxCross2 } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select';
+import axios from "axios";
+
 
 function AdminMerchant() {
-
+    
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedCuisine, setSelectedCuisine] = useState([]);
     const [image, setImage] = useState(null);
@@ -22,7 +24,8 @@ function AdminMerchant() {
         paymentPolicy: false,
         otherTerms: false
     });
-
+      const [alldata, setallData] = useState();
+    const [pic, setPic] = useState();
     const [formData, setFormData] = useState({
         restaurantName: '',
         managerName: '',
@@ -41,7 +44,7 @@ function AdminMerchant() {
         cuisinesServed: selectedCuisine,
         paymentMethods: [],
         FSSAInumber: '',
-        FSSAIfile: image,
+        
         salesRepresentative:'',
     });
 
@@ -85,17 +88,48 @@ function AdminMerchant() {
             [name]: checked
         });
     };
+  
 
     // save for later handler
     function saveForLaterHandler(){
+    
 
     }
 
     //create merchant handler
-    function createMerchantHandler(){
+    function createMerchantHandler(e){
+           e.preventDefault();
+        setallData({ ...formData, pic  });
+     
+        console.log(alldata)
 
     }
 
+ const postDetails = async (pics) => {
+   const formData = new FormData();
+   formData.append("someExpressFiles", pics);
+
+   let config = {
+     method: "post",
+     maxBodyLength: Infinity,
+     url: "http://localhost:4000/api/gallery",
+     // headers: {
+     //   ...data.getHeaders(),
+     // },
+     data: formData,
+   };
+
+   axios
+     .request(config)
+     .then((response) => {
+       console.log(JSON.stringify(response.data));
+       setPic(response?.data?.image_url);
+       console.log(pic);
+     })
+     .catch((error) => {
+       console.log(error);
+     });
+ };
     const categoryOptions = [
         { value: 'Rooftop', label: 'RoofTop' },
         { value: 'PetFriendly', label: 'Pet-friendly' },
@@ -514,10 +548,11 @@ function AdminMerchant() {
                                                 files[0] && setFileName(files[0].name)
                                                 if (files)
                                                     setImage(URL.createObjectURL(files[0]))
+                                                    postDetails(files[0])
                                             }}
                                             hidden></input>
                                         {image ?
-                                            <img src={image} width={200} height={200} alt={fileName} /> :
+                                            <div>Uploaded {fileName}</div> :
                                             <div className='flex flex-col justify-center items-center'>
                                                 <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
                                                     <FiUpload color='white' />
