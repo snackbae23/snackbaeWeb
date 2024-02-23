@@ -60,10 +60,6 @@ const EditStoreDetail = () => {
         document.getElementById('c').style.display = "block";
     };
 
-
-
-
-
     const [formData3, setFormData3] = useState({
         paymentType: 'bankTransfer', // Set default payment type
         accountNumber: '',
@@ -260,105 +256,6 @@ const EditStoreDetail = () => {
                         </div>
                         <div className='w-full h-[170px] bg-yellow-50 flex justify-center items-center  mt-4  rounded-lg border-dashed border-2 border-yellow-400'>
                             <img src='/Group 1171277298.png' alt=''></img>
-                        </div>
-
-                        <div>
-                            {/* <form onSubmit={handleSubmit}>
-                                <div>
-                                    <label>Store Image:</label>
-                                    <input
-                                        type="file"
-                                        name="image"
-                                        onChange={handleChange}
-                                        accept="image/*"
-                                    />
-                                </div>
-                                <div>
-                                    <label>Business Name:</label>
-                                    <input
-                                        type="text"
-                                        name="businessName"
-                                        value={formData.businessName}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Location:</label>
-                                    <input
-                                        type="text"
-                                        name="location"
-                                        value={formData.location}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Point of Contact Name:</label>
-                                    <input
-                                        type="text"
-                                        name="pocName"
-                                        value={formData.pocName}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Point of Contact Number:</label>
-                                    <input
-                                        type="text"
-                                        name="pocContact"
-                                        value={formData.pocContact}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Customer Contacts:</label>
-                                    {formData.customerContacts.map((contact, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            value={contact}
-                                            onChange={(e) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    customerContacts: formData.customerContacts.map((item, idx) =>
-                                                        idx === index ? e.target.value : item
-                                                    ),
-                                                })
-                                            }
-                                        />
-                                    ))}
-                                </div>
-                                <div>
-                                    <label>Category:</label>
-                                    <select
-                                        name="category"
-                                        value={formData.category}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="">Select</option>
-                                        <option value="select upto 3">Select upto 3</option>
-                                        <option value="select upto 4">Select upto 4</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Cuisines:</label>
-                                    {formData.cuisines.map((cuisine, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            value={cuisine}
-                                            onChange={(e) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    cuisines: formData.cuisines.map((item, idx) =>
-                                                        idx === index ? e.target.value : item
-                                                    ),
-                                                })
-                                            }
-                                        />
-                                    ))}
-                                </div>
-                                <button type="submit">Submit</button>
-                            </form> */}
                         </div>
                     </div>
 
