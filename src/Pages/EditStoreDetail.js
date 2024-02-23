@@ -60,10 +60,6 @@ const EditStoreDetail = () => {
         document.getElementById('c').style.display = "block";
     };
 
-
-
-
-
     const [formData3, setFormData3] = useState({
         paymentType: 'bankTransfer', // Set default payment type
         accountNumber: '',
@@ -261,9 +257,11 @@ const EditStoreDetail = () => {
                             <img src='/Group 1171277298.png' alt=''></img>
                         </div>
 
+
                         <div>
                             
                         </div>
+
                     </div>
 
                     {/* three */}

@@ -9,7 +9,7 @@ import Footer from '../Components/Footer';
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { ImCross } from 'react-icons/im';
-import Navbar from '../Components/Navbar';
+// import Navbar from '../Components/Navbar';
 function Joinpartner() {
     // let popup = document.getElementById('popup');
     

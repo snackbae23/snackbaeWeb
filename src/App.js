@@ -21,8 +21,10 @@ import Customer from './Pages/Customer';
 import EditStoreDetail from './Pages/EditStoreDetail';
 import Offer from './Pages/Offer';
 import Pricing from './Pages/Pricing';
+import DashboardAdmin from './Pages/DashboardAdmin';
+import AdminMerchant from './Pages/AdminMerchant';
 
-const excludedPaths = ['/dashboard','/adminDashboard','/form','/payout','/menu','/review','/customer','/editstore','/offer','/pricing'];
+const excludedPaths = ['/dashboard','/admin/dashboard','/admin/merchant','/adminDashboard','/form','/payout','/menu','/review','/customer','/editstore','/offer','/pricing'];
 
 function App() {
 
@@ -55,6 +57,9 @@ function App() {
         <Route path = '/editstore' element ={<EditStoreDetail/>}></Route>
         <Route path = '/offer' element ={<Offer/>}></Route>
         <Route path = '/pricing' element ={<Pricing/>}></Route>
+        
+        <Route path='/admin/dashboard' element={<DashboardAdmin/>}></Route>
+        <Route path='/admin/merchant' element={<AdminMerchant/>}></Route>
       </Routes>
     </div>
   );
