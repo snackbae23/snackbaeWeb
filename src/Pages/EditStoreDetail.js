@@ -25,7 +25,7 @@ const EditStoreDetail = () => {
         customerContact: '',
         customerContact1: '',
         category: '',
-        Cuisines:'',
+        Cuisines: '',
     });
 
     const handleChange = (e) => {
@@ -85,8 +85,8 @@ const EditStoreDetail = () => {
 
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
-                {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
+            <div className="z-10 bg-white fixed mt-8  w-full h-20 -top-8 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
                         className="relative w-28 h-16 object-cover z-20"
@@ -129,7 +129,6 @@ const EditStoreDetail = () => {
                     </Link>
                 </div>
             </div>
-
             <div className='flex  w-full mt-20 h-fit'>
 
                 {/* left */}
@@ -187,7 +186,7 @@ const EditStoreDetail = () => {
                                 <div className='flex w-full justify-between mt-3 mb-2'>
                                     <div className='flex flex-col w-[48%]'>
                                         <label>Business Name:</label>
-                                        <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' type="text" name="businessName" placeholder='Type here'  onChange={handleChange} />
+                                        <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' type="text" name="businessName" placeholder='Type here' onChange={handleChange} />
                                     </div>
                                     <div className='flex flex-col w-[48%]'>
                                         <label>Location:</label>
@@ -216,27 +215,27 @@ const EditStoreDetail = () => {
                                         <input className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' placeholder='Type here' type="text" name="customerContact1" onChange={handleChange} />
                                     </div>
                                 </div>
-                            <h1 className='text-[1.1rem] font-bold mt-2 mb-3'>Cuisine details</h1>
-                            <div className='flex w-full justify-between mt-3 mb-2'>
-                            <div className='flex flex-col w-[48%]'>
-                                    <label>Category:</label>
-                                    <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="category" onChange={handleChange}>
-                                        <option value="">Select Category</option>
-                                        <option value="upto3">Up to 3</option>
-                                        <option value="upto4">Up to 4</option>
-                                    </select>
+                                <h1 className='text-[1.1rem] font-bold mt-2 mb-3'>Cuisine details</h1>
+                                <div className='flex w-full justify-between mt-3 mb-2'>
+                                    <div className='flex flex-col w-[48%]'>
+                                        <label>Category:</label>
+                                        <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="category" onChange={handleChange}>
+                                            <option value="">Select Category</option>
+                                            <option value="upto3">Up to 3</option>
+                                            <option value="upto4">Up to 4</option>
+                                        </select>
+                                    </div>
+                                    <div className='flex flex-col w-[48%]'>
+                                        <label>Cuisines:</label>
+                                        <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="Cuisines" onChange={handleChange}>
+                                            <option value="">Select upto 3</option>
+                                            <option value="upto3">Up to 3</option>
+                                            <option value="upto4">Up to 4</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className='flex flex-col w-[48%]'>
-                                    <label>Cuisines:</label>
-                                    <select className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' name="Cuisines" onChange={handleChange}>
-                                        <option value="">Select upto 3</option>
-                                        <option value="upto3">Up to 3</option>
-                                        <option value="upto4">Up to 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                                
-                                
+
+
                             </form>
                         </div>
                     </div>
@@ -257,6 +256,12 @@ const EditStoreDetail = () => {
                         <div className='w-full h-[170px] bg-yellow-50 flex justify-center items-center  mt-4  rounded-lg border-dashed border-2 border-yellow-400'>
                             <img src='/Group 1171277298.png' alt=''></img>
                         </div>
+
+
+                        <div>
+                            
+                        </div>
+
                     </div>
 
                     {/* three */}

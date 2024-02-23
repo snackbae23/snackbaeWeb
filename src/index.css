@@ -161,5 +161,25 @@ transition: 1.2s;
     color:white;
 }
 .sidebar link{
-    width:100%;
+width:100%;
+}
+
+.input_container {
+  border-color: #E2E8F0; /* Set border color */
+  border-width: 1px; /* Set border width */
+  border-style: solid; /* Set border style */
+  border-radius: 0.375rem; /* Set border radius */
+  outline: none; /* Remove outline on focus */
+  width:100%;
+  height:100px;
+}
+
+.input_container:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Add shadow on focus */
+}
+.input_container input[type="file"]{
+    display: none;
+}
+.input_container lable[for="file"]{
+    display: none;
 }
