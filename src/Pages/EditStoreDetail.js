@@ -60,6 +60,10 @@ const EditStoreDetail = () => {
         document.getElementById('c').style.display = "block";
     };
 
+
+
+
+
     const [formData3, setFormData3] = useState({
         paymentType: 'bankTransfer', // Set default payment type
         accountNumber: '',
@@ -85,7 +89,8 @@ const EditStoreDetail = () => {
 
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="z-10 bg-white fixed mt-8  w-full h-20 -top-8 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+           <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+
 
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
@@ -132,7 +137,7 @@ const EditStoreDetail = () => {
             <div className='flex  w-full mt-20 h-fit'>
 
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
+                <div className='w-[20%]  bg-white flex flex-col fixed '>
                     <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
                         <FaHome /> <p>Dashboard</p>
                     </Link>
@@ -157,7 +162,7 @@ const EditStoreDetail = () => {
                 </div>
 
                 {/* right */}
-                <div className='flex flex-col w-[80%]  bg-slate-200 h-fit'>
+                <div className='flex flex-col w-[80%]  bg-slate-200 h-fit ml-[22%]'>
 
                     {/* one */}
                     <div className='w-[100%] p-8   rounded-md   ' id='a'  >
@@ -257,11 +262,9 @@ const EditStoreDetail = () => {
                             <img src='/Group 1171277298.png' alt=''></img>
                         </div>
 
-
                         <div>
                             
                         </div>
-
                     </div>
 
                     {/* three */}
