@@ -1,13 +1,10 @@
 import React from "react";
 import ellipse from "../assets/Ellipse 422.png";
 import ellipseA from "../assets/Ellipse 426.png";
-import rectangle from "../assets/Rectangle 55207.png";
 import Footer from "../Components/Footer";
 import rect from "../assets/Rectangle 55207.png";
 import ellipseB from "../assets/Ellipse 424.png";
-import rect1 from "../assets/Rectangle 3463490.png";
 import TeamSlider from "../Components/TeamSlider";
-import Navbar from "../Components/Navbar";
 import bg5 from "../assets/bg-5.png";
 import app from "../assets/appstore.png";
 
@@ -17,7 +14,7 @@ const AboutUs = () => {
       {/* <Navbar/> */}
       <div>
         {/* First Part */}
-        <div className="lg:h-[800px] h-[90vh] sm:h-[75vh] md:h-[60vh] w-[100vw] my-auto overflow-hidden bg-slate-50 relative">
+        <div className="lg:h-[800px] h-[90vh] sm:h-[75vh] md:h-[60vh] w-[100%] my-auto overflow-hidden bg-slate-50 relative">
           {/* Left Part */}
           <div className="lg:w-[39.75rem] w-full mx-auto lg:h-[22rem] flex gap-[1.5rem] flex-col absolute lg:top-[28vh] top-36 lg:left-[7vw] text-center lg:text-left">
             <div className="w-[7.125rem] h-12 rounded-3xl py-1 px-4 gap-2.5 bg-amber-50 hidden lg:flex ">
@@ -45,7 +42,7 @@ const AboutUs = () => {
           {/* Right Part */}
          <div className="hidden lg:flex absolute -bottom-4 -right-2">
             <img
-              src={ellipse}
+              src={ellipse} alt="image1"
               className="w-[53vw] min-h-[52vh] h-[62%]"
               loading="lazy"
             ></img>
@@ -54,6 +51,7 @@ const AboutUs = () => {
           <div className="hidden lg:flex absolute -bottom-4 right-0">
             <img
               src={ellipseA}
+              alt="image1"
               className="w-[50vw] min-h-[50vh] h-[60%]"
               loading="lazy"
             ></img>
@@ -137,7 +135,7 @@ const AboutUs = () => {
 
         {/* Fourth Part */}
         <div className="relative h-[400px] w-full md:h-[100vh] overflow-hidden">
-          <img src={bg5} className="w-full h-full absolute z-10"></img>
+          <img src={bg5} alt="image1" className="w-full h-full absolute z-10"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
           <div className=" absolute top-[7%] md:top-[10%] lg:top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
             <button className="w-[130px] h-[50px]  md:w-[130px]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500 ">
@@ -153,7 +151,7 @@ const AboutUs = () => {
               Download for android and iOS now
             </p>
 
-            <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
+            <img className="w-[340px] h-[47px] z-[100]" src={app} alt="image1"></img>
           </div>
         </div>
         {/* Footer */}

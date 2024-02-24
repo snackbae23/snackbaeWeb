@@ -15,19 +15,19 @@ import Slider from "../Components/Slider";
 import Faq from "../Components/Faq";
 import bg5 from "../assets/bg-5.png";
 import app from "../assets/appstore.png";
-import still from "../assets/still.png";
-import still1 from "../assets/still1.png";
 import Footer from "../Components/Footer";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import slide1 from "../assets/slide1.jpg";
 import slide2 from "../assets/slide3.jpg";
 import slide3 from "../assets/slide2.jpg";
 import slide4 from "../assets/slide8.jpg";
 import slide5 from "../assets/slide5.jpg";
 import slide6 from "../assets/slide6.jpg";
+import imageBase from "../assets/Image Base.png";
 
 const Homepage = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  // const [currentImage, setCurrentImage] = useState(0);
+  const [restaurantName, setrestaurantName] = useState("");
   const team = [
     { src: slide1 },
     { src: slide2 },
@@ -37,13 +37,60 @@ const Homepage = () => {
     { src: slide6 },
   ];
 
-  const handleScroll = (event) => {
-    setCurrentImage(event.target.scrollLeft);
-  };
+  // const handleScroll = (event) => {
+  //   setCurrentImage(event.target.scrollLeft);
+  // };
+  //restaurantName form
+
+  function changeRestaurantNameHandler(e) {
+    setrestaurantName(e.target.value);
+  }
+
+  function submitRestaurantNameHandler() {
+    console.log(restaurantName);
+    setrestaurantName("");
+  }
+
   return (
     <div>
       <div className="bg-white-A70 w-full overflow-x-hidden overflow-y-hidden">
-        <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 ">
+        {/* first part new */}
+        <div className="min-h-[94vh] pb-[1rem] md:pb-0 h-fit w-[100%] mt-[63px] flex justify-between items-center bg-[#EAB308] relative z-[-2]">
+          {/* left */}
+          <div className="px-[1rem] sm:px-[2rem] lg:w-[60%]">
+            {/* title */}
+            <div className="h-full md:w-[85%] leading-tight">
+              <p className="text-[2.8rem] sm:text-[3.2rem] text-white">Explore the hidden gems of <span className="text-black">Kolkata</span> with <span className="text-black">Snackbae</span></p>
+              <p className="text-gray-100 md:text-black">Within a few clicks, find  & book the best  eateries in Town</p>
+            </div>
+            {/* <input box */}
+            <div className=" bg-white sm:w-[85%] mt-[2rem] rounded-md">
+              <div className="border-b-2 p-4">
+                <p className="bg-[#FFCA0B1F] inline p-1 text-[#EAB308] text-[.9rem] font-semibold rounded-md">Dine-in</p>
+              </div>
+              <div className="flex flex-wrap gap-[1rem] justify-around items-center py-[2rem] px-[1rem]">
+                <input
+                  className="border-2 rounded-md h-[3rem] w-[100%] md:w-[65%] px-1 mr-1 bg-gray-100 "
+                  type="text"
+                  value={restaurantName}
+                  onChange={changeRestaurantNameHandler}
+                  placeholder="Search By Restaurant Name"
+                  />
+                <button
+                  onClick={submitRestaurantNameHandler}
+                  className="rounded-md h-[3rem] bg-black text-white px-6 py-2 cursor-pointer"
+                >Find Restaurant</button>
+              </div>
+            </div>
+          </div>
+          {/* right */}
+          {/* < className="aspect-square w-[100%] lg:w-[40%] absolute lg:relative border-2"> */}
+          <img src={imageBase} alt="newimage" className="md:h-[80%]  aspect-square z-[-1] absolute bottom-0 right-0" />
+
+        </div>
+        {/* first part new end */}
+
+        <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 border-2">
           <div className=" ">
             {/* /left part */}
             <div className="flex flex-col mx-auto absolute h-[35rem] left-[50%] -translate-x-1/2 top-[50%] -translate-y-1/2 lg:left-[1px] lg:translate-x-[15%] pt-16 lg:pt-32 gap-4">
@@ -53,11 +100,11 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="w-[23rem] mx-auto lg:mx-0 md:w-[40rem] md:h-[14rem]  flex flex-col lg:text-left z-40">
-                <div className="w-[362px] md:w-[41rem]  font-roboto font-semibold text-[28px] md:text-[48px] md:leading-[60px] lg:text-left text-center  text-slate-950 lg:-tracking-[2%]">
-                Tap the Table !!
+                <div className="w-[50%] font-roboto font-semibold text-[28px] md:text-[36px] md:leading-[60px] lg:text-left text-center  text-slate-950 lg:-tracking-[2%]">
+                  Tap the Table !!
                 </div>
                 <div className=" w-[362px] h-[75px] text-center lg:text-left md:w-[35rem] lg:h-[4rem] font-opensans font-normal text-[12px] lg:text-base leading-6 -tracking-[2%] text-slate-950 mt-5 mb-4">
-                Instantly book a personalized reservation in a restaurant of your choice for a stress-free dining experience.
+                  Instantly book a personalized reservation in a restaurant of your choice for a stress-free dining experience.
                 </div>
                 <div className=" flex flex-row mx-auto lg:mx-0 w-[22rem] h-[3.5rem] space-x-6  items-center mb-3">
                   <button className=" flex py-3 px-3 w-[10rem] relative  h-[2.8rem] border rounded-lg space-x-2 items-start justify-start bg-[#EAB308]">
@@ -83,20 +130,21 @@ const Homepage = () => {
                       <div className="flex my-auto w-[74%]">
                         <img
                           src={ellipse_sm}
+                          alt="newimage"
                           className="rounded-[50%] my-auto  w-[40px] h-[40px] md:w-14 md:h-14 border-2 border-[#ffffff]"
                         ></img>
                         <img
-                          src={ellipse_sm1}
+                          src={ellipse_sm1} alt="newimage"
                           className="  w-[40px] h-[40px] md:w-14 md:h-14 ml-[-25%] my-auto rounded-[50%] z-[1] border-2 border-[#ffffff]"
                         ></img>
                       </div>
                       <img
-                        src={ellipse_sm2}
+                        src={ellipse_sm2} alt="newimage"
                         className="  w-[40px] h-[40px] md:w-14 md:h-14 ml-[-23%] my-auto rounded-[50%] z-[1]  border-2 border-[#ffffff]"
                       ></img>
                     </div>
                     <img
-                      src={ellipse_sm3}
+                      src={ellipse_sm3} alt="newimage"
                       className=" w-[40px] h-[40px] md:w-14 md:h-14 ml-[-18%] rounded-[50%] my-auto z-[1] border-2 border-[#ffffff]"
                     ></img>
                   </div>
@@ -116,7 +164,7 @@ const Homepage = () => {
             {/* right part */}
             <div className="absolute hidden lg:block -bottom-4 -right-2">
               <img
-                src={ellipse}
+                src={ellipse} alt="newimage"
                 className="w-[53vw] h-[88vh]"
                 loading="lazy"
               ></img>
@@ -124,7 +172,7 @@ const Homepage = () => {
             </div>
             <div className="absolute hidden lg:block -bottom-4 right-0">
               <img
-                src={ellipse2}
+                src={ellipse2} alt="newimage"
                 className="w-[50vw] h-[84vh]"
                 height={626}
                 width={716}
@@ -134,15 +182,14 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+
         {/* // ------------------------------------------------FIRST PART ENDED----------------------------------------------------------------
       // ------------------------------------------------SECOND PART STARTED----------------------------------------------------------------- */}
-        <div className="w-[100vw] flex-col lg:flex-row items-center justify-center py-12">
+        <div className="w-[100vw] flex-col lg:flex-row items-center justify-center py-12 bg-[#1E2833]">
           <button className="lg:hidden w-[100px] mx-auto mb-7 flex justify-center items-center rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
-            <p className=" font-roboto  font-semibold text-base leading-10">
-              Discover
-            </p>
+            <p className=" font-roboto  font-semibold text-base leading-10">Discover</p>
           </button>
-          <div class="w-[85vw] bg-white flex justify-center items-center relative mx-auto">
+          <div class="w-[85vw] flex justify-center items-center relative mx-auto">
             <div class="flex flex-col-reverse lg:flex-row justify-between w-11/12 mx-auto">
               {/* .---left part---- */}
               <div className="w-[90%] lg:w-[40%] my-auto">
@@ -152,12 +199,12 @@ const Homepage = () => {
                   </p>
                 </button>
                 <div className="w-[90vw] md:w-[80vw] lg:w-[33vw] flex flex-col gap-2 lg:gap-5 mt-7 lg:mt-0 justify-center items-center pr-6 lg:pr-0">
-                  <div className="w-full text-center lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
-                  Scratch Your Itch to Save
+                  <div className="w-full text-center text-white lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
+                    Scratch Your Itch to Save
                   </div>
 
-                  <p className="w-full text-center lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
-                  Earn Scratch Cards and Coupons availing attractive discounts and rewards by making payments and inviting friends through the app.
+                  <p className="w-full text-center text-white lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
+                    Earn Scratch Cards and Coupons availing attractive discounts and rewards by making payments and inviting friends through the app.
                   </p>
                 </div>
                 <button className="py-1 px-1 w-[10rem] h-[2.8rem] border rounded-lg bg-[#EAB308] hidden lg:flex justify-center items-center">
@@ -176,7 +223,7 @@ const Homepage = () => {
               {/* ---right part----- */}
               <div className="relative w-[80%] md:w-[50%] lg:w-[40%] h-[300px] lg:h-[600px] mx-auto">
                 <img
-                  src={rectbig}
+                  src={rectbig} alt="newimage"
                   className="w-full h-full"
                 ></img>
                 <img
@@ -239,18 +286,18 @@ const Homepage = () => {
 
         {/* --------------------------------------------SECOND PART ENDED--------------------------------------------------
         ------------------------------------------THIRD PART STARTED------------------------------------------------------------- */}
-        <div className="w-[100vw] flex-col lg:flex-row items-center justify-center mx-auto py-12">
+        <div className="w-[100vw] flex-col lg:flex-row items-center justify-center mx-auto py-12 bg-[#1E2833]">
           <button className="lg:hidden w-[100px] mx-auto mb-7 flex justify-center items-center rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
             <p className=" font-roboto  font-semibold text-base leading-10">
               Coupons
             </p>
           </button>
-          <div class="w-[85vw] bg-white flex relative mx-auto">
+          <div className="">
             <div class="flex flex-col lg:flex-row justify-between items-center w-11/12 mx-auto">
               {/* ---left part-----*/}
               <div className="relative w-[80%] md:w-[50%] lg:w-[40%]  h-[300px] lg:h-[600px]">
                 <img
-                  src={rect3}
+                  src={rect3} alt="newimage"
                   className="w-full h-full"
                 ></img>
                 {/* <div className="absolute w-[240px] md:w-[290px] lg:w-[330px] bg-white top-[15%] md:top-[20%] lg:top-[25%] drop-shadow-2xl items-center justify-start p-[0.5rem] -right-32 md:-right-40 rounded-[15px]"> */}
@@ -263,7 +310,7 @@ const Homepage = () => {
                       loading="lazy"
                     ></img>
                     <div className="flex flex-col gap-[1px] items-start justify-start w-[71%]">
-                      <p className="text-left text-base text-black tracking-[-0.16px] font-medium font-roboto">
+                      <p className="text-left  text-base text-black tracking-[-0.16px] font-medium font-roboto">
                         Amanda Cooper
                       </p>
                       <img
@@ -286,12 +333,12 @@ const Homepage = () => {
                   </p>
                 </button>
                 <div className="w-[90vw] md:w-[80vw] lg:w-[33vw] flex flex-col gap-2 lg:gap-5 mt-7 lg:mt-0 pr-9 lg:pr-0">
-                  <div className="w-full text-center lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
-                  You Pay, You Earn
+                  <div className="w-full text-center text-white lg:text-left font-semibold text-xl lg:text-[42px] lg:leading-[56px] ">
+                    You Pay, You Earn
                   </div>
 
-                  <p className="w-full text-center lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
-                  Make secure and convenient payments through the app and earn rewards everytime you pay. Make your dining experience a saving opportunity for yourself.
+                  <p className="w-full text-center text-white lg:text-left font-opensans font-normal text-sm lg:leading-6 mb-3">
+                    Make secure and convenient payments through the app and earn rewards everytime you pay. Make your dining experience a saving opportunity for yourself.
                   </p>
                 </div>
                 <button className="  py-1 px-1 w-[10rem] lg:flex items-center justify-center h-[2.8rem] border rounded-lg bg-[#EAB308] hidden">
@@ -313,11 +360,11 @@ const Homepage = () => {
 
         {/* ------------------------------------THIRD PART ENDED------------------------------------------------- */}
         {/*-------------------------------------- FOURTH PART STARTED------------------------------------------------ */}
-        <div className="mt-60 lg:block hidden">
+        <div className="mt-[17rem]  md:block hidden">
           <Slider />
         </div>
 
-        <div className="my-12 p-3 block lg:hidden w-[90vw] mx-auto border border-gray-400 rounded-md">
+        <div className="my-12 p-3 block md:hidden w-[90vw] mx-auto border border-gray-400 rounded-md">
           <div>
             <button className="lg:hidden w-[100px] mx-auto mb-7 flex justify-center items-center rounded-3xl py-1 px-6  bg-amber-50 text-amber-500">
               <p className=" font-roboto  font-semibold text-base leading-10">
@@ -341,7 +388,7 @@ const Homepage = () => {
           <div className="w-full mx-auto flex flex-col gap-1">
             <div className="text-center font-bold text-xl">Community-Driven Recommendations </div>
             <div className="text-md text-center">
-            Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
+              Discover hidden gems and must-try delicacies suggested by a diverse community of food lovers.
             </div>
           </div>
         </div>
@@ -349,24 +396,24 @@ const Homepage = () => {
         {/* ------------------------------------FOURTH PART ENDED--------------------------------------------------------- */}
 
         {/* ---------------------------FIFTH PART STARTED----------------- */}
-        <div className="relative  w-full h-[400px] md:w-[100vw] md:h-[100vh] mb-8 overflow-hidden">
-          <img src={bg5} className="w-full h-full absolute z-10"></img>
+        <div className="relative w-full  h-[92vh] mb-8 overflow-hidden">
+          <img src={bg5} alt="newimage" className=" w-[100%] h-full  absolute z-10 object-cover"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
-          <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
+          <div className=" absolute  w-[100%] h-[100%] flex flex-col gap-6 justify-center items-center  z-30">
             <button className="w-[130px] h-[50px]  md:w-[130px]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500 ">
-              <p className="w-[7 mx-auto font-roboto  font-semibold text-base leading-10">
+              <p className=" mx-auto font-roboto  font-semibold text-base leading-10">
                 App Links
               </p>
             </button>
 
             <div className=" w-[360px] h-[64px] md:w-[750px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
-            Flavorful Experiences Await – Download the SnackBae App Today
+              Flavorful Experiences Await – Download the SnackBae App Today
             </div>
             <p className="sm:h-[25px] w-[360px] md:w-[515px] font-normaltext-[12px] md:text[14px] leading-[25px] font-sans text-center items-center text-white opacity-70">
               Download for android and iOS now
             </p>
 
-            <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
+            <img className="w-[340px] h-[47px] z-[100]" src={app} alt="newimage"></img>
           </div>
         </div>
         {/* ----------------------------FIFTH PART ENDED-------------------- */}
@@ -376,7 +423,7 @@ const Homepage = () => {
         </div>
         {/* ------------------------SIXTH PART ENDED--------------------------------- */}
         {/* ----------------------------------SEVENTH PART STARTED--------------------- */}
-        <div className=" h-[104px] w-full relative mt-10 lg:h-[185px] flex items-center place-content-center">
+        {/* <div className=" h-[104px] w-full relative mt-10 lg:h-[185px] flex items-center place-content-center">
           <img
             src={still}
             className="absolute w-full h-full object-cover"
@@ -390,7 +437,7 @@ const Homepage = () => {
               Contact Us
             </button>
           </div>
-        </div>
+        </div> */}
         {/* ---------------------footer---------------- */}
         <div>
           <Footer />

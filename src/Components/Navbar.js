@@ -22,7 +22,7 @@ function hideSidebar() {
         <div className="fixed w-full h-[60px] flex flex-row bg-[#ffffff] justify-between lg:px-20 items-center z-[100] ">
           <div>
             <Link to="/">
-              <img src={logo} alt="Logo" loading="lazy"></img>
+              <img src={logo} alt="Logo" loading="lazy" className="object-fit h-[50px]"></img>
             </Link>
           </div>
           <div className=" ">

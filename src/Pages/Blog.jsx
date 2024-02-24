@@ -252,7 +252,7 @@ const Blogs = () => {
         </div>
       </div>
 
-      <div className="relative  w-full h-[400px] md:w-[100vw] md:h-[100vh]  overflow-hidden">
+      <div className="relative  w-full h-[400px] md:w-[100%] md:h-[100vh]  overflow-hidden">
         <img src={bg5} className="w-full h-full absolute z-10"></img>
         <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
         <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
