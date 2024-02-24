@@ -281,7 +281,7 @@ const EditStoreDetail = () => {
                                 <button className='bg-yellow-500 px-4 py-2 rounded-md text-white'> Save changes</button>
                             </div>
                         </div>
-                        <div>
+                         <div className='flex justify-center items-center'>
                             <form className='text-[1.2rem] w-[50%] p-4 bg-slate-300 mt-4 rounded-md' onSubmit={handleSubmit3}>
                                 <h2 className=' mt-6 font-semibold'>Payment Method</h2>
                                 <div className='flex justify-between'>
