@@ -252,27 +252,8 @@ const Blogs = () => {
         </div>
       </div>
 
-      <div className="relative  w-full h-[400px] md:w-[100vw] md:h-[100vh]  overflow-hidden">
-        <img src={bg5} className="w-full h-full absolute z-10"></img>
-        <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
-        <div className=" absolute top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
-          {/* <button className="w-[130px] h-[50px]  md:w-[130px]  rounded-3xl py-1 px-6  bg-amber-50 text-amber-500 ">
-            <p className="w-[7 mx-auto font-roboto  font-semibold text-base leading-10">
-              App Links
-            </p>
-          </button> */}
-
-          <div className=" w-[360px] h-[64px] md:w-[600px] md:h-[112px] font-roboto font-semibold text-[20px] md:text-[42px] text-center items-center leading-[32px] md:leading-[56px] text-white">
-            Download th app Lorem ipsum dolor sit amet dolor sit
-          </div>
-          <p className="sm:h-[25px] w-[360px] md:w-[515px] font-normaltext-[12px] md:text[14px] leading-[25px] font-sans text-center items-center text-white opacity-70">
-            Download for android and iOS lorem ipsum dolor sit amet
-          </p>
-
-          <img className="w-[340px] h-[47px] z-[100]" src={app}></img>
-        </div>
-      </div>
-      <div>
+      
+      <div className="mt-[1rem]">
         <Footer />
       </div>
     </div>
