@@ -41,8 +41,8 @@ function AdminLeftBar() {
                         {open &&
                             <div className='w-full  flex flex-col'>
                                 <div className='w-full h-[50px] bg-slate-100 hover:bg-yellow-600 hover:text-white mb-1 flex items-center pl-16'><Link to='/admin/merchant'>Merchants</Link></div>
-                                <div className='w-full h-[50px] bg-slate-100 hover:bg-yellow-600 hover:text-white mb-1 flex items-center pl-16'><Link to='/offer'>Bookings</Link></div>
-                                <div className='w-full h-[50px] bg-slate-100 hover:bg-yellow-600 hover:text-white mb-1 flex items-center pl-16'><Link to='/offer'>Payments</Link></div>
+                                <div className='w-full h-[50px] bg-slate-100 hover:bg-yellow-600 hover:text-white mb-1 flex items-center pl-16'><Link to='/admin/bookings'>Bookings</Link></div>
+                                <div className='w-full h-[50px] bg-slate-100 hover:bg-yellow-600 hover:text-white mb-1 flex items-center pl-16'><Link to='/admin/sales'>Payments</Link></div>
                             </div>
                         }
                     </div>
