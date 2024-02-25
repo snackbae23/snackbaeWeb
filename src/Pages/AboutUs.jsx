@@ -40,7 +40,7 @@ const AboutUs = () => {
           </div>
 
           {/* Right Part */}
-         <div className="hidden lg:flex absolute -bottom-4 -right-2">
+          <div className="hidden lg:flex absolute -bottom-4 -right-2">
             <img
               src={ellipse} alt="image1"
               className="w-[53vw] min-h-[52vh] h-[62%]"
@@ -111,7 +111,7 @@ const AboutUs = () => {
             </div>
             <div className="font-roboto text-sm mb-1 font-semibold text-center mx-auto">Empowering Dining Experiences</div>
             <div className="font-normal text-sm text-[#020617]  font-opensans -tracking-[2%] text-center mx-auto ">
-            SnackBae fosters seamless connections between diners and merchants, redefining the way people experience and enjoy their favorite eateries.
+              SnackBae fosters seamless connections between diners and merchants, redefining the way people experience and enjoy their favorite eateries.
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ const AboutUs = () => {
         </div>
 
         {/* Fourth Part */}
-        <div className="relative h-[400px] w-full md:h-[100vh] overflow-hidden">
+        {/* <div className="relative h-[400px] w-full md:h-[100vh] overflow-hidden">
           <img src={bg5} alt="image1" className="w-full h-full absolute z-10"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
           <div className=" absolute top-[7%] md:top-[10%] lg:top-[25%] w-[100%] h-[281px] flex flex-col gap-6 justify-center items-center  z-30">
@@ -153,7 +153,8 @@ const AboutUs = () => {
 
             <img className="w-[340px] h-[47px] z-[100]" src={app} alt="image1"></img>
           </div>
-        </div>
+        </div> */}
+
         {/* Footer */}
         <Footer />
       </div>

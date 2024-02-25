@@ -8,9 +8,10 @@ import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { ImCross } from 'react-icons/im';
 import bgjoin from "../assets/bgjoin.png"
-
-
-
+import joinpartner2 from "../assets/joinpartner2.png"
+import joinpartner3 from "../assets/joinpartner3.png"
+import check from "../assets/check.png"
+import { Link } from 'react-router-dom';
 
 // import Navbar from '../Components/Navbar';
 function Joinpartner() {
@@ -79,7 +80,7 @@ function Joinpartner() {
     }
 
     return (
-        <div className='relative  w-[100%] h-fit '>
+        <div className='relative top-[60px] w-[100%] h-fit '>
             {/* <Navbar/> */}
             {/* popup */}
             <div className='absolute top-20 lg:top-28 left-[5%] lg:left-[15%] z-[100] shadow-inner hidden' id='popup'>
@@ -133,26 +134,29 @@ function Joinpartner() {
             </div>
             {/* first section  top-[15vh]*/}
 
-            <div className='w-full h-full bg-[#000000df] opacity-0' id='filter'></div>
-            <div id='background' className='relative top-[60px] flex w-[90%] mx-auto h-[90vh] justify-around items-center'>
-                <div className='w-[70%] h-full flex flex-col gap-[1rem] justify-center'>
-                    <div className='text-[#020617] text-5xl xl:text-7xl font-roboto font-semibold'>Join as Partner</div>
-                    <div className='font-opensans font-bold text-[#020617] -tracking-2 xl:text-lg '>Elevate Dining Experience with SnackBae</div>
-                    <div className='font-normal text-sm xl:text-lg text-[#020617]  lg:w-[510px] font-opensans -tracking-2'>
-                        At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.
+
+            <div className=' w-[100%] mb-[1rem] h-fit min-h-[90vh]'>
+                <div className='w-full h-full bg-[#000000df] opacity-0' id='filter'></div>
+                <div id='background' className=' flex lg:flex-row flex-col-reverse w-[90%] mx-auto h-[90vh] justify-around items-center '>
+                    <div className='w-[70%] h-full flex flex-col gap-[1rem] justify-center lg:items-start items-center'>
+                        <div className='text-[#020617] text-5xl xl:text-7xl font-roboto font-semibold'>Join as Partner</div>
+                        <div className='font-opensans font-bold text-[#020617] -tracking-2 xl:text-lg '>Elevate Dining Experience with SnackBae</div>
+                        <div className='font-normal text-sm xl:text-lg text-[#020617]  lg:w-[510px] font-opensans -tracking-2 text-center lg:text-start'>
+                            At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.
+                        </div>
+                        <div className='mx-auto lg:mx-0'>
+                            <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter' onClick={openPopup}>
+                                Get Started
+                            </button>
+                        </div>
                     </div>
-                    <div className='mx-auto lg:mx-0'>
-                        <button className='w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter' onClick={openPopup}>
-                            Get Started
-                        </button>
-                    </div>
+                    <img src={bgjoin} alt="bgjoinpartner" className='w-[80%] md:w-[60%] lg:w-[40%] aspect-square ' />
                 </div>
-                <img src={bgjoin} alt="bgjoinpartner" className=' w-[40%] aspect-square ' />
             </div>
 
 
             {/* second section */}
-            <div className='w-full h-fit   bg-[#1E2833] py-[4rem] text-white flex justify-center items-center'>
+            <div className='relative w-full h-fit   bg-[#1E2833] py-[4rem] text-white flex justify-center items-center'>
                 <div className='w-[90%] mx-auto'>
                     <div className='flex flex-col gap-11 '>
                         {/* first part */}
@@ -205,8 +209,10 @@ function Joinpartner() {
                     </div>
                 </div>
             </div>
+
+
             {/* third section What to upscale your business? Register as partner.*/}
-            <div className='relative w-full  h-[350px] md:h-[300px] lg:h-[680px] xl:h-[800px] my-auto'>
+            {/* <div className='relative w-full  h-[350px] md:h-[300px] lg:h-[680px] xl:h-[800px] my-auto'>
                 <img src={section3} alt='image1' className='w-full h-full absolute top-0 z-20'></img>
                 <div className='bg-[#000000] w-full h-full absolute top-0 z-30 opacity-50'></div>
                 <div className='lg:w-[515px] lg:h-[382px] absolute lg:top-[24%] lg:left-[10%] p-7 lg:p-0 flex flex-col gap-6 z-40'>
@@ -219,8 +225,123 @@ function Joinpartner() {
                         Get Started
                     </button>
                 </div>
+            </div> */}
+
+            <div className='w-full h-full mb-[1rem] relative'>
+                <p className=' font-roboto font-[600] leading-[38px] px-6 py-2 bg-[#eab208b4] inline rounded-3xl relative lg:top-[70px] lg:left-[110px] top-[10px] opacity-80'>About Us</p>
+                <div className='w-[100%] flex md:flex-row flex-col-reverse justify-around items-center'>
+                    <div className='md:w-[40%] text-center md:text-start'>
+                        <p className='text-[2.6rem] font-roboto font-[600] leading-[60px]'>Vision</p>
+                        <p className=' font-opensans font-[700] leading-[25px]'>Elevate Dining Experience with SnackBae</p>
+                        <p className=' font-opensans font-[400] leading-[25px] w-[80%] mx-auto md:m-0'>At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.</p>
+                    </div>
+                    <img src={joinpartner2} alt='joinpartner2' className='w-[50%] md:w-[30%] aspect-square'></img>
+                </div>
+                <div className='w-[100%] flex md:flex-row-reverse flex-col-reverse justify-around items-center'>
+                    <div className='md:w-[40%] text-center md:text-start'>
+                        <p className='text-[2.6rem] font-roboto font-[600] leading-[60px]'>Mission</p>
+                        <p className=' font-opensans font-[400] leading-[25px] w-[80%] mx-auto md:m-0 '>At SnackBae, we believe in the transformative power of exceptional dining experiences. Our mission is to empower restaurants to elevate their offerings, connect with a vibrant community, and enhance customer retention. Join us on this culinary journey and let SnackBae be your partner in success.</p>
+                    </div>
+                    <img src={joinpartner3} alt='joinpartner3' className='w-[50%] md:w-[30%] aspect-square'></img>
+                </div>
             </div>
-            {/* fourth section / footer */}
+
+            {/* fourth section  */}
+
+
+            <div className='w-full h-[1450px] lg:h-[800px] relative border-2'>
+                <div className='w-full h-[300px] bg-[#EAB308]'></div>
+                <div className='w-[80%]  mx-auto text-center  absolute top-[20%] translate-y-[-20%] left-[50%] translate-x-[-50%]'>
+                    <p className='font-roboto text-white font-[600] text-[2.6rem]'>Simple Pricing for your business</p>
+                    <p className='font-roboto text-gray-200 font-[100] text-[1.3rem]'>plans that are carefully craftedto suit your business</p>
+                    <div className='mt-[2rem] lg:h-[600px] h-[1200px] flex lg:flex-row flex-col gap-[2rem] justify-center '>
+                        {/* white Part */}
+                        <div className='w-[100%]  max-w-[400px] h-[600px] mx-auto p-[2rem] flex flex-col bg-white justify-center items-center rounded-md shadow-lg'>
+                            <div className='border-b-2 text-start'>
+                                <p className=' font-roboto font-[500] leading-[51px] text-[2.8rem] tracking-[-1px] '>Starter plan</p>
+                                <p className='text-gray-400 font-roboto  leading-[32px]'>Unleash the Power of Your Business with Free Plan.</p>
+                                <p className=' font-roboto font-[600] leading-[71px] text-[3rem] tracking-[-1px] '>FREE <span className='font-roboto font-[300] text-gray-400 leading-[29px] text-[1.3rem] tracking-[-1px]'>Forever</span></p>
+                            </div>
+                            <div className='w-[100%]'>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Listing</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Enhanced Menu Visibility</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Manage Table Booking </p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Payment Integration</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Custom Offers</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Business Analytics</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Marketing Services</p>
+                                </div>
+                                <div className='mt-[1rem]'></div>
+                                <Link className=' px-[7rem] py-3 border-2 border-black font-roboto font-[400] rounded-md leading-[40px]'>Get Started</Link>
+                            </div>
+                        </div>
+
+                        {/* yellow part */}
+
+                        <div className='w-[100%] h-fit max-w-[400px] mx-auto p-[2rem] flex flex-col bg-[#EAB308] justify-center items-center rounded-md shadow-xl'>
+                            <div className='border-b-2 text-start'>
+                                <p className=' font-roboto font-[500] leading-[51px] text-[2.8rem] tracking-[-1px] '>Premium</p>
+                                <p className='text-[#3C3C3C] font-roboto  leading-[32px]'>Take Your Business to the Next Level with Business Plan.</p>
+                                <p className=' font-roboto font-[600] leading-[71px] text-[3rem] tracking-[-1px] '>₹699 <span className='font-roboto font-[300] text-[#3C3C3C] leading-[29px] text-[1.3rem] tracking-[-1px]'>per month</span></p>
+                            </div>
+                            <div className='w-[100%]'>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>All Free features</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Complete Business Analytics</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Customer Insights</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Commission-less Payments</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Loyalty Tools</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>Advanced Marketing Tools</p>
+                                </div>
+                                <div className='flex gap-[1rem] items-center py-2'>
+                                    <img src={check} alt="check" className='w-[1.2rem] h-[90%]' />
+                                    <p className='font-[500] text-[1.1rem] '>24/7 Priority Support</p>
+                                </div>
+                                <div className='mt-[1rem]'></div>
+                                <Link className=' px-[7rem] py-3 bg-[#1B223C] text-[#EAB308] font-roboto font-[400] rounded-md leading-[40px]'>contact sales</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/*  footer */}
             <div>
                 <Footer />
             </div>

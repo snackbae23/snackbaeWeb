@@ -16,7 +16,7 @@ import Faq from "../Components/Faq";
 import bg5 from "../assets/bg-5.png";
 import app from "../assets/appstore.png";
 import Footer from "../Components/Footer";
-import { useState} from "react";
+import { useState } from "react";
 import slide1 from "../assets/slide1.jpg";
 import slide2 from "../assets/slide3.jpg";
 import slide3 from "../assets/slide2.jpg";
@@ -27,7 +27,6 @@ import imageBase from "../assets/Image Base.png";
 
 const Homepage = () => {
   // const [currentImage, setCurrentImage] = useState(0);
-  const [restaurantName, setrestaurantName] = useState("");
   const team = [
     { src: slide1 },
     { src: slide2 },
@@ -37,27 +36,28 @@ const Homepage = () => {
     { src: slide6 },
   ];
 
-  // const handleScroll = (event) => {
-  //   setCurrentImage(event.target.scrollLeft);
-  // };
-  //restaurantName form
+  
+ //restaurantName form
+const [restaurantName, setRestaurantName] = useState("");
 
-  function changeRestaurantNameHandler(e) {
-    setrestaurantName(e.target.value);
-  }
+const changeRestaurantNameHandler = (event) => {
+  setRestaurantName(event.target.value);
+};
 
-  function submitRestaurantNameHandler() {
-    console.log(restaurantName);
-    setrestaurantName("");
-  }
+const submitRestaurantNameHandler = () => {
+  // Your submission logic here
+  console.log(restaurantName);
+  setRestaurantName(""); // Reset the input field after submission
+};
+
 
   return (
-    <div>
-      <div className="bg-white-A70 w-full overflow-x-hidden overflow-y-hidden">
+      <div className="bg-white-A70 w-full  overflow-x-hidden overflow-y-hidden">
         {/* first part new */}
-        <div className="min-h-[94vh] pb-[1rem] md:pb-0 h-fit w-[100%] mt-[63px] flex justify-between items-center bg-[#EAB308] relative z-[-2]">
+        
+        <div className="min-h-[94vh] pb-[1rem] md:pb-0 h-fit w-[100%] mt-[63px] flex justify-between items-center bg-[#EAB308] relative ">
           {/* left */}
-          <div className="px-[1rem] sm:px-[2rem] lg:w-[60%]">
+          <div className="px-[1rem] sm:px-[2rem] lg:w-[60%] z-[2]">
             {/* title */}
             <div className="h-full md:w-[85%] leading-tight">
               <p className="text-[2.8rem] sm:text-[3.2rem] text-white">Explore the hidden gems of <span className="text-black">Kolkata</span> with <span className="text-black">Snackbae</span></p>
@@ -70,24 +70,26 @@ const Homepage = () => {
               </div>
               <div className="flex flex-wrap gap-[1rem] justify-around items-center py-[2rem] px-[1rem]">
                 <input
-                  className="border-2 rounded-md h-[3rem] w-[100%] md:w-[65%] px-1 mr-1 bg-gray-100 "
+                  className="border-2 rounded-md h-[3rem] w-[100%] md:w-[65%] px-1 mr-1 bg-gray-100"
                   type="text"
                   value={restaurantName}
                   onChange={changeRestaurantNameHandler}
                   placeholder="Search By Restaurant Name"
-                  />
+                  required />
                 <button
                   onClick={submitRestaurantNameHandler}
-                  className="rounded-md h-[3rem] bg-black text-white px-6 py-2 cursor-pointer"
+                  className="rounded-md h-[3rem] bg-black text-white px-6 py-2"
                 >Find Restaurant</button>
               </div>
             </div>
           </div>
           {/* right */}
           {/* < className="aspect-square w-[100%] lg:w-[40%] absolute lg:relative border-2"> */}
-          <img src={imageBase} alt="newimage" className="md:h-[80%]  aspect-square z-[-1] absolute bottom-0 right-0" />
+          <img src={imageBase} alt="new image" className="md:h-[80%]  aspect-square z-[1] absolute bottom-0 right-0" />
 
         </div>
+
+
         {/* first part new end */}
 
         <div className="relative w-full h-[100vh] overflow-x-hidden overflow-y-hidden  bg-slate-50 border-2">
@@ -100,7 +102,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="w-[23rem] mx-auto lg:mx-0 md:w-[40rem] md:h-[14rem]  flex flex-col lg:text-left z-40">
-                <div className="w-[50%] font-roboto font-semibold text-[28px] md:text-[36px] md:leading-[60px] lg:text-left text-center  text-slate-950 lg:-tracking-[2%]">
+                <div className="w-[60%] mx-auto lg:m-0 font-roboto font-semibold text-[28px] md:text-[36px] md:leading-[60px] lg:text-left text-center  text-slate-950 lg:-tracking-[2%]">
                   Tap the Table !!
                 </div>
                 <div className=" w-[362px] h-[75px] text-center lg:text-left md:w-[35rem] lg:h-[4rem] font-opensans font-normal text-[12px] lg:text-base leading-6 -tracking-[2%] text-slate-950 mt-5 mb-4">
@@ -360,7 +362,7 @@ const Homepage = () => {
 
         {/* ------------------------------------THIRD PART ENDED------------------------------------------------- */}
         {/*-------------------------------------- FOURTH PART STARTED------------------------------------------------ */}
-        <div className="mt-[17rem]  md:block hidden">
+        <div className="mt-[20rem]  md:block hidden">
           <Slider />
         </div>
 
@@ -396,7 +398,7 @@ const Homepage = () => {
         {/* ------------------------------------FOURTH PART ENDED--------------------------------------------------------- */}
 
         {/* ---------------------------FIFTH PART STARTED----------------- */}
-        <div className="relative w-full  h-[92vh] mb-8 overflow-hidden">
+        {/* <div className="relative w-full  h-[92vh] mb-8 overflow-hidden">
           <img src={bg5} alt="newimage" className=" w-[100%] h-full  absolute z-10 object-cover"></img>
           <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
           <div className=" absolute  w-[100%] h-[100%] flex flex-col gap-6 justify-center items-center  z-30">
@@ -415,36 +417,18 @@ const Homepage = () => {
 
             <img className="w-[340px] h-[47px] z-[100]" src={app} alt="newimage"></img>
           </div>
-        </div>
+        </div> */}
         {/* ----------------------------FIFTH PART ENDED-------------------- */}
         {/* ------------------------SIXTH PART STARTED----------------------- */}
-        <div>
+        <div className="mt-[1rem]">
           <Faq />
         </div>
-        {/* ------------------------SIXTH PART ENDED--------------------------------- */}
-        {/* ----------------------------------SEVENTH PART STARTED--------------------- */}
-        {/* <div className=" h-[104px] w-full relative mt-10 lg:h-[185px] flex items-center place-content-center">
-          <img
-            src={still}
-            className="absolute w-full h-full object-cover"
-          ></img>
-          <div className="bg-[#000000] w-full h-full absolute z-20 opacity-50"></div>
-          <div className="absolute flex justify-between   items-center  w-11/12 z-30">
-            <div className="   md:text-[1.6rem]  text-white  text-center ">
-              Still have Questions ?
-            </div>
-            <button className="w-[35vw] lg:w-[130px] h-[33px] bg-[#EAB308]  rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] font-roboto font-semibold tracking-tighter ">
-              Contact Us
-            </button>
-          </div>
-        </div> */}
+
         {/* ---------------------footer---------------- */}
         <div>
           <Footer />
         </div>
-
       </div>
-    </div>
   );
 };
 export default Homepage;
