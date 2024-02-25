@@ -14,7 +14,7 @@ import axios from "axios";
 
 
 function AdminMerchant() {
-    
+
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedCuisine, setSelectedCuisine] = useState([]);
     const [image, setImage] = useState(null);
@@ -24,7 +24,7 @@ function AdminMerchant() {
         paymentPolicy: false,
         otherTerms: false
     });
-      const [alldata, setallData] = useState();
+    const [alldata, setallData] = useState();
     const [pic, setPic] = useState();
     const [formData, setFormData] = useState({
         restaurantName: '',
@@ -44,8 +44,8 @@ function AdminMerchant() {
         cuisinesServed: selectedCuisine,
         paymentMethods: [],
         FSSAInumber: '',
-        
-        salesRepresentative:'',
+
+        salesRepresentative: '',
     });
 
     const handleChange = (e) => {
@@ -88,48 +88,48 @@ function AdminMerchant() {
             [name]: checked
         });
     };
-  
+
 
     // save for later handler
-    function saveForLaterHandler(){
-    
+    function saveForLaterHandler() {
+
 
     }
 
     //create merchant handler
-    function createMerchantHandler(e){
-           e.preventDefault();
-        setallData({ ...formData, pic  });
-     
+    function createMerchantHandler(e) {
+        e.preventDefault();
+        setallData({ ...formData, pic });
+
         console.log(alldata)
 
     }
 
- const postDetails = async (pics) => {
-   const formData = new FormData();
-   formData.append("someExpressFiles", pics);
+    const postDetails = async (pics) => {
+        const formData = new FormData();
+        formData.append("someExpressFiles", pics);
 
-   let config = {
-     method: "post",
-     maxBodyLength: Infinity,
-     url: "http://localhost:4000/api/gallery",
-     // headers: {
-     //   ...data.getHeaders(),
-     // },
-     data: formData,
-   };
+        let config = {
+            method: "post",
+            maxBodyLength: Infinity,
+            url: "http://localhost:4000/api/gallery",
+            // headers: {
+            //   ...data.getHeaders(),
+            // },
+            data: formData,
+        };
 
-   axios
-     .request(config)
-     .then((response) => {
-       console.log(JSON.stringify(response.data));
-       setPic(response?.data?.image_url);
-       console.log(pic);
-     })
-     .catch((error) => {
-       console.log(error);
-     });
- };
+        axios
+            .request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setPic(response?.data?.image_url);
+                console.log(pic);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     const categoryOptions = [
         { value: 'Rooftop', label: 'RoofTop' },
         { value: 'PetFriendly', label: 'Pet-friendly' },
@@ -548,7 +548,7 @@ function AdminMerchant() {
                                                 files[0] && setFileName(files[0].name)
                                                 if (files)
                                                     setImage(URL.createObjectURL(files[0]))
-                                                    postDetails(files[0])
+                                                postDetails(files[0])
                                             }}
                                             hidden></input>
                                         {image ?
@@ -577,7 +577,7 @@ function AdminMerchant() {
                                             />
                                             Agree to our Software Policy
                                         </label>
-                                        
+
                                         <label className="flex ml-4 mt-1 ">
                                             <input
                                                 type="checkbox"
@@ -588,7 +588,7 @@ function AdminMerchant() {
                                             />
                                             Agree to our Payment Policy
                                         </label>
-                                        
+
                                         <label className="flex ml-4 mt-1 ">
                                             <input
                                                 type="checkbox"
@@ -602,7 +602,7 @@ function AdminMerchant() {
                                     </div>
                                     {/* sales representative */}
                                     <div className='w-[46%]'>
-                                    <label className="flex ml-4 mt-2 font-bold text-sm" htmlFor="salesRepresentative">Sales Representative:</label>
+                                        <label className="flex ml-4 mt-2 font-bold text-sm" htmlFor="salesRepresentative">Sales Representative:</label>
                                         <input className="rounded-lg shadow-sm ml-4 mt-1 px-4 py-3 w-full border border-gray-300"
                                             type="text"
                                             id="salesRepresentative"
@@ -617,10 +617,10 @@ function AdminMerchant() {
 
                             {/* buttons */}
                             <div className='w-full flex justify-center mt-16'>
-                            <div className='flex gap-4'>
-                                <button onClick={createMerchantHandler} type='submit' className='cursor-pointer px-2 font-roboto font-medium text-sm py-2 bg-yellow-500 text-white rounded-lg '>Create Merchants</button>
-                                <button onClick={saveForLaterHandler} className='cursor-pointer px-3 font-roboto font-medium text-sm py-2 border border-yellow-500 text-yellow-500 rounded-lg'>Save for later</button>
-                            </div>
+                                <div className='flex gap-4'>
+                                    <button onClick={createMerchantHandler} type='submit' className='cursor-pointer px-2 font-roboto font-medium text-sm py-2 bg-yellow-500 text-white rounded-lg '>Create Merchants</button>
+                                    <button onClick={saveForLaterHandler} className='cursor-pointer px-3 font-roboto font-medium text-sm py-2 border border-yellow-500 text-yellow-500 rounded-lg'>Save for later</button>
+                                </div>
                             </div>
                         </form>
                     </div>

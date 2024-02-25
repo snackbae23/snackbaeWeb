@@ -278,7 +278,7 @@ const EditStoreDetail = () => {
                                 <button className='bg-black text-white px-4 py-1 rounded-full' onClick={three} >Payout Method</button>
                             </div>
                             <div>
-                                <button className='bg-yellow-500 px-4 py-2 rounded-md text-white'> Save changes</button>
+                                // <button className='bg-yellow-500 px-4 py-2 rounded-md text-white'> Save changes</button>
                             </div>
                         </div>
                          <div className='flex justify-center items-center'>
@@ -372,7 +372,7 @@ const EditStoreDetail = () => {
                                     </>
                                 )}
 
-                                <button className='bg-yellow-500 text-white px-4 rounded-md ml-[30%] py-1 mt-4 ' type="submit">Submit Payment</button>
+                                <button className='bg-yellow-500 text-white px-4 rounded-md ml-[30%] py-1 mt-4 ' type="submit">Save changes</button>
                             </form>
                         </div>
                     </div>
