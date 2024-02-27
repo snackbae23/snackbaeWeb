@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
+import { IoMdTime } from "react-icons/io";
 
 const Offer = () => {
 
@@ -48,7 +49,7 @@ const Offer = () => {
     }
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+            <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">y
                 {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
@@ -281,6 +282,172 @@ const Offer = () => {
 
 
 
+                    {/* container */}
+                 <div className='grid grid-cols-2 w-full h-fit gap-3 mt-5'>
+
+<div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+    <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+        <div>
+            <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+            <div className='flex items-center gap-2'>
+                <IoMdTime />
+                <p>Always active</p>
+            </div>
+
+        </div>
+        <div className='flex gap-2 items-center'>
+            <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+            <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+            </switch>
+
+        </div>
+
+    </div>
+
+    <div className='flex flex-col'>
+        <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+        <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+        <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+        <div className='flex justify-between mt-3'>
+            <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+            <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+
+        </div>
+    </div>
+
+</div>
+
+<div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+    <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+        <div>
+            <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+            <div className='flex items-center gap-2'>
+                <IoMdTime />
+                <p>Always active</p>
+            </div>
+
+        </div>
+        <div className='flex gap-2 items-center'>
+            <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+            <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+            </switch>
+
+        </div>
+
+    </div>
+
+    <div className='flex flex-col'>
+        <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+        <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+        <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+        <div className='flex justify-between mt-3'>
+            <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+            <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+
+        </div>
+    </div>
+
+</div>
+<div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+    <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+        <div>
+            <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+            <div className='flex items-center gap-2'>
+                <IoMdTime />
+                <p>Always active</p>
+            </div>
+
+        </div>
+        <div className='flex gap-2 items-center'>
+            <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+            <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+            </switch>
+
+        </div>
+
+    </div>
+
+    <div className='flex flex-col'>
+        <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+        <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+        <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+        <div className='flex justify-between mt-3'>
+            <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+            <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+
+        </div>
+    </div>
+
+</div>
+<div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+    <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+        <div>
+            <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+            <div className='flex items-center gap-2'>
+                <IoMdTime />
+                <p>Always active</p>
+            </div>
+
+        </div>
+        <div className='flex gap-2 items-center'>
+            <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+            <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+            </switch>
+
+        </div>
+
+    </div>
+
+    <div className='flex flex-col'>
+        <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+        <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+        <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+        <div className='flex justify-between mt-3'>
+            <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+            <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+
+        </div>
+    </div>
+
+</div>
+<div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+    <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+        <div>
+            <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+            <div className='flex items-center gap-2'>
+                <IoMdTime />
+                <p>Always active</p>
+            </div>
+
+        </div>
+        <div className='flex gap-2 items-center'>
+            <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+            <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+            </switch>
+
+        </div>
+
+    </div>
+
+    <div className='flex flex-col'>
+        <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+        <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+        <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+        <div className='flex justify-between mt-3'>
+            <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+            <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+
+        </div>
+    </div>
+
+</div>
+                 </div>
+
 
 
 
@@ -288,6 +455,7 @@ const Offer = () => {
 
                 </div>
 
+                 
             </div>
         </div>
     )
