@@ -173,29 +173,58 @@ const Pricing = () => {
             <div className='flex  w-full mt-20 h-fit'>
              
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
-                    <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
-                        <FaHome /> <p>Dashboard</p>
-                    </Link>
-                    <Link to='/payout' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2' >
-                        <FaBlog /><p>Payout</p>
-                    </Link>
-                    <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <MdMenuBook /><p>Menu</p>
-                    </Link>
-                    <Link to='/editstore' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <IoStorefrontOutline /><p>Edit store detail</p>
-                    </Link>
-                    <Link to='/offer' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <BiSolidOffer /><p>offers & campaign</p>
-                    </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
-                        <IoIosLogOut /> <p>Log out</p>
-                    </Link>
-                </div>
+                <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+          <Link
+            to="/dashboard"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
+          >
+            <FaHome /> <p className='md:block hidden'>Dashboard</p>
+          </Link>
+          <Link
+            to="/payout"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <FaBlog />
+            <p className='md:block hidden'>Payout</p>
+          </Link>
+          <Link
+            to="/menu"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <MdMenuBook />
+            <p className='md:block hidden'>Menu</p>
+          </Link>
+          <Link
+            to="/editstore"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <IoStorefrontOutline />
+            <p className='md:block hidden'>Edit store detail</p>
+          </Link>
+          <Link
+            to="/offer"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <BiSolidOffer />
+            <p className='md:block hidden'>offers & campaign</p>
+          </Link>
+          <Link
+            to="/pricing"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <BiSolidOffer />
+            <p className='md:block hidden'>Pricing</p>
+          </Link>
+          <Link
+            to="/"
+            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
+          >
+            <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
+          </Link>
+        </div>
 
                 {/* right */}
-                <div className='w-[80%]  bg-slate-100  rounded-md flex flex-col items-center  relative ' >
+                <div className='md:w-[75%] w-[85%] bg-slate-100  rounded-md flex flex-col items-center  relative  md:ml-[22%] ml-[12%]' >
                     <div className='w-full h-[300px] bg-yellow-500 flex flex-col text-white relative'>
                         <button className='bg-black w-[130px]  px-4 py-1 rounded-full mt-6 ml-[850px] '>Need Help?</button>
                         <p className='text-[2.7rem] font-bold mx-auto'>Simple pricing for your business</p>

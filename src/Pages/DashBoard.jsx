@@ -96,31 +96,57 @@ const Payout = () => {
             </div>
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col fixed '>
-                <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
-                        <FaHome /> <p>Dashboard</p>
-                    </Link>
-                    <Link to='/payout' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2' >
-                        <FaBlog /><p>Payout</p>
-                    </Link>
-                    <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <MdMenuBook /><p>Menu</p>
-                    </Link>
-                    <Link to='/editstore' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <IoStorefrontOutline /><p>Edit store detail</p>
-                    </Link>
-                    <Link to='/offer' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <BiSolidOffer /><p>offers & campaign</p>
-                    </Link>
-                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <BiSolidOffer /><p>Pricing</p>
-                    </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
-                        <IoIosLogOut /> <p>Log out</p>
-                    </Link>
-                </div>
+                <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+          <Link
+            to="/dashboard"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
+          >
+            <FaHome /> <p className='md:block hidden'>Dashboard</p>
+          </Link>
+          <Link
+            to="/payout"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <FaBlog />
+            <p className='md:block hidden'>Payout</p>
+          </Link>
+          <Link
+            to="/menu"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <MdMenuBook />
+            <p className='md:block hidden'>Menu</p>
+          </Link>
+          <Link
+            to="/editstore"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <IoStorefrontOutline />
+            <p className='md:block hidden'>Edit store detail</p>
+          </Link>
+          <Link
+            to="/offer"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <BiSolidOffer />
+            <p className='md:block hidden'>offers & campaign</p>
+          </Link>
+          <Link
+            to="/pricing"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <BiSolidOffer />
+            <p className='md:block hidden'>Pricing</p>
+          </Link>
+          <Link
+            to="/"
+            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
+          >
+            <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
+          </Link>
+        </div>
                 {/* right */}
-                <div className='w-[75%] bg-slate-300  h-full rounded-md p-6 overflow-hidden ml-[22%]' >
+                <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
                 <div className=' top-16 left-56'>
                 <h3 className=" mt-5 text-xl font-bold font-inherit mb-3 ">
                     Dashboard

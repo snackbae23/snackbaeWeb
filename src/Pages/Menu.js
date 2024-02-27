@@ -65,6 +65,30 @@ const Menu = () => {
       "amount": "₹231",
       "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
     },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
   ]
   
   function openPopup() {
@@ -268,78 +292,85 @@ const Menu = () => {
         </div>
       </div>
 
-      <div className="flex  w-full mt-20 h-full " id="background">
+      <div className="flex  w-full mt-16 h-full " id="background">
         {/* left */}
-        <div className="w-[20%]  bg-white flex flex-col fixed ">
+        <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
           <Link
             to="/dashboard"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 "
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
           >
-            <FaHome /> <p>Dashboard</p>
+            <FaHome /> <p className='md:block hidden'>Dashboard</p>
           </Link>
           <Link
             to="/payout"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <FaBlog />
-            <p>Payout</p>
+            <p className='md:block hidden'>Payout</p>
           </Link>
           <Link
             to="/menu"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <MdMenuBook />
-            <p>Menu</p>
+            <p className='md:block hidden'>Menu</p>
           </Link>
           <Link
             to="/editstore"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <IoStorefrontOutline />
-            <p>Edit store detail</p>
+            <p className='md:block hidden'>Edit store detail</p>
           </Link>
           <Link
             to="/offer"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <BiSolidOffer />
-            <p>offers & campaign</p>
+            <p className='md:block hidden'>offers & campaign</p>
           </Link>
           <Link
             to="/pricing"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <BiSolidOffer />
-            <p>Pricing</p>
+            <p className='md:block hidden'>Pricing</p>
           </Link>
           <Link
             to="/"
-            className="w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16"
+            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
           >
-            <IoIosLogOut /> <p>Log out</p>
+            <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
           </Link>
         </div>
 
         {/* right */}
-        <div className="w-[75%] bg-slate-200  h-full rounded-md p-6 ml-[22%]">
-          <div className="flex justify-between">
-            <h1 className="text-[1.2rem] font-bold w-[40%] ml-4 ">Menu</h1>
+        <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
+        <h1 className="text-[1.4rem] font-bold w-[40%] ml-4 ">Menu</h1>
+          <div className="flex justify-between relative mt-2">
+            
+            <div className='mt-2 flex gap-1'>
+                            <button className='bg-black text-white rounded-full py-2 px-6'>Menu</button>
+                            <button className='rounded-full ml-4 bg-white py-2 px-4'>Analytics</button>
+                           
+            </div>
+            <p className=' absolute rounded-full bg-yellow-500 size-fit px-4 ml-44 mb-2 '>Pro</p>
             <button
               onClick={openPopup}
-              className="w-[200px] bg-yellow-500 h-10 rounded-md"
+              className="w-[150px] text-white font-semibold bg-yellow-500 h-10 rounded-md"
             >
               Add new Item
             </button>
           </div>
 
-          <div className="grid md:grid-cols-4 grid-cols-3 gap-4 mt-10 rounded-lg">
+          <div className="grid md:grid-cols-4 grid-cols-3 gap-4 mt-5 rounded-lg">
             {data.map((item, index) => (
               <div
-                className="h-[236px] flex flex-col  bg-white rounded-md relative"
+                className="md:h-[220px] h-[180px] flex flex-col  bg-white rounded-md relative"
                 key={index}
               >
                 <img
-                  className="w-full h-[174px] object-cover rounded-t-lg"
+                  className="w-full h-[170px] object-cover rounded-t-lg"
                   src={item.image}
                   alt="img"
                 ></img>
@@ -349,8 +380,8 @@ const Menu = () => {
                 <button className="absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center">
                   <FaPenFancy />
                 </button>
-                <div className="flex justify-between mt-2 ml-4">
-                  <h1 className="text-[1.2rem] font-semibold">{item.menu}</h1>
+                <div className="flex items-center mt-1 ml-4">
+                  <h1 className="md:text-[1.2rem] text-[1.1rem] font-semibold">{item.menu}</h1>
                   {/* <h1 className="text-[1.2rem] font-semibold mr-2">
                     {item.amount}
                   </h1> */}
