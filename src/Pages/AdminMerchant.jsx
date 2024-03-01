@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AdminNav from '../Components/AdminNav'
 import AdminLeftBar from '../Components/AdminLeftBar'
 import { LiaFileDownloadSolid } from "react-icons/lia";
@@ -12,8 +12,9 @@ import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select';
 import axios from "axios";
 
-
 function AdminMerchant() {
+    const [latitude,setLatitude] =  useState();
+    const [longitude, setLongitude] = useState();
 
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedCuisine, setSelectedCuisine] = useState([]);
@@ -41,10 +42,9 @@ function AdminMerchant() {
         capacity: '',
         numberOfTables: '',
         category: selectedCategory,
-        cuisinesServed: selectedCuisine,
+        cuisinesServed: selectedCuisine ,
         paymentMethods: [],
         FSSAInumber: '',
-
         salesRepresentative: '',
     });
 
@@ -58,10 +58,16 @@ function AdminMerchant() {
 
     const handleCategoryChange = (selectedOptions) => {
         setSelectedCategory(selectedOptions);
+        console.log(selectedCategory);
+
+        formData.category = selectedCategory;
     }
 
     const handleCuisineChange = (selectedOptions) => {
         setSelectedCuisine(selectedOptions);
+        console.log(selectedCuisine);
+        
+        formData.cuisinesServed = selectedCuisine;
     }
 
     const handleCheckboxChange = (event) => {
@@ -89,20 +95,62 @@ function AdminMerchant() {
         });
     };
 
-
     // save for later handler
-    function saveForLaterHandler() {
-
+    function saveForLaterHandler()
+    {
 
     }
 
+    function getGeoLocation(callback)
+    {
+        if(navigator.geolocation)
+        {
+            console.log("inside navigator.geolocation");
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const {lat,lon} = position.coords;
+                    console.log("latitude  : ",lat);
+                    console.log("longitude  : ",lon);
+                    setLatitude(lat);
+                    setLongitude(lon);
+                    callback(latitude, longitude);
+                },
+                (error) => {
+                    console.error("Error getting geolocation:", error);
+                }
+            )
+        }
+    }
+
+    useEffect(() => {
+        setFormData(prevData => ({
+            ...prevData,
+            category: selectedCategory,
+            cuisinesServed: selectedCuisine
+        }));
+    }, [selectedCategory, selectedCuisine]);
+
     //create merchant handler
-    function createMerchantHandler(e) {
+    const createMerchantHandler = async(e) => {
         e.preventDefault();
-        setallData({ ...formData, pic });
 
-        console.log(alldata)
+        getGeoLocation((latitude, longitude) => {
+            console.log("fetched geolocation");
+            console.log("form data : ",formData);
+            console.log("geolocation " , latitude, " " , longitude);
+    
+            setallData({ ...formData, pic, latitude, longitude });
+    
+            console.log("all data : ", alldata);
+        });
 
+        // getGeoLocation();
+        // console.log("fetched geolocation");
+        // console.log("form data : ",formData);
+        // console.log("geolocation " , latitude, " " , longitude);
+        // setallData({ ...formData, pic, latitude, longitude });
+        // // console.log()
+        // console.log("all data : ",alldata);
     }
 
     const postDetails = async (pics) => {
@@ -141,8 +189,6 @@ function AdminMerchant() {
         { value: 'Chinese', label: 'Chinese' },
         { value: 'Italian', label: 'Italian' },
     ];
-
-
 
     const resData = [
         { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
@@ -189,8 +235,6 @@ function AdminMerchant() {
 
         return 'Just now';
     };
-
-
 
     // const [currentScreen, setCurrentScreen] = useState(1);
 
