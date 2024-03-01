@@ -16,7 +16,6 @@ import { IoMdTime } from "react-icons/io";
 
 const Offer = () => {
 
-
     const [formData, setFormData] = useState({
         title: '',
         minBilling: '',
@@ -49,7 +48,7 @@ const Offer = () => {
     }
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">y
+            <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
                 {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img

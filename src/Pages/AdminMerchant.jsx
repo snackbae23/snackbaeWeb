@@ -11,9 +11,10 @@ import { FiUpload } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select';
 import axios from "axios";
+import { useToast } from "@chakra-ui/toast";
 
 function AdminMerchant() {
-    const [latitude,setLatitude] =  useState();
+    const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
 
     const [selectedCategory, setSelectedCategory] = useState([]);
@@ -41,11 +42,13 @@ function AdminMerchant() {
         location: '',
         capacity: '',
         numberOfTables: '',
-        category: selectedCategory,
-        cuisinesServed: selectedCuisine ,
+        selectedCategory: selectedCategory,
+        selectedCuisine: selectedCuisine,
         paymentMethods: [],
         FSSAInumber: '',
         salesRepresentative: '',
+        latitude: 0,
+        longitude: 0,
     });
 
     const handleChange = (e) => {
@@ -60,14 +63,14 @@ function AdminMerchant() {
         setSelectedCategory(selectedOptions);
         console.log(selectedCategory);
 
-        formData.category = selectedCategory;
+        formData.selectedCategory = selectedCategory;
     }
 
     const handleCuisineChange = (selectedOptions) => {
         setSelectedCuisine(selectedOptions);
         console.log(selectedCuisine);
-        
-        formData.cuisinesServed = selectedCuisine;
+
+        formData.selectedCuisine = selectedCuisine;
     }
 
     const handleCheckboxChange = (event) => {
@@ -96,23 +99,22 @@ function AdminMerchant() {
     };
 
     // save for later handler
-    function saveForLaterHandler()
-    {
+    function saveForLaterHandler() {
 
     }
 
-    function getGeoLocation(callback)
-    {
-        if(navigator.geolocation)
-        {
+    function getGeoLocation(callback) {
+        if (navigator.geolocation) {
             console.log("inside navigator.geolocation");
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const {lat,lon} = position.coords;
-                    console.log("latitude  : ",lat);
-                    console.log("longitude  : ",lon);
-                    setLatitude(lat);
-                    setLongitude(lon);
+                    const { latitude, longitude } = position.coords;
+                    console.log("latitude  : ", latitude);
+                    console.log("longitude  : ", longitude);
+                    setLatitude(latitude);
+                    setLongitude(longitude);
+                    formData.latitude = latitude;
+                    formData.longitude = longitude;
                     callback(latitude, longitude);
                 },
                 (error) => {
@@ -125,10 +127,35 @@ function AdminMerchant() {
     useEffect(() => {
         setFormData(prevData => ({
             ...prevData,
-            category: selectedCategory,
-            cuisinesServed: selectedCuisine
+            selectedCategory: selectedCategory,
+            selectedCuisine: selectedCuisine
         }));
     }, [selectedCategory, selectedCuisine]);
+    const toast = useToast();
+
+    // resetForm
+    function resetForm(){
+        setFormData({
+            restaurantName: '',
+            managerName: '',
+            managerContact: '',
+            customerContact: '',
+            authorizedMail: '',
+            openingHour: '',
+            closingHour: '',
+            offDay: '',
+            averageCost: '',
+            openAllDay: false,
+            location: '',
+            capacity: '',
+            numberOfTables: '',
+            selectedCategory: selectedCategory,
+            selectedCuisine: selectedCuisine,
+            paymentMethods: [],
+            FSSAInumber: '',
+            salesRepresentative: '',
+        })
+    }
 
     //create merchant handler
     const createMerchantHandler = async(e) => {
@@ -136,21 +163,45 @@ function AdminMerchant() {
 
         getGeoLocation((latitude, longitude) => {
             console.log("fetched geolocation");
-            console.log("form data : ",formData);
-            console.log("geolocation " , latitude, " " , longitude);
-    
-            setallData({ ...formData, pic, latitude, longitude });
-    
-            console.log("all data : ", alldata);
-        });
+            console.log("form data : ", formData);
+            console.log("geolocation ", latitude, " ", longitude);
+            console.log("pic : ",pic);
+            setallData({...formData, pic});
 
-        // getGeoLocation();
-        // console.log("fetched geolocation");
-        // console.log("form data : ",formData);
-        // console.log("geolocation " , latitude, " " , longitude);
-        // setallData({ ...formData, pic, latitude, longitude });
-        // // console.log()
-        // console.log("all data : ",alldata);
+            console.log("all data : ", alldata);
+            
+            let data = JSON.stringify(alldata);
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:4000/api/postFormDetails',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                    toast({
+                        title: "Registration Successful",
+                        status: "success",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom",
+                      });
+                      setSelectedCategory([]);
+                      setSelectedCuisine([]);
+                      resetForm();
+                      closeMerchantForm();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert(error);
+                });
+        });
     }
 
     const postDetails = async (pics) => {
@@ -167,17 +218,20 @@ function AdminMerchant() {
             data: formData,
         };
 
-        axios
+        await axios
             .request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                setPic(response?.data?.image_url);
+                console.log(response?.data?.image_url);
+                setPic(response.data.image_url);
+                // formData.pic = pic;
                 console.log(pic);
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
     const categoryOptions = [
         { value: 'Rooftop', label: 'RoofTop' },
         { value: 'PetFriendly', label: 'Pet-friendly' },
@@ -517,10 +571,10 @@ function AdminMerchant() {
                             <div className='flex flex-col gap-8'>
                                 <div className='flex flex-row gap-14'>
                                     <div className='w-[46%]'>
-                                        <label className='flex ml-4 mt-2 font-bold text-sm' htmlFor="category">Category:</label>
+                                        <label className='flex ml-4 mt-2 font-bold text-sm' htmlFor="selectedCategory">Category:</label>
                                         <div className='rounded-lg shadow-sm ml-4 mt-1 w-full border border-gray-300'>
                                             <Select options={categoryOptions} isMulti
-                                                name="category"
+                                                name="selectedCategory"
                                                 className="basic-multi-select"
                                                 classNamePrefix="select"
                                                 value={selectedCategory}

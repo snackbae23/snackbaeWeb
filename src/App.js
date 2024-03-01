@@ -26,48 +26,52 @@ import AdminMerchant from './Pages/AdminMerchant';
 import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
-
+import { restaurantContext } from './context/restaurantContext';
+import { useState } from 'react';
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales'];
 
 function App() {
 
   const location = useLocation();
+  const [resId, setResId] = useState('');
 
   return (
     <div className='app'>
       {/* <Navbar /> */}
-      {!excludedPaths.includes(location.pathname) && <Navbar />}
+      <restaurantContext.Provider value={{ resId, setResId }}>
+        {!excludedPaths.includes(location.pathname) && <Navbar />}
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/joinpartner" element={<Joinpartner />}></Route>
+          <Route path="/aboutUs" element={<AboutUs />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path='/dashboard' element={<DashBoard />}></Route>
 
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/joinpartner" element={<Joinpartner />}></Route>
-        <Route path="/aboutUs" element={<AboutUs />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path='/dashboard' element={<DashBoard />}></Route>
+          <Route path='/blog' element={<Blogs />}></Route>``
+          <Route path='/blogdetail' element={<Blogdetail />}></Route>
+          <Route path='/adminlogin' element={<AdminLogin />}></Route>
+          <Route path='/adminDashboard' element={<AdminDashboard />}></Route>
 
-        <Route path='/blog' element={<Blogs />}></Route>``
-        <Route path='/blogdetail' element={<Blogdetail />}></Route>
-        <Route path='/adminlogin' element={<AdminLogin />}></Route>
-        <Route path='/adminDashboard' element={<AdminDashboard />}></Route>
+          <Route path='/blog' element={<Blogs />}></Route>
+          <Route path='/blogdetail' element={<Blogdetail />}></Route>
+          <Route path='/form' element={<Form />}></Route>
+          <Route path='/payout' element={<Payout />}></Route>
+          <Route path='/menu' element={<Menu />}></Route>
+          <Route path='/review' element={<Review />}></Route>
+          <Route path='/customer' element={<Customer />}></Route>
+          <Route path='/editstore' element={<EditStoreDetail />}></Route>
+          <Route path='/offer' element={<Offer />}></Route>
+          <Route path='/pricing' element={<Pricing />}></Route>
 
-        <Route path='/blog' element={<Blogs />}></Route>
-        <Route path='/blogdetail' element={<Blogdetail />}></Route>
-        <Route path='/form' element={<Form />}></Route>
-        <Route path='/payout' element={<Payout />}></Route>
-        <Route path='/menu' element={<Menu />}></Route>
-        <Route path='/review' element={<Review />}></Route>
-        <Route path='/customer' element={<Customer />}></Route>
-        <Route path='/editstore' element={<EditStoreDetail />}></Route>
-        <Route path='/offer' element={<Offer />}></Route>
-        <Route path='/pricing' element={<Pricing />}></Route>
 
-        <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
-        <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
-        <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
-        <Route path='/admin/bookings' element={<AdminBookings />}></Route>
-        <Route path='/admin/sales' element={<AdminSales />}></Route>
-      </Routes>
+          <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
+          <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
+          <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
+          <Route path='/admin/bookings' element={<AdminBookings />}></Route>
+          <Route path='/admin/sales' element={<AdminSales />}></Route>
+        </Routes>
+      </restaurantContext.Provider>
     </div>
   );
 }
