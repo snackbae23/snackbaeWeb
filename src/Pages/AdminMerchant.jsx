@@ -244,25 +244,11 @@ function AdminMerchant() {
         { value: 'Italian', label: 'Italian' },
     ];
 
-    const resData = [
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'false' }
-    ];
-
     const resDataPending = [
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' }
-    ];
-
-    const resDataNew = [
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '10/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '18/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '05/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '21/02/2024' }
     ];
 
     const formatDate = (dateString) => {
@@ -294,12 +280,67 @@ function AdminMerchant() {
 
     // for all
     const [searchAll, setSearchAll] = useState('');
+    const [searchAllData , setSearchAllData] = useState([]);
     function changeHandlerAll(e) {
         setSearchAll(e.target.value);
     }
-    function submitHandlerAll() {
 
+    const submitHandlerAll = async(e) => {
+        e.preventDefault();
+        // if(searchAll)
+        // {
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `http://localhost:4000/api/search?search=${searchAll}`,
+                headers: { }
+              };
+              
+              axios.request(config)
+              .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchAllData(response.data);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        // }
     }
+
+    useEffect(()=>{
+        
+        let config1 = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/search?search=${searchAll}`,
+            headers: { }
+          };
+          
+          axios.request(config1)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchAllData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+          let config3 = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
+            headers: { }
+          };
+          
+          axios.request(config3)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchNewData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },[]);
 
     // for pending
     const [searchPending, setSearchPending] = useState('');
@@ -312,11 +353,27 @@ function AdminMerchant() {
 
     // for new enquiry
     const [searchNew, setSearchNew] = useState('');
+    const [searchNewData,setSearchNewData] = useState([]);
     function changeHandlerNew(e) {
         setSearchNew(e.target.value);
     }
-    function submitHandlerNew() {
-
+    const submitHandlerNew = async(e) => {
+        e.preventDefault();
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
+            headers: { }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchNewData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     }
 
     function one() {
@@ -866,31 +923,31 @@ function AdminMerchant() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {resData?.map((restaurant) => {
+                                {searchAllData?.map((restaurant) => {
                                     return (
-                                        <tr key={restaurant.id}>
+                                        <tr key={restaurant._id}>
                                             <td className="py-4 px-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.ResName}
+                                                    {restaurant.restaurantName}
                                                 </div>
                                                 <div className='text-sm'>
-                                                    {restaurant.id}
+                                                    {restaurant.resturantId}
                                                 </div>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.loc}
+                                                    {restaurant.location}
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.mail}
+                                                {restaurant.authorizedMail}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.saleRep}
+                                                {restaurant.salesRepresentative}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.status == 'true' && <div className='py-1 px-2 font-bold w-fit h-fit bg-green-100 text-green-500 rounded-md'>Live</div>}
-                                                {restaurant.status == 'false' && <div className='py-1 px-2 font-bold w-fit h-fit bg-red-100 text-red-500 rounded-md'>Close</div>}
+                                                {/* {restaurant.status == 'true' && <div className='py-1 px-2 font-bold w-fit h-fit bg-green-100 text-green-500 rounded-md'>Live</div>}
+                                                {restaurant.status == 'false' && <div className='py-1 px-2 font-bold w-fit h-fit bg-red-100 text-red-500 rounded-md'>Close</div>} */}
                                             </td>
                                         </tr>
                                     )
@@ -983,7 +1040,7 @@ function AdminMerchant() {
                         {/* search */}
                         <div className='my-4 ml-4'>
                             <form className='flex gap-1' onSubmit={submitHandlerNew}>
-                                <input type='text' placeholder='Search by ID,restaurant name' value={searchNew} onChange={changeHandlerNew} className='w-[50%] p-3 bg-slate-200 rounded-lg font-bold'></input>
+                                <input type='text' placeholder='Search by restaurant name' value={searchNew} onChange={changeHandlerNew} className='w-[50%] p-3 bg-slate-200 rounded-lg font-bold'></input>
                                 <button type='submit'><GrSearch size={25} /></button>
                             </form>
                         </div>
@@ -1020,24 +1077,24 @@ function AdminMerchant() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {resDataNew?.map((restaurant) => {
+                                {searchNewData?.map((restaurant) => {
                                     return (
                                         <tr key={restaurant.id}>
                                             <td className="py-4 px-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.ResName}
+                                                    {restaurant.rname}
                                                 </div>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.contact}
+                                                    {restaurant.phone}
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.mail}
+                                                {restaurant.email}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm cursor-pointer">
-                                                <div className='bg-yellow-100 text-yellow-500 px-2 py-1 text-sm w-fit font-bold rounded-lg'>{formatDate(restaurant.date)}</div>
+                                                <div className='bg-yellow-100 text-yellow-500 px-2 py-1 text-sm w-fit font-bold rounded-lg'>{formatDate(restaurant.createdAt)}</div>
                                             </td>
                                         </tr>
                                     )
