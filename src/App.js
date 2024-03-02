@@ -27,7 +27,13 @@ import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import TermsCondition from './Pages/TermsCondition';
+
+
+
+
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales'];
 
@@ -35,14 +41,25 @@ function App() {
 
   const location = useLocation();
   const [resId, setResId] = useState('');
+  const [login,setlogin] =useState("false");
+
+
+  useEffect(() => {
+    setlogin(false);
+  }, []);
+
+  
+  const handleScrollChange = (newLoginValue) => {
+    setlogin(newLoginValue);
+  };
 
   return (
     <div className='app'>
       {/* <Navbar /> */}
       <restaurantContext.Provider value={{ resId, setResId }}>
-        {!excludedPaths.includes(location.pathname) && <Navbar />}
+        {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -63,6 +80,8 @@ function App() {
           <Route path='/editstore' element={<EditStoreDetail />}></Route>
           <Route path='/offer' element={<Offer />}></Route>
           <Route path='/pricing' element={<Pricing />}></Route>
+          <Route path='/privacyPolicy' element={<PrivacyPolicy />}></Route>
+          <Route path='/termsCondition' element={<TermsCondition />}></Route>
 
 
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
