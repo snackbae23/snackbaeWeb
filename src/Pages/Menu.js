@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { FaHome } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
@@ -13,9 +13,13 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { FaPenFancy } from "react-icons/fa";
 import { ImCross } from 'react-icons/im';
+import { restaurantContext } from '../context/restaurantContext';
+import { useToast } from "@chakra-ui/toast";
 import axios from "axios"
 const Menu = () => {
-
+  const toast = useToast();
+  const { resId } = useContext(restaurantContext);
+  const [allMenuItem, setAllMenuItem] = useState([]);
   const data = [
     {
       "image": "/Rectangle 55187.png",
@@ -90,7 +94,7 @@ const Menu = () => {
       "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
     },
   ]
-  
+
   function openPopup() {
     document.getElementById('popup').style.display = "block";
     document.getElementById('background').style.filter = "blur(2Px)";
@@ -101,55 +105,120 @@ const Menu = () => {
     document.getElementById('background').style.filter = "blur(0px)";
 
   }
-  const[pic , setPic]= useState();
+  const [pic, setPic] = useState();
   const [Data, SetData] = useState();
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState("No selected Files");
   const [formData, setFormData] = useState({
-    menuItem:"",
-    type:"",
-    cuisines:"",
+    menuItem: "",
+    type: "",
+    cuisines: "",
   });
 
+  function resetForm() {
+    setFormData({
+      menuItem: "",
+      type: "",
+      cuisines: ""
+    });
+    setImage(null);
+  }
+
   const handleChange = (event) => {
-      setFormData({ ...formData, [event.target.name]: event.target.value });
-       SetData({ ...formData, pic });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    SetData({ ...formData, pic });
   };
-  
- 
 
   const handleSubmit = (event) => {
-      event.preventDefault();
-      
-      //code baaki hai -  backend integration
+    event.preventDefault();
+    //code baaki hai -  backend integration
+    SetData({ ...formData, pic });
+    let data = JSON.stringify(Data);
 
-      console.log(Data); // Submit data here (e.g., API call)
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `http://localhost:4000/api/menu/${resId}`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
 
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        toast({
+          title: "Menu details added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        resetForm();
+        closePopup();
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({
+          title: "Menu details couldn't be added",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      });
+    // console.log(Data); // Submit data here (e.g., API call)
   };
+
+  const fetchMenu = async () => {
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `http://localhost:4000/api/menu/${resId}`,
+      headers: {}
+    };
+
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        setAllMenuItem(response.data);
+        console.log("all menu data : ", allMenuItem);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(()=>{
+    fetchMenu();
+  },[]);
 
   const postDetails = async (pics) => {
     const formData = new FormData();
     formData.append("someExpressFiles", pics);
 
-     let config = {
-       method: "post",
-       maxBodyLength: Infinity,
-       url: "http://localhost:4000/api/gallery",
-       // headers: {
-       //   ...data.getHeaders(),
-       // },
-       data: formData,
-     };
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:4000/api/gallery",
+      // headers: {
+      //   ...data.getHeaders(),
+      // },
+      data: formData,
+    };
 
-     axios
-       .request(config)
-       .then((response) => {
-         console.log(JSON.stringify(response.data));
-         setPic(response?.data?.image_url)
-         console.log(pic)
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   };
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        setPic(response.data.image_url)
+        console.log(pic)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="w-full h-[100vh] flex flex-col">
@@ -237,24 +306,30 @@ const Menu = () => {
                 >
                   <label className="mt-4 mb-2  " htmlFor="image">
                     <span>
-                      {" "}
-                      <img
-                        className="absolute w-[130px] h-[80px] left-[37%] top-[24%] object-fill"
-                        src="/Group 1171277298.png"
-                        alt=""
-                      ></img>
+                      {image ? <div className='text-center my-auto font-normal pt-8'>Uploaded {fileName}</div> :
+                        <img
+                          className="absolute w-[130px] h-[80px] left-[37%] top-[24%] object-fill"
+                          src="/Group 1171277298.png"
+                          alt=""
+                        ></img>
+                      }
                     </span>
                   </label>
 
                   <input
-                      className="w-full h-[100px]  border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md "
-                      type="file"
-                      id="image"
-                      name="image"
-                      accept="image/*"
-                      onChange={(e) => postDetails(e.target.files[0])}
-                      required
-                    />
+                    className="w-full h-[100px]  border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md "
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    onChange={(e) => {
+                      e.target.files[0] && setFileName(e.target.files[0].name)
+                      if (e.target.files)
+                        setImage(URL.createObjectURL(e.target.files[0]))
+                      postDetails(e.target.files[0])
+                    }}
+                    required
+                  />
                 </div>
 
                 <label for="image"></label>
@@ -276,13 +351,13 @@ const Menu = () => {
                   Cuisines
                 </label>
                 <input
-                    className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
-                    type="text"
-                    id="cuisines"
-                    name="cuisines"
-                    value={formData.cuisines}
-                    onChange={handleChange}
-                  />
+                  className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
+                  type="text"
+                  id="cuisines"
+                  name="cuisines"
+                  value={formData.cuisines}
+                  onChange={handleChange}
+                />
                 <button
                   className="w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] mx-auto mt-4"
                   type="submit"
@@ -349,13 +424,13 @@ const Menu = () => {
 
         {/* right */}
         <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
-        <h1 className="text-[1.4rem] font-bold w-[40%] ml-4 ">Menu</h1>
+          <h1 className="text-[1.4rem] font-bold w-[40%] ml-4 ">Menu</h1>
           <div className="flex justify-between relative mt-2">
-            
+
             <div className='mt-2 flex gap-1'>
-                            <button className='bg-black text-white rounded-full py-2 px-6'>Menu</button>
-                            <button className='rounded-full ml-4 bg-white py-2 px-4'>Analytics</button>
-                           
+              <button className='bg-black text-white rounded-full py-2 px-6'>Menu</button>
+              <button className='rounded-full ml-4 bg-white py-2 px-4'>Analytics</button>
+
             </div>
             <p className=' absolute rounded-full bg-yellow-500 size-fit px-4 ml-44 mb-2 '>Pro</p>
             <button
@@ -367,14 +442,14 @@ const Menu = () => {
           </div>
 
           <div className="grid md:grid-cols-4 grid-cols-3 gap-4 mt-5 rounded-lg">
-            {data.map((item, index) => (
+            {allMenuItem.map((item, index) => (
               <div
                 className="md:h-[220px] h-[180px] flex flex-col  bg-white rounded-md relative"
                 key={index}
               >
                 <img
                   className="w-full h-[170px] object-cover rounded-t-lg"
-                  src={item.image}
+                  src={item.pic} width={200}
                   alt="img"
                 ></img>
                 <button className="absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4">
@@ -384,7 +459,7 @@ const Menu = () => {
                   <FaPenFancy />
                 </button>
                 <div className="flex items-center mt-1 ml-4">
-                  <h1 className="md:text-[1.2rem] text-[1.1rem] font-semibold">{item.menu}</h1>
+                  <h1 className="md:text-[1.2rem] text-[1.1rem] font-semibold">{item.menuItem}</h1>
                   {/* <h1 className="text-[1.2rem] font-semibold mr-2">
                     {item.amount}
                   </h1> */}
