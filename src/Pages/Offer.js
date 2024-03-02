@@ -14,6 +14,8 @@ import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
 import { IoMdTime } from "react-icons/io";
 
+import Navbar2 from '../Components/Navbar2';
+
 const Offer = () => {
 
     const [formData, setFormData] = useState({
@@ -48,8 +50,8 @@ const Offer = () => {
     }
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
-                {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
+            {/* <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+               
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
                         className="relative w-28 h-16 object-cover z-20"
@@ -91,7 +93,9 @@ const Offer = () => {
                         </div>
                     </Link>
                 </div>
-            </div>
+            </div> */}
+            <Navbar2/>
+            
 
 
             {/* popup */}
@@ -207,7 +211,7 @@ const Offer = () => {
                 </div>
             </div>
 
-            <div className='flex  w-full mt-20 h-fit' id="background">
+            <div className='flex  w-full mt-16 h-fit' id="background">
 
                 {/* left */}
                 <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">

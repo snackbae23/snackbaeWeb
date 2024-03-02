@@ -136,7 +136,7 @@ const Payout = () => {
         <div className='w-full h-[100vh] flex flex-col'>
 
 
-            <div className="z-10 bg-white fixed mt-8  w-full h-20 -top-8 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+            <div className="z-10 bg-white fixed   w-full h-20 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
 
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
