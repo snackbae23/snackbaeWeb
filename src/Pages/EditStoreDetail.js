@@ -334,8 +334,8 @@ const EditStoreDetail = () => {
                     </div>
 
                     {/* two */}
-                    <div className='w-[100%]  bg-slate-200    rounded-md p-8 hidden h-[550px] ' id='b' >
-                        <h1 className='text-[1.2rem] font-bold   '>Edit Store Details</h1>
+                    <div className='w-[100%]  bg-slate-200 rounded-md p-8 hidden h-fit pb-4' id='b' >
+                        <h1 className='text-[1.2rem] font-bold'>Edit Store Details</h1>
                         <div className='flex justify-between text-slate-500 mt-3'>
                             <div className='flex gap-2'>
                                 <button className='bg-white px-4 py-1 rounded-full' onClick={one} >General Info</button>
@@ -363,13 +363,11 @@ const EditStoreDetail = () => {
                                                 <div className='text-sm opacity-50'>Drag and drop files here</div>
                                             </div>
                         </div>
-                        
-                        {/* css baaki hai */}
-                        <div>
+                        <div className='flex flex-row gap-4 flex-wrap'>
                         {pics && 
                             pics.map((pic)=>{
                                 return(
-                                    <img src={pic.image}></img>   
+                                    <img src={pic.image} width={200} className='p-3 border border-black'></img>   
                                 )
                             })
                         }
