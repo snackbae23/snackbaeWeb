@@ -31,9 +31,7 @@ const EditStoreDetail = () => {
             method: "post",
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/galleryimages/${resId}`,
-            // headers: {
-            //   ...data.getHeaders(),
-            // },
+          
             data: formData,
         };
 
@@ -134,7 +132,26 @@ const EditStoreDetail = () => {
 
     const handleSubmit3 = (event) => {
         event.preventDefault();
-        console.log(formData3); // Submit data here (e.g., API call)
+
+        console.log(formData3);
+        let config = {
+          method: "post",
+          maxBodyLength: Infinity,
+          url:`http://localhost:4000/api//payoutMethod/${resId}`,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: formData3,
+        };
+
+        axios
+          .request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     };
 
     return (
