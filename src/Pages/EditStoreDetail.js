@@ -151,7 +151,7 @@ const EditStoreDetail = () => {
           })
           .catch((error) => {
             console.log(error);
-          });// Submit data here (e.g., API call)
+          });
     };
 
     return (
