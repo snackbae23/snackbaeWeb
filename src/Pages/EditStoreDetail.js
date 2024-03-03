@@ -14,6 +14,7 @@ import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import axios from "axios";
 import { restaurantContext } from "../context/restaurantContext";
+// import { useConst } from '@chakra-ui/react';
 
 const EditStoreDetail = () => {
   const [image, setImage] = useState(null);
@@ -30,7 +31,9 @@ const EditStoreDetail = () => {
       method: "post",
       maxBodyLength: Infinity,
       url: `http://localhost:4000/api/galleryimages/${resId}`,
-
+      // headers: {
+      //   ...data.getHeaders(),
+      // },
       data: formData,
     };
 
@@ -69,19 +72,8 @@ const EditStoreDetail = () => {
     getImages();
   }, [fileName]);
 
-  const [formData, setFormData] = useState({
-    logo: "",
-    businessName: "",
-    location: "",
-    pocName: "",
-    pocContact: "",
-    customerContact: "",
-    customerContact1: "",
-    category: "",
-    Cuisines: "",
-  });
-
   const getGeneralInfo = async () => {
+    console.log(resId);
     try {
       const config = {
         method: "get",
@@ -93,6 +85,7 @@ const EditStoreDetail = () => {
       };
 
       const response = await axios.request(config);
+      console.log(response);
       const data = response.data;
 
       setFormData((prevData) => ({
@@ -100,12 +93,12 @@ const EditStoreDetail = () => {
         logo: data.logo,
         businessName: data.businessName,
         location: data.location,
-        pocName: data.pocName,
+        pocName: data.managerName,
         pocContact: data.pocContact,
         customerContact: data.customerContact,
         customerContact1: data.customerContact1,
-        category: data.category,
-        Cuisines: data.Cuisines,
+        category: data.selectedCategory,
+        Cuisines: data.selectedCuisine,
       }));
     } catch (error) {
       console.error("Error fetching general info:", error);
@@ -115,6 +108,18 @@ const EditStoreDetail = () => {
   useEffect(() => {
     getGeneralInfo();
   }, [resId]);
+
+  const [formData, setFormData] = useState({
+    logo: "",
+    businessName: "",
+    location: "",
+    pocName: "",
+    pocContact: "",
+    customerContact: "",
+    customerContact1: "",
+    category: "",
+    Cuisines: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -166,26 +171,7 @@ const EditStoreDetail = () => {
 
   const handleSubmit3 = (event) => {
     event.preventDefault();
-
-    console.log(formData3);
-    let config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: `http://localhost:4000/api//payoutMethod/${resId}`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: formData3,
-    };
-
-    axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log(formData3); // Submit data here (e.g., API call)
   };
 
   return (
@@ -326,20 +312,12 @@ const EditStoreDetail = () => {
               <form>
                 <div className="text-[1.1rem] font-bold">Store Details</div>
                 <div className="text-slate-300 h-[96px] w-full flex items-center">
-                  <div className="size-24 bg-slate-300 rounded-full overflow-hidden">
-                    {formData.logo ? (
-                      <img
-                        src={formData.logo}
-                        alt="Logo"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <p className="text-center text-yellow-500 text-[1rem] p-6">
-                        No logo selected
-                      </p>
-                    )}
-                  </div>
-
+                  <input
+                    className="size-24 bg-slate-300  rounded-full"
+                    type="file"
+                    name="logo"
+                    onChange={handleChange}
+                  />
                   <label className="text-yellow-500 text-[1rem] ml-4">
                     Upload new logo
                   </label>
@@ -352,45 +330,69 @@ const EditStoreDetail = () => {
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Business Name:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.businessName}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      type="text"
+                      name="businessName"
+                      placeholder="Type here"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Location:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.location}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      type="text"
+                      placeholder="Type here"
+                      name="location"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>POC Name:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.pocName}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="pocName"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>POC Contact:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.pocContact}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="pocContact"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Customer Contact:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.customerContact}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="customerContact"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Customer Contact 1:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.customerContact1}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="customerContact1"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
                 <h1 className="text-[1.1rem] font-bold mt-2 mb-3">
@@ -399,15 +401,27 @@ const EditStoreDetail = () => {
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Category:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.category}</p>
-                    </div>
+                    <select
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      name="category"
+                      onChange={handleChange}
+                    >
+                      <option value="">Select Category</option>
+                      <option value="upto3">Up to 3</option>
+                      <option value="upto4">Up to 4</option>
+                    </select>
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Cuisines:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.Cuisines}</p>
-                    </div>
+                    <select
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      name="Cuisines"
+                      onChange={handleChange}
+                    >
+                      <option value="">Select upto 3</option>
+                      <option value="upto3">Up to 3</option>
+                      <option value="upto4">Up to 4</option>
+                    </select>
                   </div>
                 </div>
               </form>
@@ -416,10 +430,10 @@ const EditStoreDetail = () => {
 
           {/* two */}
           <div
-            className="w-[100%]  bg-slate-200    rounded-md p-8 hidden h-[550px] "
+            className="w-[100%]  bg-slate-200 rounded-md p-8 hidden h-fit pb-4"
             id="b"
           >
-            <h1 className="text-[1.2rem] font-bold   ">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold">Edit Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
               <div className="flex gap-2">
                 <button
@@ -473,12 +487,16 @@ const EditStoreDetail = () => {
                 </div>
               </div>
             </div>
-
-            {/* css baaki hai */}
-            <div>
+            <div className="flex flex-row gap-4 flex-wrap">
               {pics &&
                 pics.map((pic) => {
-                  return <img src={pic.image}></img>;
+                  return (
+                    <img
+                      src={pic.image}
+                      width={200}
+                      className="p-3 border border-black"
+                    ></img>
+                  );
                 })}
             </div>
           </div>
