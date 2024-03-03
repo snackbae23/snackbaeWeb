@@ -72,7 +72,7 @@ const LeftBar = () => {
           </Link>
           <Link id='g'
             to="/"
-            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
+            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-32 justify-center rounded-xl md:ml-16"
           >
             <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
           </Link>
