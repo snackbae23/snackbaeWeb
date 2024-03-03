@@ -199,7 +199,7 @@ const Pricing = () => {
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <IoStorefrontOutline />
-            <p className='md:block hidden'>Edit store detail</p>
+            <p className='md:block hidden'>Store detail</p>
           </Link>
           <Link
             to="/offer"
@@ -265,7 +265,7 @@ const Pricing = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-1 h-[40px] w-[80%]  mt-[180px]'>
+                    <div className='grid grid-cols-3 gap-1 h-[100px] w-[80%]  mt-[180px]'>
                          <div className='flex items-center'>
                         <img src='/Group.png' alt=''></img>
                         <p className='font-bold ml-2 flex-wrap'>30 days free Trial Guarantee</p>

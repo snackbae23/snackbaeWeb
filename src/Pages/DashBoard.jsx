@@ -208,7 +208,7 @@ const Payout = () => {
                         className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
                     >
                         <IoStorefrontOutline />
-                        <p className='md:block hidden'>Edit store detail</p>
+                        <p className='md:block hidden'>Store detail</p>
                     </Link>
                     <Link
                         to="/offer"

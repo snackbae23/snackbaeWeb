@@ -248,7 +248,7 @@ const EditStoreDetail = () => {
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <IoStorefrontOutline />
-            <p className="md:block hidden">Edit store detail</p>
+            <p className="md:block hidden">Store detail</p>
           </Link>
           <Link
             to="/offer"
@@ -276,7 +276,7 @@ const EditStoreDetail = () => {
         <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
           {/* one */}
           <div className="w-[100%] p-8   rounded-md" id="a">
-            <h1 className="text-[1.2rem] font-bold">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold"> Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
               <div className="flex gap-2">
                 <button
@@ -308,8 +308,9 @@ const EditStoreDetail = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full h-fit bg-white p-5 mt-4 rounded-md text-[1.1rem] font-semibold">
+            <div className="w-full h-fit mt-4 rounded-md text-[1.1rem] font-semibold">
               <form>
+                <div className="bg-white w-full p-6 rounded-md">
                 <div className="text-[1.1rem] font-bold">Store Details</div>
                 <div className="text-slate-300 h-[96px] w-full flex items-center">
                   <input
@@ -318,14 +319,14 @@ const EditStoreDetail = () => {
                     name="logo"
                     onChange={handleChange}
                   />
-                  <label className="text-yellow-500 text-[1rem] ml-4">
+                  {/* <label className="text-yellow-500 text-[1rem] ml-4">
                     Upload new logo
                   </label>
                   <p className="size-2 rounded-full bg-slate-400 ml-4"></p>
                   <p className="text-[1rem] text-slate-400 ml-4">
                     {" "}
                     Remove logo
-                  </p>
+                  </p> */}
                 </div>
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
@@ -352,7 +353,7 @@ const EditStoreDetail = () => {
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
-                    <label>POC Name:</label>
+                    <label>Manager Name</label>
                     <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       placeholder="Type here"
@@ -362,7 +363,7 @@ const EditStoreDetail = () => {
                     />
                   </div>
                   <div className="flex flex-col w-[48%]">
-                    <label>POC Contact:</label>
+                    <label>Manager Contact </label>
                     <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       placeholder="Type here"
@@ -375,7 +376,7 @@ const EditStoreDetail = () => {
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
-                    <label>Customer Contact:</label>
+                    <label>Customer Contact</label>
                     <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       placeholder="Type here"
@@ -385,45 +386,51 @@ const EditStoreDetail = () => {
                     />
                   </div>
                   <div className="flex flex-col w-[48%]">
-                    <label>Customer Contact 1:</label>
+                    <label>Email</label>
                     <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       placeholder="Type here"
-                      type="text"
+                      type='mail'
                       name="customerContact1"
                       onChange={handleChange}
                     />
                   </div>
                 </div>
+                </div>
+               
+
+                <div className="bg-white mt-8 p-6 rounded-md">
                 <h1 className="text-[1.1rem] font-bold mt-2 mb-3">
                   Cuisine details
                 </h1>
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Category:</label>
-                    <select
+                    <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       name="category"
                       onChange={handleChange}
                     >
-                      <option value="">Select Category</option>
+                      {/* <option value="">Slect Category</option>
                       <option value="upto3">Up to 3</option>
-                      <option value="upto4">Up to 4</option>
-                    </select>
+                      <option value="upto4">Up to 4</option> */}
+                    </input>
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Cuisines:</label>
-                    <select
+                    <input
                       className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
                       name="Cuisines"
                       onChange={handleChange}
                     >
-                      <option value="">Select upto 3</option>
+                      {/* <option value="">Select upto 3</option>
                       <option value="upto3">Up to 3</option>
-                      <option value="upto4">Up to 4</option>
-                    </select>
+                      <option value="upto4">Up to 4</option> */}
+                    </input>
                   </div>
                 </div>
+                </div>
+                
               </form>
             </div>
           </div>
@@ -433,11 +440,11 @@ const EditStoreDetail = () => {
             className="w-[100%]  bg-slate-200 rounded-md p-8 hidden h-fit pb-4"
             id="b"
           >
-            <h1 className="text-[1.2rem] font-bold">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold"> Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
-              <div className="flex gap-2">
+              <div className="flex gap-2 ">
                 <button
-                  className="bg-white px-4 py-1 rounded-full"
+                  className="bg-white px-4 py-2 rounded-full"
                   onClick={one}
                 >
                   General Info
@@ -455,12 +462,7 @@ const EditStoreDetail = () => {
                   Payout Method
                 </button>
               </div>
-              <div>
-                <button className="bg-yellow-500 px-4 py-2 rounded-md text-white">
-                  {" "}
-                  Save changes
-                </button>
-              </div>
+             
             </div>
             <div
               onClick={() => document.querySelector(".input-field").click()}
@@ -506,11 +508,11 @@ const EditStoreDetail = () => {
             className="w-[100%]  bg-slate-200   rounded-md p-8 hidden  h-[600px]"
             id="c"
           >
-            <h1 className="text-[1.2rem] font-bold   ">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold   ">Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
               <div className="flex gap-2">
                 <button
-                  className="bg-white  px-4 py-1 rounded-full"
+                  className="bg-white  px-4 py-2 rounded-full"
                   onClick={one}
                 >
                   General Info
