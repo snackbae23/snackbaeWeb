@@ -21,35 +21,35 @@ const LeftBar = () => {
 
   return (
     <div>
-         <Link id='a'
+         <Link id=''
             onClick={glow}
             to="/dashboard"
             className="w-full h-[50px]  mb-1 flex items-center bg-slate-100 p-4 hover:bg-yellow-600 hover:text-white gap-3 "
           >
             <FaHome /> <p className='md:block hidden'>Dashboard</p>
           </Link>
-          <Link id='b'
+          <Link id=''
             to="/payout"
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <FaBlog />
             <p className='md:block hidden'>Payout</p>
           </Link>
-          <Link id='c'
+          <Link id=''
             to="/menu"
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <MdMenuBook />
             <p className='md:block hidden'>Menu</p>
           </Link>
-          <Link id='d'
+          <Link id=''
             to="/editstore"
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
             <IoStorefrontOutline />
             <p className='md:block hidden'>Store detail</p>
           </Link>
-          <Link id='e'
+          <Link id=''
             to="/offer"
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
