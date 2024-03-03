@@ -14,6 +14,7 @@ import logo from "../assets/logo.png"
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
 import { IoMdTime } from "react-icons/io";
+import LeftBar from '../Components/LeftBar';
 
 
 
@@ -57,7 +58,7 @@ const Offer = () => {
     }
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+            <div className="z-10 bg-white fixed   w-full h-20  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
 
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
@@ -218,57 +219,11 @@ const Offer = () => {
                 </div>
             </div>
 
-            <div className='flex  w-full mt-16 h-fit' id="background">
+            <div className='flex  w-full mt-20 h-fit' id="background">
 
                 {/* left */}
                 <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
-                    <Link
-                        to="/dashboard"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
-                    >
-                        <FaHome /> <p className='md:block hidden'>Dashboard</p>
-                    </Link>
-                    <Link
-                        to="/payout"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <FaBlog />
-                        <p className='md:block hidden'>Payout</p>
-                    </Link>
-                    <Link
-                        to="/menu"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <MdMenuBook />
-                        <p className='md:block hidden'>Menu</p>
-                    </Link>
-                    <Link
-                        to="/editstore"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <IoStorefrontOutline />
-                        <p className='md:block hidden'>Edit store detail</p>
-                    </Link>
-                    <Link
-                        to="/offer"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <BiSolidOffer />
-                        <p className='md:block hidden'>offers & campaign</p>
-                    </Link>
-                    <Link
-                        to="/pricing"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <BiSolidOffer />
-                        <p className='md:block hidden'>Pricing</p>
-                    </Link>
-                    <Link
-                        to="/"
-                        className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
-                    >
-                        <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
-                    </Link>
+                    <LeftBar/>
                 </div>
 
                 {/* right */}
@@ -295,6 +250,8 @@ const Offer = () => {
                     {/* container */}
                     <div className='grid grid-cols-2 w-full h-fit gap-3 mt-5'>
 
+                        
+
                         <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
                             <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
                                 <div>
@@ -309,7 +266,7 @@ const Offer = () => {
                                     <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
                                     <div className=' cursor-pointer w-[5%]' onClick={eye}>
                                         {
-                                            switch1 ? <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
+                                            switch1 ? <switch className=' bg-black w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
                                                 <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
                                             </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
                                                 <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
@@ -328,169 +285,13 @@ const Offer = () => {
                                 <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
                                 <div className='flex justify-between mt-3'>
                                     <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
-                                    <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
+                                    <button className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</button>
 
                                 </div>
                             </div>
 
                         </div>
-
-                        <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
-                            <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
-                                <div>
-                                    <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
-                                    <div className='flex items-center gap-2'>
-                                        <IoMdTime />
-                                        <p>Always active</p>
-                                    </div>
-
-                                </div>
-                                <div className='flex gap-2 items-center'>
-                                    <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
-                                    <div className=' cursor-pointer w-[5%]' onClick={eye}>
-                                        {
-                                            switch1 ? <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch>
-                                        }
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
-                                <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
-                                <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
-                                <div className='flex justify-between mt-3'>
-                                    <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
-                                    <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
-                            <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
-                                <div>
-                                    <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
-                                    <div className='flex items-center gap-2'>
-                                        <IoMdTime />
-                                        <p>Always active</p>
-                                    </div>
-
-                                </div>
-                                <div className='flex gap-2 items-center'>
-                                    <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
-                                    <div className=' cursor-pointer w-[5%]' onClick={eye}>
-                                        {
-                                            switch1 ? <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch>
-                                        }
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
-                                <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
-                                <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
-                                <div className='flex justify-between mt-3'>
-                                    <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
-                                    <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
-                            <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
-                                <div>
-                                    <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
-                                    <div className='flex items-center gap-2'>
-                                        <IoMdTime />
-                                        <p>Always active</p>
-                                    </div>
-
-                                </div>
-                                <div className='flex gap-2 items-center'>
-                                    <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
-                                    <div className=' cursor-pointer w-[5%]' onClick={eye}>
-                                        {
-                                            switch1 ? <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch>
-                                        }
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
-                                <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
-                                <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
-                                <div className='flex justify-between mt-3'>
-                                    <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
-                                    <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
-                            <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
-                                <div>
-                                    <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
-                                    <div className='flex items-center gap-2'>
-                                        <IoMdTime />
-                                        <p>Always active</p>
-                                    </div>
-
-                                </div>
-                                <div className='flex gap-2 items-center'>
-                                    <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
-                                    <div className=' cursor-pointer w-[5%]' onClick={eye}>
-                                        {
-                                            switch1 ? <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
-                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
-                                            </switch>
-                                        }
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
-                                <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
-                                <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
-                                <div className='flex justify-between mt-3'>
-                                    <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
-                                    <p className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</p>
-
-                                </div>
-                            </div>
-
-                        </div>
+                       
 
                        
                     </div>

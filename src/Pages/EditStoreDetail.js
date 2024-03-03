@@ -1,10 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { FaHome } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
-import { FaBlog } from "react-icons/fa";
-import { MdMenuBook } from "react-icons/md";
-import { BiSolidOffer } from "react-icons/bi";
-import { IoStorefrontOutline } from "react-icons/io5";
 import group117 from "../assets/group-117.svg";
 import rect54 from "../assets/rectangle54.png";
 import group752 from "../assets/group-752.svg";
@@ -14,6 +8,8 @@ import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import axios from "axios";
 import { restaurantContext } from "../context/restaurantContext";
+import LeftBar from "../Components/LeftBar";
+// import { useConst } from '@chakra-ui/react';
 
 const EditStoreDetail = () => {
   const [image, setImage] = useState(null);
@@ -30,7 +26,9 @@ const EditStoreDetail = () => {
       method: "post",
       maxBodyLength: Infinity,
       url: `http://localhost:4000/api/galleryimages/${resId}`,
-
+      // headers: {
+      //   ...data.getHeaders(),
+      // },
       data: formData,
     };
 
@@ -69,19 +67,8 @@ const EditStoreDetail = () => {
     getImages();
   }, [fileName]);
 
-  const [formData, setFormData] = useState({
-    logo: "",
-    businessName: "",
-    location: "",
-    pocName: "",
-    pocContact: "",
-    customerContact: "",
-    customerContact1: "",
-    category: "",
-    Cuisines: "",
-  });
-
   const getGeneralInfo = async () => {
+    console.log(resId);
     try {
       const config = {
         method: "get",
@@ -93,6 +80,7 @@ const EditStoreDetail = () => {
       };
 
       const response = await axios.request(config);
+      console.log(response);
       const data = response.data;
 
       setFormData((prevData) => ({
@@ -100,12 +88,12 @@ const EditStoreDetail = () => {
         logo: data.logo,
         businessName: data.businessName,
         location: data.location,
-        pocName: data.pocName,
+        pocName: data.managerName,
         pocContact: data.pocContact,
         customerContact: data.customerContact,
         customerContact1: data.customerContact1,
-        category: data.category,
-        Cuisines: data.Cuisines,
+        category: data.selectedCategory,
+        Cuisines: data.selectedCuisine,
       }));
     } catch (error) {
       console.error("Error fetching general info:", error);
@@ -115,6 +103,18 @@ const EditStoreDetail = () => {
   useEffect(() => {
     getGeneralInfo();
   }, [resId]);
+
+  const [formData, setFormData] = useState({
+    logo: "",
+    businessName: "",
+    location: "",
+    pocName: "",
+    pocContact: "",
+    customerContact: "",
+    customerContact1: "",
+    category: "",
+    Cuisines: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -166,31 +166,12 @@ const EditStoreDetail = () => {
 
   const handleSubmit3 = (event) => {
     event.preventDefault();
-
-    console.log(formData3);
-    let config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: `http://localhost:4000/api//payoutMethod/${resId}`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: formData3,
-    };
-
-    axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log(formData3); // Submit data here (e.g., API call)
   };
 
   return (
     <div className="w-full h-fit flex flex-col">
-      <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+      <div className="z-10 bg-white fixed   w-full h-20  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
         <div className="flex flex-row items-start left-1 py-0 px-6">
           <img
             className="relative w-28 h-16 object-cover z-20"
@@ -237,60 +218,14 @@ const EditStoreDetail = () => {
       <div className="flex  w-full mt-20 h-fit">
         {/* left */}
         <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
-          <Link
-            to="/dashboard"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
-          >
-            <FaHome /> <p className="md:block hidden">Dashboard</p>
-          </Link>
-          <Link
-            to="/payout"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <FaBlog />
-            <p className="md:block hidden">Payout</p>
-          </Link>
-          <Link
-            to="/menu"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <MdMenuBook />
-            <p className="md:block hidden">Menu</p>
-          </Link>
-          <Link
-            to="/editstore"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <IoStorefrontOutline />
-            <p className="md:block hidden">Edit store detail</p>
-          </Link>
-          <Link
-            to="/offer"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <BiSolidOffer />
-            <p className="md:block hidden">offers & campaign</p>
-          </Link>
-          <Link
-            to="/pricing"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <BiSolidOffer />
-            <p className="md:block hidden">Pricing</p>
-          </Link>
-          <Link
-            to="/"
-            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
-          >
-            <IoIosLogOut /> <p className="md:block hidden">Log out</p>
-          </Link>
+       <LeftBar/>
         </div>
 
         {/* right */}
         <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
           {/* one */}
           <div className="w-[100%] p-8   rounded-md" id="a">
-            <h1 className="text-[1.2rem] font-bold">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold"> Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
               <div className="flex gap-2">
                 <button
@@ -322,108 +257,143 @@ const EditStoreDetail = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full h-fit bg-white p-5 mt-4 rounded-md text-[1.1rem] font-semibold">
+            <div className="w-full h-fit mt-4 rounded-md text-[1.1rem] font-semibold">
               <form>
+                <div className="bg-white w-full p-6 rounded-md">
                 <div className="text-[1.1rem] font-bold">Store Details</div>
                 <div className="text-slate-300 h-[96px] w-full flex items-center">
-                  <div className="size-24 bg-slate-300 rounded-full overflow-hidden">
-                    {formData.logo ? (
-                      <img
-                        src={formData.logo}
-                        alt="Logo"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <p className="text-center text-yellow-500 text-[1rem] p-6">
-                        No logo selected
-                      </p>
-                    )}
-                  </div>
-
-                  <label className="text-yellow-500 text-[1rem] ml-4">
+                  <input
+                    className="size-24 bg-slate-300  rounded-full"
+                    type="file"
+                    name="logo"
+                    onChange={handleChange}
+                  />
+                  {/* <label className="text-yellow-500 text-[1rem] ml-4">
                     Upload new logo
                   </label>
                   <p className="size-2 rounded-full bg-slate-400 ml-4"></p>
                   <p className="text-[1rem] text-slate-400 ml-4">
                     {" "}
                     Remove logo
-                  </p>
+                  </p> */}
                 </div>
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Business Name:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.businessName}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      type="text"
+                      name="businessName"
+                      placeholder="Type here"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Location:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.location}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      type="text"
+                      placeholder="Type here"
+                      name="location"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
-                    <label>POC Name:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.pocName}</p>
-                    </div>
+                    <label>Manager Name</label>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="pocName"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
-                    <label>POC Contact:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.pocContact}</p>
-                    </div>
+                    <label>Manager Contact </label>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="pocContact"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
 
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
-                    <label>Customer Contact:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.customerContact}</p>
-                    </div>
+                    <label>Customer Contact</label>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type="text"
+                      name="customerContact"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="flex flex-col w-[48%]">
-                    <label>Customer Contact 1:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.customerContact1}</p>
-                    </div>
+                    <label>Email</label>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      placeholder="Type here"
+                      type='mail'
+                      name="customerContact1"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
+                </div>
+               
+
+                <div className="bg-white mt-8 p-6 rounded-md">
                 <h1 className="text-[1.1rem] font-bold mt-2 mb-3">
                   Cuisine details
                 </h1>
                 <div className="flex w-full justify-between mt-3 mb-2">
                   <div className="flex flex-col w-[48%]">
                     <label>Category:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.category}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      name="category"
+                      onChange={handleChange}
+                    >
+                      {/* <option value="">Slect Category</option>
+                      <option value="upto3">Up to 3</option>
+                      <option value="upto4">Up to 4</option> */}
+                    </input>
                   </div>
                   <div className="flex flex-col w-[48%]">
                     <label>Cuisines:</label>
-                    <div className="px-2 rounded-md h-10 mt-1 text-[.92rem] border-2">
-                      <p>{formData.Cuisines}</p>
-                    </div>
+                    <input
+                      className="px-2  rounded-md h-10 mt-1 text-[.92rem] border-2"
+                      name="Cuisines"
+                      onChange={handleChange}
+                    >
+                      {/* <option value="">Select upto 3</option>
+                      <option value="upto3">Up to 3</option>
+                      <option value="upto4">Up to 4</option> */}
+                    </input>
                   </div>
                 </div>
+                </div>
+                
               </form>
             </div>
           </div>
 
           {/* two */}
           <div
-            className="w-[100%]  bg-slate-200    rounded-md p-8 hidden h-[550px] "
+            className="w-[100%]  bg-slate-200 rounded-md p-8 hidden h-fit pb-4"
             id="b"
           >
-            <h1 className="text-[1.2rem] font-bold   ">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold"> Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
-              <div className="flex gap-2">
+              <div className="flex gap-2 ">
                 <button
-                  className="bg-white px-4 py-1 rounded-full"
+                  className="bg-white px-4 py-2 rounded-full"
                   onClick={one}
                 >
                   General Info
@@ -441,12 +411,7 @@ const EditStoreDetail = () => {
                   Payout Method
                 </button>
               </div>
-              <div>
-                <button className="bg-yellow-500 px-4 py-2 rounded-md text-white">
-                  {" "}
-                  Save changes
-                </button>
-              </div>
+             
             </div>
             <div
               onClick={() => document.querySelector(".input-field").click()}
@@ -473,12 +438,16 @@ const EditStoreDetail = () => {
                 </div>
               </div>
             </div>
-
-            {/* css baaki hai */}
-            <div>
+            <div className="flex flex-row gap-4 flex-wrap">
               {pics &&
                 pics.map((pic) => {
-                  return <img src={pic.image}></img>;
+                  return (
+                    <img
+                      src={pic.image}
+                      width={200}
+                      className="p-3 border border-black"
+                    ></img>
+                  );
                 })}
             </div>
           </div>
@@ -488,11 +457,11 @@ const EditStoreDetail = () => {
             className="w-[100%]  bg-slate-200   rounded-md p-8 hidden  h-[600px]"
             id="c"
           >
-            <h1 className="text-[1.2rem] font-bold   ">Edit Store Details</h1>
+            <h1 className="text-[1.2rem] font-bold   ">Store Details</h1>
             <div className="flex justify-between text-slate-500 mt-3">
               <div className="flex gap-2">
                 <button
-                  className="bg-white  px-4 py-1 rounded-full"
+                  className="bg-white  px-4 py-2 rounded-full"
                   onClick={one}
                 >
                   General Info
