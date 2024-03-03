@@ -6,11 +6,17 @@ import { MdMenuBook } from "react-icons/md";
 import { BiSolidOffer } from "react-icons/bi";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom'
+import { FaRegStar } from "react-icons/fa";
+import { GiPriceTag } from "react-icons/gi";
 
 const LeftBar = () => {
 
-    function glow(){
 
+    function glow(){
+        console.log("nitish");
+        // document.getElementById("a").style.background = 'bg-yellow-600';
+        // document.getElementById("b").style.display = "none";
+        // document.getElementById("c").style.display = "none";
     }
 
   return (
@@ -54,8 +60,15 @@ const LeftBar = () => {
             to="/pricing"
             className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
           >
-            <BiSolidOffer />
+            <GiPriceTag />
             <p className='md:block hidden'>Pricing</p>
+          </Link>
+          <Link id='f'
+            to="/customer"
+            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
+          >
+            <FaRegStar />
+            <p className='md:block hidden'>Customer</p>
           </Link>
           <Link id='g'
             to="/"
