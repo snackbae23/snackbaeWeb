@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
 import { Route, Routes, useLocation } from "react-router-dom";
-import Home from "./Pages/Homepage";
+import Homepage from "./Pages/Homepage";
 import Joinpartner from './Pages/Joinpartner';
 // import Joinpartnerform from './Pages/Joinpartnerform';
 import AboutUs from "./Pages/AboutUs";
@@ -14,6 +14,11 @@ import DashBoard from './Pages/DashBoard';
 import AdminDashboard from './Pages/AdminDashboard';
 import Payout from './Pages/Payout';
 import Menu from './Pages/Menu';
+import Home from './Pages/Home';
+
+
+
+
 
 import Form from './Pages/Form';
 import Review from './Pages/Review';
@@ -35,7 +40,7 @@ import TermsCondition from './Pages/TermsCondition';
 
 
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales' ,'/home'];
 
 function App() {
 
@@ -59,7 +64,9 @@ function App() {
       <restaurantContext.Provider value={{ resId, setResId }}>
         {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
         <Routes>
-          <Route path="/" element={<Home login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
+          <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
+          {/* this is for user home */}
+          <Route path="/home" element={<Home />}></Route> 
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>

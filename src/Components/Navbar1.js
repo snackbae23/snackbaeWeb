@@ -8,7 +8,7 @@ import logo from "../assets/logo.png"
 const Navbar1 = () => {
   return (
     <div>
-<div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+<div className="z-10 bg-white fixed   w-full h-[70px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
                
                <div className="flex flex-row items-start left-1 py-0 px-6">
                    <img

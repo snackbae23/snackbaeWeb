@@ -26,6 +26,7 @@ import slide6 from "../assets/slide6.jpg";
 import imageBase from "../assets/Image Base.png";
 import { IoClose } from "react-icons/io5";
 import { FaEdit } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const Homepage = ({ login, setlogin, onScrollChange }) => {
   // const [currentImage, setCurrentImage] = useState(0);
@@ -38,7 +39,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     { src: slide6 },
   ];
 
-
+  const navigate = useNavigate();
   //restaurantName form
   const [restaurantName, setRestaurantName] = useState("");
   // login data
@@ -178,6 +179,9 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     setlogin(false);
 
     // add navigate to home 
+    navigate("/home");
+
+
   };
 
   // chatgpt
