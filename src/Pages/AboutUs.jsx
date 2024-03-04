@@ -12,9 +12,9 @@ const AboutUs = () => {
   return (
     <div>
       {/* <Navbar/> */}
-      <div>
+      <div className="">
         {/* First Part */}
-        <div className="lg:h-[800px] h-[90vh] sm:h-[75vh] md:h-[60vh] w-[100%] my-auto overflow-hidden bg-slate-50 relative">
+        <div className="lg:h-[650px] h-[90vh] sm:h-[75vh] md:h-[60vh] w-[100%] my-auto overflow-hidden bg-slate-50 relative">
           {/* Left Part */}
           <div className="lg:w-[39.75rem] w-full mx-auto lg:h-[22rem] flex gap-[1.5rem] flex-col absolute lg:top-[28vh] top-36 lg:left-[7vw] text-center lg:text-left">
             <div className="w-[7.125rem] h-12 rounded-3xl py-1 px-4 gap-2.5 bg-amber-50 hidden lg:flex ">
@@ -43,7 +43,7 @@ const AboutUs = () => {
           <div className="hidden lg:flex absolute -bottom-4 -right-2">
             <img
               src={ellipse} alt="image1"
-              className="w-[53vw] min-h-[52vh] h-[62%]"
+              className="w-[48vw] min-h-[52vh] h-[62%]"
               loading="lazy"
             ></img>
             {/* width={756} height={696}  */}
@@ -52,7 +52,7 @@ const AboutUs = () => {
             <img
               src={ellipseA}
               alt="image1"
-              className="w-[50vw] min-h-[50vh] h-[60%]"
+              className="w-[45vw] min-h-[50vh] h-[60%]"
               loading="lazy"
             ></img>
             {/* height={626} width={716} */}

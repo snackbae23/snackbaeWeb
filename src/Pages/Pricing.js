@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
+import LeftBar from '../Components/LeftBar';
 
 const Pricing = () => {
 
@@ -174,53 +175,7 @@ const Pricing = () => {
              
                 {/* left */}
                 <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
-          <Link
-            to="/dashboard"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
-          >
-            <FaHome /> <p className='md:block hidden'>Dashboard</p>
-          </Link>
-          <Link
-            to="/payout"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <FaBlog />
-            <p className='md:block hidden'>Payout</p>
-          </Link>
-          <Link
-            to="/menu"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <MdMenuBook />
-            <p className='md:block hidden'>Menu</p>
-          </Link>
-          <Link
-            to="/editstore"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <IoStorefrontOutline />
-            <p className='md:block hidden'>Edit store detail</p>
-          </Link>
-          <Link
-            to="/offer"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <BiSolidOffer />
-            <p className='md:block hidden'>offers & campaign</p>
-          </Link>
-          <Link
-            to="/pricing"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-          >
-            <BiSolidOffer />
-            <p className='md:block hidden'>Pricing</p>
-          </Link>
-          <Link
-            to="/"
-            className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
-          >
-            <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
-          </Link>
+<LeftBar/>
         </div>
 
                 {/* right */}
@@ -265,7 +220,7 @@ const Pricing = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-1 h-[40px] w-[80%]  mt-[180px]'>
+                    <div className='grid grid-cols-3 gap-1 h-[100px] w-[80%]  mt-[180px]'>
                          <div className='flex items-center'>
                         <img src='/Group.png' alt=''></img>
                         <p className='font-bold ml-2 flex-wrap'>30 days free Trial Guarantee</p>

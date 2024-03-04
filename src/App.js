@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
 import { Route, Routes, useLocation } from "react-router-dom";
-import Home from "./Pages/Homepage";
+import Homepage from "./Pages/Homepage";
 import Joinpartner from './Pages/Joinpartner';
 // import Joinpartnerform from './Pages/Joinpartnerform';
 import AboutUs from "./Pages/AboutUs";
@@ -14,6 +14,11 @@ import DashBoard from './Pages/DashBoard';
 import AdminDashboard from './Pages/AdminDashboard';
 import Payout from './Pages/Payout';
 import Menu from './Pages/Menu';
+import Home from './Pages/Home';
+
+
+
+
 
 import Form from './Pages/Form';
 import Review from './Pages/Review';
@@ -27,23 +32,46 @@ import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import TermsCondition from './Pages/TermsCondition';
+
+
+
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales'];
+
 
 function App() {
 
   const location = useLocation();
   const [resId, setResId] = useState('');
+  const [login,setlogin] =useState("false");
+
+
+  useEffect(() => {
+    setlogin(false);
+  }, []);
+
+  
+  const handleScrollChange = (newLoginValue) => {
+    setlogin(newLoginValue);
+  };
 
   return (
     <div className='app'>
       {/* <Navbar /> */}
       <restaurantContext.Provider value={{ resId, setResId }}>
-        {!excludedPaths.includes(location.pathname) && <Navbar />}
+        {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
         <Routes>
+
           {/* <Switch> */}
-          <Route path="/" element={<Home />}></Route>
+//           <Route path="/" element={<Home />}></Route>
+
+          <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
+          {/* this is for user home */}
+          <Route path="/home" element={<Home />}></Route> 
+
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -64,6 +92,8 @@ function App() {
           <Route path='/editstore' element={<EditStoreDetail />}></Route>
           <Route path='/offer' element={<Offer />}></Route>
           <Route path='/pricing' element={<Pricing />}></Route>
+          <Route path='/privacyPolicy' element={<PrivacyPolicy />}></Route>
+          <Route path='/termsCondition' element={<TermsCondition />}></Route>
 
 
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>

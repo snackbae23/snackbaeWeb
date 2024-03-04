@@ -74,23 +74,7 @@ const Login = () => {
                     });
                 });
         }
-        // try {
-        //     const config = {
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     };
-
-        //     const { data } = await axios.post(
-        //         "http://localhost:4000/api/partnerLogin",
-        //         formData,
-        //         config
-        //     );
-
-        //     //localStorage.setItem("userInfo", JSON.stringify(data));
-        //     console.log(data)
-        //     navigate("/dashboard");
-        // }
+       
         catch (err) {
             console.log(err)
         }

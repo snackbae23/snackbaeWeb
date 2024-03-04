@@ -18,6 +18,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 
+import LeftBar from '../Components/LeftBar';
+
 
 const Payout = () => {
 
@@ -136,7 +138,7 @@ const Payout = () => {
         <div className='w-full h-[100vh] flex flex-col'>
 
 
-            <div className="z-10 bg-white fixed mt-8  w-full h-20 -top-8 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+            <div className="z-10 bg-white fixed   w-full h-20 flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
 
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
@@ -183,53 +185,7 @@ const Payout = () => {
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
                 <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
-                    <Link
-                        to="/dashboard"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3 "
-                    >
-                        <FaHome /> <p className='md:block hidden'>Dashboard</p>
-                    </Link>
-                    <Link
-                        to="/payout"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <FaBlog />
-                        <p className='md:block hidden'>Payout</p>
-                    </Link>
-                    <Link
-                        to="/menu"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <MdMenuBook />
-                        <p className='md:block hidden'>Menu</p>
-                    </Link>
-                    <Link
-                        to="/editstore"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <IoStorefrontOutline />
-                        <p className='md:block hidden'>Edit store detail</p>
-                    </Link>
-                    <Link
-                        to="/offer"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <BiSolidOffer />
-                        <p className='md:block hidden'>offers & campaign</p>
-                    </Link>
-                    <Link
-                        to="/pricing"
-                        className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-3"
-                    >
-                        <BiSolidOffer />
-                        <p className='md:block hidden'>Pricing</p>
-                    </Link>
-                    <Link
-                        to="/"
-                        className="md:w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center md:p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl md:ml-16"
-                    >
-                        <IoIosLogOut /> <p className='md:block hidden'>Log out</p>
-                    </Link>
+                    <LeftBar/>
                 </div>
                 {/* right */}
                 <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
