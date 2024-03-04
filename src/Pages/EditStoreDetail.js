@@ -95,7 +95,6 @@ const EditStoreDetail = () => {
         console.log(formData);
     };
 
-
     const one = () => {
         document.getElementById('a').style.display = "block";
         document.getElementById('b').style.display = "none";

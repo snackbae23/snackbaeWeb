@@ -12,6 +12,7 @@ import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select';
 import axios from "axios";
 import { useToast } from "@chakra-ui/toast";
+import { Link } from 'react-router-dom';
 
 function AdminMerchant() {
     const [latitude, setLatitude] = useState();
@@ -49,6 +50,7 @@ function AdminMerchant() {
         salesRepresentative: '',
         latitude: 0,
         longitude: 0,
+        pic:'',
     });
 
     const handleChange = (e) => {
@@ -166,11 +168,12 @@ function AdminMerchant() {
             console.log("form data : ", formData);
             console.log("geolocation ", latitude, " ", longitude);
             console.log("pic : ",pic);
-            setallData({...formData, pic});
+            // setallData({...formData, pic});
 
-            console.log("all data : ", alldata);
+            // console.log("all data : ", alldata);
             
-            let data = JSON.stringify(alldata);
+            // let data = JSON.stringify(alldata);
+            let data = JSON.stringify(formData);
 
             let config = {
                 method: 'post',
@@ -223,8 +226,8 @@ function AdminMerchant() {
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 console.log(response?.data?.image_url);
-                setPic(response.data.image_url);
-                // formData.pic = pic;
+                setPic(response?.data?.image_url);
+                formData.pic = response?.data?.image_url;
                 console.log(pic);
             })
             .catch((error) => {
@@ -308,7 +311,6 @@ function AdminMerchant() {
     }
 
     useEffect(()=>{
-        
         let config1 = {
             method: 'get',
             maxBodyLength: Infinity,
@@ -926,13 +928,16 @@ function AdminMerchant() {
                                 {searchAllData?.map((restaurant) => {
                                     return (
                                         <tr key={restaurant._id}>
+                                            
                                             <td className="py-4 px-4 whitespace-nowrap">
+                                            <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
                                                 <div className="text-sm">
                                                     {restaurant.restaurantName}
                                                 </div>
                                                 <div className='text-sm'>
                                                     {restaurant.resturantId}
                                                 </div>
+                                                </Link>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
                                                 <div className="text-sm">
@@ -949,6 +954,7 @@ function AdminMerchant() {
                                                 {/* {restaurant.status == 'true' && <div className='py-1 px-2 font-bold w-fit h-fit bg-green-100 text-green-500 rounded-md'>Live</div>}
                                                 {restaurant.status == 'false' && <div className='py-1 px-2 font-bold w-fit h-fit bg-red-100 text-red-500 rounded-md'>Close</div>} */}
                                             </td>
+                                            {/* </Link> */}
                                         </tr>
                                     )
                                 })

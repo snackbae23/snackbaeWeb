@@ -29,7 +29,7 @@ import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
 import { useState } from 'react';
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales'];
 
 function App() {
 
@@ -42,6 +42,7 @@ function App() {
       <restaurantContext.Provider value={{ resId, setResId }}>
         {!excludedPaths.includes(location.pathname) && <Navbar />}
         <Routes>
+          {/* <Switch> */}
           <Route path="/" element={<Home />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
@@ -67,9 +68,10 @@ function App() {
 
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
           <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
-          <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
+          <Route path='/admin/merchantProfile/:id' element={<AdminMerchantProfile/>}></Route>
           <Route path='/admin/bookings' element={<AdminBookings />}></Route>
           <Route path='/admin/sales' element={<AdminSales />}></Route>
+          {/* </Switch> */}
         </Routes>
       </restaurantContext.Provider>
     </div>
