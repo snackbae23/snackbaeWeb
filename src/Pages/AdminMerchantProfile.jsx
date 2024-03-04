@@ -1,43 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminNav from '../Components/AdminNav';
 import AdminLeftBar from '../Components/AdminLeftBar';
 import { MdContentCopy } from "react-icons/md";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const data = {
-    logo: "",
-    qr: "",
-    url: "foodoos.snackbae.in",
-    businessName: "ReUnion Cafe",
-    location: "AG Block, Salt Lake",
-    managerName: "Sangit Saha",
-    managerContact: "9123456789",
-    customerContact: "9112343244",
-    email: "abc@gmail.com",
-    category: [
-        "Rooftop",
-        "Pet Friendly",
-        "Biryani"
-    ],
-    cuisines: [
-        "Indian",
-        "Chinese",
-        "Mughlai"
-    ],
-    opening: "11:00 AM",
-    closing: "11:00 PM",
-    offDay: "Thursday",
-    avgCost: "1200",
-    capacity: "28",
-    numberOfTables: "10",
-    FSSAI: "12345678457345345",
-    salesRep: "Annwesan Acharya"
-}
+// const data = {
+//     logo: "",
+//     qr: "",
+//     url: "foodoos.snackbae.in",
+//     businessName: "ReUnion Cafe",
+//     location: "AG Block, Salt Lake",
+//     managerName: "Sangit Saha",
+//     managerContact: "9123456789",
+//     customerContact: "9112343244",
+//     email: "abc@gmail.com",
+//     category: [
+//         "Rooftop",
+//         "Pet Friendly",
+//         "Biryani"
+//     ],
+//     cuisines: [
+//         "Indian",
+//         "Chinese",
+//         "Mughlai"
+//     ],
+//     opening: "11:00 AM",
+//     closing: "11:00 PM",
+//     offDay: "Thursday",
+//     avgCost: "1200",
+//     capacity: "28",
+//     numberOfTables: "10",
+//     FSSAI: "12345678457345345",
+//     salesRep: "Annwesan Acharya"
+// }
 
 // const data = null;
 
 
 function AdminMerchantProfile() {
-
+    const {id} = useParams(); 
+    const [data,setData] = useState();      
+    useEffect(()=>{
+        // const {id} = useParams();
+        let config1 = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/search?search=${id}`,
+            headers: { }
+          };
+          
+          axios.request(config1)
+          .then((response) => {
+            console.log(JSON.stringify(response.data[0]));
+            setData(response.data[0]);
+            // setSearchAllData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },[]);
 
     const handleCopyClick = () => {
         const textarea = document.createElement('textarea');
@@ -48,7 +70,6 @@ function AdminMerchantProfile() {
         document.execCommand('copy');
 
         document.body.removeChild(textarea);
-
     };
 
     const handleDownloadClick = () => {
@@ -75,6 +96,8 @@ function AdminMerchantProfile() {
             });
     };
 
+    // console.log("rId",rId);
+
     return (
         <div className='w-full'>
             <div>
@@ -87,7 +110,7 @@ function AdminMerchantProfile() {
                 </div>
                 {!data ? (
                     <div className='w-full bg-slate-200'>
-                        <div className=' p-8   rounded-md '>
+                        <div className='p-8 rounded-md '>
 
                         </div>
                     </div>
@@ -100,17 +123,17 @@ function AdminMerchantProfile() {
                                         <div className='flex w-full justify-between mt-3 mb-2'>
                                             <div className='flex  w-[50%] justify-between mt-3 mb-2'>
                                                 <div className='text-slate-300 h-[96px] w-full flex items-center'>
-                                                    <img className='size-24 bg-slate-300  rounded-full' name="logo" alt='' src={data.logo} onClick={handleDownloadClick} />
+                                                    <img className='size-24 bg-slate-300  rounded-full' name="logo" alt='' src={data?.logo} onClick={handleDownloadClick} />
                                                 </div>
                                                 <div className=''>
-                                                    <img className='size-24 bg-slate-300  rounded-md' name="logo" alt='' src={data.qr} />
+                                                    <img className='size-24 bg-slate-300  rounded-md' name="logo" alt='' src={data?.qr} />
                                                     <button className='text-yellow-500 text-[1rem]  font-roboto hover:text-slate-500'>Download QR Code</button>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col w-[48%] mt-20 font-roboto'>
                                                 <label>Url</label>
                                                 <div className='px-2 rounded-md h-10 mt-1 text-[.92rem] border-2 flex justify-between items-center' >
-                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data.url}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data?.url}</p>
                                                     <div
                                                         className={`text-slate-500 cursor-pointer hover:text-yellow-500`}
                                                         onClick={handleCopyClick}>
@@ -123,13 +146,13 @@ function AdminMerchantProfile() {
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label>Business Name</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data.businessName}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data?.restaurantName}</p>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label>Location</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data.location}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data?.location}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,13 +161,13 @@ function AdminMerchantProfile() {
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label className=' font-roboto'>Manager Name</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data.managerName}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data?.managerName}</p>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label>Manager Contact</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data.managerContact}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500 font-roboto'>{data?.managerContact}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,13 +176,13 @@ function AdminMerchantProfile() {
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label>Customer Contact</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.customerContact}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data?.managerContact}</p>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col w-[48%] font-roboto'>
                                                 <label>Email</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.email}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data?.authorizedMail}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,9 +194,9 @@ function AdminMerchantProfile() {
                                         <div className='flex flex-col w-[48%]'>
                                             <label className='text-[1.1rem] font-bold'>Category</label>
                                             <div className='px-2  rounded-md h-12 mt-1 text-[.92rem] border-2 flex gap-2' name="category" >
-                                                {data.category.map((category, index) => (
+                                                {data?.selectedCategory.map((category, index) => (
                                                     <div key={index} className='bg-[#FEFCE8] rounded-3xl'>
-                                                        <p className='text-center text-[#CA8A04] px-4 py-2 font-roboto'>{category}</p>
+                                                        <p className='text-center text-[#CA8A04] px-4 py-2 font-roboto'>{category.value}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -181,9 +204,9 @@ function AdminMerchantProfile() {
                                         <div className='flex flex-col w-[48%]'>
                                             <label className='text-[1.1rem] font-bold font-roboto'>Cuisines</label>
                                             <div className='px-2 rounded-md h-12 mt-1 text-[.92rem] border-2 flex gap-2' name="Cuisines" >
-                                                {data.cuisines.map((cuisine, index) => (
+                                                {data?.selectedCuisine.map((cuisine, index) => (
                                                     <div key={index} className='bg-[#FEFCE8] rounded-3xl'>
-                                                        <p className='text-center text-[#CA8A04] px-4 py-2 font-roboto'>{cuisine}</p>
+                                                        <p className='text-center text-[#CA8A04] px-4 py-2 font-roboto'>{cuisine.value}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -197,14 +220,14 @@ function AdminMerchantProfile() {
                                             <div className='flex flex-col w-[47%]'>
                                                 <label>Opening Hours</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.opening}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.openingHour}</p>
                                                 </div>
                                             </div>
                                             <p className='text-slate-500 mt-8 '>To</p>
                                             <div className='flex flex-col w-[47%]'>
                                                 <label className='text-white'>Closing</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.closing}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.closingHour}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +241,7 @@ function AdminMerchantProfile() {
                                                     <input
                                                         type="checkbox"
                                                         id="remember"
-                                                        defaultChecked={!data.offDay}
+                                                        defaultChecked={!data.openAllDay}
                                                         className={`w-5 h-5 rounded-md `} />
                                                     <label htmlFor="remember" className="font-roboto ml-3 block text-sm font-medium text-slate-950">
                                                         Store is open every day
@@ -229,7 +252,7 @@ function AdminMerchantProfile() {
                                                 <label>Average Cost for Two</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2 flex gap-2' >
                                                     <p className=' text-black font-bold text-2xl'>₹</p>
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.avgCost}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.averageCost}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,13 +274,13 @@ function AdminMerchantProfile() {
                                             <div className='flex flex-col w-[47%]'>
                                                 <label>FSSAI License Number</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.FSSAI}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.FSSAInumber}</p>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col w-[47%]'>
                                                 <label className=''>Sales Representative</label>
                                                 <div className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2' >
-                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.salesRep}</p>
+                                                    <p className='flex items-center my-1.5 text-slate-500'>{data.salesRepresentative}</p>
                                                 </div>
                                             </div>
                                         </div>

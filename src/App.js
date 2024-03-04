@@ -39,8 +39,8 @@ import TermsCondition from './Pages/TermsCondition';
 
 
 
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales'];
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales' ,'/home'];
 
 function App() {
 
@@ -64,9 +64,14 @@ function App() {
       <restaurantContext.Provider value={{ resId, setResId }}>
         {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
         <Routes>
+
+          {/* <Switch> */}
+//           <Route path="/" element={<Home />}></Route>
+
           <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
           {/* this is for user home */}
           <Route path="/home" element={<Home />}></Route> 
+
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -93,9 +98,10 @@ function App() {
 
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
           <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
-          <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
+          <Route path='/admin/merchantProfile/:id' element={<AdminMerchantProfile/>}></Route>
           <Route path='/admin/bookings' element={<AdminBookings />}></Route>
           <Route path='/admin/sales' element={<AdminSales />}></Route>
+          {/* </Switch> */}
         </Routes>
       </restaurantContext.Provider>
     </div>
