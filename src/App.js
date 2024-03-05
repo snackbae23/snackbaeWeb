@@ -5,7 +5,7 @@ import AdminLogin from './Pages/AdminLogin';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Joinpartner from './Pages/Joinpartner';
-// import Joinpartnerform from './Pages/Joinpartnerform';
+
 import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
 import Blogs from './Pages/Blog';
@@ -15,11 +15,6 @@ import AdminDashboard from './Pages/AdminDashboard';
 import Payout from './Pages/Payout';
 import Menu from './Pages/Menu';
 import Home from './Pages/Home';
-
-
-
-
-
 import Form from './Pages/Form';
 import Review from './Pages/Review';
 import Customer from './Pages/Customer';
@@ -73,7 +68,7 @@ function App() {
         <Routes>
 
           {/* <Switch> */}
-//           <Route path="/" element={<Home />}></Route>
+         {/* <Route path="/" element={<Home />}></Route> */}
 
           <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
           {/* this is for user home */}
