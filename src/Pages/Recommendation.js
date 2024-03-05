@@ -1,12 +1,9 @@
-import React from 'react'
+import React from "react";
 import Navbar1 from "../Components/Navbar1";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/rec1.png";
 import { FaArrowLeft } from "react-icons/fa6";
 import Faq from "../Components/Faq";
-
-
-
 
 const Recommendation = () => {
   return (
@@ -28,16 +25,16 @@ const Recommendation = () => {
             <div className=" font-semibold ml-4 lg:ml-0 text-[50px] md:text-[65px] lg:text-[80px] leading-[54px] ">
               Become the Ultimate Food Critic
             </div>
-            <p className="font-sans font-normal ml-4 lg:ml-0 text-[18px] md:text-[22px] md:leading-6">
+            <p className="font-sans font-normal ml-4 lg:ml-0 text-[15px] md:text-[22px] md:leading-6">
               Recommend dishes, eateries, and make dining experiences more
               enjoyable.
             </p>
             <div className="flex space-x-2 ml-4 lg:ml-0">
-              <button className="rounded-md w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] bg-[#0A191E] text-white md:px-6 py- md:py-2">
-                Recommend Now
+              <button className="rounded-md  font-sans w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] bg-[#0A191E] text-white md:px-6 py- md:py-2">
+                <p className="font-sans">Recommend Now</p>
               </button>
-              <button className="rounded-md  w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] border-4 border-black bg-[#FFD601] text-black px-4 md:px-6 py-1 md:py-2">
-                View Paid Offers
+              <button className="rounded-md w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] border-4 border-black bg-[#FFD601] text-black px-4 md:px-6 py-1 md:py-2">
+                <p className="font-sans">View Rewards</p>
               </button>
             </div>
           </div>
@@ -47,13 +44,13 @@ const Recommendation = () => {
           <div>
             <Faq />
           </div>
-          <div >
+          <div>
             <Footer />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Recommendation
+export default Recommendation;
