@@ -19,6 +19,7 @@ import Form from './Pages/Form';
 import Review from './Pages/Review';
 import Customer from './Pages/Customer';
 import EditStoreDetail from './Pages/EditStoreDetail';
+import Recommendation from "./Pages/Recommendation";
 import Offer from './Pages/Offer';
 import Pricing from './Pages/Pricing';
 import DashboardAdmin from './Pages/DashboardAdmin';
@@ -77,7 +78,6 @@ function App() {
           <Route path='/blogdetail' element={<Blogdetail />}></Route>
           <Route path='/adminlogin' element={<AdminLogin />}></Route>
           <Route path='/adminDashboard' element={<AdminDashboard />}></Route>
-
           <Route path='/blog' element={<Blogs />}></Route>
           <Route path='/blogdetail' element={<Blogdetail />}></Route>
           <Route path='/form' element={<Form />}></Route>
@@ -90,6 +90,7 @@ function App() {
           <Route path='/pricing' element={<Pricing />}></Route>
           <Route path='/privacyPolicy' element={<PrivacyPolicy />}></Route>
           <Route path='/termsCondition' element={<TermsCondition />}></Route>
+          <Route path="/recommendation" element={<Recommendation />}></Route>
 
 
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
