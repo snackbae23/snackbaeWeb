@@ -36,11 +36,12 @@ import { restaurantContext } from './context/restaurantContext';
 import { useState,useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
+import AdminAppControl from './Pages/AdminAppControl';
+import AdminControl from './Pages/AdminControl';
 
 
 
-
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
 
 >>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
 
@@ -113,6 +114,8 @@ function App() {
           <Route path='/admin/merchantProfile/:id' element={<AdminMerchantProfile/>}></Route>
           <Route path='/admin/bookings' element={<AdminBookings />}></Route>
           <Route path='/admin/sales' element={<AdminSales />}></Route>
+          <Route path='/admin/appControl' element={<AdminAppControl />}></Route>
+          <Route path='/admin/admincontrol' element={<AdminControl />}></Route>
           {/* </Switch> */}
         </Routes>
       </restaurantContext.Provider>
