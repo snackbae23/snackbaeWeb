@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
@@ -26,9 +26,10 @@ import AdminMerchant from './Pages/AdminMerchant';
 import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
+import AdminAppControl from './Pages/AdminAppControl';
+import AdminControl from './Pages/AdminControl';
 
-
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
 
 function App() {
 
@@ -67,6 +68,8 @@ function App() {
         <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
         <Route path='/admin/bookings' element={<AdminBookings />}></Route>
         <Route path='/admin/sales' element={<AdminSales />}></Route>
+        <Route path='/admin/appControl' element={<AdminAppControl />}></Route>
+        <Route path='/admin/adminControl' element={<AdminControl />}></Route>
       </Routes>
     </div>
   );

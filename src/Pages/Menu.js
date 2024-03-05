@@ -66,7 +66,7 @@ const Menu = () => {
       "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
     },
   ]
-  
+
   function openPopup() {
     document.getElementById('popup').style.display = "block";
     document.getElementById('background').style.filter = "blur(2Px)";
@@ -77,24 +77,24 @@ const Menu = () => {
     document.getElementById('background').style.filter = "blur(0px)";
 
   }
-  const[pic , setPic]= useState();
+  const [pic, setPic] = useState();
   const [Data, SetData] = useState();
   const [formData, setFormData] = useState({
-    menuItem:"",
-    type:"",
-    cuisines:"",
+    menuItem: "",
+    type: "",
+    cuisines: "",
   });
 
   const handleChange = (event) => {
-      setFormData({ ...formData, [event.target.name]: event.target.value });
-       SetData({ ...formData, pic });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    SetData({ ...formData, pic });
   };
-  
- 
+
+
 
   const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(Data); // Submit data here (e.g., API call)
+    event.preventDefault();
+    console.log(Data); // Submit data here (e.g., API call)
 
   };
 
@@ -102,27 +102,27 @@ const Menu = () => {
     const formData = new FormData();
     formData.append("someExpressFiles", pics);
 
-     let config = {
-       method: "post",
-       maxBodyLength: Infinity,
-       url: "http://localhost:4000/api/gallery",
-       // headers: {
-       //   ...data.getHeaders(),
-       // },
-       data: formData,
-     };
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:4000/api/gallery",
+      // headers: {
+      //   ...data.getHeaders(),
+      // },
+      data: formData,
+    };
 
-     axios
-       .request(config)
-       .then((response) => {
-         console.log(JSON.stringify(response.data));
-         setPic(response?.data?.image_url)
-         console.log(pic)
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   };
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        setPic(response?.data?.image_url)
+        console.log(pic)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="w-full h-[100vh] flex flex-col">
@@ -220,14 +220,14 @@ const Menu = () => {
                   </label>
 
                   <input
-                      className="w-full h-[100px]  border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md "
-                      type="file"
-                      id="image"
-                      name="image"
-                      accept="image/*"
-                      onChange={(e) => postDetails(e.target.files[0])}
-                      required
-                    />
+                    className="w-full h-[100px]  border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md "
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    onChange={(e) => postDetails(e.target.files[0])}
+                    required
+                  />
                 </div>
 
                 <label for="image"></label>
@@ -249,13 +249,13 @@ const Menu = () => {
                   Cuisines
                 </label>
                 <input
-                    className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
-                    type="text"
-                    id="cuisines"
-                    name="cuisines"
-                    value={formData.cuisines}
-                    onChange={handleChange}
-                  />
+                  className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
+                  type="text"
+                  id="cuisines"
+                  name="cuisines"
+                  value={formData.cuisines}
+                  onChange={handleChange}
+                />
                 <button
                   className="w-[137px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] mx-auto mt-4"
                   type="submit"
