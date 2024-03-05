@@ -13,9 +13,7 @@ import joinpartner3 from "../assets/joinpartner3.png"
 import check from "../assets/check.png"
 import { Link } from 'react-router-dom';
 
-// import Navbar from '../Components/Navbar';
 function Joinpartner() {
-    // let popup = document.getElementById('popup');
 
     function openPopup() {
         document.getElementById('popup').style.display = "block";

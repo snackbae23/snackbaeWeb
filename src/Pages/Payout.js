@@ -1,15 +1,10 @@
 import React from 'react'
-import { FaHome } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
-import { FaBlog } from "react-icons/fa";
-import { MdMenuBook } from "react-icons/md";
-import { BiSolidOffer } from "react-icons/bi";
-import { IoStorefrontOutline } from "react-icons/io5";
 import group117 from "../assets/group-117.svg"
 import rect54 from "../assets/rectangle54.png"
 import group752 from "../assets/group-752.svg"
 import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
+import LeftBar from '../Components/LeftBar';
 
 const Payout = () => {
 
@@ -112,33 +107,13 @@ const Payout = () => {
            </div>
             <div className='flex  w-full mt-20 h-full '>
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col fixed '>
-                    <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
-                        <FaHome /> <p>Dashboard</p>
-                    </Link>
-                    <Link to='/payout' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2' >
-                        <FaBlog /><p>Payout</p>
-                    </Link>
-                    <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <MdMenuBook /><p>Menu</p>
-                    </Link>
-                    <Link to='/editstore' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <IoStorefrontOutline /><p>Edit store detail</p>
-                    </Link>
-                    <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <BiSolidOffer /><p>offers & campaign</p>
-                    </Link>
-                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                    <BiSolidOffer /><p>Pricing</p>
-                    </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
-                        <IoIosLogOut /> <p>Log out</p>
-                    </Link>
-                </div>
+                <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+         <LeftBar/>
+        </div>
                 {/* right */}
-                <div className='w-[75%] bg-slate-300 ml-6 h-fit rounded-md p-6 ml-[22%]' >
+                <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
                     <div className='w-full h-[100px] flex items-center '>
-                        <h1 className='text-[1.2rem] font-bold w-[40%] ml-4 '>Payout</h1>
+                        <h1 className='text-[1.5rem] font-bold w-[40%] ml-4 '>Payout</h1>
                         <div className='w-[60%] flex  gap-4 justify-end'>
                             <button className='bg-black text-white w-[90px] h-10 rounded-md'>weekly</button>
                             <button className='bg-white  w-[90px] h-10 rounded-md'>Monthly</button>
@@ -151,31 +126,31 @@ const Payout = () => {
 
                     </div>
 
-                    <div className='w-full h-[190px] bg-white rounded-md flex'>
+                    <div className='w-full h-[190px] bg-white rounded-md flex md:text-[1.2rem] text-[.9rem]'>
                         <div className='w-[25%] flex flex-col  items-center justify-center '>
-                            <p>Available for payout</p>
-                            <p className=' font-bold text-[2.1rem] text-green-600'>$1,712.00</p>
-                            <button className='w-[200px] bg-yellow-500 h-10 rounded-md'>Withdraw Request</button>
+                            <p className=''>Available for payout</p>
+                            <p className=' font-bold md:text-[2.1rem] text-[1.4rem] text-green-600'>$1,712.00</p>
+                            <button className='md:w-[200px] px-2 mt-2 bg-yellow-500 h-10 rounded-md'>Withdraw Request</button>
                              
                         </div>
                         <div className='h-[70%] w-[2px] bg-slate-200 mt-5'></div>
                         <div className='w-[25%] flex flex-col  items-center justify-center '>
-                            <p>Payment being cleared</p>
-                            <p className=' font-bold text-[2.1rem]'>$112.00</p>
+                            <p>Today's Revenue</p>
+                            <p className=' font-bold md:text-[2.1rem] text-[1.4rem]'>$112.00</p>
                             
 
                         </div>
                         <div className='h-[70%] w-[2px] bg-slate-200 mt-5'></div>
                         <div className='w-[25%] flex flex-col  items-center justify-center '>
-                            <p>Earnings to data</p>
-                            <p className=' font-bold text-[2.1rem]'>$102,712.00</p>
+                            <p>Total Earnings</p>
+                            <p className=' font-bold md:text-[2.1rem] text-[1.4rem]'>$102,712.00</p>
                             
 
                         </div>
                         <div className='h-[70%] w-[2px] bg-slate-200 mt-5'></div>
                         <div className='w-[25%] flex flex-col  items-center justify-center '>
                             <p>Total Reservation</p>
-                            <p className=' font-bold text-[2.1rem]'>$230.00</p>
+                            <p className=' font-bold md:text-[2.1rem] text-[1.4rem]'>$230.00</p>
                             
 
                         </div>
