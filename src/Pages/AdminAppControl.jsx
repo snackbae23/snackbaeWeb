@@ -6,6 +6,8 @@ import editIcon from "../assets/Edit.png"
 import crossIcon from "../assets/delete.png"
 import cross from "../assets/cross2.png"
 import crossX from "../assets/cross.png"
+import { FiUpload } from "react-icons/fi";
+
 
 const categories = [
     {
@@ -235,9 +237,13 @@ const AdminAppControl = () => {
     const [isAddPopupOpen3, setIsAddPopupOpen3] = useState(false);
     const [isAddPopupOpen4, setIsAddPopupOpen4] = useState(false);
 
+    const [image1, setImage1] = useState(null);
+    const [fileName1, setFileName1] = useState("No selected Files");
+
     const [data, SetData] = useState();
     const [formData1, setFormData1] = useState({
         categoryName: "",
+        pic:""
     });
 
     const handleChange1 = (event) => {
@@ -250,10 +256,14 @@ const AdminAppControl = () => {
         console.log(formData1);
     };
 
+    const [image2, setImage2] = useState(null);
+    const [fileName2, setFileName2] = useState("No selected Files");
+
     const [formData2, setFormData2] = useState({
         caption: "",
         duration: "",
-        merchantTag: ""
+        merchantTag: "",
+        pic:""
     });
 
     const handleChange2 = (event) => {
@@ -266,9 +276,13 @@ const AdminAppControl = () => {
         console.log(formData2);
     };
 
+    const [image3, setImage3] = useState(null);
+    const [fileName3, setFileName3] = useState("No selected Files");
+
     const [formData3, setFormData3] = useState({
         title: "",
         body: "",
+        pic:"",
     });
 
     const handleChange3 = (event) => {
@@ -281,10 +295,14 @@ const AdminAppControl = () => {
         console.log(formData3);
     };
 
+    const [image4, setImage4] = useState(null);
+    const [fileName4, setFileName4] = useState("No selected Files");
+
     const [formData4, setFormData4] = useState({
         title: "",
         url: "",
-        duration: ""
+        duration: "",
+        pic:""
     });
 
     const handleChange4 = (event) => {
@@ -338,7 +356,6 @@ const AdminAppControl = () => {
         setIsAddPopupOpen1(false);
     }
 
-
     function openAddPopup2() {
         setIsAddPopupOpen2(true);
     }
@@ -362,6 +379,7 @@ const AdminAppControl = () => {
     function closeAddPopup4() {
         setIsAddPopupOpen4(false);
     }
+
 
     return (
         <div className='w-full overflow-x-hidden relative'>
@@ -474,25 +492,26 @@ const AdminAppControl = () => {
                                                 onChange={handleChange1}
                                                 required />
                                         </div>
-                                        <div >
-                                            <label className='font-medium mb-2'>Category Image</label>
-                                            <label className="" htmlFor="image">
-                                                <span className='flex justify-center '>
+                                        <label className='font-medium mb-2'>Category Image</label>
+                                        <div className='flex flex-row justify-center items-center w-full h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field1").click()}>
+                                            <input type='file' accept='image/*' className='input-field1'
+                                                onChange={({ target: { files } }) => {
+                                                    files[0] && setFileName1(files[0].name)
+                                                    if (files)
+                                                        setImage1(URL.createObjectURL(files[0]))
 
-                                                    <img
-                                                        className="absolute w-[130px] h-[80px] mt-4"
-                                                        src="/Group 1171277298.png"
-                                                        alt=""
-                                                    ></img>
-                                                </span>
-                                            </label>
-                                            <input
-                                                className="w-full h-28 bg-[#FEFCE8] border border-[#CA8A04] border-dashed rounded-md focus:outline-none focus:shadow-md "
-                                                type="file"
-                                                id="categoryImage"
-                                                name="categoryImage"
-                                                required
-                                            />
+                                                }}
+                                                hidden></input>
+                                            {image1 ?
+                                                <div>Uploaded {fileName1}</div> :
+                                                <div className='flex flex-col justify-center items-center'>
+                                                    <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                        <FiUpload color='white' />
+                                                    </div>
+                                                    <div className='font-bold text-sm'>Upload File</div>
+                                                    <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                </div>
+                                            }
                                         </div>
                                         <div className='flex justify-center mt-6 mb-4'>
                                             <button className='bg-[#EAB308] p-2 w-[138px] h-10 rounded-[10px] ' type='submit' onClick={closeAddPopup1}>
@@ -632,23 +651,26 @@ const AdminAppControl = () => {
                                         </div>
                                         <div >
                                             <label className='font-medium mb-2'>Video Media</label>
-                                            <label className="" htmlFor="video">
-                                                <span className='flex justify-center '>
+                                            <div className='flex flex-row justify-center items-center w-full h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field2").click()}>
+                                                <input type='file' accept='video/*' className='input-field2'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName2(files[0].name)
+                                                        if (files)
+                                                            setImage2(URL.createObjectURL(files[0]))
 
-                                                    <img
-                                                        className="absolute w-[130px] h-[80px] mt-4"
-                                                        src="/Group 1171277298.png"
-                                                        alt=""
-                                                    ></img>
-                                                </span>
-                                            </label>
-                                            <input
-                                                className="w-full h-28 bg-[#FEFCE8] border border-[#CA8A04] border-dashed rounded-md focus:outline-none focus:shadow-md "
-                                                type="file"
-                                                id="media"
-                                                name="media"
-                                                required
-                                            />
+                                                    }}
+                                                    hidden></input>
+                                                {image2 ?
+                                                    <div>Uploaded {fileName2}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white' />
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                         <div className='flex justify-center mt-6 mb-4'>
                                             <button className='bg-[#EAB308] p-2 w-[138px] h-10 rounded-[10px] ' type='submit' onClick={closeAddPopup2}>
@@ -745,7 +767,7 @@ const AdminAppControl = () => {
                             <div className='flex flex-col justify-center items-center'>
                                 <form onSubmit={handleSubmit3}>
                                     <div className='flex justify-between px-6 pt-6 w-[470px]'>
-                                        <p className='font-roboto font-semibold text-xl'>Add Snackstory</p>
+                                        <p className='font-roboto font-semibold text-xl'>Add Blog</p>
                                         <button className='p-3 rounded-full bg-[#e0babe] mb-4' onClick={closeAddPopup3}>
                                             <img src={crossX} alt='' className='h-[10px] w-[10px]' />
                                         </button>
@@ -757,7 +779,7 @@ const AdminAppControl = () => {
                                             <input className='px-2 rounded-md h-10 mt-1 text-[.92rem] border-2 bg-[#F7F7F8]'
                                                 type="text"
                                                 name="title"
-                                                value={formData2.title}
+                                                value={formData3.title}
                                                 onChange={handleChange3}
                                                 required />
                                         </div>
@@ -765,29 +787,32 @@ const AdminAppControl = () => {
                                             <label className='font-medium'>Body</label>
                                             <textarea className='px-2  rounded-md h-10 mt-1 text-[.92rem] border-2 bg-[#F7F7F8]'
                                                 name="body"
-                                                value={formData2.body}
+                                                value={formData3.body}
                                                 onChange={handleChange3}
                                                 required />
                                         </div>
                                         <div >
                                             <label className='font-medium mb-2'>Add Image</label>
-                                            <label className="" htmlFor="blogImage">
-                                                <span className='flex justify-center '>
+                                            <div className='flex flex-row justify-center items-center w-full h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field3").click()}>
+                                                <input type='file' accept='image/*' className='input-field3'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName3(files[0].name)
+                                                        if (files)
+                                                            setImage3(URL.createObjectURL(files[0]))
 
-                                                    <img
-                                                        className="absolute w-[130px] h-[80px] mt-4"
-                                                        src="/Group 1171277298.png"
-                                                        alt=""
-                                                    ></img>
-                                                </span>
-                                            </label>
-                                            <input
-                                                className="w-full h-28 bg-[#FEFCE8] border border-[#CA8A04] border-dashed rounded-md focus:outline-none focus:shadow-md "
-                                                type="file"
-                                                id="blogImage"
-                                                name="blogImage"
-                                                required
-                                            />
+                                                    }}
+                                                    hidden></input>
+                                                {image3 ?
+                                                    <div>Uploaded {fileName3}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white' />
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                         <div className='flex justify-center mt-6 mb-4'>
                                             <button className='bg-[#EAB308] p-2 w-[138px] h-10 rounded-[10px] ' type='submit' onClick={closeAddPopup3}>
@@ -929,23 +954,26 @@ const AdminAppControl = () => {
                                         </div>
                                         <div >
                                             <label className='font-medium mb-2'>Banner Media</label>
-                                            <label className="" htmlFor="video">
-                                                <span className='flex justify-center '>
+                                            <div className='flex flex-row justify-center items-center w-full h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field4").click()}>
+                                                <input type='file' accept='video/*' className='input-field4'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName4(files[0].name)
+                                                        if (files)
+                                                            setImage4(URL.createObjectURL(files[0]))
 
-                                                    <img
-                                                        className="absolute w-[130px] h-[80px] mt-4"
-                                                        src="/Group 1171277298.png"
-                                                        alt=""
-                                                    ></img>
-                                                </span>
-                                            </label>
-                                            <input
-                                                className="w-full h-28 bg-[#FEFCE8] border border-[#CA8A04] border-dashed rounded-md focus:outline-none focus:shadow-md "
-                                                type="file"
-                                                id="bannerMedia"
-                                                name="bannerMedia"
-                                                required
-                                            />
+                                                    }}
+                                                    hidden></input>
+                                                {image4 ?
+                                                    <div>Uploaded {fileName4}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white' />
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                         <div className='flex justify-center mt-6 mb-4'>
                                             <button className='bg-[#EAB308] p-2 w-[138px] h-10 rounded-[10px] ' type='submit' onClick={closeAddPopup4}>
