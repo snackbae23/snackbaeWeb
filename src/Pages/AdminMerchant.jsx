@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AdminNav from '../Components/AdminNav'
 import AdminLeftBar from '../Components/AdminLeftBar'
 import { LiaFileDownloadSolid } from "react-icons/lia";
@@ -11,9 +11,12 @@ import { FiUpload } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select';
 import axios from "axios";
-
+import { useToast } from "@chakra-ui/toast";
+import { Link } from 'react-router-dom';
 
 function AdminMerchant() {
+    const [latitude, setLatitude] = useState();
+    const [longitude, setLongitude] = useState();
 
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedCuisine, setSelectedCuisine] = useState([]);
@@ -40,12 +43,14 @@ function AdminMerchant() {
         location: '',
         capacity: '',
         numberOfTables: '',
-        category: selectedCategory,
-        cuisinesServed: selectedCuisine,
+        selectedCategory: selectedCategory,
+        selectedCuisine: selectedCuisine,
         paymentMethods: [],
         FSSAInumber: '',
-
         salesRepresentative: '',
+        latitude: 0,
+        longitude: 0,
+        pic:'',
     });
 
     const handleChange = (e) => {
@@ -58,10 +63,16 @@ function AdminMerchant() {
 
     const handleCategoryChange = (selectedOptions) => {
         setSelectedCategory(selectedOptions);
+        console.log(selectedCategory);
+
+        formData.selectedCategory = selectedCategory;
     }
 
     const handleCuisineChange = (selectedOptions) => {
         setSelectedCuisine(selectedOptions);
+        console.log(selectedCuisine);
+
+        formData.selectedCuisine = selectedCuisine;
     }
 
     const handleCheckboxChange = (event) => {
@@ -89,20 +100,111 @@ function AdminMerchant() {
         });
     };
 
-
     // save for later handler
     function saveForLaterHandler() {
 
+    }
 
+    function getGeoLocation(callback) {
+        if (navigator.geolocation) {
+            console.log("inside navigator.geolocation");
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    console.log("latitude  : ", latitude);
+                    console.log("longitude  : ", longitude);
+                    setLatitude(latitude);
+                    setLongitude(longitude);
+                    formData.latitude = latitude;
+                    formData.longitude = longitude;
+                    callback(latitude, longitude);
+                },
+                (error) => {
+                    console.error("Error getting geolocation:", error);
+                }
+            )
+        }
+    }
+
+    useEffect(() => {
+        setFormData(prevData => ({
+            ...prevData,
+            selectedCategory: selectedCategory,
+            selectedCuisine: selectedCuisine
+        }));
+    }, [selectedCategory, selectedCuisine]);
+    const toast = useToast();
+
+    // resetForm
+    function resetForm(){
+        setFormData({
+            restaurantName: '',
+            managerName: '',
+            managerContact: '',
+            customerContact: '',
+            authorizedMail: '',
+            openingHour: '',
+            closingHour: '',
+            offDay: '',
+            averageCost: '',
+            openAllDay: false,
+            location: '',
+            capacity: '',
+            numberOfTables: '',
+            selectedCategory: selectedCategory,
+            selectedCuisine: selectedCuisine,
+            paymentMethods: [],
+            FSSAInumber: '',
+            salesRepresentative: '',
+        })
     }
 
     //create merchant handler
-    function createMerchantHandler(e) {
+    const createMerchantHandler = async(e) => {
         e.preventDefault();
-        setallData({ ...formData, pic });
 
-        console.log(alldata)
+        getGeoLocation((latitude, longitude) => {
+            console.log("fetched geolocation");
+            console.log("form data : ", formData);
+            console.log("geolocation ", latitude, " ", longitude);
+            console.log("pic : ",pic);
+            // setallData({...formData, pic});
 
+            // console.log("all data : ", alldata);
+            
+            // let data = JSON.stringify(alldata);
+            let data = JSON.stringify(formData);
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:4000/api/postFormDetails',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                    toast({
+                        title: "Registration Successful",
+                        status: "success",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom",
+                      });
+                      setSelectedCategory([]);
+                      setSelectedCuisine([]);
+                      resetForm();
+                      closeMerchantForm();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert(error);
+                });
+        });
     }
 
     const postDetails = async (pics) => {
@@ -119,17 +221,20 @@ function AdminMerchant() {
             data: formData,
         };
 
-        axios
+        await axios
             .request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
+                console.log(response?.data?.image_url);
                 setPic(response?.data?.image_url);
+                formData.pic = response?.data?.image_url;
                 console.log(pic);
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
     const categoryOptions = [
         { value: 'Rooftop', label: 'RoofTop' },
         { value: 'PetFriendly', label: 'Pet-friendly' },
@@ -142,27 +247,11 @@ function AdminMerchant() {
         { value: 'Italian', label: 'Italian' },
     ];
 
-
-
-    const resData = [
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'true' },
-        { id: '#123456', ResName: 'Reunion Cafe', loc: 'Chinar Park', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya', status: 'false' }
-    ];
-
     const resDataPending = [
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' },
         { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', saleRep: 'Aneashwan Acharya' }
-    ];
-
-    const resDataNew = [
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '10/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '18/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '05/02/2024' },
-        { id: '#123456', ResName: 'Reunion Cafe', contact: '9876543210', mail: 'SouptikDas@gmail.com', name: 'Aneashwan Acharya', date: '21/02/2024' }
     ];
 
     const formatDate = (dateString) => {
@@ -190,18 +279,70 @@ function AdminMerchant() {
         return 'Just now';
     };
 
-
-
     // const [currentScreen, setCurrentScreen] = useState(1);
 
     // for all
     const [searchAll, setSearchAll] = useState('');
+    const [searchAllData , setSearchAllData] = useState([]);
     function changeHandlerAll(e) {
         setSearchAll(e.target.value);
     }
-    function submitHandlerAll() {
 
+    const submitHandlerAll = async(e) => {
+        e.preventDefault();
+        // if(searchAll)
+        // {
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `http://localhost:4000/api/search?search=${searchAll}`,
+                headers: { }
+              };
+              
+              axios.request(config)
+              .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchAllData(response.data);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        // }
     }
+
+    useEffect(()=>{
+        let config1 = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/search?search=${searchAll}`,
+            headers: { }
+          };
+          
+          axios.request(config1)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchAllData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+          let config3 = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
+            headers: { }
+          };
+          
+          axios.request(config3)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchNewData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },[]);
 
     // for pending
     const [searchPending, setSearchPending] = useState('');
@@ -214,11 +355,27 @@ function AdminMerchant() {
 
     // for new enquiry
     const [searchNew, setSearchNew] = useState('');
+    const [searchNewData,setSearchNewData] = useState([]);
     function changeHandlerNew(e) {
         setSearchNew(e.target.value);
     }
-    function submitHandlerNew() {
-
+    const submitHandlerNew = async(e) => {
+        e.preventDefault();
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
+            headers: { }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setSearchNewData(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     }
 
     function one() {
@@ -473,10 +630,10 @@ function AdminMerchant() {
                             <div className='flex flex-col gap-8'>
                                 <div className='flex flex-row gap-14'>
                                     <div className='w-[46%]'>
-                                        <label className='flex ml-4 mt-2 font-bold text-sm' htmlFor="category">Category:</label>
+                                        <label className='flex ml-4 mt-2 font-bold text-sm' htmlFor="selectedCategory">Category:</label>
                                         <div className='rounded-lg shadow-sm ml-4 mt-1 w-full border border-gray-300'>
                                             <Select options={categoryOptions} isMulti
-                                                name="category"
+                                                name="selectedCategory"
                                                 className="basic-multi-select"
                                                 classNamePrefix="select"
                                                 value={selectedCategory}
@@ -768,32 +925,36 @@ function AdminMerchant() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {resData?.map((restaurant) => {
+                                {searchAllData?.map((restaurant) => {
                                     return (
-                                        <tr key={restaurant.id}>
+                                        <tr key={restaurant._id}>
+                                            
                                             <td className="py-4 px-4 whitespace-nowrap">
+                                            <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
                                                 <div className="text-sm">
-                                                    {restaurant.ResName}
+                                                    {restaurant.restaurantName}
                                                 </div>
                                                 <div className='text-sm'>
-                                                    {restaurant.id}
+                                                    {restaurant.resturantId}
                                                 </div>
+                                                </Link>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.loc}
+                                                    {restaurant.location}
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.mail}
+                                                {restaurant.authorizedMail}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.saleRep}
+                                                {restaurant.salesRepresentative}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.status == 'true' && <div className='py-1 px-2 font-bold w-fit h-fit bg-green-100 text-green-500 rounded-md'>Live</div>}
-                                                {restaurant.status == 'false' && <div className='py-1 px-2 font-bold w-fit h-fit bg-red-100 text-red-500 rounded-md'>Close</div>}
+                                                {/* {restaurant.status == 'true' && <div className='py-1 px-2 font-bold w-fit h-fit bg-green-100 text-green-500 rounded-md'>Live</div>}
+                                                {restaurant.status == 'false' && <div className='py-1 px-2 font-bold w-fit h-fit bg-red-100 text-red-500 rounded-md'>Close</div>} */}
                                             </td>
+                                            {/* </Link> */}
                                         </tr>
                                     )
                                 })
@@ -885,7 +1046,7 @@ function AdminMerchant() {
                         {/* search */}
                         <div className='my-4 ml-4'>
                             <form className='flex gap-1' onSubmit={submitHandlerNew}>
-                                <input type='text' placeholder='Search by ID,restaurant name' value={searchNew} onChange={changeHandlerNew} className='w-[50%] p-3 bg-slate-200 rounded-lg font-bold'></input>
+                                <input type='text' placeholder='Search by restaurant name' value={searchNew} onChange={changeHandlerNew} className='w-[50%] p-3 bg-slate-200 rounded-lg font-bold'></input>
                                 <button type='submit'><GrSearch size={25} /></button>
                             </form>
                         </div>
@@ -922,24 +1083,24 @@ function AdminMerchant() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {resDataNew?.map((restaurant) => {
+                                {searchNewData?.map((restaurant) => {
                                     return (
                                         <tr key={restaurant.id}>
                                             <td className="py-4 px-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.ResName}
+                                                    {restaurant.rname}
                                                 </div>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
                                                 <div className="text-sm">
-                                                    {restaurant.contact}
+                                                    {restaurant.phone}
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm">
-                                                {restaurant.mail}
+                                                {restaurant.email}
                                             </td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm cursor-pointer">
-                                                <div className='bg-yellow-100 text-yellow-500 px-2 py-1 text-sm w-fit font-bold rounded-lg'>{formatDate(restaurant.date)}</div>
+                                                <div className='bg-yellow-100 text-yellow-500 px-2 py-1 text-sm w-fit font-bold rounded-lg'>{formatDate(restaurant.createdAt)}</div>
                                             </td>
                                         </tr>
                                     )

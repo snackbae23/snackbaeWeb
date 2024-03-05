@@ -3,18 +3,20 @@ import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
+import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ login, setlogin }) => {
 
-   function showSidebar() {
-     const sidebar = document.querySelector('.sidebar');
-     sidebar.style.display = 'flex';
+  function showSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'flex';
   }
-  
-function hideSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = "none";
-}
+
+  function hideSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = "none";
+  }
+
 
   return (
     <div className="relative w-full">
@@ -69,6 +71,20 @@ function hideSidebar() {
                   Partner Login
                 </button>
               </Link>
+
+
+              {/* //change */}
+              <button
+                onClick={() => {
+                  setlogin(prev => !prev);
+                }}
+                className=" border  h-[34px] w-[140px] px-5 text-white text-sm font-bold text-center rounded-md bg-[#EAB308]">
+                Login
+              </button>
+
+
+
+
               <li className="lg:hidden ">
                 <GiHamburgerMenu
                   onClick={showSidebar}
@@ -83,4 +99,4 @@ function hideSidebar() {
   );
 };
 
-export default Navbar;
+export default Navbar;

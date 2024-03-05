@@ -3,10 +3,18 @@ import vector4 from "../assets/vector4.svg"
 import vector3 from "../assets/vector3.svg"
 import rect2 from "../assets/group11.png"
 import logo from "../assets/logo.png";
-const axios = require('axios');
-// import Navbar from "../Components/Navbar";
+import { restaurantContext } from "../context/restaurantContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToast } from "@chakra-ui/toast";
 
 const Login = () => {
+    const toast = useToast();
+    const {
+        resId,
+        setResId,
+    } = useContext(restaurantContext);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -22,30 +30,54 @@ const Login = () => {
         })
     }
 
-    const submitHandler = async () => {
+    const navigate = useNavigate();
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        console.log("form data", formData)
+        console.log("helloo")
+
         try {
+            let data = JSON.stringify(formData);
+
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
                 url: 'http://localhost:4000/api/partnerLogin',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZhbmlndXB0YWEyMDAzQGdtYWlsLmNvbSIsImlkIjoiNjVhZWNlOGI5ZTc0NDM0MDI5ODQ1ZGNkIiwiaWF0IjoxNzA1OTU1MTExLCJleHAiOjE3MDYwNDE1MTF9.zaPO-ljfSnMFuJ0lAsl7VovhwqVo2XhjHdf7HK49LW8'
+                    'Content-Type': 'application/json'
                 },
-                data: formData
+                data: data
             };
+
             axios.request(config)
                 .then((response) => {
-                    console.log(response.data);
+                    console.log(JSON.stringify(response.data));
+                    setResId(response.data.details);
+                    console.log(resId);
+                    toast({
+                        title: "Login Successful",
+                        status: "success",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom",
+                    });
+                    navigate("/dashboard");
                 })
                 .catch((error) => {
                     console.log(error);
+                    toast({
+                        title: "Login Failed",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom",
+                    });
                 });
-
         }
+       
         catch (err) {
-
-        } 
+            console.log(err)
+        }
     }
 
     const [rememberMe, setRememberMe] = useState(false);

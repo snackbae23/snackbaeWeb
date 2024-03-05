@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
+import LeftBar from '../Components/LeftBar';
 
 const Pricing = () => {
 
@@ -173,29 +174,12 @@ const Pricing = () => {
             <div className='flex  w-full mt-20 h-fit'>
              
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
-                    <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
-                        <FaHome /> <p>Dashboard</p>
-                    </Link>
-                    <Link to='/payout' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2' >
-                        <FaBlog /><p>Payout</p>
-                    </Link>
-                    <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <MdMenuBook /><p>Menu</p>
-                    </Link>
-                    <Link to='/editstore' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <IoStorefrontOutline /><p>Edit store detail</p>
-                    </Link>
-                    <Link to='/offer' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <BiSolidOffer /><p>offers & campaign</p>
-                    </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-60 justify-center rounded-xl ml-16'>
-                        <IoIosLogOut /> <p>Log out</p>
-                    </Link>
-                </div>
+                <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+<LeftBar/>
+        </div>
 
                 {/* right */}
-                <div className='w-[80%]  bg-slate-100  rounded-md flex flex-col items-center  relative ' >
+                <div className='md:w-[75%] w-[85%] bg-slate-100  rounded-md flex flex-col items-center  relative  md:ml-[22%] ml-[12%]' >
                     <div className='w-full h-[300px] bg-yellow-500 flex flex-col text-white relative'>
                         <button className='bg-black w-[130px]  px-4 py-1 rounded-full mt-6 ml-[850px] '>Need Help?</button>
                         <p className='text-[2.7rem] font-bold mx-auto'>Simple pricing for your business</p>
@@ -236,7 +220,7 @@ const Pricing = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-1 h-[40px] w-[80%]  mt-[180px]'>
+                    <div className='grid grid-cols-3 gap-1 h-[100px] w-[80%]  mt-[180px]'>
                          <div className='flex items-center'>
                         <img src='/Group.png' alt=''></img>
                         <p className='font-bold ml-2 flex-wrap'>30 days free Trial Guarantee</p>

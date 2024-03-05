@@ -10,11 +10,21 @@ import rect54 from "../assets/rectangle54.png"
 import group752 from "../assets/group-752.svg"
 import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
+
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
+import { IoMdTime } from "react-icons/io";
+import LeftBar from '../Components/LeftBar';
+
+
 
 const Offer = () => {
 
+    const [switch1, setswitch] = useState(false);
+
+    const eye = () => {
+        setswitch(!switch1);
+    }
 
     const [formData, setFormData] = useState({
         title: '',
@@ -48,8 +58,8 @@ const Offer = () => {
     }
     return (
         <div className='w-full h-fit flex flex-col'>
-            <div className="fixed mt-8  w-full h-[20px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
-                {/* <div className="absolute h-full w-full top-0 right-0 bottom-0 left-0 bg-white" /> */}
+            <div className="z-10 bg-white fixed   w-full h-20  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
                         className="relative w-28 h-16 object-cover z-20"
@@ -94,6 +104,8 @@ const Offer = () => {
             </div>
 
 
+
+
             {/* popup */}
             <div className="absolute top-28 left-[30%]  z-[100] shadow-inner hidden"
                 id="popup"
@@ -113,12 +125,12 @@ const Offer = () => {
                             </button>
                         </div>
                         <div className=" bg-white rounded-md p-4 h-fit ml-4">
-                           
-                            <form  className="flex flex-col text-lg font-semibold relative   " onSubmit={handleSubmit}>
+
+                            <form className="flex flex-col text-lg font-semibold relative   " onSubmit={handleSubmit}>
                                 <div className='ml-5'>
                                     <label htmlFor="title">Title:</label>
                                     <input
-                                     className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
+                                        className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
                                         type="text"
                                         id="title"
                                         placeholder='For ex: Club Special'
@@ -143,39 +155,39 @@ const Offer = () => {
                                     />
                                 </div>
                                 <div className='flex justify-between ml-5 gap-3'>
-                                <div>
-                                    <label htmlFor="discount">Discount:</label>
-                                    <input
-                                    className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
-                                    placeholder='Type here'
-                                        type="number"
-                                        id="discount"
-                                        name="discount"
-                                        value={formData.discount}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <div>
+                                        <label htmlFor="discount">Discount:</label>
+                                        <input
+                                            className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
+                                            placeholder='Type here'
+                                            type="number"
+                                            id="discount"
+                                            name="discount"
+                                            value={formData.discount}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="maxDiscount">Maximum Discount:</label>
+                                        <input
+                                            className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
+                                            placeholder='Type here'
+                                            type="number"
+                                            id="maxDiscount"
+                                            name="maxDiscount"
+                                            value={formData.maxDiscount}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
                                 </div>
-                                <div>
-                                    <label htmlFor="maxDiscount">Maximum Discount:</label>
-                                    <input
-                                    className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
-                                    placeholder='Type here'
-                                        type="number"
-                                        id="maxDiscount"
-                                        name="maxDiscount"
-                                        value={formData.maxDiscount}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                </div>
-                                
+
                                 <div className='ml-5'>
                                     <label htmlFor="termsAndConditions">Terms & Conditions</label>
                                     <textarea
-                                    className="w-full h-[120px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
-                                    placeholder='Type here'
+                                        className="w-full h-[120px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2"
+                                        placeholder='Type here'
                                         id="termsAndConditions"
                                         name="termsAndConditions"
                                         value={formData.termsAndConditions}
@@ -187,20 +199,20 @@ const Offer = () => {
                                 <div className='ml-5'>
                                     <label htmlFor="validity">Validity:</label>
                                     <select
-                                    className="w-full h-[50px] p-3 border border-[#c1df6e] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2 "
-                                    placeholder='Select Option'
+                                        className="w-full h-[50px] p-3 border border-[#c1df6e] rounded-md focus:outline-none focus:shadow-md mt-2 mb-2 "
+                                        placeholder='Select Option'
                                         id="validity"
                                         name="validity"
                                         value={formData.validity}
                                         onChange={handleChange}
-                                    >   
+                                    >
                                         <option value="Always valid">Always valid </option>
                                         <option value="10">10 days</option>
                                         <option value="20">20 days</option>
                                         <option value="30">30 days</option>
                                     </select>
                                 </div>
-                                <button  className="w-[200px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] mx-auto mt-4" type="submit">Create Offer</button>
+                                <button className="w-[200px] h-[42px] bg-[#EAB308] border rounded-md px-[19px] py-[10px] flex justify-center items-center text-[#ffffff] mx-auto mt-4" type="submit">Create Offer</button>
                             </form>
                         </div>
                     </div>
@@ -210,32 +222,12 @@ const Offer = () => {
             <div className='flex  w-full mt-20 h-fit' id="background">
 
                 {/* left */}
-                <div className='w-[20%]  bg-white flex flex-col '>
-                    <Link to='/dashboard' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 ' >
-                        <FaHome /> <p>Dashboard</p>
-                    </Link>
-                    <Link to='/payout' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2' >
-                        <FaBlog /><p>Payout</p>
-                    </Link>
-                    <Link to='/menu' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <MdMenuBook /><p>Menu</p>
-                    </Link>
-                    <Link to='/form' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <IoStorefrontOutline /><p>Edit store detail</p>
-                    </Link>
-                    <Link to='/' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <BiSolidOffer /><p>offers & campaign</p>
-                    </Link>
-                    <Link to='/pricing' className='w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2'>
-                        <BiSolidOffer /><p>Pricing</p>
-                    </Link>
-                    <Link to='/' className='w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16'>
-                        <IoIosLogOut /> <p>Log out</p>
-                    </Link>
+                <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+                    <LeftBar/>
                 </div>
 
                 {/* right */}
-                <div className='w-[75%]  bg-slate-200 ml-6   rounded-md p-6' >
+                <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
                     <h1 className='text-[1.2rem] font-bold  ml-4 '>Offers & Promotion</h1>
 
                     <div className='flex justify-between mt-4 relative'>
@@ -255,12 +247,62 @@ const Offer = () => {
 
 
 
+                    {/* container */}
+                    <div className='grid grid-cols-2 w-full h-fit gap-3 mt-5'>
+
+                        
+
+                        <div className='w-full flex flex-col p-3 bg-white rounded-lg'>
+                            <div className='flex justify-between border-b-2 border-slate-200 h-[60px]'>
+                                <div>
+                                    <p className='font-semibold text-[1.15rem]'>SnackOffer</p>
+                                    <div className='flex items-center gap-2'>
+                                        <IoMdTime />
+                                        <p>Always active</p>
+                                    </div>
+
+                                </div>
+                                <div className='flex gap-2 items-center'>
+                                    <button className='bg-green-400 text-white px-3 rounded-3xl py-1'>Action</button>
+                                    <div className=' cursor-pointer w-[5%]' onClick={eye}>
+                                        {
+                                            switch1 ? <switch className=' bg-black w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-start'>
+                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+                                            </switch> : <switch className='bg-green-400 w-[60px] h-[30px] rounded-3xl flex items-center p-1 justify-end'>
+                                                <div className='bg-white w-[30px] h-[25px] rounded-full'></div>
+                                            </switch>
+                                        }
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex flex-col'>
+                                <p className='font-semibold text-[1.rem] mt-2'>15 % Off</p>
+                                <p className='font-semibold text-[.9rem]'>Terms & Conditions</p>
+                                <p className='h-[50px] overflow-hidden mt-1 '>Lorem ipsum dolor sit amet, consectetur adipiscing e Lorem ipsum dolordolor sit ametamet, consectetur a...</p>
+                                <div className='flex justify-between mt-3'>
+                                    <p className='bg-yellow-50 text-yellow-600 rounded-2xl px-3 py-2 font-semibold'>200+ Redeemed</p>
+                                    <button className='bg-red-100 flex items-center px-3 py-2 rounded-3xl text-red-500 font-semibold'>Delete Offer</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                       
+
+                       
+                    </div>
+
 
 
 
 
 
                 </div>
+
 
             </div>
         </div>

@@ -1,11 +1,5 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
-import { FaHome } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
-import { FaBlog } from "react-icons/fa";
-import { MdMenuBook } from "react-icons/md";
-import { BiSolidOffer } from "react-icons/bi";
-import { IoStorefrontOutline } from "react-icons/io5";
 import group117 from "../assets/group-117.svg"
 import rect54 from "../assets/rectangle54.png"
 import group752 from "../assets/group-752.svg"
@@ -13,10 +7,41 @@ import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { FaPenFancy } from "react-icons/fa";
 import { ImCross } from 'react-icons/im';
+import { restaurantContext } from '../context/restaurantContext';
+import { useToast } from "@chakra-ui/toast";
 import axios from "axios"
-const Menu = () => {
 
+import LeftBar from '../Components/LeftBar';
+
+const Menu = () => {
+  const toast = useToast();
+  const { resId } = useContext(restaurantContext);
+  const [allMenuItem, setAllMenuItem] = useState([]);
   const data = [
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
+    {
+      "image": "/Rectangle 55187.png",
+      "menu": "Menu item name",
+      "amount": "₹231",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing el..."
+    },
     {
       "image": "/Rectangle 55187.png",
       "menu": "Menu item name",
@@ -79,24 +104,101 @@ const Menu = () => {
   }
   const [pic, setPic] = useState();
   const [Data, SetData] = useState();
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState("No selected Files");
   const [formData, setFormData] = useState({
     menuItem: "",
     type: "",
     cuisines: "",
   });
 
+  function resetForm() {
+    setFormData({
+      menuItem: "",
+      type: "",
+      cuisines: ""
+    });
+    setImage(null);
+  }
+
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     SetData({ ...formData, pic });
   };
+<<<<<<< HEAD
 
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(Data); // Submit data here (e.g., API call)
+=======
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //code baaki hai -  backend integration
+    SetData({ ...formData, pic });
+    let data = JSON.stringify(Data);
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `http://localhost:4000/api/menu/${resId}`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        toast({
+          title: "Menu details added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        resetForm();
+        closePopup();
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({
+          title: "Menu details couldn't be added",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      });
+    // console.log(Data); // Submit data here (e.g., API call)
   };
+
+  const fetchMenu = async () => {
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `http://localhost:4000/api/menu/${resId}`,
+      headers: {}
+    };
+
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        setAllMenuItem(response.data);
+        console.log("all menu data : ", allMenuItem);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(()=>{
+    fetchMenu();
+  },[]);
 
   const postDetails = async (pics) => {
     const formData = new FormData();
@@ -116,7 +218,11 @@ const Menu = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+<<<<<<< HEAD
         setPic(response?.data?.image_url)
+=======
+        setPic(response.data.image_url)
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
         console.log(pic)
       })
       .catch((error) => {
@@ -126,7 +232,7 @@ const Menu = () => {
 
   return (
     <div className="w-full h-[100vh] flex flex-col">
-      <div className="z-10 bg-white fixed   w-full h-16  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
+      <div className="z-10 bg-white fixed   w-full h-20  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
 
         <div className="flex flex-row items-start left-1 py-0 px-6">
           <img
@@ -210,12 +316,13 @@ const Menu = () => {
                 >
                   <label className="mt-4 mb-2  " htmlFor="image">
                     <span>
-                      {" "}
-                      <img
-                        className="absolute w-[130px] h-[80px] left-[37%] top-[24%] object-fill"
-                        src="/Group 1171277298.png"
-                        alt=""
-                      ></img>
+                      {image ? <div className='text-center my-auto font-normal pt-8'>Uploaded {fileName}</div> :
+                        <img
+                          className="absolute w-[130px] h-[80px] left-[37%] top-[24%] object-fill"
+                          src="/Group 1171277298.png"
+                          alt=""
+                        ></img>
+                      }
                     </span>
                   </label>
 
@@ -225,7 +332,16 @@ const Menu = () => {
                     id="image"
                     name="image"
                     accept="image/*"
+<<<<<<< HEAD
                     onChange={(e) => postDetails(e.target.files[0])}
+=======
+                    onChange={(e) => {
+                      e.target.files[0] && setFileName(e.target.files[0].name)
+                      if (e.target.files)
+                        setImage(URL.createObjectURL(e.target.files[0]))
+                      postDetails(e.target.files[0])
+                    }}
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
                     required
                   />
                 </div>
@@ -270,77 +386,39 @@ const Menu = () => {
 
       <div className="flex  w-full mt-20 h-full " id="background">
         {/* left */}
-        <div className="w-[20%]  bg-white flex flex-col fixed ">
-          <Link
-            to="/dashboard"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 "
-          >
-            <FaHome /> <p>Dashboard</p>
-          </Link>
-          <Link
-            to="/payout"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
-          >
-            <FaBlog />
-            <p>Payout</p>
-          </Link>
-          <Link
-            to="/menu"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
-          >
-            <MdMenuBook />
-            <p>Menu</p>
-          </Link>
-          <Link
-            to="/editstore"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
-          >
-            <IoStorefrontOutline />
-            <p>Edit store detail</p>
-          </Link>
-          <Link
-            to="/offer"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
-          >
-            <BiSolidOffer />
-            <p>offers & campaign</p>
-          </Link>
-          <Link
-            to="/pricing"
-            className="w-full h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2"
-          >
-            <BiSolidOffer />
-            <p>Pricing</p>
-          </Link>
-          <Link
-            to="/"
-            className="w-[50%] h-[50px] bg-slate-100 mb-1 flex items-center p-4 hover:bg-yellow-600 hover:text-white gap-2 mt-48 justify-center rounded-xl ml-16"
-          >
-            <IoIosLogOut /> <p>Log out</p>
-          </Link>
+        <div className="md:w-[20%] w-[10%]  bg-white flex flex-col fixed md:text-[1.15rem] text-[1.6rem] font-roboto  text-slate-600 ml-2">
+          <LeftBar/>
+         
         </div>
 
         {/* right */}
-        <div className="w-[75%] bg-slate-200  h-full rounded-md p-6 ml-[22%]">
-          <div className="flex justify-between">
-            <h1 className="text-[1.2rem] font-bold w-[40%] ml-4 ">Menu</h1>
+        <div className="md:w-[75%] w-[85%] bg-slate-200  h-fit rounded-md p-6 md:ml-[22%] ml-[12%]">
+          <h1 className="text-[1.4rem] font-bold w-[40%] ml-4 ">Menu</h1>
+          <div className="flex justify-between relative mt-2">
+
+            <div className='mt-2 flex gap-1'>
+              <button className='bg-black text-white rounded-full py-2 px-6'>Menu</button>
+              <button className='rounded-full ml-4 bg-white py-2 px-4'>Analytics</button>
+
+            </div>
+            <p className=' absolute rounded-full bg-yellow-500 size-fit px-4 ml-44 mb-2 '>Pro</p>
             <button
               onClick={openPopup}
-              className="w-[200px] bg-yellow-500 h-10 rounded-md"
+              className="w-[150px] text-white font-semibold bg-yellow-500 h-10 rounded-md"
             >
               Add new Item
             </button>
           </div>
 
-          <div className="grid md:grid-cols-4 grid-cols-3 gap-4 mt-10 rounded-lg">
-            {data.map((item, index) => (
+          <div className="grid md:grid-cols-4 grid-cols-3 gap-4 mt-5 rounded-lg">
+            {allMenuItem.map((item, index) => (
               <div
-                className="h-[236px] flex flex-col  bg-white rounded-md relative"
+                className="md:h-[220px] h-[180px] flex flex-col  bg-white rounded-md relative"
                 key={index}
               >
                 <img
-                  className="w-full h-[174px] object-cover rounded-t-lg"
-                  src={item.image}
+                  className="w-full h-[170px] object-cover rounded-t-lg"
+                  src={item.pic} width={200}
                   alt="img"
                 ></img>
                 <button className="absolute mt-2 ml-2 font-normal text-[1.2rem] bg-yellow-500 text-white rounded-2xl px-4">
@@ -349,8 +427,8 @@ const Menu = () => {
                 <button className="absolute mt-2 right-2 bg-slate-500 rounded-full size-7 text-white flex items-center justify-center">
                   <FaPenFancy />
                 </button>
-                <div className="flex justify-between mt-2 ml-4">
-                  <h1 className="text-[1.2rem] font-semibold">{item.menu}</h1>
+                <div className="flex items-center mt-1 ml-4">
+                  <h1 className="md:text-[1.2rem] text-[1.1rem] font-semibold">{item.menuItem}</h1>
                   {/* <h1 className="text-[1.2rem] font-semibold mr-2">
                     {item.amount}
                   </h1> */}
