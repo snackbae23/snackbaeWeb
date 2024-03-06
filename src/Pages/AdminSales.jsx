@@ -781,6 +781,7 @@ const AdminSales = () => {
                                                         )}
                                                     </div>
                                                 </td>
+                                                
                                             </tr>
                                         ))}
                                     </tbody>

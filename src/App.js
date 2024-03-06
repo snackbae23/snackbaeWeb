@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
@@ -27,6 +27,12 @@ import AdminMerchant from './Pages/AdminMerchant';
 import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
+<<<<<<< HEAD
+import AdminAppControl from './Pages/AdminAppControl';
+import AdminControl from './Pages/AdminControl';
+
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
+=======
 import { restaurantContext } from './context/restaurantContext';
 import { useState,useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
@@ -38,6 +44,7 @@ import AdminControl from './Pages/AdminControl';
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
 
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
 
 function App() {
 
@@ -74,6 +81,16 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path='/dashboard' element={<DashBoard />}></Route>
 
+<<<<<<< HEAD
+        <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
+        <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
+        <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
+        <Route path='/admin/bookings' element={<AdminBookings />}></Route>
+        <Route path='/admin/sales' element={<AdminSales />}></Route>
+        <Route path='/admin/appControl' element={<AdminAppControl />}></Route>
+        <Route path='/admin/adminControl' element={<AdminControl />}></Route>
+      </Routes>
+=======
           <Route path='/blog' element={<Blogs />}></Route>``
           <Route path='/blogdetail' element={<Blogdetail />}></Route>
           <Route path='/adminlogin' element={<AdminLogin />}></Route>
@@ -103,6 +120,7 @@ function App() {
           {/* </Switch> */}
         </Routes>
       </restaurantContext.Provider>
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
     </div>
   );
 }

@@ -125,12 +125,21 @@ const Menu = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     SetData({ ...formData, pic });
   };
+<<<<<<< HEAD
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(Data); // Submit data here (e.g., API call)
+=======
 
   const handleSubmit = (event) => {
     event.preventDefault();
     //code baaki hai -  backend integration
     SetData({ ...formData, pic });
     let data = JSON.stringify(Data);
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
 
     let config = {
       method: 'post',
@@ -209,7 +218,11 @@ const Menu = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+<<<<<<< HEAD
+        setPic(response?.data?.image_url)
+=======
         setPic(response.data.image_url)
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
         console.log(pic)
       })
       .catch((error) => {
@@ -319,12 +332,16 @@ const Menu = () => {
                     id="image"
                     name="image"
                     accept="image/*"
+<<<<<<< HEAD
+                    onChange={(e) => postDetails(e.target.files[0])}
+=======
                     onChange={(e) => {
                       e.target.files[0] && setFileName(e.target.files[0].name)
                       if (e.target.files)
                         setImage(URL.createObjectURL(e.target.files[0]))
                       postDetails(e.target.files[0])
                     }}
+>>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
                     required
                   />
                 </div>
