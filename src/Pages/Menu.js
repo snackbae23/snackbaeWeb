@@ -126,9 +126,11 @@ const Menu = () => {
     SetData({ ...formData, pic });
   };
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    //code baaki hai -  backend integration
+
+
     SetData({ ...formData, pic });
     let data = JSON.stringify(Data);
 
@@ -283,7 +285,7 @@ const Menu = () => {
             </div>
             <div className=" bg-white rounded-md p-4 h-fit ml-4">
               <form
-                className="flex flex-col text-lg font-semibold relative  "
+                className="flex flex-col text-lg font-semibold relative"
                 onSubmit={handleSubmit}
               >
                 <label htmlFor="menuItem">Menu Item name</label>

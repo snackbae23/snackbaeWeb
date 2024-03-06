@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
@@ -19,7 +19,9 @@ import Form from './Pages/Form';
 import Review from './Pages/Review';
 import Customer from './Pages/Customer';
 import EditStoreDetail from './Pages/EditStoreDetail';
+import Recommendation from "./Pages/Recommendation";
 import Offer from './Pages/Offer';
+import Offers from "./Pages/Offers";
 import Pricing from './Pages/Pricing';
 import DashboardAdmin from './Pages/DashboardAdmin';
 import AdminMerchant from './Pages/AdminMerchant';
@@ -27,7 +29,7 @@ import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
 import AdminAppControl from './Pages/AdminAppControl';
@@ -35,42 +37,51 @@ import AdminControl from './Pages/AdminControl';
 
 
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
 
 
 function App() {
 
   const location = useLocation();
   const [resId, setResId] = useState('');
-  const [login,setlogin] =useState("false");
+  const [login, setlogin] = useState("false");
 
 
   useEffect(() => {
     setlogin(false);
   }, []);
 
-  
+
   const handleScrollChange = (newLoginValue) => {
     setlogin(newLoginValue);
   };
 
   return (
-    <div className='app'>
+    <div className="app">
       {/* <Navbar /> */}
       <restaurantContext.Provider value={{ resId, setResId }}>
-        {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
+        {!excludedPaths.includes(location.pathname) && (
+          <Navbar login={login} setlogin={setlogin} />
+        )}
         <Routes>
-
           {/* <Switch> */}
-         {/* <Route path="/" element={<Home />}></Route> */}
-
-          <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route
+            path="/"
+            element={
+              <Homepage
+                login={login}
+                setlogin={setlogin}
+                onScrollChange={handleScrollChange}
+              />
+            }
+          ></Route>
           {/* this is for user home */}
-          <Route path="/home" element={<Home />}></Route> 
-
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
+
           <Route path='/dashboard' element={<DashBoard />}></Route>
 
           <Route path='/blog' element={<Blogs />}></Route>``

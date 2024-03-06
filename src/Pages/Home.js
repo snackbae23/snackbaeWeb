@@ -6,7 +6,9 @@ import Navbar1 from '../Components/Navbar1'
 import Footer from '../Components/Footer';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-
+import TeamSlider from '../Components/TeamSlider';
+import team from "../Components/FoodParadiseHome"
+import FoodSlider from '../Components/FoodSlider';
 
 
 //image
@@ -94,30 +96,11 @@ const Home = () => {
 
           {/* swiper */}
 
-          <Swiper
-            slidesPerView={10}
-            spaceBetween={30}
-            // centeredSlides={true}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            // }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <Link className='link' to='/profile'>
-                  <img src={image} alt={`Slide ${index + 1}`} className="w-full h-[300px] object-cover" />
-                  <p className="capitalize text-center py-2">{captions[index]}</p>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          
+          <div className='my-[1rem] ml-[1rem]'>
+            <TeamSlider team={team} size={130}/>
+          </div>
+
         </div>
 
         {/* Trending Now */}
@@ -125,30 +108,10 @@ const Home = () => {
           <p className='text-[2rem] font-sans font-[700] text-[#585F6B] w-[90%] mx-auto'>Trending Now</p>
 
           {/* swiper2 */}
-          <Swiper
-            slidesPerView={10}
-            spaceBetween={30}
-            // centeredSlides={true}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            // }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <Link className='link' to='/profile'>
-                  <img src={image} alt={`Slide ${index + 1}`} className="w-full h-[300px] object-cover" />
-                  <p className="capitalize text-center py-2">{captions[index]}</p>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className='my-[2rem] w-[94%] mx-auto'>
+            <FoodSlider  size={290}/>
+          </div>
+
         </div>
 
         {/* homepic */}
@@ -161,30 +124,10 @@ const Home = () => {
           <p className='text-[2rem] font-sans font-[700] text-[#585F6B] w-[90%] mx-auto'>Nearby</p>
 
           {/* swiper2 */}
-          <Swiper
-            slidesPerView={10}
-            spaceBetween={30}
-            // centeredSlides={true}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            // }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <Link className='link' to='/profile'>
-                  <img src={image} alt={`Slide ${index + 1}`} className="w-full h-[300px] object-cover" />
-                  <p className="capitalize text-center py-2">{captions[index]}</p>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className='my-[2rem] w-[94%] mx-auto'>
+            <FoodSlider  size={290}/>
+          </div>
+
         </div>
 
         {/* Newly Added */}
@@ -192,30 +135,9 @@ const Home = () => {
           <p className='text-[2rem] font-sans font-[700] text-[#585F6B] w-[90%] mx-auto'>Newly Added</p>
 
           {/* swiper2 */}
-          <Swiper
-            slidesPerView={10}
-            spaceBetween={30}
-            // centeredSlides={true}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            // }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <Link className='link' to='/profile'>
-                  <img src={image} alt={`Slide ${index + 1}`} className="w-full h-[300px] object-cover" />
-                  <p className="capitalize text-center py-2">{captions[index]}</p>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className='my-[2rem] w-[94%] mx-auto'>
+            <FoodSlider  size={290}/>
+          </div>
         </div>
 
 
