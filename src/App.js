@@ -29,7 +29,7 @@ import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
 import AdminAppControl from './Pages/AdminAppControl';
@@ -37,21 +37,21 @@ import AdminControl from './Pages/AdminControl';
 
 
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
+const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
 
 
 function App() {
 
   const location = useLocation();
   const [resId, setResId] = useState('');
-  const [login,setlogin] =useState("false");
+  const [login, setlogin] = useState("false");
 
 
   useEffect(() => {
     setlogin(false);
   }, []);
 
-  
+
   const handleScrollChange = (newLoginValue) => {
     setlogin(newLoginValue);
   };
