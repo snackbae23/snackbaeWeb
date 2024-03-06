@@ -21,18 +21,13 @@ import Customer from './Pages/Customer';
 import EditStoreDetail from './Pages/EditStoreDetail';
 import Recommendation from "./Pages/Recommendation";
 import Offer from './Pages/Offer';
+import Offers from "./Pages/Offers";
 import Pricing from './Pages/Pricing';
 import DashboardAdmin from './Pages/DashboardAdmin';
 import AdminMerchant from './Pages/AdminMerchant';
 import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
-<<<<<<< HEAD
-import AdminAppControl from './Pages/AdminAppControl';
-import AdminControl from './Pages/AdminControl';
-
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
-=======
 import { restaurantContext } from './context/restaurantContext';
 import { useState,useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
@@ -44,7 +39,6 @@ import AdminControl from './Pages/AdminControl';
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
 
->>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
 
 function App() {
 
@@ -63,64 +57,62 @@ function App() {
   };
 
   return (
-    <div className='app'>
+    <div className="app">
       {/* <Navbar /> */}
       <restaurantContext.Provider value={{ resId, setResId }}>
-        {!excludedPaths.includes(location.pathname) && <Navbar login={login} setlogin={setlogin} />}
+        {!excludedPaths.includes(location.pathname) && (
+          <Navbar login={login} setlogin={setlogin} />
+        )}
         <Routes>
-
           {/* <Switch> */}
-         {/* <Route path="/" element={<Home />}></Route> */}
-
-          <Route path="/" element={<Homepage login={login} setlogin={setlogin} onScrollChange={handleScrollChange} />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route
+            path="/"
+            element={
+              <Homepage
+                login={login}
+                setlogin={setlogin}
+                onScrollChange={handleScrollChange}
+              />
+            }
+          ></Route>
           {/* this is for user home */}
-          <Route path="/home" element={<Home />}></Route> 
-
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path='/dashboard' element={<DashBoard />}></Route>
-
-<<<<<<< HEAD
-        <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
-        <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
-        <Route path='/admin/merchantProfile' element={<AdminMerchantProfile />}></Route>
-        <Route path='/admin/bookings' element={<AdminBookings />}></Route>
-        <Route path='/admin/sales' element={<AdminSales />}></Route>
-        <Route path='/admin/appControl' element={<AdminAppControl />}></Route>
-        <Route path='/admin/adminControl' element={<AdminControl />}></Route>
-      </Routes>
-=======
-          <Route path='/blog' element={<Blogs />}></Route>``
-          <Route path='/blogdetail' element={<Blogdetail />}></Route>
-          <Route path='/adminlogin' element={<AdminLogin />}></Route>
-          <Route path='/adminDashboard' element={<AdminDashboard />}></Route>
-          <Route path='/blog' element={<Blogs />}></Route>
-          <Route path='/blogdetail' element={<Blogdetail />}></Route>
-          <Route path='/form' element={<Form />}></Route>
-          <Route path='/payout' element={<Payout />}></Route>
-          <Route path='/menu' element={<Menu />}></Route>
-          <Route path='/review' element={<Review />}></Route>
-          <Route path='/customer' element={<Customer />}></Route>
-          <Route path='/editstore' element={<EditStoreDetail />}></Route>
-          <Route path='/offer' element={<Offer />}></Route>
-          <Route path='/pricing' element={<Pricing />}></Route>
-          <Route path='/privacyPolicy' element={<PrivacyPolicy />}></Route>
-          <Route path='/termsCondition' element={<TermsCondition />}></Route>
+          <Route path="/dashboard" element={<DashBoard />}></Route>
+          <Route path="/blog" element={<Blogs />}></Route>``
+          <Route path="/blogdetail" element={<Blogdetail />}></Route>
+          <Route path="/adminlogin" element={<AdminLogin />}></Route>
+          <Route path="/adminDashboard" element={<AdminDashboard />}></Route>
+          <Route path="/blog" element={<Blogs />}></Route>
+          <Route path="/blogdetail" element={<Blogdetail />}></Route>
+          <Route path="/form" element={<Form />}></Route>
+          <Route path="/payout" element={<Payout />}></Route>
+          <Route path="/menu" element={<Menu />}></Route>
+          <Route path="/review" element={<Review />}></Route>
+          <Route path="/customer" element={<Customer />}></Route>
+          <Route path="/editstore" element={<EditStoreDetail />}></Route>
+          <Route path="/offer" element={<Offer />}></Route>
+          <Route path="/offers" element={<Offers />}></Route>
+          <Route path="/pricing" element={<Pricing />}></Route>
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
+          <Route path="/termsCondition" element={<TermsCondition />}></Route>
           <Route path="/recommendation" element={<Recommendation />}></Route>
-
-
-          <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
-          <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
-          <Route path='/admin/merchantProfile/:id' element={<AdminMerchantProfile/>}></Route>
-          <Route path='/admin/bookings' element={<AdminBookings />}></Route>
-          <Route path='/admin/sales' element={<AdminSales />}></Route>
-          <Route path='/admin/appControl' element={<AdminAppControl />}></Route>
-          <Route path='/admin/admincontrol' element={<AdminControl />}></Route>
+          <Route path="/admin/dashboard" element={<DashboardAdmin />}></Route>
+          <Route path="/admin/merchant" element={<AdminMerchant />}></Route>
+          <Route
+            path="/admin/merchantProfile/:id"
+            element={<AdminMerchantProfile />}
+          ></Route>
+          <Route path="/admin/bookings" element={<AdminBookings />}></Route>
+          <Route path="/admin/sales" element={<AdminSales />}></Route>
+          <Route path="/admin/appControl" element={<AdminAppControl />}></Route>
+          <Route path="/admin/admincontrol" element={<AdminControl />}></Route>
           {/* </Switch> */}
         </Routes>
       </restaurantContext.Provider>
->>>>>>> 7034d09e0d677df86d45167607b66d040697ffa7
     </div>
   );
 }
