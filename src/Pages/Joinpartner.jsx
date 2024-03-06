@@ -154,7 +154,7 @@ function Joinpartner() {
 
 
             {/* second section */}
-            <div className='relative w-full h-fit   bg-[#1E2833] py-[4rem] text-white flex justify-center items-center'>
+            <div className='relative w-full h-fit   py-[4rem] text-white flex justify-center items-center'>
                 <div className='w-[90%] mx-auto'>
                     <div className='flex flex-col gap-11 '>
                         {/* first part */}
