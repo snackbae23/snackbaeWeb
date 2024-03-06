@@ -91,7 +91,6 @@ function App() {
           <Route path='/privacyPolicy' element={<PrivacyPolicy />}></Route>
           <Route path='/termsCondition' element={<TermsCondition />}></Route>
 
-
           <Route path='/admin/dashboard' element={<DashboardAdmin />}></Route>
           <Route path='/admin/merchant' element={<AdminMerchant />}></Route>
           <Route path='/admin/merchantProfile/:id' element={<AdminMerchantProfile/>}></Route>
