@@ -30,11 +30,11 @@ const Recommendation = () => {
               enjoyable.
             </p>
             <div className="flex space-x-2 ml-4 lg:ml-0">
-              <button className="rounded-md  font-sans w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] bg-[#0A191E] text-white md:px-6 py- md:py-2">
+              <button className="rounded-md  font-sans font-semibold w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] bg-[#0A191E] text-white md:px-6 py- md:py-2">
                 <p className="font-sans">Recommend Now</p>
               </button>
-              <button className="rounded-md w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] border-4 border-black bg-[#FFD601] text-black px-4 md:px-6 py-1 md:py-2">
-                <p className="font-sans">View Rewards</p>
+              <button className="rounded-md  w-[160px] h-[51px] md:w-[15rem] md:h-[3rem] border-4 border-black bg-[#FFD601] text-black px-4 md:px-6 py-1 md:py-2">
+                <p className="font-sans font-semibold">View Rewards</p>
               </button>
             </div>
           </div>
