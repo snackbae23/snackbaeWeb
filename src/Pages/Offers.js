@@ -59,14 +59,19 @@ const Offers = () => {
 
             <div className="w-[100%] mx-auto flex flex-wrap md:flex-row gap-[1rem] justify-center md:justify-stretch items-center">
               {/* first box */}
-              <div className="flex flex-col lg:space-y-0 md:-space-y-3 w-[50%] md:w-[30%]">
+              <div className="flex flex-col lg:space-y-0 md:-space-y-3 justify-center md:justify-stretch md:w-[30%]">
                 <img
                   src={icon1}
                   alt="icons"
-                  className=" flex md:justify-start w-[42px] h-[42px]"
+                  className=" hidden md:block  md:justify-start w-[42px] h-[42px]"
+                ></img>
+                <img
+                  src={icon1}
+                  alt="icons"
+                  className="  md:hidden flex mx-auto w-[42px] h-[42px]"
                 ></img>
                 <div className="font-bold leading-10">Marketing Services:</div>
-                <div className="lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2 text-black">
+                <div className="md:w-full w-[305px]  text-sm font-opensans font-normal leading-6 -tracking-2 text-black">
                   SnackBae provides a range of marketing tools, including push
                   notifications, banner ads, social media promotions, and
                   profile boosters, ensuring your business stands out in the
@@ -74,16 +79,21 @@ const Offers = () => {
                 </div>
               </div>
               {/* second box */}
-              <div className="flex flex-col lg:space-y-0 md:-space-y-6 w-[50%] md:w-[30%]">
+              <div className="flex flex-col lg:space-y-0 md:-space-y-6 justify-center md:justify-stretch md:w-[30%] ">
                 <img
                   src={icon2}
                   alt="icons"
-                  className=" w-[42px] h-[42px]"
+                  className=" hidden md:block w-[42px] h-[42px]"
+                ></img>
+                <img
+                  src={icon2}
+                  alt="icons"
+                  className="md:hidden mx-auto w-[42px] h-[42px]"
                 ></img>
                 <div className="font-bold leading-10">
                   Commissionless Payments:
                 </div>
-                <div className="lg:w-full text-sm font-opensans font-normal text-[##020617] -tracking-2  text-black">
+                <div className="md:w-full w-[305px] text-sm font-opensans font-normal leading-6 text-[##020617] -tracking-2  text-black">
                   Keep more of what you earn. SnackBae believes in fair
                   partnerships, offering a commission-free payment solution.
                   Enjoy a seamless transaction experience without unnecessary
@@ -93,6 +103,9 @@ const Offers = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
