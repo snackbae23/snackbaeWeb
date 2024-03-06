@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react'
 import AdminNav from '../Components/AdminNav'
 import AdminLeftBar from '../Components/AdminLeftBar'
@@ -50,7 +51,7 @@ function AdminMerchant() {
         salesRepresentative: '',
         latitude: 0,
         longitude: 0,
-        pic:'',
+        pic: '',
     });
 
     const handleChange = (e) => {
@@ -136,7 +137,7 @@ function AdminMerchant() {
     const toast = useToast();
 
     // resetForm
-    function resetForm(){
+    function resetForm() {
         setFormData({
             restaurantName: '',
             managerName: '',
@@ -160,18 +161,18 @@ function AdminMerchant() {
     }
 
     //create merchant handler
-    const createMerchantHandler = async(e) => {
+    const createMerchantHandler = async (e) => {
         e.preventDefault();
 
         getGeoLocation((latitude, longitude) => {
             console.log("fetched geolocation");
             console.log("form data : ", formData);
             console.log("geolocation ", latitude, " ", longitude);
-            console.log("pic : ",pic);
+            console.log("pic : ", pic);
             // setallData({...formData, pic});
 
             // console.log("all data : ", alldata);
-            
+
             // let data = JSON.stringify(alldata);
             let data = JSON.stringify(formData);
 
@@ -194,11 +195,11 @@ function AdminMerchant() {
                         duration: 5000,
                         isClosable: true,
                         position: "bottom",
-                      });
-                      setSelectedCategory([]);
-                      setSelectedCuisine([]);
-                      resetForm();
-                      closeMerchantForm();
+                    });
+                    setSelectedCategory([]);
+                    setSelectedCuisine([]);
+                    resetForm();
+                    closeMerchantForm();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -283,66 +284,66 @@ function AdminMerchant() {
 
     // for all
     const [searchAll, setSearchAll] = useState('');
-    const [searchAllData , setSearchAllData] = useState([]);
+    const [searchAllData, setSearchAllData] = useState([]);
     function changeHandlerAll(e) {
         setSearchAll(e.target.value);
     }
 
-    const submitHandlerAll = async(e) => {
+    const submitHandlerAll = async (e) => {
         e.preventDefault();
         // if(searchAll)
         // {
-            let config = {
-                method: 'get',
-                maxBodyLength: Infinity,
-                url: `http://localhost:4000/api/search?search=${searchAll}`,
-                headers: { }
-              };
-              
-              axios.request(config)
-              .then((response) => {
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/search?search=${searchAll}`,
+            headers: {}
+        };
+
+        axios.request(config)
+            .then((response) => {
                 console.log(JSON.stringify(response.data));
                 setSearchAllData(response.data);
-              })
-              .catch((error) => {
+            })
+            .catch((error) => {
                 console.log(error);
-              });
+            });
         // }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         let config1 = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/search?search=${searchAll}`,
-            headers: { }
-          };
-          
-          axios.request(config1)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchAllData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            headers: {}
+        };
 
-          let config3 = {
+        axios.request(config1)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchAllData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        let config3 = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
-            headers: { }
-          };
-          
-          axios.request(config3)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchNewData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },[]);
+            headers: {}
+        };
+
+        axios.request(config3)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchNewData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     // for pending
     const [searchPending, setSearchPending] = useState('');
@@ -355,27 +356,27 @@ function AdminMerchant() {
 
     // for new enquiry
     const [searchNew, setSearchNew] = useState('');
-    const [searchNewData,setSearchNewData] = useState([]);
+    const [searchNewData, setSearchNewData] = useState([]);
     function changeHandlerNew(e) {
         setSearchNew(e.target.value);
     }
-    const submitHandlerNew = async(e) => {
+    const submitHandlerNew = async (e) => {
         e.preventDefault();
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
-            headers: { }
-          };
-          
-          axios.request(config)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchNewData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            headers: {}
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchNewData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     function one() {
@@ -928,15 +929,15 @@ function AdminMerchant() {
                                 {searchAllData?.map((restaurant) => {
                                     return (
                                         <tr key={restaurant._id}>
-                                            
+
                                             <td className="py-4 px-4 whitespace-nowrap">
-                                            <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
-                                                <div className="text-sm">
-                                                    {restaurant.restaurantName}
-                                                </div>
-                                                <div className='text-sm'>
-                                                    {restaurant.resturantId}
-                                                </div>
+                                                <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
+                                                    <div className="text-sm">
+                                                        {restaurant.restaurantName}
+                                                    </div>
+                                                    <div className='text-sm'>
+                                                        {restaurant.resturantId}
+                                                    </div>
                                                 </Link>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">
