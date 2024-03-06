@@ -5,7 +5,7 @@ import AdminLogin from './Pages/AdminLogin';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Joinpartner from './Pages/Joinpartner';
-
+import Fav from "./Pages/Fav";
 import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
 import Blogs from './Pages/Blog';
@@ -100,6 +100,7 @@ function App() {
           <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
           <Route path="/termsCondition" element={<TermsCondition />}></Route>
           <Route path="/recommendation" element={<Recommendation />}></Route>
+          <Route path="/fav" element={<Fav />}></Route>
           <Route path="/admin/dashboard" element={<DashboardAdmin />}></Route>
           <Route path="/admin/merchant" element={<AdminMerchant />}></Route>
           <Route
