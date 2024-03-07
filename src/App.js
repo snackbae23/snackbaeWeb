@@ -34,7 +34,7 @@ import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
 import AdminAppControl from './Pages/AdminAppControl';
 import AdminControl from './Pages/AdminControl';
-
+import offers from "./Pages/Offers"
 
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
@@ -96,6 +96,7 @@ function App() {
           <Route path="/editstore" element={<EditStoreDetail />}></Route>
           <Route path="/offer" element={<Offer />}></Route>
           <Route path="/pricing" element={<Pricing />}></Route>
+          <Route path="/offers" element={<Offers />}></Route>
           <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
           <Route path="/termsCondition" element={<TermsCondition />}></Route>
           <Route path="/recommendation" element={<Recommendation />}></Route>
