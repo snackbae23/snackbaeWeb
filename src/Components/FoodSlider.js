@@ -27,7 +27,7 @@ const FoodSlider = ({ size, team }) => {
               </div>
             </div>
             {/* last */}
-            <div className='relative bg-[#FFD601] w-full rounded-b-md flex justify-around items-center py-[.5rem]'>
+            <div className='relative bg-[#FFD601]  w-full rounded-b-md flex justify-around items-center py-[.5rem]'>
               {/* <img src='' alt='' */}
               <div className='relative h-full '>
                 <img
