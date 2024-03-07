@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 //image
@@ -17,8 +17,11 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 import { TbDiscount } from "react-icons/tb";
 import { IoPersonAddSharp } from "react-icons/io5";
+import { MdConnectWithoutContact } from "react-icons/md";
+import { LuMenu } from "react-icons/lu";
 
 const Navbar1 = () => {
+
 
     //notification
     const [notify, setNotify] = useState(false);
@@ -56,27 +59,39 @@ const Navbar1 = () => {
     const [profile, setProfile] = useState(false);
 
 
+    //click handler for click anywhere to close
+    const wrapperRef = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+                // Clicked outside the component, so set profile and notify to false
+                setProfile(false);
+                setNotify(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            // Cleanup the event listener when the component unmounts
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div>
+        <div ref={wrapperRef}>
             <div className="z-10 bg-white fixed   w-full h-[70px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
                 {/* logo */}
                 <div className="flex flex-row items-start left-1 py-0 px-6">
                     <img
-                        className="relative w-28 h-16 object-cover z-20"
+                        className="relative w-[6rem] object-cover z-20"
                         loading="lazy"
-                        alt=""
+                        alt="logo"
                         src={logo}
                     />
                 </div>
                 {/* right part */}
-                <div className="flex flex-row items-start justify-start gap-4 max-w-full z-1">
-                    {/* contactus */}
-                    <img
-                        className="relative w-30 h-12 min-h-12"
-                        loading="lazy"
-                        alt=""
-                        src={group117}
-                    />
+                <div className="flex flex-row items-center justify-start gap-4 max-w-full z-1">
 
                     {/* notification */}
                     <img
@@ -97,7 +112,7 @@ const Navbar1 = () => {
                             setNotify(false);
                             setProfile(prev => !prev);
                         }}
-                        className="flex flex-row items-center justify-start gap-2 cursor-pointer">
+                        className="sm:flex flex-row hidden  items-center justify-start gap-2 cursor-pointer">
                         <img
                             className="relative rounded-2xl w-12 h-12 object-cover"
                             loading="lazy"
@@ -113,6 +128,13 @@ const Navbar1 = () => {
                             </div>
                         </div>
                     </div>
+                    {/* menu icons */}
+                    <LuMenu
+                        onClick={() => {
+                            setNotify(false);
+                            setProfile(prev => !prev);
+                        }}
+                        className='text-[2rem] font-bold sm:hidden block ' />
 
                 </div>
 
@@ -154,6 +176,28 @@ const Navbar1 = () => {
                 profile &&
                 <div className='z-[2000] bg-white absolute right-2 top-[90px] rounded-xl max-w-[240px] w-[100%]'>
                     <img src={triangle} alt='triangle' className='absolute top-[-10px] right-[40px]' />
+
+                    {/* profile */}
+                    <div
+                        className="sm:hidden flex-row flex  items-center justify-center py-3 gap-2 cursor-pointer">
+                        <img
+                            className="relative rounded-2xl w-12 h-12 object-cover"
+                            loading="lazy"
+                            alt="profile"
+                            src={rect54}
+                        />
+                        <div className="flex flex-col items-start justify-start gap-0.5">
+                            <div className="relative tracking-[-0.02em] font-semibold whitespace-nowrap">
+                                Nitish Kumar
+                            </div>
+                            <div className="relative text-sm tracking-[-0.02em] whitespace-nowrap">
+                                +91 9660066979
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
+
                     {/* Recomendations */}
                     <Link to='/recommendation' className='flex justify-around items-center  py-3'>
                         <SlBadge className='w-[20%] text-[1.4rem]' />
@@ -186,6 +230,14 @@ const Navbar1 = () => {
 
                     <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
 
+                    {/* Contact Us */}
+                    <Link to='/contact' className='flex justify-around items-center  py-3'>
+                        <MdConnectWithoutContact className='w-[20%] text-[1.4rem]' />
+                        <p className='font-[400] w-[70%] text-[1rem] text-center'>Contact Us</p>
+                    </Link>
+
+                    <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
+
                     {/* Settings */}
                     <Link to='/offers' className='flex justify-around items-center  py-3'>
                         <TbDiscount className='w-[20%] text-[1.4rem]' />
@@ -200,7 +252,6 @@ const Navbar1 = () => {
                         <p className='font-[400] w-[70%] text-[1rem] text-center'>Invite Friends</p>
                     </Link>
                 </div>
-
             }
         </div>
     )
