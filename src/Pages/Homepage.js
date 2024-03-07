@@ -1,4 +1,12 @@
 import React from "react";
+import Slider from "../Components/Slider";
+import Faq from "../Components/Faq";
+import { useState, useEffect } from "react";
+import Footer from "../Components/Footer";
+import { useNavigate } from "react-router-dom";
+import Navbar2 from "../Components/Navbar2";
+
+//image
 import arrow from "../assets/arrow.png";
 import ellipse from "../assets/Ellipse 422.png";
 import ellipse2 from "../assets/ellipse1.png";
@@ -11,12 +19,8 @@ import rectsm from "../assets/rect-sm.png";
 import rectsm2 from "../assets/rect-sm2.png";
 import rect3 from "../assets/rect3.png";
 import star from "../assets/star.png";
-import Slider from "../Components/Slider";
-import Faq from "../Components/Faq";
 import bg5 from "../assets/bg-5.png";
-import app from "../assets/appstore.png";
-import Footer from "../Components/Footer";
-import { useState, useEffect } from "react";
+import app from "../assets/appstore.png"
 import slide1 from "../assets/slide1.jpg";
 import slide2 from "../assets/slide3.jpg";
 import slide3 from "../assets/slide2.jpg";
@@ -24,9 +28,10 @@ import slide4 from "../assets/slide8.jpg";
 import slide5 from "../assets/slide5.jpg";
 import slide6 from "../assets/slide6.jpg";
 import imageBase from "../assets/Image Base.png";
+
+//icons
 import { IoClose } from "react-icons/io5";
 import { FaEdit } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
 
 const Homepage = ({ login, setlogin, onScrollChange }) => {
   // const [currentImage, setCurrentImage] = useState(0);
@@ -203,6 +208,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
   return (
     <div
       className="relative bg-white-A70 w-full  overflow-x-hidden overflow-y-hidden">
+        <Navbar2 login={login} setlogin={setlogin} />
       <div className={`absolute w-full h-[90vh] top-[60px]`}>
 
         {

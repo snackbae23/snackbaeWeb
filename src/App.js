@@ -34,10 +34,10 @@ import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
 import AdminAppControl from './Pages/AdminAppControl';
 import AdminControl from './Pages/AdminControl';
-import offers from "./Pages/Offers"
+import ContactUs from './Pages/ContactUs';
 
 
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
+const excludedPaths = ['/','/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
 
 
 function App() {
@@ -80,6 +80,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
+          <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/dashboard" element={<DashBoard />}></Route>
           <Route path="/blog" element={<Blogs />}></Route>``
@@ -95,6 +96,7 @@ function App() {
           <Route path="/customer" element={<Customer />}></Route>
           <Route path="/editstore" element={<EditStoreDetail />}></Route>
           <Route path="/offer" element={<Offer />}></Route>
+          <Route path="/offers" element={<Offers />}></Route>
           <Route path="/pricing" element={<Pricing />}></Route>
           <Route path="/fav" element={<Fav />}></Route>
           <Route path="/offers" element={<Offers />}></Route>
