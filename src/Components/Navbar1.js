@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import { RxCross1 } from "react-icons/rx";
+
 //image
 import group117 from "../assets/Notification (1).png"
 import rect54 from "../assets/rectangle54.png"
@@ -8,6 +10,7 @@ import group752 from "../assets/Notification.png"
 import logo from "../assets/logo.png";
 import victory from "../assets/victory.png";
 import triangle from "../assets/Polygon 3.png"
+import frame1 from "../assets/Frame 7.png"
 
 //icons
 import { IoClose } from "react-icons/io5";
@@ -21,6 +24,10 @@ import { MdConnectWithoutContact } from "react-icons/md";
 import { LuMenu } from "react-icons/lu";
 
 const Navbar1 = () => {
+
+    const popupinvite =()=>{
+
+    }
 
 
     //notification
@@ -78,6 +85,13 @@ const Navbar1 = () => {
         };
     }, []);
 
+
+    //invite
+    
+    const [invite, setInvite] = useState(false);
+
+
+
     return (
         <div ref={wrapperRef}>
             <div className="z-10 bg-white fixed   w-full h-[70px]  flex flex-row items-center justify-between  px-6 box-border  max-w-full  text-zinc-700 font-sans">
@@ -110,6 +124,7 @@ const Navbar1 = () => {
                     <div
                         onClick={() => {
                             setNotify(false);
+                            setInvite(false)
                             setProfile(prev => !prev);
                         }}
                         className="sm:flex flex-row hidden  items-center justify-start gap-2 cursor-pointer">
@@ -132,6 +147,7 @@ const Navbar1 = () => {
                     <LuMenu
                         onClick={() => {
                             setNotify(false);
+                            setInvite(false)
                             setProfile(prev => !prev);
                         }}
                         className='text-[2rem] font-bold sm:hidden block ' />
@@ -174,7 +190,7 @@ const Navbar1 = () => {
 
             {
                 profile &&
-                <div className='z-[2000] bg-white absolute right-2 top-[90px] rounded-xl max-w-[240px] w-[100%]'>
+                <div className='z-[2000] bg-white right-2 top-[90px] rounded-xl max-w-[240px] w-[100%] fixed'>
                     <img src={triangle} alt='triangle' className='absolute top-[-10px] right-[40px]' />
 
                     {/* profile */}
@@ -207,7 +223,8 @@ const Navbar1 = () => {
                     <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
 
                     {/* My Visits */}
-                    <Link to='/visit' className='flex justify-around items-center py-3'>
+                    <Link 
+                     className='flex justify-around items-center py-3'>
                         <FiPieChart className='w-[20%] text-[1.4rem]' />
                         <p className='font-[400]  w-[70%] text-[1rem] text-center'>My Visits</p>
                     </Link>
@@ -247,12 +264,66 @@ const Navbar1 = () => {
                     <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
 
                     {/* Invite Friends */}
-                    <Link to='/invitefriend' className='flex justify-around items-center  py-3'>
+                    <Link onClick={() => {
+                            setNotify(false);
+                            setProfile(false);
+                            setInvite(prev=> !prev)
+                        }}
+                     className='flex justify-around items-center  py-3'>
                         <IoPersonAddSharp className='w-[20%] text-[1.4rem]' />
-                        <p className='font-[400] w-[70%] text-[1rem] text-center'>Invite Friends</p>
+                        <p 
+                        className='font-[400] w-[70%] text-[1rem] text-center'>Invite Friends</p>
                     </Link>
                 </div>
             }
+
+
+
+            {/* invite */}
+
+            {
+                invite && 
+                <div className='md:w-[39%]  h-[340px] fixed top-[50%] p-6 rounded-md left-[50%] z-10 bg-white translate-x-[-50%] translate-y-[-50%] flex flex-col '>
+                    <p onClick={() => {
+                            setNotify(false);
+                            setInvite(false)
+                            setProfile(prev => !prev);
+                        }}
+                     className='absolute right-5 top-5 size-7 text-[2rem] ' ><RxCross1 /></p>
+                    <p className='font-bold text-[2.2rem]'>Invite Friends</p>
+                    <div className='mt-6 flex gap-5'>
+                        <div className='flex flex-col justify-center items-center'>
+                        <img className=' md:size-20 object-cover' src='/Frame 7.png'></img>
+                        <p className='mt-1.5'>message</p>
+                        </div>
+                        <div className='flex flex-col justify-center items-center'>
+                        <img className=' md:size-20 object-cover' src='/Frame 8.png'></img>
+                        <p className='mt-1.5'>Whatsapp</p>
+                        </div>
+                        <div className='flex flex-col justify-center items-center'>
+                        <img className=' md:size-20 object-cover' src='/Frame 9.png'></img>
+                        <p className='mt-1.5'>Telegram</p>
+                        </div>
+                        <div className='flex flex-col justify-center items-center'>
+                        <img className=' md:size-20 object-cover' src='/Frame 10.png'></img>
+                        <p className='mt-1.5'>Wechat</p>
+                        </div>
+                       
+                    </div>
+                    <p className='mt-3 text-[1.5rem] font-semibold'>Or copy link</p>
+                    <div className=' w-full h-[35px]  flex mt-4 justify-between gap-3'>
+                        <input className='bg-slate-200 w-[84%] p-1 rounded-md'  type='text'
+                        />
+                        <button className='px-4 py-.5 bg-yellow-500 rounded-md font-bold '>
+                            copy
+                        </button>
+                        
+                    </div>
+                </div>
+            }
+
+
+
         </div>
     )
 }
