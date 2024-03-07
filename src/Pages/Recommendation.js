@@ -12,7 +12,7 @@ const Recommendation = () => {
       <Navbar1 />
       <div className="relative top-[70px] w-full h-fit ">
         {/* first section */}
-        <div className="w-full h-[500px] relative rounded-b-[90px] bg-[#FFD601]  ">
+        <div className="w-full h-[400px] md:h-[370px] relative rounded-b-[30px] bg-[#FFD601]  ">
           {/* <img
             src={bgImg}
             className=" h-full md:object-fill relative top-0 z-[-1]"
