@@ -1,12 +1,4 @@
 import React from "react";
-import Slider from "../Components/Slider";
-import Faq from "../Components/Faq";
-import { useState, useEffect } from "react";
-import Footer from "../Components/Footer";
-import { useNavigate } from "react-router-dom";
-import Navbar2 from "../Components/Navbar2";
-
-//image
 import arrow from "../assets/arrow.png";
 import ellipse from "../assets/Ellipse 422.png";
 import ellipse2 from "../assets/ellipse1.png";
@@ -19,8 +11,12 @@ import rectsm from "../assets/rect-sm.png";
 import rectsm2 from "../assets/rect-sm2.png";
 import rect3 from "../assets/rect3.png";
 import star from "../assets/star.png";
+import Slider from "../Components/Slider";
+import Faq from "../Components/Faq";
 import bg5 from "../assets/bg-5.png";
-import app from "../assets/appstore.png"
+import app from "../assets/appstore.png";
+import Footer from "../Components/Footer";
+import { useState, useEffect } from "react";
 import slide1 from "../assets/slide1.jpg";
 import slide2 from "../assets/slide3.jpg";
 import slide3 from "../assets/slide2.jpg";
@@ -28,13 +24,21 @@ import slide4 from "../assets/slide8.jpg";
 import slide5 from "../assets/slide5.jpg";
 import slide6 from "../assets/slide6.jpg";
 import imageBase from "../assets/Image Base.png";
-
-//icons
 import { IoClose } from "react-icons/io5";
 import { FaEdit } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
+import OtpInput from "otp-input-react";
+import PhoneInput from 'react-phone-input-2';
+import "react-phone-input-2/lib/style.css";
+import { auth } from "../firebase.config";
+import { useToast } from "@chakra-ui/react";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import axios from "axios";
+// import { toast, Toaster } from "react-hot-toast";
 
 const Homepage = ({ login, setlogin, onScrollChange }) => {
   // const [currentImage, setCurrentImage] = useState(0);
+  const toast = useToast();
   const team = [
     { src: slide1 },
     { src: slide2 },
@@ -44,20 +48,25 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     { src: slide6 },
   ];
 
+  const [otp, setOtp] = useState("");
+  const [ph, setPh] = useState("");
+  // const [loading, setLoading] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [user,setUser] = useState(null);
+
   const navigate = useNavigate();
   //restaurantName form
   const [restaurantName, setRestaurantName] = useState("");
   // login data
   const [formData, setFormData] = useState({
-    mobileNo: '',
-    keepLoggedIn: false,
+    ph: '',
+    // keepLoggedIn: false,
   });
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);//6digit otp maker 
-  // const otpInputRefs = useRef(otpFields.map(() => React.createRef()));
+
   const [mobile, setMobile] = useState(true);
   const [password, setPassword] = useState(false);
   const [profile, setProfile] = useState(false);
-  const passwordValue = parseInt(otp.join(''), 10);
+  // const passwordValue = parseInt(otp.join(''), 10);
 
   //current date
   const date = new Date();
@@ -72,12 +81,11 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     fullName: 'user',
     gender: 'male',
     dob: currentDate,
+    email:'abc@gmail.com',
     foodPreference: 'veg',
+    anniversary:'',
     terms: false,
   });
-
-
-
 
   const changeRestaurantNameHandler = (event) => {
     setRestaurantName(event.target.value);
@@ -88,7 +96,6 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     console.log(restaurantName);
     setRestaurantName(""); // Reset the input field after submission
   };
-
 
   const handleChangeProfile = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -102,7 +109,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
 
-    if (file) {
+    if(file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setProfileData((prevProfileData) => ({
@@ -114,38 +121,92 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     }
   };
 
-
-  const handleInputChangeMobileNumber = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (type === 'tel') {
-      // If it's the mobile number input, allow only numeric characters
-      const numericValue = value.replace(/\D/g, ''); // Remove non-numeric characters
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: numericValue.length <= 10 ? numericValue : prevData.mobileNo,
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: type === 'checkbox' ? checked : value,
-      }));
+  const onSignup = async() => 
+  {
+    console.log("inside onsignup");
+    try{
+      const recaptcha =  new RecaptchaVerifier(auth,"recaptcha-container",{});
+      const formatPh = "+" + ph;
+      const confirmation =await signInWithPhoneNumber(auth,formatPh,recaptcha);  
+      console.log(confirmation);
+      setUser(confirmation);
+      // setMobile(false);
+      setShowOTP(true);
     }
-  };
-
-  const handleOtpChange = (index, value) => {
-    // Allow only numeric values
-    const numericValue = value.replace(/\D/g, '');
-
-    const updatedOtp = [...otp];
-    updatedOtp[index] = numericValue;
-    setOtp(updatedOtp);
-
-    // Move to the next input field on entry of a digit
-    if (numericValue && index < 5) {
-      document.getElementById(`otp-input-${index + 1}`).focus();
+    catch(err)
+    {
+      console.log(err);
     }
-  };
+  }
+
+  const onOTPVerify = async() => {
+    // setLoading(true);
+    try{
+      await user.confirm(otp);
+      toast({
+        title: "OTP verified",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      setMobile(false);
+      setShowOTP(false);
+
+      // finding if user exists
+      let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `http://localhost:4000/api/user/search?search=${ph}`,
+        headers: { }
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        if(response.data.length != 0)
+        {
+          // if user exists
+          console.log("inside if user exists");
+          navigate('/home');
+        }
+        else{
+          //create user profile
+          formData.ph = ph;
+          console.log(formData);
+          const data = JSON.stringify(formData);
+
+          console.log(data);
+          let config1 = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:4000/api/user/create',
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          axios.request(config1)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          setProfile(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+
   //handle only the mobile number submit
   const handleSubmitMobileNumber = (e) => {
     e.preventDefault();
@@ -154,63 +215,60 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
     setMobile(false);
     setPassword(true);
   };
-  // handle after the mobile number submit and password submit
-  const submitPasswordHandler = (e) => {
-    e.preventDefault();
-    const isOtpFilled = otp.every((digit) => digit !== ''); // Check if all digits are filled
-    if (isOtpFilled) {
-      // Now you can use passwordValue as a single integer
-      const passwordValue = parseInt(otp.join(''), 10);
-      console.log('Password Value:', passwordValue);
-      setMobile(false);
-      setPassword(false);
-      setProfile(true);
-      // Move forward or perform additional actions here
-    } else {
-      console.log('Please fill in all OTP digits');
-      // Optionally show an error message or take another action
-    }
-  }
-
 
   //handle naviagate to profile and add move to home
-  const handleSubmitProfile = (e) => {
+  const handleSubmitProfile = async(e) => {
     e.preventDefault();
-    // You can handle the submission logic here using profileData
-    console.log('Profile data submitted:', profileData);
+    console.log('Profile data :', profileData);
+
+    //posting data
+    const data=JSON.stringify(profileData);
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `http://localhost:4000/api/user/profile/create?search=${ph}`,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      //navigate to home 
+    navigate("/home");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
     setMobile(false);
     setPassword(false);
     setProfile(false);
     setlogin(false);
-
-    // add navigate to home 
-    navigate("/home");
-
-
   };
 
   // chatgpt
-  useEffect(() => {
-    const handleScroll = () => {
-      // Check your scroll conditions here
-      // For example, if you want to set login to false when scrolling occurs
-      const shouldSetLogin = false; // Adjust the conditions as needed
-      onScrollChange(shouldSetLogin);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     // Check your scroll conditions here
+  //     // For example, if you want to set login to false when scrolling occurs
+  //     const shouldSetLogin = false; // Adjust the conditions as needed
+  //     onScrollChange(shouldSetLogin);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [onScrollChange]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [onScrollChange]);
 
   return (
     <div
       className="relative bg-white-A70 w-full  overflow-x-hidden overflow-y-hidden">
-        <Navbar2 login={login} setlogin={setlogin} />
       <div className={`absolute w-full h-[90vh] top-[60px]`}>
-
         {
           login &&
           <div className="w-full">
@@ -221,7 +279,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
         {
           login && mobile &&
           <div className="w-full">
-            <div className="z-[200] max-w-[400px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[50%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
+            <div className="z-[200] max-w-[400px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[20%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
               <div className="flex justify-between">
                 <p className="font-[600] font-sans text-[1.8rem]">Login Or SignUp</p>
                 <IoClose className="text-[1.4rem] cursor-pointer"
@@ -232,44 +290,18 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
                   }} />
               </div>
               <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">Enter Mobile Number</p>
-              <form className="relative w-full flex flex-col" onSubmit={handleSubmitMobileNumber}>
+              <div className="relative w-full flex flex-col">
                 {/* mobileNo */}
-
-                <div className="relative w-full flex flex-col">
-                  <label htmlFor="mobileNo" className="bg-white inline px-[1rem] w-fit h-fit relative top-[10px] left-[15px]">Mobile Number:</label>
-                  <input
-                    className="border-2 border-[#EAB308] bg-white h-[3rem] rounded-md px-1 mb-[.5rem]"
-                    type="tel"     // Assuming you want a text input for a mobile number; use "tel" for mobile numbers
-                    id="mobileNo"  // Matching the "htmlFor" attribute of the label
-                    name="mobileNo"// Name attribute for form submissions, if applicable
-                    placeholder="Enter your mobile number"
-                    value={formData.mobileNo}
-                    onChange={handleInputChangeMobileNumber}
-                    required
-                  />
-                </div>
-
-                {/* checkbox */}
-
-                <label for="keepLoggedIn" className="mb-[.5rem]">
-                  <input
-                    className="mr-[.5rem]"
-                    type="checkbox"
-                    id="keepLoggedIn"
-                    name="keepLoggedIn"
-                    checked={formData.keepLoggedIn}
-                    onChange={handleInputChangeMobileNumber}
-                  />
-                  Keep me logged in
-                </label>
-                <button className="bg-[#EAB308] font-sen font-[500] px-6 py-3 rounded-md uppercase mb-[.5rem]">Continue</button>
-              </form>
+                <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                <button className="bg-[#EAB308] font-sen font-[500] px-6 py-3 rounded-md uppercase mb-[.5rem] mt-4" onClick={onSignup}>Continue</button>
+              </div>
+              <div id="recaptcha-container"></div>
             </div>
           </div>
         }
         {
-          login && password &&
-          <div className="z-[200] max-w-[400px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[50%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
+          login && showOTP &&
+          <div className="z-[200] max-w-[400px] w-[100%] p-5 rounded-md flex flex-col bg-white absolute top-[60%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
             <div className="flex justify-between">
               <p className="font-[600] font-sans text-[1.8rem]">Enter OTP</p>
               <IoClose className="text-[1.4rem] cursor-pointer"
@@ -279,29 +311,23 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
                   setPassword(false)
                 }} />
             </div>
-            <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">An OTP has been sent to +91{formData.mobileNo.slice(-4)}XXXXXX</p>
-            <div className="flex justify-evenly w-full my-[1.5rem]">
-              {otp.map((digit, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={digit}
-                  onChange={(e) => handleOtpChange(index, e.target.value)}
-                  maxLength="1"
-                  id={`otp-input-${index}`}
-                  className="border-2 border-[#EAB308] h-[3rem] w-10 rounded-md px-1 text-center"
-
-                />
-              ))}
-            </div>
+            <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">An OTP has been sent to +91{ph}</p>
+            <OtpInput
+                  value={otp}
+                  onChange={setOtp}
+                  OTPLength={6}
+                  otpType="number"
+                  disabled={false}
+                  autoFocus
+                  className="opt-container"
+                ></OtpInput>
 
             <button className="bg-[#EAB308] font-sen font-[500] px-6 py-3 rounded-md uppercase mb-[.5rem]"
-              onClick={submitPasswordHandler}
+              onClick={onOTPVerify}
             >Verify</button>
-            <p className=" capitalize">didn't recieve code? <span className=" cursor-pointer text-[#EAB308]" onClick={handleSubmitMobileNumber}>Resend Code</span></p>
+            <p className=" capitalize">Didn't recieve code? <span className=" cursor-pointer text-[#EAB308]" onClick={handleSubmitMobileNumber}>Resend Code</span></p>
           </div>
         }
-
         {
           login && profile &&
           <div className="z-[200] max-w-[400px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[50%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
@@ -311,9 +337,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
             {/* form */}
             <form className="flex flex-col">
               {/* image */}
-              {/* <label htmlFor="profileImage">Profile Image:</label>
-              <input type="file" id="profileImage" name="profileImage" accept="image/*" required onChange={handleChangeProfile} /> */}
-
+              
               <label htmlFor="profileImage" className="relative inline-block w-20 h-20 overflow-hidden bg-gray-300 rounded-full cursor-pointer">
                 {profileData.profileImage ? (
                   <div className="">
@@ -368,6 +392,20 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
               <input className="border-2 border-[#EAB308] bg-white h-[3rem] rounded-md px-1 mb-[.5rem]"
                 type="date" id="dob" name="dob" required onChange={handleChangeProfile} />
 
+              {/* Anniversary */}
+
+              <label className="bg-white inline px-[1rem] w-fit h-fit relative top-[10px] left-[15px]"
+                htmlFor="anniversary">Anniversary :</label>
+              <input className="border-2 border-[#EAB308] bg-white h-[3rem] rounded-md px-1 mb-[.5rem]"
+                type="date" id="anniversary" name="anniversary" onChange={handleChangeProfile} />
+
+              {/* email */}
+
+              <label className="bg-white inline px-[1rem] w-fit h-fit relative top-[10px] left-[15px]"
+                htmlFor="email">Email ID:</label>
+              <input className="border-2 border-[#EAB308] bg-white h-[3rem] rounded-md px-1 mb-[.5rem]"
+                type="email" id="email" name="email" required onChange={handleChangeProfile} />
+
               {/* foodPreference */}
               <label className="bg-white inline px-[1rem] w-fit h-fit relative top-[10px] left-[15px]"
                 htmlFor="foodPreference" >Food Preference:</label>
@@ -403,7 +441,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
             <p className="text-gray-100 md:text-black">Within a few clicks, find  & book the best  eateries in Town</p>
           </div>
           {/* <input box */}
-          <div className=" bg-white sm:w-[85%] mt-[2rem] rounded-md">
+          <div className="bg-white sm:w-[85%] mt-[2rem] rounded-md">
             <div className="border-b-2 p-4">
               <p className="bg-[#FFCA0B1F] inline p-1 text-[#EAB308] text-[.9rem] font-semibold rounded-md">Dine-in</p>
             </div>

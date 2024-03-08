@@ -130,7 +130,6 @@ const Menu = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     SetData({ ...formData, pic });
     let data = JSON.stringify(Data);
 
