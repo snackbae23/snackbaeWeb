@@ -5,7 +5,7 @@ import AdminLogin from './Pages/AdminLogin';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Joinpartner from './Pages/Joinpartner';
-
+import Fav from "./Pages/Fav";
 import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
 import Blogs from './Pages/Blog';
@@ -29,29 +29,29 @@ import AdminMerchantProfile from './Pages/AdminMerchantProfile';
 import AdminBookings from './Pages/AdminBookings';
 import AdminSales from './Pages/AdminSales';
 import { restaurantContext } from './context/restaurantContext';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/TermsCondition';
 import AdminAppControl from './Pages/AdminAppControl';
 import AdminControl from './Pages/AdminControl';
+import ContactUs from './Pages/ContactUs';
 
 
-
-const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
+const excludedPaths = ['/','/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol', '/home'];
 
 
 function App() {
 
   const location = useLocation();
   const [resId, setResId] = useState('');
-  const [login,setlogin] =useState("false");
+  const [login, setlogin] = useState("false");
 
 
   useEffect(() => {
     setlogin(false);
   }, []);
 
-  
+
   const handleScrollChange = (newLoginValue) => {
     setlogin(newLoginValue);
   };
@@ -80,6 +80,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/joinpartner" element={<Joinpartner />}></Route>
           <Route path="/aboutUs" element={<AboutUs />}></Route>
+          <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/dashboard" element={<DashBoard />}></Route>
           <Route path="/blog" element={<Blogs />}></Route>``
@@ -97,6 +98,8 @@ function App() {
           <Route path="/offer" element={<Offer />}></Route>
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/pricing" element={<Pricing />}></Route>
+          <Route path="/fav" element={<Fav />}></Route>
+          <Route path="/offers" element={<Offers />}></Route>
           <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
           <Route path="/termsCondition" element={<TermsCondition />}></Route>
           <Route path="/recommendation" element={<Recommendation />}></Route>

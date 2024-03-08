@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import bgImg from "../assets/rec1.png";
 import { FaArrowLeft } from "react-icons/fa6";
 import Faq from "../Components/Faq";
+import FoodSlider from "../Components/FoodSlider";
 
 const Recommendation = () => {
   return (
@@ -11,13 +12,13 @@ const Recommendation = () => {
       <Navbar1 />
       <div className="relative top-[70px] w-full h-fit ">
         {/* first section */}
-        <div className="w-full h-[67vh] relative  ">
-          <img
+        <div className="w-full h-[400px] md:h-[370px] relative rounded-b-[30px] bg-[#FFD601]  ">
+          {/* <img
             src={bgImg}
-            className=" h-full md:object-fill absolute top-0 z-[-1]"
+            className=" h-full md:object-fill relative top-0 z-[-1]"
             alt="heroImage"
-          ></img>
-          <div className="flex flex-row items-center absolute top-5 left-7">
+          ></img> */}
+          <div className="flex flex-row  items-center absolute top-5 left-7">
             <FaArrowLeft className="w-10 h-6 " />
             <p className="font-bold text-[20px]">Recommendation</p>
           </div>
@@ -39,6 +40,18 @@ const Recommendation = () => {
             </div>
           </div>
         </div>
+        <div className="flex space-x-2 mx-6 lg:mx-12 my-3  ">
+          <button className="rounded-md  font-sans font-semibold w-[110px] h-[51px] md:w-[12rem] md:h-[3rem] bg-[#FFD601] text-black md:px-6 py-1 md:py-2">
+            <p className="font-sans">All Offers</p>
+          </button>
+          <button className="rounded-md w-[110px] h-[51px] md:w-[12rem] md:h-[3rem] border-2 border-black bg-[#ffffff] text-black px-4 md:px-6 py-1 md:py-2">
+            <p className="font-sans font-semibold">No Offers</p>
+          </button>
+        </div>
+        <div className="my-[2rem] w-[94%] mx-auto">
+          <FoodSlider size={290} />
+        </div>
+
         {/* FAQ */}
         <div>
           <div>
