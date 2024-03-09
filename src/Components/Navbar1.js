@@ -10,7 +10,7 @@ import group752 from "../assets/Notification.png"
 import logo from "../assets/logo.png";
 import victory from "../assets/victory.png";
 import triangle from "../assets/Polygon 3.png"
-import frame1 from "../assets/Frame 7.png"
+
 
 //icons
 import { IoClose } from "react-icons/io5";
@@ -22,6 +22,7 @@ import { TbDiscount } from "react-icons/tb";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { MdConnectWithoutContact } from "react-icons/md";
 import { LuMenu } from "react-icons/lu";
+import { FiPhone } from "react-icons/fi";
 
 const Navbar1 = () => {
 
@@ -89,7 +90,7 @@ const Navbar1 = () => {
     //invite
     
     const [invite, setInvite] = useState(false);
-
+    const [visit,setvisit] = useState(false);
 
 
     return (
@@ -223,7 +224,11 @@ const Navbar1 = () => {
                     <p className='bg-[#E2E8F0] h-[1.5px] w-[90%] mx-auto'></p>
 
                     {/* My Visits */}
-                    <Link 
+                    <Link onClick={() => {
+                            setNotify(false);
+                            setProfile(false);
+                            setvisit(prev=> !prev)
+                        }}
                      className='flex justify-around items-center py-3'>
                         <FiPieChart className='w-[20%] text-[1.4rem]' />
                         <p className='font-[400]  w-[70%] text-[1rem] text-center'>My Visits</p>
@@ -318,6 +323,106 @@ const Navbar1 = () => {
                             copy
                         </button>
                         
+                    </div>
+                </div>
+            }
+            {/* visit */}
+            {
+                visit && 
+                <div className='md:w-[45%] w-[80%]   h-[600px] fixed top-[60%] p-6 rounded-md left-[50%] z-10 bg-white translate-x-[-50%] translate-y-[-50%] flex flex-col '>
+                    <p onClick={() => {
+                            setNotify(false);
+                            setInvite(false)
+                            setvisit(prev => !prev);
+                        }}
+                     className='absolute right-5 top-5 size-7 text-[2rem] ' ><RxCross1 /></p>
+                    <p className='font-bold text-[2.2rem]'>Visits</p>
+                    <div className='flex gap-5 mt-5 font-bold text-[1.1rem]'>
+                        <button className='bg-yellow-300 px-4 rounded-md py-2'>All Visits</button>
+                        <button className=' border-2 border-black px-4 rounded-md py-2'>Upcomming Visits</button>
+                        <button className=' border-2 border-black px-4 rounded-md py-2'>Past Visits</button>
+                    </div>
+                    <div className='mt-6 p-1 flex flex-col gap-4' >
+                        <div className='w-full h-[170px]  rounded-md shadow-xl shadow-slate-300'>
+                            <div className='w-full h-[50%] border-b-2 flex justify-between items-center  '>
+                                
+                                <div className='flex gap-4 justify-center items-center '>
+                                <img className=' ml-2 size-20 object-fill' src='/image 147.png'></img>
+                                   <div>
+                                   <p className='text-[1.3rem] font-bold'>Chowman - Salt Lake</p>
+                                   <p className=' text-slate-400'>salt Lake , Sector 2</p>
+                                   </div>
+                                        
+                                </div>
+                                <div className='flex flex-col px-5'>
+                                        <button className='bg-yellow-400 py-1 rounded-md font-bold'>Pay Now</button>
+                                        <p className=' text-slate-400'>ID: 09123459</p>
+                                </div>
+                            </div>
+
+                            <div className='w-full h-[50%] flex items-center '>
+                               <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>Date</p>
+                                        <p className=' text-slate-400'>21 Aug , 24</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>Time</p>
+                                        <p className=' text-slate-400'> 8:30 PM</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>NO.Of Guest</p>
+                                        <p className=' text-slate-400'>4</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center '>
+                                        <p className=' text-yellow-500 text-[2rem]'><FiPhone /></p>
+                                        <p className=' text-slate-400'>Call Restaurant</p>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
+                    </div>
+                    <div className='mt-6 p-1 flex flex-col gap-4' >
+                        <div className='w-full h-[170px]  rounded-md shadow-xl shadow-slate-300'>
+                            <div className='w-full h-[50%] border-b-2 flex justify-between items-center  '>
+                                
+                                <div className='flex gap-4 justify-center items-center '>
+                                <img className=' ml-2 size-20 object-fill' src='/image 147.png'></img>
+                                   <div>
+                                   <p className='text-[1.3rem] font-bold'>Chowman - Salt Lake</p>
+                                   <p className=' text-slate-400'>salt Lake , Sector 2</p>
+                                   </div>
+                                        
+                                </div>
+                                <div className='flex flex-col px-5'>
+                                        <button className='bg-yellow-400 py-1 rounded-md font-bold'>Pay Now</button>
+                                        <p className=' text-slate-400'>ID: 09123459</p>
+                                </div>
+                            </div>
+
+                            <div className='w-full h-[50%] flex items-center '>
+                               <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>Date</p>
+                                        <p className=' text-slate-400'>21 Aug , 24</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>Time</p>
+                                        <p className=' text-slate-400'> 8:30 PM</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center border-r-2'>
+                                        <p className='font-bold'>NO.Of Guest</p>
+                                        <p className=' text-slate-400'>4</p>
+                                </div>
+                                <div className='flex flex-col px-5 justify-center items-center '>
+                                        <p className=' text-yellow-500 text-[2rem]'><FiPhone /></p>
+                                        <p className=' text-slate-400'>Call Restaurant</p>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
                     </div>
                 </div>
             }
