@@ -23,6 +23,8 @@ function AdminMerchant() {
     const [selectedCuisine, setSelectedCuisine] = useState([]);
     const [image, setImage] = useState(null);
     const [fileName, setFileName] = useState("No selected Files");
+    const [image1, setImage1] = useState(null);
+    const [fileName1, setFileName1] = useState("No selected File");
     const [policies, setPolicies] = useState({
         softwarePolicy: false,
         paymentPolicy: false,
@@ -30,6 +32,7 @@ function AdminMerchant() {
     });
     const [alldata, setallData] = useState();
     const [pic, setPic] = useState();
+    const [logo, setLogo] = useState();
     const [formData, setFormData] = useState({
         restaurantName: '',
         managerName: '',
@@ -52,6 +55,8 @@ function AdminMerchant() {
         latitude: 0,
         longitude: 0,
         pic: '',
+        logo: '',
+
     });
 
     const handleChange = (e) => {
@@ -157,6 +162,8 @@ function AdminMerchant() {
             paymentMethods: [],
             FSSAInumber: '',
             salesRepresentative: '',
+            pic: '',
+            logo: '',
         })
     }
 
@@ -169,6 +176,8 @@ function AdminMerchant() {
             console.log("form data : ", formData);
             console.log("geolocation ", latitude, " ", longitude);
             console.log("pic : ", pic);
+
+            console.log("logo : ", logo);
             // setallData({...formData, pic});
 
             // console.log("all data : ", alldata);
@@ -216,9 +225,6 @@ function AdminMerchant() {
             method: "post",
             maxBodyLength: Infinity,
             url: "http://localhost:4000/api/gallery",
-            // headers: {
-            //   ...data.getHeaders(),
-            // },
             data: formData,
         };
 
@@ -230,6 +236,34 @@ function AdminMerchant() {
                 setPic(response?.data?.image_url);
                 formData.pic = response?.data?.image_url;
                 console.log(pic);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const postDetails1 = async (pics) => {
+        const formData = new FormData();
+        formData.append("someExpressFiles", pics);
+
+        let config = {
+            method: "post",
+            maxBodyLength: Infinity,
+            url: "http://localhost:4000/api/gallery",
+            // headers: {
+            //   ...data.getHeaders(),
+            // },
+            data: formData,
+        };
+
+        await axios
+            .request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                console.log(response?.data?.image_url);
+                setLogo(response?.data?.image_url);
+                formData.logo = response?.data?.image_url;
+                console.log(logo);
             })
             .catch((error) => {
                 console.log(error);
@@ -699,26 +733,56 @@ function AdminMerchant() {
                                             />
                                         </div>
                                     </div>
-                                    {/* upload file */}
-                                    <div className='flex flex-row justify-center items-center w-72 h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field").click()}>
-                                        <input type='file' accept='image/*' className='input-field'
-                                            onChange={({ target: { files } }) => {
-                                                files[0] && setFileName(files[0].name)
-                                                if (files)
-                                                    setImage(URL.createObjectURL(files[0]))
-                                                postDetails(files[0])
-                                            }}
-                                            hidden></input>
-                                        {image ?
-                                            <div>Uploaded {fileName}</div> :
-                                            <div className='flex flex-col justify-center items-center'>
-                                                <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
-                                                    <FiUpload color='white' />
-                                                </div>
-                                                <div className='font-bold text-sm'>Upload File</div>
-                                                <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                    {/* upload file and logo*/}
+                                    <div className='flex flex-row gap-4'>
+                                        {/* file */}
+                                        <div>
+                                            <div className='text-sm font-bold'>Upload FSSAI License : </div>
+                                            <div className='flex flex-row justify-center items-center w-64 h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field").click()}>
+                                                <input type='file' accept='image/*' className='input-field'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName(files[0].name)
+                                                        if (files)
+                                                            setImage(URL.createObjectURL(files[0]))
+                                                        postDetails(files[0])
+                                                    }}
+                                                    hidden></input>
+                                                {image ?
+                                                    <div>Uploaded {fileName}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white'/>
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
                                             </div>
-                                        }
+                                        </div>
+                                        {/* logo */}
+                                        <div>
+                                            <div className='text-sm font-bold'>Upload Logo : </div>
+                                            <div className='flex flex-row justify-center items-center w-64 h-32 border-2 border-dashed border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field1").click()}>
+                                                <input type='file' accept='image/*' className='input-field1'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName1(files[0].name)
+                                                        if (files)
+                                                            setImage1(URL.createObjectURL(files[0]))
+                                                        postDetails1(files[0])
+                                                    }}
+                                                    hidden></input>
+                                                {image1 ?
+                                                    <div>Uploaded {fileName1}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white'/>
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
