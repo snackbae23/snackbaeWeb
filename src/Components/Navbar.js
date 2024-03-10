@@ -73,14 +73,14 @@ const Navbar = ({ login, setlogin }) => {
               </Link>
 
 
-              {/* //change */}
+              {/* //change
               <button
                 onClick={() => {
                   setlogin(prev => !prev);
                 }}
                 className=" border  h-[34px] w-[140px] px-5 text-white text-sm font-bold text-center rounded-md bg-[#EAB308]">
                 Login
-              </button>
+              </button> */}
 
 
 

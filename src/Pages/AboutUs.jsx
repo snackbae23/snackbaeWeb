@@ -7,6 +7,7 @@ import ellipseB from "../assets/Ellipse 424.png";
 import TeamSlider from "../Components/TeamSlider";
 import bg5 from "../assets/bg-5.png";
 import app from "../assets/appstore.png";
+import team from "../Components/Team";
 
 const AboutUs = () => {
   return (
@@ -129,7 +130,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="lg:mx-24 mt-8 mx-5">
-            <TeamSlider />
+            <TeamSlider team={team} size={295}/>
           </div>
         </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react'
 import AdminNav from '../Components/AdminNav'
 import AdminLeftBar from '../Components/AdminLeftBar'
@@ -55,6 +56,7 @@ function AdminMerchant() {
         longitude: 0,
         pic: '',
         logo: '',
+
     });
 
     const handleChange = (e) => {
@@ -174,6 +176,7 @@ function AdminMerchant() {
             console.log("form data : ", formData);
             console.log("geolocation ", latitude, " ", longitude);
             console.log("pic : ", pic);
+
             console.log("logo : ", logo);
             // setallData({...formData, pic});
 
