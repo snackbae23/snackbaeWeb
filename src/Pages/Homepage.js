@@ -51,7 +51,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   // const [loading, setLoading] = useState(false);
-  const [showOTP, setShowOTP] = useState(false);
+  const [showOTP, setShowOTP] = useState(true);
   const [user,setUser] = useState(null);
 
   const navigate = useNavigate();
@@ -279,7 +279,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
         {
           login && mobile &&
           <div className="w-full">
-            <div className="z-[200] max-w-[400px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[20%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
+            <div className="z-[200] max-w-[380px] w-[100%]  p-5  rounded-md flex flex-col  bg-white absolute top-[25%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
               <div className="flex justify-between">
                 <p className="font-[600] font-sans text-[1.8rem]">Login Or SignUp</p>
                 <IoClose className="text-[1.4rem] cursor-pointer"
@@ -290,9 +290,9 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
                   }} />
               </div>
               <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">Enter Mobile Number</p>
-              <div className="relative w-full flex flex-col">
+              <div className="relative w-full flex flex-col mx-auto">
                 {/* mobileNo */}
-                <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                <PhoneInput country={"in"} value={ph} onChange={setPh}/>
                 <button className="bg-[#EAB308] font-sen font-[500] px-6 py-3 rounded-md uppercase mb-[.5rem] mt-4" onClick={onSignup}>Continue</button>
               </div>
               <div id="recaptcha-container"></div>
@@ -301,7 +301,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
         }
         {
           login && showOTP &&
-          <div className="z-[200] max-w-[400px] w-[100%] p-5 rounded-md flex flex-col bg-white absolute top-[60%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
+          <div className="z-[200] max-w-[380px] w-[100%] p-5 rounded-md flex flex-col bg-white absolute top-[70%] left-[50%] z translate-x-[-50%] translate-y-[-50%] ">
             <div className="flex justify-between">
               <p className="font-[600] font-sans text-[1.8rem]">Enter OTP</p>
               <IoClose className="text-[1.4rem] cursor-pointer"
@@ -311,7 +311,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
                   setPassword(false)
                 }} />
             </div>
-            <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">An OTP has been sent to +91{ph}</p>
+            <p className="font-[400] font-sans text-[.9rem] text-gray-400 mb-[.5rem]">An OTP has been sent to +91 {ph}</p>
             <OtpInput
                   value={otp}
                   onChange={setOtp}
@@ -319,7 +319,7 @@ const Homepage = ({ login, setlogin, onScrollChange }) => {
                   otpType="number"
                   disabled={false}
                   autoFocus
-                  className="opt-container"
+                  className="opt-container mb-3"
                 ></OtpInput>
 
             <button className="bg-[#EAB308] font-sen font-[500] px-6 py-3 rounded-md uppercase mb-[.5rem]"

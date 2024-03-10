@@ -22,6 +22,8 @@ function AdminMerchant() {
     const [selectedCuisine, setSelectedCuisine] = useState([]);
     const [image, setImage] = useState(null);
     const [fileName, setFileName] = useState("No selected Files");
+    const [image1, setImage1] = useState(null);
+    const [fileName1, setFileName1] = useState("No selected File");
     const [policies, setPolicies] = useState({
         softwarePolicy: false,
         paymentPolicy: false,
@@ -29,6 +31,7 @@ function AdminMerchant() {
     });
     const [alldata, setallData] = useState();
     const [pic, setPic] = useState();
+    const [logo, setLogo] = useState();
     const [formData, setFormData] = useState({
         restaurantName: '',
         managerName: '',
@@ -50,7 +53,8 @@ function AdminMerchant() {
         salesRepresentative: '',
         latitude: 0,
         longitude: 0,
-        pic:'',
+        pic: '',
+        logo: '',
     });
 
     const handleChange = (e) => {
@@ -136,7 +140,7 @@ function AdminMerchant() {
     const toast = useToast();
 
     // resetForm
-    function resetForm(){
+    function resetForm() {
         setFormData({
             restaurantName: '',
             managerName: '',
@@ -156,22 +160,25 @@ function AdminMerchant() {
             paymentMethods: [],
             FSSAInumber: '',
             salesRepresentative: '',
+            pic: '',
+            logo: '',
         })
     }
 
     //create merchant handler
-    const createMerchantHandler = async(e) => {
+    const createMerchantHandler = async (e) => {
         e.preventDefault();
 
         getGeoLocation((latitude, longitude) => {
             console.log("fetched geolocation");
             console.log("form data : ", formData);
             console.log("geolocation ", latitude, " ", longitude);
-            console.log("pic : ",pic);
+            console.log("pic : ", pic);
+            console.log("logo : ", logo);
             // setallData({...formData, pic});
 
             // console.log("all data : ", alldata);
-            
+
             // let data = JSON.stringify(alldata);
             let data = JSON.stringify(formData);
 
@@ -194,11 +201,11 @@ function AdminMerchant() {
                         duration: 5000,
                         isClosable: true,
                         position: "bottom",
-                      });
-                      setSelectedCategory([]);
-                      setSelectedCuisine([]);
-                      resetForm();
-                      closeMerchantForm();
+                    });
+                    setSelectedCategory([]);
+                    setSelectedCuisine([]);
+                    resetForm();
+                    closeMerchantForm();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -208,6 +215,31 @@ function AdminMerchant() {
     }
 
     const postDetails = async (pics) => {
+        const formData = new FormData();
+        formData.append("someExpressFiles", pics);
+
+        let config = {
+            method: "post",
+            maxBodyLength: Infinity,
+            url: "http://localhost:4000/api/gallery",
+            data: formData,
+        };
+
+        await axios
+            .request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                console.log(response?.data?.image_url);
+                setPic(response?.data?.image_url);
+                formData.pic = response?.data?.image_url;
+                console.log(pic);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const postDetails1 = async (pics) => {
         const formData = new FormData();
         formData.append("someExpressFiles", pics);
 
@@ -226,9 +258,9 @@ function AdminMerchant() {
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 console.log(response?.data?.image_url);
-                setPic(response?.data?.image_url);
-                formData.pic = response?.data?.image_url;
-                console.log(pic);
+                setLogo(response?.data?.image_url);
+                formData.logo = response?.data?.image_url;
+                console.log(logo);
             })
             .catch((error) => {
                 console.log(error);
@@ -283,66 +315,66 @@ function AdminMerchant() {
 
     // for all
     const [searchAll, setSearchAll] = useState('');
-    const [searchAllData , setSearchAllData] = useState([]);
+    const [searchAllData, setSearchAllData] = useState([]);
     function changeHandlerAll(e) {
         setSearchAll(e.target.value);
     }
 
-    const submitHandlerAll = async(e) => {
+    const submitHandlerAll = async (e) => {
         e.preventDefault();
         // if(searchAll)
         // {
-            let config = {
-                method: 'get',
-                maxBodyLength: Infinity,
-                url: `http://localhost:4000/api/search?search=${searchAll}`,
-                headers: { }
-              };
-              
-              axios.request(config)
-              .then((response) => {
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/search?search=${searchAll}`,
+            headers: {}
+        };
+
+        axios.request(config)
+            .then((response) => {
                 console.log(JSON.stringify(response.data));
                 setSearchAllData(response.data);
-              })
-              .catch((error) => {
+            })
+            .catch((error) => {
                 console.log(error);
-              });
+            });
         // }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         let config1 = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/search?search=${searchAll}`,
-            headers: { }
-          };
-          
-          axios.request(config1)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchAllData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            headers: {}
+        };
 
-          let config3 = {
+        axios.request(config1)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchAllData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        let config3 = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
-            headers: { }
-          };
-          
-          axios.request(config3)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchNewData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },[]);
+            headers: {}
+        };
+
+        axios.request(config3)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchNewData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     // for pending
     const [searchPending, setSearchPending] = useState('');
@@ -355,27 +387,27 @@ function AdminMerchant() {
 
     // for new enquiry
     const [searchNew, setSearchNew] = useState('');
-    const [searchNewData,setSearchNewData] = useState([]);
+    const [searchNewData, setSearchNewData] = useState([]);
     function changeHandlerNew(e) {
         setSearchNew(e.target.value);
     }
-    const submitHandlerNew = async(e) => {
+    const submitHandlerNew = async (e) => {
         e.preventDefault();
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: `http://localhost:4000/api/getPartnerData?search=${searchNew}`,
-            headers: { }
-          };
-          
-          axios.request(config)
-          .then((response) => {
-            console.log(JSON.stringify(response.data));
-            setSearchNewData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            headers: {}
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setSearchNewData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     function one() {
@@ -698,26 +730,56 @@ function AdminMerchant() {
                                             />
                                         </div>
                                     </div>
-                                    {/* upload file */}
-                                    <div className='flex flex-row justify-center items-center w-72 h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field").click()}>
-                                        <input type='file' accept='image/*' className='input-field'
-                                            onChange={({ target: { files } }) => {
-                                                files[0] && setFileName(files[0].name)
-                                                if (files)
-                                                    setImage(URL.createObjectURL(files[0]))
-                                                postDetails(files[0])
-                                            }}
-                                            hidden></input>
-                                        {image ?
-                                            <div>Uploaded {fileName}</div> :
-                                            <div className='flex flex-col justify-center items-center'>
-                                                <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
-                                                    <FiUpload color='white' />
-                                                </div>
-                                                <div className='font-bold text-sm'>Upload File</div>
-                                                <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                    {/* upload file and logo*/}
+                                    <div className='flex flex-row gap-4'>
+                                        {/* file */}
+                                        <div>
+                                            <div className='text-sm font-bold'>Upload FSSAI License : </div>
+                                            <div className='flex flex-row justify-center items-center w-64 h-32 border-2 border-dashed  border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field").click()}>
+                                                <input type='file' accept='image/*' className='input-field'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName(files[0].name)
+                                                        if (files)
+                                                            setImage(URL.createObjectURL(files[0]))
+                                                        postDetails(files[0])
+                                                    }}
+                                                    hidden></input>
+                                                {image ?
+                                                    <div>Uploaded {fileName}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white'/>
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
                                             </div>
-                                        }
+                                        </div>
+                                        {/* logo */}
+                                        <div>
+                                            <div className='text-sm font-bold'>Upload Logo : </div>
+                                            <div className='flex flex-row justify-center items-center w-64 h-32 border-2 border-dashed border-yellow-600 rounded-lg bg-[#FEFCE8]' onClick={() => document.querySelector(".input-field1").click()}>
+                                                <input type='file' accept='image/*' className='input-field1'
+                                                    onChange={({ target: { files } }) => {
+                                                        files[0] && setFileName1(files[0].name)
+                                                        if (files)
+                                                            setImage1(URL.createObjectURL(files[0]))
+                                                        postDetails1(files[0])
+                                                    }}
+                                                    hidden></input>
+                                                {image1 ?
+                                                    <div>Uploaded {fileName1}</div> :
+                                                    <div className='flex flex-col justify-center items-center'>
+                                                        <div className='bg-yellow-500 w-12 h-12 rounded-full flex justify-center items-center'>
+                                                            <FiUpload color='white'/>
+                                                        </div>
+                                                        <div className='font-bold text-sm'>Upload File</div>
+                                                        <div className='text-sm opacity-50'>Drag and drop files here</div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -928,15 +990,15 @@ function AdminMerchant() {
                                 {searchAllData?.map((restaurant) => {
                                     return (
                                         <tr key={restaurant._id}>
-                                            
+
                                             <td className="py-4 px-4 whitespace-nowrap">
-                                            <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
-                                                <div className="text-sm">
-                                                    {restaurant.restaurantName}
-                                                </div>
-                                                <div className='text-sm'>
-                                                    {restaurant.resturantId}
-                                                </div>
+                                                <Link to={`/admin/merchantProfile/${restaurant.resturantId}`}>
+                                                    <div className="text-sm">
+                                                        {restaurant.restaurantName}
+                                                    </div>
+                                                    <div className='text-sm'>
+                                                        {restaurant.resturantId}
+                                                    </div>
                                                 </Link>
                                             </td>
                                             <td className="px-12 py-4 whitespace-nowrap">

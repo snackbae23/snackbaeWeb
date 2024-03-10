@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import AdminLogin from './Pages/AdminLogin';
@@ -38,7 +37,6 @@ import AdminControl from './Pages/AdminControl';
 
 
 const excludedPaths = ['/dashboard', '/admin/dashboard', '/admin/merchant', '/adminDashboard', '/form', '/payout', '/menu', '/review', '/customer', '/editstore', '/offer', '/pricing', '/admin/merchantProfile/:id', '/admin/bookings', '/admin/sales', '/admin/appControl', '/admin/admincontrol'];
-
 
 function App() {
 
