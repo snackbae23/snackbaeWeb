@@ -109,6 +109,7 @@ const Menu = () => {
   const [formData, setFormData] = useState({
     menuItem: "",
     type: "",
+    price:"",
     cuisines: "",
   });
 
@@ -302,11 +303,11 @@ const Menu = () => {
                   className="input_container  "
                 // className="border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
                 >
-                  <label className="mt-4 mb-2  " htmlFor="image">
+                  <label className="mt-3 mb-2  " htmlFor="image">
                     <span>
                       {image ? <div className='text-center my-auto font-normal pt-8'>Uploaded {fileName}</div> :
                         <img
-                          className="absolute w-[130px] h-[80px] left-[37%] top-[24%] object-fill"
+                          className="absolute w-[130px] h-[80px] left-[37%] top-[20%] object-fill"
                           src="/Group 1171277298.png"
                           alt=""
                         ></img>
@@ -345,6 +346,17 @@ const Menu = () => {
                   <option value="veg">Veg</option>
                   <option value="non-veg">Non-Veg</option>
                 </select>
+                <label className="mt-4 mb-2" htmlFor="price">
+                  Price
+                </label>
+                <input
+                  className="w-full h-[50px] p-3 border border-[#E2E8F0] rounded-md focus:outline-none focus:shadow-md"
+                  type="text"
+                  id="price"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                />
                 <label className="mt-4 mb-2" htmlFor="calories">
                   Cuisines
                 </label>
