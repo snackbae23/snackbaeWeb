@@ -10,7 +10,7 @@ import rect54 from "../assets/rectangle54.png"
 import group752 from "../assets/group-752.svg"
 import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
-import frame33 from "../assets/frame33.svg"
+import frame33 from "../assets/frame33.svg" 
 import { FiSearch } from 'react-icons/fi'
 import ellipse4 from "../assets/ellipse403.png"
 import DatePicker from "react-datepicker";
