@@ -360,9 +360,7 @@ const EditStoreDetail = () => {
                       name="category"
                       onChange={handleChange}
                     >
-                      {/* <option value="">Slect Category</option>
-                      <option value="upto3">Up to 3</option>
-                      <option value="upto4">Up to 4</option> */}
+                     
                     </input>
                   </div>
                   <div className="flex flex-col w-[48%]">
