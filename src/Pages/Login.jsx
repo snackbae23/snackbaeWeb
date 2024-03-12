@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import vector4 from "../assets/vector4.svg"
 import vector3 from "../assets/vector3.svg"
 import rect2 from "../assets/group11.png"
@@ -10,12 +10,13 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/toast";
 
 const Login = () => {
+    const navigate = useNavigate();
     const toast = useToast();
     const {
         resId,
         setResId,
     } = useContext(restaurantContext);
-    const [user,setUser] = useState(formData);
+    
  
     const [formData, setFormData] = useState({
         email: "",
@@ -34,16 +35,17 @@ const Login = () => {
         const user = JSON.parse(localStorage.getItem("userData"));
         if (user) {
             navigate("/home");
-        }
-    },[navigate])
+        }},[navigate])
 
-    const navigate = useNavigate();
+   
+
+
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log("form data", formData)
         
 
-        try {
+     try {
             let data = JSON.stringify(formData);
 
             let config = {
@@ -59,8 +61,7 @@ const Login = () => {
             axios.request(config)
                 .then((response) => {
                     console.log(JSON.stringify(response.data));
-                    setResId(response.data.details);
-                    console.log(resId);
+                    localStorage.setItem("userData", JSON.stringify(response.data.details));
                     toast({
                         title: "Login Successful",
                         status: "success",
@@ -68,10 +69,7 @@ const Login = () => {
                         isClosable: true,
                         position: "bottom",
                     });
-                    
-            setUser(data);
-            localStorage.setItem("userData",JSON.stringify(data));
-            navigate("/home");
+                    navigate("/home");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -84,7 +82,6 @@ const Login = () => {
                     });
                 });
         }
-       
         catch (err) {
             console.log(err)
         }
