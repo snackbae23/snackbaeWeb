@@ -31,7 +31,7 @@ function AdminLogin()
         })
     }
     useEffect(()=>{
-        const user = JSON.parse(localStorage.getItem("adminData"));
+        const user = JSON.parse(localStorage.getItem( "adminData"));
         if(user)
         {
             navigate("/admindashboard");
