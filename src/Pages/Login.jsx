@@ -15,7 +15,8 @@ const Login = () => {
         resId,
         setResId,
     } = useContext(restaurantContext);
-
+    const [user,setUser] = useState(formData);
+ 
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -29,6 +30,12 @@ const Login = () => {
             }
         })
     }
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userData"));
+        if (user) {
+            navigate("/home");
+        }
+    },[navigate])
 
     const navigate = useNavigate();
     const submitHandler = async (e) => {
@@ -61,7 +68,10 @@ const Login = () => {
                         isClosable: true,
                         position: "bottom",
                     });
-                    navigate("/dashboard");
+                    
+            setUser(formData);
+            localStorage.setItem("userData",JSON.stringify(formData));
+            navigate("/home");
                 })
                 .catch((error) => {
                     console.log(error);

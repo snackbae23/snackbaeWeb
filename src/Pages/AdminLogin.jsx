@@ -9,7 +9,7 @@ import AdminDashboard from "./AdminDashboard";
 import { Link, useNavigate } from "react-router-dom";
 function AdminLogin() 
 {
-    const toast = useToast();
+     const toast = useToast();
     const navigate = useNavigate();
     // const [isLoggedIn,setIsLoggedIn] = useState(false);
     const [formData, setFormData] = useState({

@@ -6,7 +6,7 @@ function DashboardAdmin() {
     return (
         <div>
             {/* header */}
-            <div>
+            <div> 
                 <AdminNav />
             </div>
 
