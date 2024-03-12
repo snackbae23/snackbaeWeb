@@ -62,7 +62,7 @@ const Home = () => {
 
   return (
     <div className='w-full h-fit'>
-      <Navbar1 />
+      {/* <Navbar1 /> */}
       <div className='relative top-[70px] w-full h-fit '>
         {/* hero section */}
         <div className='w-full h-[95vh] relative '>
