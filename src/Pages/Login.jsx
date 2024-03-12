@@ -41,7 +41,7 @@ const Login = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log("form data", formData)
-        console.log("helloo")
+        
 
         try {
             let data = JSON.stringify(formData);
@@ -69,8 +69,8 @@ const Login = () => {
                         position: "bottom",
                     });
                     
-            setUser(formData);
-            localStorage.setItem("userData",JSON.stringify(formData));
+            setUser(data);
+            localStorage.setItem("userData",JSON.stringify(data));
             navigate("/home");
                 })
                 .catch((error) => {
