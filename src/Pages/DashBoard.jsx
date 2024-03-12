@@ -17,109 +17,54 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-
+import axios from 'axios';
 import LeftBar from '../Components/LeftBar';
 
 
 const Payout = () => {
 
-    const [date, setDate] = useState();
+    const [bookingDate, setBookingDate] = useState(new Date().toISOString().slice(0, 10));
+    const [bookings,setBookings] = useState([]);
+    const [payments,setPayments] = useState([]);
 
-    // const [selectedDate, setSelectedDate] = useState(new Date());
-
-    // const handleDateChange = (newDate) => {
-    //   setSelectedDate(newDate);
-    // };
-
-    // const [selectedDate, setSelectedDate] = useState(new Date());
-
-    // const handleDateChange = (event) => {
-    //     setSelectedDate(new Date(event.target.value));
-    // };
-
-    // const [selectedDate, setSelectedDate] = useState(null);
-
-    // Function to get the next seven days from the current date
-    // const getNextSevenDays = () => {
-    //   const currentDate = new Date();
-    //   const days = [];
-
-    //   for (let i = 0; i < 6; i++) {
-    //     days.push(new Date(currentDate.getTime() + i * 24 * 60 * 60 * 1000));
-    //   }
-
-    //   return days;
-    // };
-
-    // Function to format the selected date
-    // const handleDateClick = (date) => {
-    //   const formattedDate = new Intl.DateTimeFormat("en-US", {
-    //     weekday: "long",
-    //     day: "numeric",
-    //     month: "long",
-    //   }).format(date);
-    //   setSelectedDate({ date, formattedDate });
-    // };
-
-    // Get the next seven days
-    // const nextSevenDays = getNextSevenDays();
-
-
-    // const [selectedMonth, setSelectedMonth] = useState(new Date());
-    // const [bookings, setBookings] = useState([]);
-
-    // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-    // const fetchBookings = async (month) => {
-    //     const response = await fetch(`/api/bookings?month=${month.toISOString().split("T")[0]}`);
-    //     const data = await response.json();
-    //     setBookings(data);
-    // };
-
-    // const handleMonthChange = (newMonth) => {
-    //     setSelectedMonth(newMonth);
-    //     fetchBookings(newMonth);
-    // };
-
-    // const renderDays = () => {
-    //     const days = [];
-    //     let currentDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1);
-
-    //     while (currentDate.getMonth() === selectedMonth.getMonth()) {
-    //         days.push(
-    //             <td key={currentDate.toISOString()}>
-    //                 {currentDate.getDate()}
-    //                 {bookings.some((b) => b.date === currentDate.toISOString().split("T")[0]) && (
-    //                     <span className="bg-blue-500 text-white rounded-full w-2 h-2 inline-block absolute -mt-2 -ml-1"></span>
-    //                 )}
-    //             </td>
-    //         );
-
-    //         if (daysOfWeek.includes(currentDate.toLocaleString("en-us", { weekday: "short" }))) {
-    //             currentDate.setDate(currentDate.getDate() + 1);
-    //         }
-    //     }
-
-    //     return days;
-    // };
-
-    // useEffect(() => {
-    //     fetchBookings(selectedMonth);
-    // }, [selectedMonth]);
-
-
-
+    const [paymentDate, setPaymentDate] = useState(new Date().toISOString().slice(0, 10));
 
     function changeHandler(e) {
-        setDate(e.target.value);
-        console.log(date);
+        setBookingDate(e.target.value);
+        console.log(bookingDate);
     }
 
-    function dateSubmit(e) {
+    function dateSubmit() {
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:4000/api/bookings/find/65edb6299b2c9622f9286293/${bookingDate}`,
+            headers: { }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            setBookings(response.data?.bookings);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+
+    useEffect(()=>{
+        dateSubmit();
+    },[bookingDate]);
+
+    function paymentChangeHandler(e) {
+        setPaymentDate(e.target.value);
+        console.log(paymentDate);
+    }
+
+    function paymentSubmit(e) {
         e.preventDefault();
-        console.log(date);
+        console.log(paymentDate);
     }
-
 
     const book = [
         { id: "Am123", img: ellipse4, name: "Amanda Cooper", slot: " 9:30 AM -10:30 AM EST", table: "Table no. 42", time: "09:30 AM", bill: "233$" },
@@ -295,69 +240,24 @@ const Payout = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='mt-6 flex justify-between items-center'>
-                            <div className=' w-[550px] flex flex-col rounded-xl  ml-10'>
+                        <div className='mt-6 flex justify-center'>
+                            <div className=' w-[550px] flex flex-col rounded-xl mt-4 ml-10'>
                                 <div className='bg-slate-100 h-36 flex items-center flex-col'>
                                     <div className=" font-semibold z-[2] flex justify-center text-xl mt-4 ">Bookings</div>
                                     <div className=''>
                                         <form className='flex flex-row gap-3 items-center justify-center mt-4' onSubmit={dateSubmit}>
-                                            <input type='date' className='py-2 px-6 bg-[#e7e6e6] rounded-md' value={date} onChange={changeHandler}></input>
+                                            <input type='date' className='py-2 px-6 bg-[#e7e6e6] rounded-md' value={bookingDate} onChange={changeHandler}></input>
                                             <button>
                                                 <FiSearch fontSize={25} />
                                             </button>
                                         </form>
                                     </div>
-                                    {/* <div className="grid grid-cols-7 gap-2">
-                                        {nextSevenDays.map((day) => (
-                                            <div
-                                                key={day.toString()}
-                                                onClick={() => handleDateClick(day)}
-                                                className="bg-blue-300 text-white font-bold py-2 px-4 rounded cursor-pointer hover:bg-blue-400 transition-colors"
-                                            >
-                                                {new Intl.DateTimeFormat("en-US", {
-                                                    weekday: "long",
-                                                    day: "numeric",
-                                                    month: "long",
-                                                }).format(day)}
-                                            </div>
-                                        ))}
-                                    </div> */}
-
-                                    {/* <div className="p-4 bg-white rounded-lg shadow-md">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <h2 className="text-xl font-semibold">{selectedMonth.toLocaleString("default", { month: "long", year: "numeric" })}</h2>
-                                            <DatePicker
-                                                selected={selectedMonth}
-                                                onChange={handleMonthChange}
-                                                inline
-                                                showMonthYearPicker
-                                                className="border-gray-300 border rounded-md py-1 px-2"
-                                            />
-                                        </div>
-                                        <table className="w-full">
-                                            <thead>
-                                                <tr>
-                                                    {daysOfWeek.map((day) => (
-                                                        <th key={day} className="text-left py-2 px-4">
-                                                            {day}
-                                                        </th>
-                                                    ))}
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>{daysOfWeek.map((day) => <td key={day} className="py-2 px-4 text-center">{day}</td>)}</tr>
-                                                {Array.from({ length: new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0).getDate() / 7 }, (_, i) => (
-                                                    <tr key={i}>{renderDays()}</tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div> */}
-
+                                    
                                 </div>
                                 <div className='bg-white  rounded-md'>
-                                    <div className="overflow-y-auto no-scrollbar  max-h-[300px]  z-10">
+                                    <div className="overflow-y-auto no-scrollbar h-[300px] mt-6  z-10">
                                         <ul className="flex flex-col pl-5 gap-2 mt-4 ">
-                                            {book.map((booking) => (
+                                            {bookings.map((booking) => (
                                                 <li key={booking.id} className="">
                                                     <div className='bg-slate-100 h-14 flex flex-row items-center justify-between box-border py-5 px-0 rounded-3xl'>
                                                         <div className='flex flex-row items-center justify-start '>
@@ -365,19 +265,19 @@ const Payout = () => {
                                                                 className="relative ml-4 rounded-[50%] w-12 h-12 object-contain min-h-11"
                                                                 alt=""
                                                                 loading='lazy'
-                                                                src={booking.img}
+                                                                src={booking.user.additionalDetails.image}
                                                             />
                                                             <div className='flex flex-col ml-3 items-start justify-center gap-0.5'>
                                                                 <div className='leading-6 font-medium pr-5 '>
-                                                                    {booking.name}
+                                                                    {booking.user.additionalDetails.fullName}
                                                                 </div>
                                                                 <div>
-                                                                    {booking.slot}
+                                                                    {booking.time} on {booking.date} 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className='mr-4 font-semibold'>
-                                                            {booking.table}
+                                                            Table for {booking.numofpeople}
                                                         </div>
                                                     </div>
                                                 </li>
@@ -386,20 +286,20 @@ const Payout = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className=' w-[550px] flex flex-col ml-12 mt-4 '>
+                            <div className=' w-[550px] flex flex-col rounded-xl ml-12 mt-4'>
                                 <div className='bg-slate-100 h-36'>
                                     <div className=" font-semibold z-[2] flex justify-center text-xl mt-4">Payments</div>
                                     <div className=''>
-                                        <form className='flex flex-row gap-3 items-center justify-center mt-4' onSubmit={dateSubmit}>
-                                            <input type='date' className='py-2 px-6 bg-[#e7e6e6] rounded-md' value={date} onChange={changeHandler}></input>
+                                        <form className='flex flex-row gap-3 items-center justify-center mt-4' onSubmit={paymentSubmit}>
+                                            <input type='date' className='py-2 px-6 bg-[#e7e6e6] rounded-md' value={paymentDate} onChange={paymentChangeHandler}></input>
                                             <button>
                                                 <FiSearch fontSize={25} />
                                             </button>
                                         </form>
                                     </div>
                                 </div>
-                                <div className='bg-white'>
-                                    <div className="overflow-y-auto max-h-[300px] mt-6 z-10">
+                                <div className='bg-white rounded-md'>
+                                    <div className="overflow-y-auto h-[300px] mt-6 z-10">
                                         <ul className="flex flex-col pl-5 gap-1 ">
                                             {book.map((booking) => (
                                                 <li key={booking.id} className="">
